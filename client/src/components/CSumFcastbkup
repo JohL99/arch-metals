@@ -1,0 +1,314 @@
+import React, { PureComponent } from "react";
+
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+
+class CSumFcast extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lesprix: [],
+      lesCast: [],
+    };
+
+    this.renderTableData = this.renderTableData.bind(this);
+  }
+
+  componentDidMount() {
+    this.faisQlq();
+  }
+
+  faisQlq() {
+    console.log("Salut");
+    //Récupération des prix
+    fetch("/api/beyi/comm/" + "Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        let compteur = 0;
+        let lesprix = [...this.state.lesprix];
+        let talo = data.map((mutengo) => {
+          //put it in an array
+          lesprix[compteur] = [
+            { mois: mutengo.month },
+            { price1: mutengo.floorprice + mutengo.constant1 * 0 },
+            { price2: mutengo.floorprice + mutengo.constant1 * 1 },
+            { price2: mutengo.floorprice + mutengo.constant1 * 1 },
+            { price3: mutengo.floorprice + mutengo.constant1 * 2 },
+            { price4: mutengo.floorprice + mutengo.constant1 * 3 },
+            { price5: mutengo.floorprice + mutengo.constant1 * 4 },
+            { price6: mutengo.floorprice + mutengo.constant1 * 5 },
+            { price7: mutengo.floorprice + mutengo.constant1 * 6 },
+            { price8: mutengo.floorprice + mutengo.constant1 * 7 },
+            { price9: mutengo.floorprice + mutengo.constant1 * 8 },
+          ];
+          compteur++;
+          return {
+            id: mutengo._id,
+          };
+        });
+
+        this.setState({ lesprix });
+        console.log(lesprix.values);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    //prendre les valeurs
+    fetch("/api/menji/moymois/" + "Copper")
+      .then((response1) => {
+        return response1.json();
+      })
+      .then((data1) => {
+        let lesCast = [...this.state.lesCast];
+        let compteur = 0;
+        let beyiFromApi = data1.map((prix) => {
+          //this.setState({ lesmoyennes: [].concat(moyenneEncore) });
+          lesCast[compteur] = [
+            { mois: prix._id },
+            { avg1: prix.avg1 },
+            { avg2: prix.avg2 },
+            { avg3: prix.avg3 },
+            { avg4: prix.avg4 },
+            { avg5: prix.avg5 },
+            { avg6: prix.avg6 },
+            { avg7: prix.avg7 },
+            { avg8: prix.avg8 },
+            { avg9: prix.avg9 },
+          ];
+          compteur++;
+
+          return {
+            mois: prix._id,
+            avg1: prix.avg1,
+            avg2: prix.avg2,
+            avg3: prix.avg3,
+            avg4: prix.avg4,
+            avg5: prix.avg5,
+            avg6: prix.avg6,
+            avg7: prix.avg7,
+            avg8: prix.avg8,
+            avg9: prix.avg9,
+          };
+        });
+
+        this.setState(lesCast);
+        console.log(lesCast);
+
+        /*  this.setState({
+          lesCast: [
+            {
+              mois: "",
+              avg1: "",
+              avg2: "",
+              avg3: "",
+              avg4: "",
+              avg5: "",
+              avg6: "",
+              avg7: "",
+              avg8: "",
+              avg9: "",
+              lemedian: "",
+              lamoyenne: "",
+              specificcomments: "",
+            },
+          ].concat(beyiFromApi),
+        }); */
+      })
+      .catch((error1) => {
+        console.log(error1);
+      });
+  }
+
+  renderTableData() {
+    return this.state.lesprix.map((prix, index) => {
+      const {
+        mois,
+        price1,
+        price2,
+        price3,
+        price4,
+        price5,
+        price6,
+        price7,
+        price8,
+        price9,
+      } = prix; //destructuring
+      return (
+        <tr>
+          <td rowSpan={"2"} width={"10%"}>
+            {mois}
+          </td>
+          <td>{"EV"}</td>
+          <td>{"Median"}</td>
+          <td>{"No."}</td>
+          <td>{price1}</td>
+          <td>{price2}</td>
+          <td>{price3} </td>
+          <td>{price4}</td>
+          <td>{price5}</td>
+          <td>{price6}</td>
+          <td>{price7}</td>
+          <td>{price8}</td>
+          <td>{price9}</td>
+        </tr>
+      );
+    });
+  }
+
+  render() {
+    const renderPrix = (talo) => {
+      return (
+        <tr>
+          <td rowSpan="2" width="10%">
+            {talo.mois}
+          </td>
+          <td>EV</td>
+          <td>Median</td>
+          <td>No.</td>
+          <td>{talo.price1}</td>
+          <td>{talo.price2}</td>
+          <td>{talo.price3} </td>
+          <td>{talo.price4}</td>
+          <td>{talo.price5}</td>
+          <td>{talo.price6}</td>
+          <td>{talo.price7}</td>
+          <td>{talo.price8}</td>
+          <td>{talo.price9}</td>
+        </tr>
+      );
+    };
+
+    return (
+      <div>
+        <table className="table table-bordered">
+          <tbody>
+            <tr>
+              <td colSpan="12" align="center" width="70%">
+                Summary of Copper Forecasts
+              </td>
+
+              <td rowSpan="7">13</td>
+            </tr>
+
+            <tr>
+              <td rowSpan="2" width="10%">
+                1
+              </td>
+              <td>EV</td>
+              <td>Median</td>
+              <td>No.</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tr>
+            {/*this.renderTableData()*/}
+            {/*this.state.lesprix.map(renderPrix)*/}
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td rowSpan="2">1</td>
+              <td>EV</td>
+              <td>Median</td>
+              <td>No.</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td rowSpan="2">1</td>
+              <td>EV</td>
+              <td>Median</td>
+              <td>No.</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tr>
+
+            <tr>
+              <td>2</td>
+              <td>3</td>
+              <td>4</td>
+              <td>5</td>
+              <td>6</td>
+              <td>7</td>
+              <td>8</td>
+              <td>9</td>
+              <td>10</td>
+              <td>11</td>
+              <td>12</td>
+            </tr>
+          </tbody>
+        </table>
+        <table className="table table-bordered">
+          <tbody>
+            <tr>
+              <td colSpan="2">
+                Copper Participants Most Recent General Remarks
+              </td>
+            </tr>
+            <tr>
+              <td width="20%">Copper Mois</td>
+              <td>Commentaires</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+}
+export default CSumFcast;
