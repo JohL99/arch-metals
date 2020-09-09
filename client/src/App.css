@@ -2479,19 +2479,19 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-sm {
-  height: calc(1.5em + 0.5rem + 2px);
-  padding: 0.25rem 0.5rem;
-  font-size: 0.875rem;
+  height: calc(1.25em + 0.25rem + 1px);
+  padding: 0.15rem 0.15rem;
+  font-size: 12px;
   line-height: 1.5;
-  border-radius: 0.2rem;
+  border-radius: 0.15rem;
 }
 
 .form-control-lg {
-  height: calc(1.5em + 1rem + 2px);
-  padding: 0.5rem 1rem;
-  font-size: 1.25rem;
-  line-height: 1.5;
-  border-radius: 0.3rem;
+  height: calc(1.25em + 0.25rem + 1px);
+  padding: 0.15rem 0.25rem;
+  font-size: 12px;
+  line-height: 1.25;
+  border-radius: 0.15rem;
 }
 
 select.form-control[size],
@@ -2504,12 +2504,12 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 .form-text {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 0.15rem;
 }
 
 .form-row {
@@ -2524,14 +2524,14 @@ textarea.form-control {
 
 .form-row > .col,
 .form-row > [class*="col-"] {
-  padding-right: 5px;
-  padding-left: 5px;
+  padding-right: 2px;
+  padding-left: 2px;
 }
 
 .form-check {
   position: relative;
   display: block;
-  padding-left: 1.25rem;
+  padding-left: 1.15rem;
 }
 
 .form-check-input {
