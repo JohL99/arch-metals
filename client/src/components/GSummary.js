@@ -50,19 +50,19 @@ class GSummary extends PureComponent {
       comments: "",
       totpercent: "",
       median: "",
-      lesprice: [],
+      Aprice: [],
       foreprices: [],
-      lesmoyennes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      njina: [],
-      donnees1: [8],
+      averages: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      element: [],
+      data1: [8],
       olddata: [],
-      maloba: [],
+      recent: [],
     };
     this.CreeOldata = this.CreeOldata.bind(this);
-    this.trouveMedian = this.trouveMedian.bind(this);
+    this.findMedian = this.findMedian.bind(this);
   }
   CreeOldata() {
-    let lesmoyennesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let averagesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     function arrayObjectIndexOf(myArray, searchTerm, property) {
       for (var i = 0, len = myArray.length; i < len; i++) {
         if (myArray[i][property] === searchTerm) return i;
@@ -70,34 +70,34 @@ class GSummary extends PureComponent {
       return -1;
     }
     //Soustraction des données récentes
-    var arLesprice = [...this.state.lesprice];
-    //calcul des moyennes
-    this.state.njina[0] = this.state.price1;
-    this.state.njina[1] = this.state.price2;
-    this.state.njina[2] = this.state.price3;
-    this.state.njina[3] = this.state.price4;
-    this.state.njina[4] = this.state.price5;
-    this.state.njina[5] = this.state.price6;
-    this.state.njina[6] = this.state.price7;
-    this.state.njina[7] = this.state.price8;
-    this.state.njina[8] = this.state.price9;
-    let donnees1 = { ...this.state.donnees1 };
-    donnees1 = [
+    var arAprice = [...this.state.Aprice];
+    //calcul des means
+    this.state.element[0] = this.state.price1;
+    this.state.element[1] = this.state.price2;
+    this.state.element[2] = this.state.price3;
+    this.state.element[3] = this.state.price4;
+    this.state.element[4] = this.state.price5;
+    this.state.element[5] = this.state.price6;
+    this.state.element[6] = this.state.price7;
+    this.state.element[7] = this.state.price8;
+    this.state.element[8] = this.state.price9;
+    let data1 = { ...this.state.data1 };
+    data1 = [
       {
-        //price: this.state.njina[0],
+        //price: this.state.element[0],
         price: 0,
-        recentdate: this.state.lesmoyennes[0] * 100,
+        recentdate: this.state.averages[0] * 100,
       },
     ];
     var y = 0;
     for (y == 0; y < 9; y++) {
-      donnees1.push({
-        price: this.state.njina[y],
-        RecentData: this.state.lesmoyennes[y] * 100,
+      data1.push({
+        price: this.state.element[y],
+        RecentData: this.state.averages[y] * 100,
       });
     }
-    donnees1.shift();
-    this.setState({ donnees1 });
+    data1.shift();
+    this.setState({ data1 });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -109,7 +109,7 @@ class GSummary extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let sum = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
     fetch("/api/beyi/commonth/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
@@ -142,27 +142,27 @@ class GSummary extends PureComponent {
       })
       .then((data1) => {
         let priceFromApi = data1.map((price, x, index) => {
-          var nombre = index.length;
-          somme[0] = somme[0] + price.detail.price1;
-          somme[1] = somme[1] + price.detail.price2;
-          somme[2] = somme[2] + price.detail.price3;
-          somme[3] = somme[3] + price.detail.price4;
-          somme[4] = somme[4] + price.detail.price5;
-          somme[5] = somme[5] + price.detail.price6;
-          somme[6] = somme[6] + price.detail.price7;
-          somme[7] = somme[7] + price.detail.price8;
-          somme[8] = somme[8] + price.detail.price9;
-          var moyenneEncore = [];
-          moyenneEncore[0] = somme[0] / nombre;
-          moyenneEncore[1] = somme[1] / nombre;
-          moyenneEncore[2] = somme[2] / nombre;
-          moyenneEncore[3] = somme[3] / nombre;
-          moyenneEncore[4] = somme[4] / nombre;
-          moyenneEncore[5] = somme[5] / nombre;
-          moyenneEncore[6] = somme[6] / nombre;
-          moyenneEncore[7] = somme[7] / nombre;
-          moyenneEncore[8] = somme[8] / nombre;
-          this.setState({ lesmoyennes: [].concat(moyenneEncore) });
+          var number = index.length;
+          sum[0] = sum[0] + price.detail.price1;
+          sum[1] = sum[1] + price.detail.price2;
+          sum[2] = sum[2] + price.detail.price3;
+          sum[3] = sum[3] + price.detail.price4;
+          sum[4] = sum[4] + price.detail.price5;
+          sum[5] = sum[5] + price.detail.price6;
+          sum[6] = sum[6] + price.detail.price7;
+          sum[7] = sum[7] + price.detail.price8;
+          sum[8] = sum[8] + price.detail.price9;
+          var meanRepeat = [];
+          meanRepeat[0] = sum[0] / number;
+          meanRepeat[1] = sum[1] / number;
+          meanRepeat[2] = sum[2] / number;
+          meanRepeat[3] = sum[3] / number;
+          meanRepeat[4] = sum[4] / number;
+          meanRepeat[5] = sum[5] / number;
+          meanRepeat[6] = sum[6] / number;
+          meanRepeat[7] = sum[7] / number;
+          meanRepeat[8] = sum[8] / number;
+          this.setState({ averages: [].concat(meanRepeat) });
           return {
             id: price.detail._id,
             user: price._id.user,
@@ -182,7 +182,7 @@ class GSummary extends PureComponent {
           };
         });
         this.setState({
-          lesprice: [
+          Aprice: [
             {
               id: "",
               user: "",
@@ -202,9 +202,9 @@ class GSummary extends PureComponent {
             },
           ].concat(priceFromApi),
         });
-        let lesprice = [...this.state.lesprice];
-        lesprice.shift();
-        this.setState({ lesprice });
+        let Aprice = [...this.state.Aprice];
+        Aprice.shift();
+        this.setState({ Aprice });
       })
       .catch((error1) => {
         console.log(error1);
@@ -264,7 +264,7 @@ class GSummary extends PureComponent {
           };
         });
         this.setState({
-          maloba: [
+          recent: [
             {
               id: "",
               user: "",
@@ -294,58 +294,58 @@ class GSummary extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let malobayaApi = data3.map((liloba) => {
+        let recentyaApi = data3.map((info) => {
           return {
-            id: liloba._id,
-            generalcomments: liloba.generalcomments,
+            id: info._id,
+            generalcomments: info.generalcomments,
           };
         });
         this.setState({
-          maloba: [
+          recent: [
             {
               id: "",
               generalcomments: "",
             },
-          ].concat(malobayaApi),
+          ].concat(recentyaApi),
         });
       });
   }
-  trouveMedian() {
+  findMedian() {
     var leMedian;
     let Mukubwa = Math.max(
-      this.state.lesmoyennes[0],
-      this.state.lesmoyennes[1],
-      this.state.lesmoyennes[2],
-      this.state.lesmoyennes[3],
-      this.state.lesmoyennes[4],
-      this.state.lesmoyennes[5],
-      this.state.lesmoyennes[6],
-      this.state.lesmoyennes[7],
-      this.state.lesmoyennes[8]
+      this.state.averages[0],
+      this.state.averages[1],
+      this.state.averages[2],
+      this.state.averages[3],
+      this.state.averages[4],
+      this.state.averages[5],
+      this.state.averages[6],
+      this.state.averages[7],
+      this.state.averages[8]
     );
-    if (Mukubwa === this.state.lesmoyennes[0]) {leMedian = this.state.price1;} 
-      else if (Mukubwa === this.state.lesmoyennes[1]) {leMedian = this.state.price2;} 
-      else if (Mukubwa === this.state.lesmoyennes[2]) {leMedian = this.state.price3;} 
-      else if (Mukubwa === this.state.lesmoyennes[3]) {leMedian = this.state.price4;} 
-      else if (Mukubwa === this.state.lesmoyennes[4]) {leMedian = this.state.price5;} 
-      else if (Mukubwa === this.state.lesmoyennes[5]) {leMedian = this.state.price6;} 
-      else if (Mukubwa === this.state.lesmoyennes[6]) {leMedian = this.state.price7;} 
-      else if (Mukubwa === this.state.lesmoyennes[7]) {leMedian = this.state.price8;} 
-      else if (Mukubwa === this.state.lesmoyennes[8]) {leMedian = this.state.price9;}
+    if (Mukubwa === this.state.averages[0]) {leMedian = this.state.price1;} 
+      else if (Mukubwa === this.state.averages[1]) {leMedian = this.state.price2;} 
+      else if (Mukubwa === this.state.averages[2]) {leMedian = this.state.price3;} 
+      else if (Mukubwa === this.state.averages[3]) {leMedian = this.state.price4;} 
+      else if (Mukubwa === this.state.averages[4]) {leMedian = this.state.price5;} 
+      else if (Mukubwa === this.state.averages[5]) {leMedian = this.state.price6;} 
+      else if (Mukubwa === this.state.averages[6]) {leMedian = this.state.price7;} 
+      else if (Mukubwa === this.state.averages[7]) {leMedian = this.state.price8;} 
+      else if (Mukubwa === this.state.averages[8]) {leMedian = this.state.price9;}
     return leMedian;
   }
     calculeLaMoyenne() {
     var Kati;
     Kati =
-      this.state.price1 * this.state.lesmoyennes[0] +
-      this.state.price2 * this.state.lesmoyennes[1] +
-      this.state.price3 * this.state.lesmoyennes[2] +
-      this.state.price4 * this.state.lesmoyennes[3] +
-      this.state.price5 * this.state.lesmoyennes[4] +
-      this.state.price6 * this.state.lesmoyennes[5] +
-      this.state.price7 * this.state.lesmoyennes[6] +
-      this.state.price8 * this.state.lesmoyennes[7] +
-      this.state.price9 * this.state.lesmoyennes[8];
+      this.state.price1 * this.state.averages[0] +
+      this.state.price2 * this.state.averages[1] +
+      this.state.price3 * this.state.averages[2] +
+      this.state.price4 * this.state.averages[3] +
+      this.state.price5 * this.state.averages[4] +
+      this.state.price6 * this.state.averages[5] +
+      this.state.price7 * this.state.averages[6] +
+      this.state.price8 * this.state.averages[7] +
+      this.state.price9 * this.state.averages[8];
     return Kati;
   }
   render() {
@@ -368,10 +368,10 @@ class GSummary extends PureComponent {
         </tr>
       );
     };
-    const renderMaloba = (malobayaApi) => {
+    const renderMaloba = (recentyaApi) => {
       return (
-        <tr align="left" key={malobayaApi.id}>
-          <td>{malobayaApi.generalcomments}</td>
+        <tr align="left" key={recentyaApi.id}>
+          <td>{recentyaApi.generalcomments}</td>
         </tr>
       );
     };
@@ -424,17 +424,17 @@ class GSummary extends PureComponent {
               </tr>
               <tr>
                 <td align="center"><b>Forecasts</b></td>
-                <td align="center"><b>${/* this.trouveMedian() */ Math.round(this.calculeLaMoyenne())}/oz</b></td>
-                <td align="center"><b>{this.state.lesprice.length}</b></td>
-                <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
+                <td align="center"><b>${/* this.findMedian() */ Math.round(this.calculeLaMoyenne())}/oz</b></td>
+                <td align="center"><b>{this.state.Aprice.length}</b></td>
+                <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[3] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[4] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[5] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[6] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[7] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[8] * 100)}%</td>
               </tr>
               <tr>
                 <td colSpan="12">
@@ -445,7 +445,7 @@ class GSummary extends PureComponent {
                         layout="vertical"
                         width={500}
                         height={300}
-                        data={this.state.donnees1}
+                        data={this.state.data1}
                         margin={{
                           top: 5,
                           right: 5,
@@ -473,7 +473,7 @@ class GSummary extends PureComponent {
                       <tr>
                         <td align="center"><b>Most Recent General Comments</b></td>
                       </tr>
-                      {this.state.maloba.map(renderMaloba)}
+                      {this.state.recent.map(renderMaloba)}
                     </tbody>
                   </table>
                 </td>
@@ -500,7 +500,7 @@ class GSummary extends PureComponent {
                 <td><b>${this.state.price9}/oz</b></td>
                 <td width="35%"><b>Justifications</b></td>
               </tr>
-              {this.state.lesprice.map(renderprice)}
+              {this.state.Aprice.map(renderprice)}
             </tbody>
           </table>
         </center>

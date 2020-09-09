@@ -50,10 +50,10 @@ class CSumFcast extends PureComponent {
       octnb: 0,
       novnb: 0,
       decnb: 0,
-      donnees1: [],
-      lesprice: [],
+      data1: [],
+      Aprice: [],
       lesCast: [],
-      maloba: [],
+      recent: [],
     };
     this.fillgeneralcomments = this.fillgeneralcomments.bind(this);
     this.renderTableData = this.renderTableData.bind(this);
@@ -68,20 +68,20 @@ class CSumFcast extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let malobayaApi = data3.map((liloba) => {
+        let recentyaApi = data3.map((info) => {
           return {
-            id: liloba._id,
-            month: liloba.month,
-            generalcomments: liloba.generalcomments,
+            id: info._id,
+            month: info.month,
+            generalcomments: info.generalcomments,
           };
         });
         this.setState({
-          maloba: [
+          recent: [
             {
               id: "",
               generalcomments: "",
             },
-          ].concat(malobayaApi),
+          ].concat(recentyaApi),
         });
       });
   }
@@ -169,7 +169,7 @@ class CSumFcast extends PureComponent {
         let ev = [...this.state.ev];
         counter = 0;
         let beyiFromApi = data1.map((price) => {
-          //this.setState({ lesmoyennes: [].concat(moyenneEncore) });
+          //this.setState({ averages: [].concat(meanRepeat) });
           monthpour[counter + 1] = price._id;
           avg1[counter + 1] = Math.round(price.avg1);
           avg2[counter + 1] = Math.round(price.avg2);
@@ -206,7 +206,7 @@ class CSumFcast extends PureComponent {
       .catch((error1) => {
         console.log(error1);
       });
-    //prendre les nombres des casts
+    //prendre les numbers des casts
     fetch("/api/menji/comptemonth/" + "Copper")
       .then((response5) => {
         return response5.json();
@@ -226,7 +226,7 @@ class CSumFcast extends PureComponent {
         console.log(error1);
       });
     this.graphi();
-    this.trouveev();
+    this.findev();
     this.fillgeneralcomments("september 2020");
     this.fillgeneralcomments("October 2020");
     this.fillgeneralcomments("November 2020");
@@ -234,76 +234,76 @@ class CSumFcast extends PureComponent {
   }
   graphi() {
     //graphique
-    var donnees1 = [];
-    //donnees = { ...this.state.donnees1 };
-    donnees1.push({
+    var data1 = [];
+    //data = { ...this.state.data1 };
+    data1.push({
       price: this.state.price1[this.state.seppour],
       Sep20: this.state.avg1[this.state.seppour],
       Oct20: this.state.avg1[this.state.octpour],
       Nov20: this.state.avg1[this.state.novpour],
       Dec20: this.state.avg1[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price2[this.state.seppour],
       Sep20: this.state.avg2[this.state.seppour],
       Oct20: this.state.avg2[this.state.octpour],
       Nov20: this.state.avg2[this.state.novpour],
       Dec20: this.state.avg2[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price3[this.state.seppour],
       Sep20: this.state.avg3[this.state.seppour],
       Oct20: this.state.avg3[this.state.octpour],
       Nov20: this.state.avg3[this.state.novpour],
       Dec20: this.state.avg3[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price4[this.state.seppour],
       Sep20: this.state.avg4[this.state.seppour],
       Oct20: this.state.avg4[this.state.octpour],
       Nov20: this.state.avg4[this.state.novpour],
       Dec20: this.state.avg4[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price5[this.state.seppour],
       Sep20: this.state.avg5[this.state.seppour],
       Oct20: this.state.avg5[this.state.octpour],
       Nov20: this.state.avg5[this.state.novpour],
       Dec20: this.state.avg5[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price6[this.state.seppour],
       Sep20: this.state.avg6[this.state.seppour],
       Oct20: this.state.avg6[this.state.octpour],
       Nov20: this.state.avg6[this.state.novpour],
       Dec20: this.state.avg6[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price7[this.state.seppour],
       Sep20: this.state.avg7[this.state.seppour],
       Oct20: this.state.avg7[this.state.octpour],
       Nov20: this.state.avg7[this.state.novpour],
       Dec20: this.state.avg7[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price8[this.state.seppour],
       Sep20: this.state.avg8[this.state.seppour],
       Oct20: this.state.avg8[this.state.octpour],
       Nov20: this.state.avg8[this.state.novpour],
       Dec20: this.state.avg8[this.state.decpour],
     });
-    donnees1.push({
+    data1.push({
       price: this.state.price9[this.state.seppour],
       Sep20: this.state.avg9[this.state.seppour],
       Oct20: this.state.avg9[this.state.octpour],
       Nov20: this.state.avg9[this.state.novpour],
       Dec20: this.state.avg9[this.state.decpour],
     });
-    this.setState({ donnees1 });
-    //console.log(donnees1);
-    this.trouveev();
+    this.setState({ data1 });
+    //console.log(data1);
+    this.findev();
   }
-  trouveev() {
+  findev() {
     let ev = [...this.state.ev];
     console.log(this.state.seppour);
     ev =   
@@ -355,7 +355,7 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });
   }
   renderTableData() {
-    return this.state.lesprice.map((price, index) => {
+    return this.state.Aprice.map((price, index) => {
       const {
         month,
         price1,
@@ -409,11 +409,11 @@ class CSumFcast extends PureComponent {
         </tr>
       );
     };
-    const renderMaloba = (malobayaApi) => {
+    const renderMaloba = (recentyaApi) => {
       return (
-        <tr key={malobayaApi.id}>
-          <td align="center">{malobayaApi.month}</td>
-          <td align="left">{malobayaApi.generalcomments}</td>
+        <tr key={recentyaApi.id}>
+          <td align="center">{recentyaApi.month}</td>
+          <td align="left">{recentyaApi.generalcomments}</td>
         </tr>
       );
     };
@@ -565,7 +565,7 @@ class CSumFcast extends PureComponent {
                       layout="vertical"
                       width={500}
                       height={400}
-                      data={this.state.donnees1}
+                      data={this.state.data1}
                       margin={{
                         top: 5,
                         right: 5,
@@ -596,7 +596,7 @@ class CSumFcast extends PureComponent {
                 <b>Most Recent General Comments</b>
               </td>
             </tr>
-            {this.state.maloba.map(renderMaloba)}
+            {this.state.recent.map(renderMaloba)}
           </tbody>
         </table>
       </div>

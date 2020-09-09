@@ -27,7 +27,7 @@ class CPartFcast extends PureComponent {
       priceoct: [],
       pricenov: [],
       pricedec: [],
-      donnees1: [],
+      data1: [],
       evaug: "",
       evsep: "",
       evoct: "",
@@ -373,73 +373,73 @@ class CPartFcast extends PureComponent {
   }
   graphi() {
     //graphique
-    var donnees1 = [];
-    //donnees = { ...this.state.donnees1 };
-    donnees1.push({
+    var data1 = [];
+    //data = { ...this.state.data1 };
+    data1.push({
       price: this.state.pricesep.price1,
       Sep20: this.state.septembers.price1,
       Oct20: this.state.octobers.price1,
       Nov20: this.state.novembers.price1,
       Dec20: this.state.decembers.price1,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price2,
       Sep20: this.state.septembers.price2,
       Oct20: this.state.octobers.price2,
       Nov20: this.state.novembers.price2,
       Dec20: this.state.decembers.price2,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price3,
       Sep20: this.state.septembers.price3,
       Oct20: this.state.octobers.price3,
       Nov20: this.state.novembers.price3,
       Dec20: this.state.decembers.price3,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price4,
       Sep20: this.state.septembers.price4,
       Oct20: this.state.octobers.price4,
       Nov20: this.state.novembers.price4,
       Dec20: this.state.decembers.price4,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price5,
       Sep20: this.state.septembers.price5,
       Oct20: this.state.octobers.price5,
       Nov20: this.state.novembers.price5,
       Dec20: this.state.decembers.price5,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price6,
       Sep20: this.state.septembers.price6,
       Oct20: this.state.octobers.price6,
       Nov20: this.state.novembers.price6,
       Dec20: this.state.decembers.price6,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price7,
       Sep20: this.state.septembers.price7,
       Oct20: this.state.octobers.price7,
       Nov20: this.state.novembers.price7,
       Dec20: this.state.decembers.price7,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price8,
       Sep20: this.state.septembers.price8,
       Oct20: this.state.octobers.price8,
       Nov20: this.state.novembers.price8,
       Dec20: this.state.decembers.price8,
     });
-    donnees1.push({
+    data1.push({
       price: this.state.pricesep.price9,
       Sep20: this.state.septembers.price9,
       Oct20: this.state.octobers.price9,
       Nov20: this.state.novembers.price9,
       Dec20: this.state.decembers.price9,
     });
-    this.setState({ donnees1 });
-    //console.log(donnees1);
+    this.setState({ data1 });
+    //console.log(data1);
   }
   render() {
     const renderseptember = (septemberFromApi) => {

@@ -61,31 +61,31 @@ class CForecast extends PureComponent {
         "December",
       ],
       median: "",
-      lesprice: [],
+      Aprice: [],
       foreprices: [],
-      lesmoyennes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      njina: [],
-      donnees1: [8],
+      averages: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      element: [],
+      data1: [8],
       olddata: [],
       alldata: [],
-      lesmoyennesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      lesmoyennesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      maloba: [],
+      averagesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      averagesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      recent: [],
       EVR: 0,
       EVO: 0,
       EVA: 0,
     };
     this.CreeOldata = this.CreeOldata.bind(this);
-    this.trouveMedian = this.trouveMedian.bind(this);
-    this.recuperemoyenneT = this.recuperemoyenneT.bind(this);
-    this.trouveEV = this.trouveEV.bind(this);
+    this.findMedian = this.findMedian.bind(this);
+    this.recovermeanT = this.recovermeanT.bind(this);
+    this.findEV = this.findEV.bind(this);
   }
   CreeOldata() {
-    let somme1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let somme2 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let lesmoyennesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let lesmoyennesA = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let lesmoyennesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let sum1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let sum2 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let averagesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let averagesA = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let averagesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     function arrayObjectIndexOf(myArray, searchTerm, property) {
       for (var i = 0, len = myArray.length; i < len; i++) {
         if (myArray[i][property] === searchTerm) return i;
@@ -95,84 +95,84 @@ class CForecast extends PureComponent {
     //Soustraction des données récentes
     var arOlddata = [...this.state.alldata];
     var arAlldata = [...this.state.alldata];
-    var arLesprice = [...this.state.lesprice];
+    var arAprice = [...this.state.Aprice];
     var index;
-    let yaKala = arLesprice.map((pricedata) => {
+    let Variable1 = arAprice.map((pricedata) => {
       index = arrayObjectIndexOf(arOlddata, pricedata.id, "id");
       if (index !== -1) {
         arOlddata.splice(index, 1);
       }
       return pricedata.commodity;
     });
-    var nombreT5 = this.state.alldata.length;
-    var nombre3 = arOlddata.length;
-    var nombre2 = this.state.lesprice.length;
-    //var nombre2 = this.state.alldata.length;
-    lesmoyennesA[0] = this.state.lesmoyennesA[0].price1;
-    lesmoyennesA[1] = this.state.lesmoyennesA[0].price2;
-    lesmoyennesA[2] = this.state.lesmoyennesA[0].price3;
-    lesmoyennesA[3] = this.state.lesmoyennesA[0].price4;
-    lesmoyennesA[4] = this.state.lesmoyennesA[0].price5;
-    lesmoyennesA[5] = this.state.lesmoyennesA[0].price6;
-    lesmoyennesA[6] = this.state.lesmoyennesA[0].price7;
-    lesmoyennesA[7] = this.state.lesmoyennesA[0].price8;
-    lesmoyennesA[8] = this.state.lesmoyennesA[0].price9;
-    var nombre1 = arOlddata.length;
-    lesmoyennesO[0] = (lesmoyennesA[0] * nombreT5 - this.state.lesmoyennes[0] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[1] = (lesmoyennesA[1] * nombreT5 - this.state.lesmoyennes[1] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[2] = (lesmoyennesA[2] * nombreT5 - this.state.lesmoyennes[2] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[3] = (lesmoyennesA[3] * nombreT5 - this.state.lesmoyennes[3] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[4] = (lesmoyennesA[4] * nombreT5 - this.state.lesmoyennes[4] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[5] = (lesmoyennesA[5] * nombreT5 - this.state.lesmoyennes[5] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[6] = (lesmoyennesA[6] * nombreT5 - this.state.lesmoyennes[6] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[7] = (lesmoyennesA[8] * nombreT5 - this.state.lesmoyennes[7] * nombre2) / (nombreT5 - nombre2);
-    lesmoyennesO[8] = (lesmoyennesA[8] * nombreT5 - this.state.lesmoyennes[8] * nombre2) / (nombreT5 - nombre2);
-    this.setState({ lesmoyennesO });
+    var numberT5 = this.state.alldata.length;
+    var number3 = arOlddata.length;
+    var number2 = this.state.Aprice.length;
+    //var number2 = this.state.alldata.length;
+    averagesA[0] = this.state.averagesA[0].price1;
+    averagesA[1] = this.state.averagesA[0].price2;
+    averagesA[2] = this.state.averagesA[0].price3;
+    averagesA[3] = this.state.averagesA[0].price4;
+    averagesA[4] = this.state.averagesA[0].price5;
+    averagesA[5] = this.state.averagesA[0].price6;
+    averagesA[6] = this.state.averagesA[0].price7;
+    averagesA[7] = this.state.averagesA[0].price8;
+    averagesA[8] = this.state.averagesA[0].price9;
+    var number1 = arOlddata.length;
+    averagesO[0] = (averagesA[0] * numberT5 - this.state.averages[0] * number2) / (numberT5 - number2);
+    averagesO[1] = (averagesA[1] * numberT5 - this.state.averages[1] * number2) / (numberT5 - number2);
+    averagesO[2] = (averagesA[2] * numberT5 - this.state.averages[2] * number2) / (numberT5 - number2);
+    averagesO[3] = (averagesA[3] * numberT5 - this.state.averages[3] * number2) / (numberT5 - number2);
+    averagesO[4] = (averagesA[4] * numberT5 - this.state.averages[4] * number2) / (numberT5 - number2);
+    averagesO[5] = (averagesA[5] * numberT5 - this.state.averages[5] * number2) / (numberT5 - number2);
+    averagesO[6] = (averagesA[6] * numberT5 - this.state.averages[6] * number2) / (numberT5 - number2);
+    averagesO[7] = (averagesA[8] * numberT5 - this.state.averages[7] * number2) / (numberT5 - number2);
+    averagesO[8] = (averagesA[8] * numberT5 - this.state.averages[8] * number2) / (numberT5 - number2);
+    this.setState({ averagesO });
     this.setState({ olddata: [].concat(arOlddata) });
-    //calcul des moyennes
-    this.state.njina[0] = this.state.price1;
-    this.state.njina[1] = this.state.price2;
-    this.state.njina[2] = this.state.price3;
-    this.state.njina[3] = this.state.price4;
-    this.state.njina[4] = this.state.price5;
-    this.state.njina[5] = this.state.price6;
-    this.state.njina[6] = this.state.price7;
-    this.state.njina[7] = this.state.price8;
-    this.state.njina[8] = this.state.price9;
-    lesmoyennesP[0] = arLesprice.price1;
-    lesmoyennesP[1] = arLesprice.price2;
-    lesmoyennesP[2] = arLesprice.price3;
-    lesmoyennesP[3] = arLesprice.price4;
-    lesmoyennesP[4] = arLesprice.price5;
-    lesmoyennesP[5] = arLesprice.price6;
-    lesmoyennesP[6] = arLesprice.price7;
-    lesmoyennesP[7] = arLesprice.price8;
-    lesmoyennesP[8] = arLesprice.price9;
-    let donnees1 = { ...this.state.donnees1 };
-    donnees1 = [
+    //calcul des means
+    this.state.element[0] = this.state.price1;
+    this.state.element[1] = this.state.price2;
+    this.state.element[2] = this.state.price3;
+    this.state.element[3] = this.state.price4;
+    this.state.element[4] = this.state.price5;
+    this.state.element[5] = this.state.price6;
+    this.state.element[6] = this.state.price7;
+    this.state.element[7] = this.state.price8;
+    this.state.element[8] = this.state.price9;
+    averagesP[0] = arAprice.price1;
+    averagesP[1] = arAprice.price2;
+    averagesP[2] = arAprice.price3;
+    averagesP[3] = arAprice.price4;
+    averagesP[4] = arAprice.price5;
+    averagesP[5] = arAprice.price6;
+    averagesP[6] = arAprice.price7;
+    averagesP[7] = arAprice.price8;
+    averagesP[8] = arAprice.price9;
+    let data1 = { ...this.state.data1 };
+    data1 = [
       {
-        price: this.state.njina[0],
-        recentdate: this.state.lesmoyennes[0],
-        olddata: lesmoyennesO[0],
-        alldata: lesmoyennesA[0],
+        price: this.state.element[0],
+        recentdate: this.state.averages[0],
+        olddata: averagesO[0],
+        alldata: averagesA[0],
       },
     ];
-    this.setState({ lesmoyennesA });
-    this.setState({ lesmoyennesO });
+    this.setState({ averagesA });
+    this.setState({ averagesO });
     var y = 0;
     for (y === 0; y < 9; y++) {
-      donnees1.push({
-        price: this.state.njina[y],
-        RecentData: this.state.lesmoyennes[y] * 100,
-        OldData: lesmoyennesO[y],
-        AllData: lesmoyennesA[y],
+      data1.push({
+        price: this.state.element[y],
+        RecentData: this.state.averages[y] * 100,
+        OldData: averagesO[y],
+        AllData: averagesA[y],
       });
     }
-    donnees1.shift();
-    this.setState({ donnees1 });
+    data1.shift();
+    this.setState({ data1 });
     //on enlève la ligne vide
-    arLesprice.shift();
-    this.setState({ lesprice: arLesprice });
+    arAprice.shift();
+    this.setState({ Aprice: arAprice });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -184,7 +184,7 @@ class CForecast extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let sum = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commonth/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
@@ -217,27 +217,27 @@ class CForecast extends PureComponent {
       })
       .then((data1) => {
         let priceFromApi = data1.map((price, x, index) => {
-          var nombre = index.length;
-          somme[0] = somme[0] + price.detail.price1;
-          somme[1] = somme[1] + price.detail.price2;
-          somme[2] = somme[2] + price.detail.price3;
-          somme[3] = somme[3] + price.detail.price4;
-          somme[4] = somme[4] + price.detail.price5;
-          somme[5] = somme[5] + price.detail.price6;
-          somme[6] = somme[6] + price.detail.price7;
-          somme[7] = somme[7] + price.detail.price8;
-          somme[8] = somme[8] + price.detail.price9;
-          var moyenneEncore = [];
-          moyenneEncore[0] = somme[0] / nombre;
-          moyenneEncore[1] = somme[1] / nombre;
-          moyenneEncore[2] = somme[2] / nombre;
-          moyenneEncore[3] = somme[3] / nombre;
-          moyenneEncore[4] = somme[4] / nombre;
-          moyenneEncore[5] = somme[5] / nombre;
-          moyenneEncore[6] = somme[6] / nombre;
-          moyenneEncore[7] = somme[7] / nombre;
-          moyenneEncore[8] = somme[8] / nombre;
-          this.setState({ lesmoyennes: [].concat(moyenneEncore) });
+          var number = index.length;
+          sum[0] = sum[0] + price.detail.price1;
+          sum[1] = sum[1] + price.detail.price2;
+          sum[2] = sum[2] + price.detail.price3;
+          sum[3] = sum[3] + price.detail.price4;
+          sum[4] = sum[4] + price.detail.price5;
+          sum[5] = sum[5] + price.detail.price6;
+          sum[6] = sum[6] + price.detail.price7;
+          sum[7] = sum[7] + price.detail.price8;
+          sum[8] = sum[8] + price.detail.price9;
+          var meanRepeat = [];
+          meanRepeat[0] = sum[0] / number;
+          meanRepeat[1] = sum[1] / number;
+          meanRepeat[2] = sum[2] / number;
+          meanRepeat[3] = sum[3] / number;
+          meanRepeat[4] = sum[4] / number;
+          meanRepeat[5] = sum[5] / number;
+          meanRepeat[6] = sum[6] / number;
+          meanRepeat[7] = sum[7] / number;
+          meanRepeat[8] = sum[8] / number;
+          this.setState({ averages: [].concat(meanRepeat) });
           return {
             id: price.detail._id,
             user: price._id.user,
@@ -257,7 +257,7 @@ class CForecast extends PureComponent {
           };
         });
         this.setState({
-          lesprice: [
+          Aprice: [
             {
               id: "",
               user: "",
@@ -305,7 +305,7 @@ class CForecast extends PureComponent {
     return newdate + " " + mid;
   }
   fillotherdata(sanza1) {
-    this.recuperemoyenneT(sanza1);
+    this.recovermeanT(sanza1);
     fetch("/api/menji/all/" + sanza1 + "&Copper")
       .then((response2) => {
         return response2.json();
@@ -353,8 +353,8 @@ class CForecast extends PureComponent {
         });
         this.CreeOldata();
         this.fillgeneralcomments(sanza1);
-	this.setState({ EVO: this.trouveEV(this.state.lesmoyennesO) });
-        this.setState({ EVA: this.trouveEV(this.state.lesmoyennesA) });
+	this.setState({ EVO: this.findEV(this.state.averagesO) });
+        this.setState({ EVA: this.findEV(this.state.averagesA) });
       });
   }
   fillgeneralcomments(sanza2) {
@@ -363,23 +363,23 @@ class CForecast extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let malobayaApi = data3.map((liloba) => {
+        let recentyaApi = data3.map((info) => {
           return {
-            id: liloba._id,
-            generalcomments: liloba.generalcomments,
+            id: info._id,
+            generalcomments: info.generalcomments,
           };
         });
         this.setState({
-          maloba: [
+          recent: [
             {
               id: "",
               generalcomments: "",
             },
-          ].concat(malobayaApi),
+          ].concat(recentyaApi),
         });
       });
   }
-  recuperemoyenneT(sanza) {
+  recovermeanT(sanza) {
     fetch("/api/menji/moyunmonth/" + sanza + "&Copper")
       .then((response4) => {
         return response4.json();
@@ -401,12 +401,12 @@ class CForecast extends PureComponent {
           };
         });
         this.setState({
-          lesmoyennesA: katiyaApi,
+          averagesA: katiyaApi,
         });
       });
     this.CreeOldata();
   }
-  trouveMedian(letableau) {
+  findMedian(letableau) {
     var leMedian;
     let Mukubwa = Math.max(
       letableau[0],
@@ -440,7 +440,7 @@ class CForecast extends PureComponent {
     }
     return leMedian;
   }
-    trouveEV(pour) {
+    findEV(pour) {
     var EV = 0;
     if (typeof pour !== "undefined") {
       EV =
@@ -498,10 +498,10 @@ class CForecast extends PureComponent {
         </tr>
       );
     };
-    const renderMaloba = (malobayaApi) => {
+    const renderMaloba = (recentyaApi) => {
       return (
-        <tr key={malobayaApi.id}>
-          <td align="left">{malobayaApi.generalcomments}</td>
+        <tr key={recentyaApi.id}>
+          <td align="left">{recentyaApi.generalcomments}</td>
         </tr>
       );
     };
@@ -579,17 +579,17 @@ class CForecast extends PureComponent {
               </tr>
               <tr>
                 <td align="center"><b>Most Recent Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.trouveEV(this.state.lesmoyennes) * 100)/*Math.round(this.state.EVR)*/}/MT</b></td>
-                <td align="center"><b>{this.state.lesprice.length}</b></td>
-                <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
+                <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)/*Math.round(this.state.EVR)*/}/MT</b></td>
+                <td align="center"><b>{this.state.Aprice.length}</b></td>
+                <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[3] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[4] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[5] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[6] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[7] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averages[8] * 100)}%</td>
               </tr>
               <tr>
                 <td width="10%" align="center">
@@ -631,17 +631,17 @@ class CForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center"><b>Older Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.state.EVO)/* Math.round(this.trouveEV(this.state.lesmoyennesO)) */}/MT</b></td> 
+                <td align="center"><b>${Math.round(this.state.EVO)/* Math.round(this.findEV(this.state.averagesO)) */}/MT</b></td> 
 		            <td align="center"><b>{this.state.olddata.length}</b></td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[0])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[1])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[2])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[3])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[4])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[5])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[6])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[7])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[8])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[0])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[1])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[2])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[3])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[4])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[5])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[6])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[7])}%</td>
+                <td align="center">{Math.round(this.state.averagesO[8])}%</td>
               </tr>
               <tr>
                 <td width="10%" align="center">
@@ -684,17 +684,17 @@ class CForecast extends PureComponent {
               <tr>
                 <td width="10%" align="center">
 		              <b>All Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.state.EVA)/*Math.round(this.trouveEV(this.state.lesmoyennesA))*/}/MT</b></td>
+                <td align="center"><b>${Math.round(this.state.EVA)/*Math.round(this.findEV(this.state.averagesA))*/}/MT</b></td>
                 <td align="center"><b>{this.state.alldata.length}</b></td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[0])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[1])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[2])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[3])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[4])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[5])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[6])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[7])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[8])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[0])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[1])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[2])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[3])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[4])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[5])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[6])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[7])}%</td>
+                <td align="center">{Math.round(this.state.averagesA[8])}%</td>
               </tr>
               <tr>
                 <td colSpan="12" align="center">
@@ -704,7 +704,7 @@ class CForecast extends PureComponent {
                         layout="vertical"
                         width={500}
                         height={300}
-                        data={this.state.donnees1}
+                        data={this.state.data1}
                         margin={{
                           top: 5,
                           right: 5,
@@ -732,7 +732,7 @@ class CForecast extends PureComponent {
                       <tr>
                         <td align="center"><b>Most Recent General Comments</b></td>
                       </tr>
-                      {this.state.maloba.map(renderMaloba)}
+                      {this.state.recent.map(renderMaloba)}
                     </tbody>
                   </table>
                 </td>
@@ -789,7 +789,7 @@ class CForecast extends PureComponent {
                   <b>Justifications</b>
                 </td>
               </tr>
-              {this.state.lesprice.map(renderprice)}
+              {this.state.Aprice.map(renderprice)}
             </tbody>
           </table>
           <table className="table table-bordered">

@@ -43,10 +43,10 @@ class GraphGold extends PureComponent {
       comments: "",
       totpercent: "",
       median: "",
-      lesprice: [],
-      njina: [],
-      lesmoyennes: [],
-      donnees1: [8],
+      Aprice: [],
+      element: [],
+      averages: [],
+      data1: [8],
     };
     this.fillPrices = this.fillPrices.bind(this);
   }
@@ -60,23 +60,23 @@ class GraphGold extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let sum = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commonth/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((price) => {var njina = { ...this.state.njina };
+        let talo = data.map((price) => {var element = { ...this.state.element };
           var i = 0;
-          for (i === 0; i < 9; i++) {njina[i] = price.floorprice + price.constant1 * i;}
-          this.setState({ njina });
+          for (i === 0; i < 9; i++) {element[i] = price.floorprice + price.constant1 * i;}
+          this.setState({ element });
           for (i === 0; i < 9; i++) {kombo[i] = price.floorprice + price.constant1 * i;}
-          let donnees1 = { ...this.state.donnees1 };
-          donnees1 = [{price: this.state.njina[0], Percentage: this.state.lesmoyennes[0],},];
+          let data1 = { ...this.state.data1 };
+          data1 = [{price: this.state.element[0], Percentage: this.state.averages[0],},];
           var y = 1;
-          for (y === 1; y < 9; y++) {donnees1.push({price: this.state.njina[y], Percentage: this.state.lesmoyennes[y],});}
-          this.setState({ donnees1 });
+          for (y === 1; y < 9; y++) {data1.push({price: this.state.element[y], Percentage: this.state.averages[y],});}
+          this.setState({ data1 });
           return {
             id: price._id,
           };
@@ -92,27 +92,27 @@ class GraphGold extends PureComponent {
       })
       .then((data1) => {
         let priceFromApi = data1.map((price, x, index) => {
-          var nombre = index.length;
-          somme[0] = somme[0] + price.detail.price1;
-          somme[1] = somme[1] + price.detail.price2;
-          somme[2] = somme[2] + price.detail.price3;
-          somme[3] = somme[3] + price.detail.price4;
-          somme[4] = somme[4] + price.detail.price5;
-          somme[5] = somme[5] + price.detail.price6;
-          somme[6] = somme[6] + price.detail.price7;
-          somme[7] = somme[7] + price.detail.price8;
-          somme[8] = somme[8] + price.detail.price9;
-          var moyenneEncore = [];
-          moyenneEncore[0] = (somme[0] / nombre) * 100;
-          moyenneEncore[1] = (somme[1] / nombre) * 100;
-          moyenneEncore[2] = (somme[2] / nombre) * 100;
-          moyenneEncore[3] = (somme[3] / nombre) * 100;
-          moyenneEncore[4] = (somme[4] / nombre) * 100;
-          moyenneEncore[5] = (somme[5] / nombre) * 100;
-          moyenneEncore[6] = (somme[6] / nombre) * 100;
-          moyenneEncore[7] = (somme[7] / nombre) * 100;
-          moyenneEncore[8] = (somme[8] / nombre) * 100;
-          this.setState({ lesmoyennes: [].concat(moyenneEncore) });
+          var number = index.length;
+          sum[0] = sum[0] + price.detail.price1;
+          sum[1] = sum[1] + price.detail.price2;
+          sum[2] = sum[2] + price.detail.price3;
+          sum[3] = sum[3] + price.detail.price4;
+          sum[4] = sum[4] + price.detail.price5;
+          sum[5] = sum[5] + price.detail.price6;
+          sum[6] = sum[6] + price.detail.price7;
+          sum[7] = sum[7] + price.detail.price8;
+          sum[8] = sum[8] + price.detail.price9;
+          var meanRepeat = [];
+          meanRepeat[0] = (sum[0] / number) * 100;
+          meanRepeat[1] = (sum[1] / number) * 100;
+          meanRepeat[2] = (sum[2] / number) * 100;
+          meanRepeat[3] = (sum[3] / number) * 100;
+          meanRepeat[4] = (sum[4] / number) * 100;
+          meanRepeat[5] = (sum[5] / number) * 100;
+          meanRepeat[6] = (sum[6] / number) * 100;
+          meanRepeat[7] = (sum[7] / number) * 100;
+          meanRepeat[8] = (sum[8] / number) * 100;
+          this.setState({ averages: [].concat(meanRepeat) });
           return {
             user: price._id.user,
             price1: price.detail.price1,
@@ -130,7 +130,7 @@ class GraphGold extends PureComponent {
           };
         });
         this.setState({
-          lesprice: [
+          Aprice: [
             {
               user: "",
               price1: "",
@@ -164,7 +164,7 @@ class GraphGold extends PureComponent {
             layout="vertical"
             width={500}
             height={300}
-            data={this.state.donnees1}
+            data={this.state.data1}
             margin={{
               top: 5,
               right: 30,

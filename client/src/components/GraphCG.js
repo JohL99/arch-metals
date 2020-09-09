@@ -14,12 +14,12 @@ class GraphCG extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      donnees1: [],
+      data1: [],
     };
   }
   componentDidUpdate(prevProps) {
     if (prevProps.mambo !== this.props.mambo) {
-      this.setState({ donnees1: this.props.mambo });
+      this.setState({ data1: this.props.mambo });
     }
   }
   render() {
@@ -30,7 +30,7 @@ class GraphCG extends PureComponent {
             layout="vertical"
             width={500}
             height={400}
-            data={this.state.donnees1}
+            data={this.state.data1}
             margin={{
               top: 5,
               right: 5,

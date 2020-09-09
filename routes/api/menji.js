@@ -167,7 +167,7 @@ router.get("/olda/:lemonth&:commodity", (req, res) => {
           month: "$month",
         },
         lastEntry: { $last: "$_id" },
-        nombre: { $sum: 1 },
+        number: { $sum: 1 },
       },
     },
   ])
@@ -187,9 +187,9 @@ router.get("/olda/:lemonth&:commodity", (req, res) => {
 // @route   GET  api/prices/:id
 // @desc    Get price by id
 // @access  Public
-router.get("/olda1/:lemonth&:commodity&:nombre", (req, res) => {
+router.get("/olda1/:lemonth&:commodity&:number", (req, res) => {
   const errors = {};
-  var x = parseInt(req.params.nombre);
+  var x = parseInt(req.params.number);
 
   Menji.find({
     $and: [{ month: req.params.lemonth }, { commodity: req.params.commodity }],
@@ -221,7 +221,7 @@ router.get("/all/:lemonth&:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moymonth
-// @desc    Renvoie toutes les moyennes par date
+// @desc    Renvoie toutes les means par date
 // @access  Public
 router.get("/moymonth/:commodity", (req, res) => {
   const errors = {};
@@ -262,7 +262,7 @@ router.get("/moymonth/:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moymonth
-// @desc    Renvoie renvoie nombre d'entrées par month
+// @desc    Renvoie renvoie number d'entrées par month
 // @access  Public
 router.get("/comptemonth/:commodity", (req, res) => {
   const errors = {};
@@ -296,7 +296,7 @@ router.get("/comptemonth/:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moyunmonth
-// @desc    Renvoie toutes les moyennes par date
+// @desc    Renvoie toutes les means par date
 // @access  Public
 router.get("/moyunmonth/:lemonth&:commodity", (req, res) => {
   const errors = {};
@@ -340,7 +340,7 @@ router.get("/moyunmonth/:lemonth&:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moytousmonth
-// @desc    Renvoie toutes les moyennes par month
+// @desc    Renvoie toutes les means par month
 // @access  Public
 router.get("/moytousmonth/:commodity", (req, res) => {
   const errors = {};
