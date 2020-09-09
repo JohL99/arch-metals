@@ -10,7 +10,7 @@ class CopperInput extends Component {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -22,8 +22,8 @@ class CopperInput extends Component {
       price7: "",
       price8: "",
       price9: "",
-      lamoyenne: "",
-      lemedian: "",
+      mean: "",
+      median: "",
       percent1: "",
       percent2: "",
       percent3: "",
@@ -69,8 +69,8 @@ class CopperInput extends Component {
 
   componentDidUpdate() {
     if (this.state.fraicheur !== 0) {
-      let cemois = this.state.mois;
-      this.setState({mois: cemois});
+      let cemonth = this.state.month;
+      this.setState({month: cemonth});
       this.setState({fraicheur: 0});
     }
   }
@@ -117,7 +117,7 @@ class CopperInput extends Component {
     this.setState({price7: ""});
     this.setState({price8: ""});
     this.setState({price9: ""});
-    fetch("/api/beyi/commois/" + sanza + "&Copper")
+    fetch("/api/beyi/commonth/" + sanza + "&Copper")
         .then((response) => {
           return response.json();
         })
@@ -139,7 +139,7 @@ class CopperInput extends Component {
         .catch((error) => {
           console.log(error);
         });
-    this.setState({mois: sanza});
+    this.setState({month: sanza});
   }
 
   onSubmit(e) {
@@ -156,16 +156,16 @@ class CopperInput extends Component {
 
     if
     ((this.state.percent1) >= 0.5) {
-      this.setState({lemedian: this.state.price1});
+      this.setState({median: this.state.price1});
     } else if
     ((this.state.percent1 +
         this.state.perecent2) >= 0.5) {
-      this.setState({lemedian: this.state.price2});
+      this.setState({median: this.state.price2});
     } else if
     ((this.state.percent1 +
         this.state.perecent2 +
         this.state.percent3) >= 0.5) {
-      this.setState({lemedian: this.state.price3});
+      this.setState({median: this.state.price3});
     } else if
     ((this.state.percent1 +
         this.state.perecent2 +
@@ -178,7 +178,7 @@ class CopperInput extends Component {
         this.state.percent3 +
         this.state.percent4 +
         this.state.percent5) >= 0.5) {
-      this.setState({lemedian: this.state.price5});
+      this.setState({median: this.state.price5});
     } else if
     ((this.state.percent1 +
         this.state.perecent2 +
@@ -186,7 +186,7 @@ class CopperInput extends Component {
         this.state.percent4 +
         this.state.percent5 +
         this.state.percent6) >= 0.5) {
-      this.setState({lemedian: this.state.price6});
+      this.setState({median: this.state.price6});
     } else if
     ((this.state.percent1 +
         this.state.perecent2 +
@@ -195,7 +195,7 @@ class CopperInput extends Component {
         this.state.percent5 +
         this.state.percent6 +
         this.state.percent7) >= 0.5) {
-      this.setState({lemedian: this.state.price7});
+      this.setState({median: this.state.price7});
     } else if
     ((this.state.percent1 +
         this.state.perecent2 +
@@ -205,7 +205,7 @@ class CopperInput extends Component {
         this.state.percent6 +
         this.state.percent7 +
         this.state.percent8) >= 0.5) {
-      this.setState({lemedian: this.state.price8});
+      this.setState({median: this.state.price8});
     } else
       ((this.state.percent1 +
           this.state.perecent2 +
@@ -217,16 +217,16 @@ class CopperInput extends Component {
           this.state.percent8 +
           this.state.percent9) >= 0.5)
     {
-      this.setState({lemedian: this.state.price9})
+      this.setState({median: this.state.price9})
     }
-    this.setState({lemedian: this.state.lemedian});
+    this.setState({median: this.state.median});
 
     //**** NEW ENTRY */
     const newEntry =
         {
           user: user.name,
           commodity: "Copper", //this.state.commodity,
-          mois: this.state.mois,
+          month: this.state.month,
           dateforecast: new Date(),
           price1: this.state.price1,
           price2: this.state.price2,
@@ -246,8 +246,8 @@ class CopperInput extends Component {
           percent7: this.state.percent7,
           percent8: this.state.percent8,
           percent9: this.state.percent9,
-          lemedian: this.state.lemedian,
-          lamoyenne: this.state.lamoyenne,
+          median: this.state.median,
+          mean: this.state.mean,
           specificcomments: this.state.specificcomments,
           generalcomments: this.state.generalcomments,
           documentShared: "",
@@ -270,8 +270,8 @@ class CopperInput extends Component {
     this.setState({specificcomments: ""});
     this.setState({generalcomments: ""});
     this.setState({filecomments: ""});
-    let cemois = this.state.mois;
-    this.setState({mois: cemois});
+    let cemonth = this.state.month;
+    this.setState({month: cemonth});
     this.setState({fraicheur: 1});
     //upload du fichier
     formData.append("myfile", this.state.file);
@@ -299,7 +299,7 @@ class CopperInput extends Component {
         this.state.price8 * (indice === 8 ? vraipourcent : this.state.percent8) +
         this.state.price9 * (indice === 9 ? vraipourcent : this.state.percent9);
     this.setState({priceAvr: Moyenne});
-    this.setState({lamoyenne: Moyenne});
+    this.setState({mean: Moyenne});
   }
 
   cancelCourse = () => {
@@ -384,10 +384,10 @@ class CopperInput extends Component {
                   <select
                       id="mnth"
                       name="month"
-                      value={this.state.mois}
+                      value={this.state.month}
                       onChange={(e) => {
                         this.setState({
-                          mois: e.target.value,
+                          month: e.target.value,
                           validationError:
                               e.target.value === "" ? "Select a month" : "",
                         });
@@ -397,11 +397,11 @@ class CopperInput extends Component {
                     <option value="">Select a month</option>
                     {this.state.months
                         .slice(new Date().getMonth(), 12)
-                        .map((lemois, index) => (
-                            <option key={index /* lemois.value */}
-                                    value={lemois.value}
+                        .map((lemonth, index) => (
+                            <option key={index /* lemonth.value */}
+                                    value={lemonth.value}
                             >
-                              {lemois + " " + new Date().getFullYear()}
+                              {lemonth + " " + new Date().getFullYear()}
                             </option>
                         ))}
                   </select>
@@ -820,8 +820,8 @@ class CopperInput extends Component {
             </table>
           </form>
           <div>
-            <GraphCopper mweji={this.state.mois}/>
-            <MonthForecastCopper mweji={this.state.mois}/>
+            <GraphCopper mweji={this.state.month}/>
+            <MonthForecastCopper mweji={this.state.month}/>
           </div>
         </div>
     );

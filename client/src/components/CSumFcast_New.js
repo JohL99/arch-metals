@@ -14,8 +14,8 @@ class CSumFcast extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      moisprice: [],
-      moispour: [],
+      monthprice: [],
+      monthpour: [],
       price1: [],
       price2: [],
       price3: [],
@@ -71,7 +71,7 @@ class CSumFcast extends PureComponent {
         let malobayaApi = data3.map((liloba) => {
           return {
             id: liloba._id,
-            mois: liloba.mois,
+            month: liloba.month,
             generalcomments: liloba.generalcomments,
           };
         });
@@ -100,7 +100,7 @@ class CSumFcast extends PureComponent {
       .then((data) => {
         let yx = data;
         let counter = 0;
-        let moisprice = [...this.state.moisprice];
+        let monthprice = [...this.state.monthprice];
         let price1 = [...this.state.price1];
         let price2 = [...this.state.price2];
         let price3 = [...this.state.price3];
@@ -112,7 +112,7 @@ class CSumFcast extends PureComponent {
         let price9 = [...this.state.price9];
         let talo = data.map((price) => {
           //put it in an array
-          moisprice[counter + 1] = price.month;
+          monthprice[counter + 1] = price.month;
           //put it in an array
           price1[counter + 1] = price.floorprice + price.constant1 * 0;
           price2[counter + 1] = price.floorprice + price.constant1 * 1;
@@ -123,16 +123,16 @@ class CSumFcast extends PureComponent {
           price7[counter + 1] = price.floorprice + price.constant1 * 6;
           price8[counter + 1] = price.floorprice + price.constant1 * 7;
           price9[counter + 1] = price.floorprice + price.constant1 * 8;
-          if (moisprice[counter + 1] === "september 2020") {this.setState({ sepprice: counter + 1 });} 
-            else if (moisprice[counter + 1] === "October 2020") {this.setState({ octprice: counter + 1 });} 
-            else if (moisprice[counter + 1] === "November 2020") {this.setState({ novprice: counter + 1 });} 
-            else if (moisprice[counter + 1] === "December 2020") {this.setState({ decprice: counter + 1 });}
+          if (monthprice[counter + 1] === "september 2020") {this.setState({ sepprice: counter + 1 });} 
+            else if (monthprice[counter + 1] === "October 2020") {this.setState({ octprice: counter + 1 });} 
+            else if (monthprice[counter + 1] === "November 2020") {this.setState({ novprice: counter + 1 });} 
+            else if (monthprice[counter + 1] === "December 2020") {this.setState({ decprice: counter + 1 });}
           counter++;
           return {
             id: price._id,
           };
         });
-        this.setState({ moisprice });
+        this.setState({ monthprice });
         this.setState({ price1 });
         this.setState({ price2 });
         this.setState({ price3 });
@@ -148,14 +148,14 @@ class CSumFcast extends PureComponent {
         console.log(error);
       });
     //prendre les valeurs
-    fetch("/api/menji/moymois/" + "Copper")
+    fetch("/api/menji/moymonth/" + "Copper")
       .then((response1) => {
         return response1.json();
       })
       .then((data1) => {
         let lesCast = [...this.state.lesCast];
         let counter = 0;
-        let moispour = [...this.state.moispour];
+        let monthpour = [...this.state.monthpour];
         let avg1 = [...this.state.avg1];
         let avg2 = [...this.state.avg2];
         let avg3 = [...this.state.avg3];
@@ -170,7 +170,7 @@ class CSumFcast extends PureComponent {
         counter = 0;
         let beyiFromApi = data1.map((price) => {
           //this.setState({ lesmoyennes: [].concat(moyenneEncore) });
-          moispour[counter + 1] = price._id;
+          monthpour[counter + 1] = price._id;
           avg1[counter + 1] = Math.round(price.avg1);
           avg2[counter + 1] = Math.round(price.avg2);
           avg3[counter + 1] = Math.round(price.avg3);
@@ -181,16 +181,16 @@ class CSumFcast extends PureComponent {
           avg8[counter + 1] = Math.round(price.avg8);
           avg9[counter + 1] = Math.round(price.avg9);
           avmedian[counter + 1] = Math.round(price.median);
-          if (moispour[counter + 1] === "september 2020") {this.setState({ seppour: counter + 1 });} 
-            else if (moispour[counter + 1] === "October 2020") {this.setState({ octpour: counter + 1 });} 
-            else if (moispour[counter + 1] === "November 2020") {this.setState({ novpour: counter + 1 });} 
-            else if (moispour[counter + 1] === "December 2020") {this.setState({ decpour: counter + 1 });}
+          if (monthpour[counter + 1] === "september 2020") {this.setState({ seppour: counter + 1 });} 
+            else if (monthpour[counter + 1] === "October 2020") {this.setState({ octpour: counter + 1 });} 
+            else if (monthpour[counter + 1] === "November 2020") {this.setState({ novpour: counter + 1 });} 
+            else if (monthpour[counter + 1] === "December 2020") {this.setState({ decpour: counter + 1 });}
           counter++;
           return {
-            mois: price._id,
+            month: price._id,
           };
         });
-        this.setState({ moispour });
+        this.setState({ monthpour });
         this.setState({ avg1 });
         this.setState({ avg2 });
         this.setState({ avg3 });
@@ -207,7 +207,7 @@ class CSumFcast extends PureComponent {
         console.log(error1);
       });
     //prendre les nombres des casts
-    fetch("/api/menji/comptemois/" + "Copper")
+    fetch("/api/menji/comptemonth/" + "Copper")
       .then((response5) => {
         return response5.json();
       })
@@ -218,7 +218,7 @@ class CSumFcast extends PureComponent {
             else if (price._id === "November 2020") {this.setState({ novnb: price.compte });} 
             else if (price._id === "December 2020") {this.setState({ decnb: price.compte });}
           return {
-            mois: price._id,
+            month: price._id,
           };
         });
       })
@@ -357,7 +357,7 @@ class CSumFcast extends PureComponent {
   renderTableData() {
     return this.state.lesprice.map((price, index) => {
       const {
-        mois,
+        month,
         price1,
         price2,
         price3,
@@ -371,7 +371,7 @@ class CSumFcast extends PureComponent {
       return (
         <tr>
           <td rowSpan={"2"} align="center" width={"10%"}>
-            {mois}
+            {month}
           </td>
           <td>{"EV"}</td>
           <td>{"No."}</td>
@@ -393,7 +393,7 @@ class CSumFcast extends PureComponent {
       return (
         <tr key={talo.id}>
           <td rowSpan="2" align="center" width="10%">
-            {talo.mois}
+            {talo.month}
           </td>
           <td>{"EV"}</td>
           <td>{"No."}</td>
@@ -412,7 +412,7 @@ class CSumFcast extends PureComponent {
     const renderMaloba = (malobayaApi) => {
       return (
         <tr key={malobayaApi.id}>
-          <td align="center">{malobayaApi.mois}</td>
+          <td align="center">{malobayaApi.month}</td>
           <td align="left">{malobayaApi.generalcomments}</td>
         </tr>
       );
@@ -425,7 +425,7 @@ class CSumFcast extends PureComponent {
               <td colSpan="12" align="center" width="70%"><b>Aggregation of All Copper Forecasts</b></td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.moisprice[this.state.sepprice]*/}<b>september 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.sepprice]*/}<b>september 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
               <td align="center"><b>${this.state.price1[this.state.sepprice]}/MT</b></td>
@@ -452,7 +452,7 @@ class CSumFcast extends PureComponent {
               <td align="center">{this.state.avg9[this.state.seppour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.moisprice[this.state.octprice]*/}<b>October 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.octprice]*/}<b>October 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
               <td align="center"><b>${this.state.price1[this.state.octprice]}/MT</b></td>
@@ -480,7 +480,7 @@ class CSumFcast extends PureComponent {
             </tr>
             <tr>
               <td rowSpan="2" align="center">
-                {/*this.state.moisprice[this.state.novprice]*/}
+                {/*this.state.monthprice[this.state.novprice]*/}
                 <b>November 2020</b>
               </td>
               <td align="center">
@@ -531,7 +531,7 @@ class CSumFcast extends PureComponent {
               <td align="center">{this.state.avg9[this.state.novpour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.moisprice[this.state.decprice]*/}<b>December 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.decprice]*/}<b>December 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
               <td align="center"><b>${this.state.price1[this.state.decprice]}/MT</b></td>

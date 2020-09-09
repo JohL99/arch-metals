@@ -17,7 +17,7 @@ class CForecast extends PureComponent {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       dateforecast: "",
       priceAvr: "",
@@ -30,8 +30,8 @@ class CForecast extends PureComponent {
       price7: "",
       price8: "",
       price9: "",
-      lamoyenne: "",
-      lemedian: "",
+      mean: "",
+      median: "",
       percent1: "",
       percent2: "",
       percent3: "",
@@ -76,7 +76,7 @@ class CForecast extends PureComponent {
       EVA: 0,
     };
     this.CreeOldata = this.CreeOldata.bind(this);
-    this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.trouveMedian = this.trouveMedian.bind(this);
     this.recuperemoyenneT = this.recuperemoyenneT.bind(this);
     this.trouveEV = this.trouveEV.bind(this);
   }
@@ -185,7 +185,7 @@ class CForecast extends PureComponent {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commois/" + sanza + "&Copper")
+    fetch("/api/beyi/commonth/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -251,8 +251,8 @@ class CForecast extends PureComponent {
             price7: price.detail.price7,
             price8: price.detail.price8,
             price9: price.detail.price9,
-            lemedian: price.detail.lemedian,
-            lamoyenne: price.detail.lamoyenne,
+            median: price.detail.median,
+            mean: price.detail.mean,
             specificcomments: price.detail.specificcomments,
           };
         });
@@ -271,8 +271,8 @@ class CForecast extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(priceFromApi),
@@ -325,8 +325,8 @@ class CForecast extends PureComponent {
             price7: talo.price7,
             price8: talo.price8,
             price9: talo.price9,
-            lemedian: talo.lemedian,
-            lamoyenne: talo.lamoyenne,
+            median: talo.median,
+            mean: talo.mean,
             specificcomments: talo.specificcomments,
           };
         });
@@ -345,8 +345,8 @@ class CForecast extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(taloyaApi),
@@ -380,7 +380,7 @@ class CForecast extends PureComponent {
       });
   }
   recuperemoyenneT(sanza) {
-    fetch("/api/menji/moyunmois/" + sanza + "&Copper")
+    fetch("/api/menji/moyunmonth/" + sanza + "&Copper")
       .then((response4) => {
         return response4.json();
       })
@@ -397,7 +397,7 @@ class CForecast extends PureComponent {
             price7: kati.avg7,
             price8: kati.avg8,
             price9: kati.avg9,
-            lemedian: kati.lemedian,
+            median: kati.median,
           };
         });
         this.setState({
@@ -406,7 +406,7 @@ class CForecast extends PureComponent {
       });
     this.CreeOldata();
   }
-  trouveLeMedian(letableau) {
+  trouveMedian(letableau) {
     var leMedian;
     let Mukubwa = Math.max(
       letableau[0],
@@ -464,7 +464,7 @@ class CForecast extends PureComponent {
       return (
         <tr key={priceFromApi.id}>
           <td align="center">{priceFromApi.user}</td>
-          <td align="center"><b>${Math.round(priceFromApi.lamoyenne)}/MT</b></td>
+          <td align="center"><b>${Math.round(priceFromApi.mean)}/MT</b></td>
           <td align="center">{priceFromApi.dateforecast}</td>
           <td align="center">{priceFromApi.price1 * 100}%</td>
           <td align="center">{priceFromApi.price2 * 100}%</td>
@@ -483,7 +483,7 @@ class CForecast extends PureComponent {
       return (
         <tr key={arOlddata.id}>
           <td align="center">{arOlddata.user}</td>
-          <td align="center"><b>${Math.round(arOlddata.lamoyenne)}/MT</b></td>
+          <td align="center"><b>${Math.round(arOlddata.mean)}/MT</b></td>
           <td align="center">{arOlddata.dateforecast}</td>
           <td align="center">{Math.round(arOlddata.price1 * 100)}%</td>
           <td align="center">{Math.round(arOlddata.price2 * 100)}%</td>
@@ -512,7 +512,7 @@ class CForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="14" align="center" width="100%">
-                  <b>Copper Forecasts - {this.state.mois}</b>
+                  <b>Copper Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>
@@ -520,10 +520,10 @@ class CForecast extends PureComponent {
                   <select
                     id="mnth"
                     name="month"
-                    value={this.state.mois}
+                    value={this.state.month}
                     onChange={(e) => {
                       this.setState({
-                        mois: e.target.value,
+                        month: e.target.value,
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
@@ -533,12 +533,12 @@ class CForecast extends PureComponent {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
+                      .map((lemonth, index) => (
                         <option
-                          key={index /* lemois.value */}
-                          value={lemois.value}
+                          key={index /* lemonth.value */}
+                          value={lemonth.value}
                         >
-                          {lemois + " " + new Date().getFullYear()}
+                          {lemonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>
@@ -593,7 +593,7 @@ class CForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>{this.state.month}</b>
                 </td>
                 <td align="center">
                   <b>Expected Value</b>
@@ -645,7 +645,7 @@ class CForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>{this.state.month}</b>
                 </td>
                 <td align="center">
                   <b>Expected Value</b>
@@ -744,13 +744,13 @@ class CForecast extends PureComponent {
               <tr>
                 <td colSpan="13" align="center" width="100%">
                   <b>
-                    Most Recent Copper Forecasts - {this.state.mois}
+                    Most Recent Copper Forecasts - {this.state.month}
                   </b>
                 </td>
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>{this.state.month}</b>
                 </td>
                 <td align="center">
                   <b>Expected Value</b>
@@ -796,12 +796,12 @@ class CForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="13" align="center" width="100%">
-                  <b>Older Copper Forecasts - {this.state.mois}</b>
+                  <b>Older Copper Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>{this.state.month}</b>
                 </td>
                 <td align="center">
                   <b>Expected Value</b>

@@ -17,7 +17,7 @@ class GForecast extends PureComponent {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       dateforecast: "",
       priceAvr: "",
@@ -30,8 +30,8 @@ class GForecast extends PureComponent {
       price7: "",
       price8: "",
       price9: "",
-      lamoyenne: "",
-      lemedian: "",
+      mean: "",
+      median: "",
       percent1: "",
       percent2: "",
       percent3: "",
@@ -76,7 +76,7 @@ class GForecast extends PureComponent {
       EVA: 0,
     };
     this.CreeOldata = this.CreeOldata.bind(this);
-    this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.trouveMedian = this.trouveMedian.bind(this);
     this.recuperemoyenneT = this.recuperemoyenneT.bind(this);
     this.trouveEV = this.trouveEV.bind(this);
   }
@@ -185,7 +185,7 @@ class GForecast extends PureComponent {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commois/" + sanza + "&Gold")
+    fetch("/api/beyi/commonth/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -251,8 +251,8 @@ class GForecast extends PureComponent {
             price7: price.detail.price7,
             price8: price.detail.price8,
             price9: price.detail.price9,
-            lemedian: price.detail.lemedian,
-            lamoyenne: price.detail.lamoyenne,
+            median: price.detail.median,
+            mean: price.detail.mean,
             specificcomments: price.detail.specificcomments,
           };
         });
@@ -271,8 +271,8 @@ class GForecast extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(priceFromApi),
@@ -322,8 +322,8 @@ class GForecast extends PureComponent {
             price7: talo.price7,
             price8: talo.price8,
             price9: talo.price9,
-            lemedian: talo.lemedian,
-            lamoyenne: talo.lamoyenne,
+            median: talo.median,
+            mean: talo.mean,
             specificcomments: talo.specificcomments,
           };
         });
@@ -342,8 +342,8 @@ class GForecast extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(taloyaApi),
@@ -377,7 +377,7 @@ class GForecast extends PureComponent {
       });
   }
   recuperemoyenneT(sanza) {
-    fetch("/api/menji/moyunmois/" + sanza + "&Gold")
+    fetch("/api/menji/moyunmonth/" + sanza + "&Gold")
       .then((response4) => {
         return response4.json();
       })
@@ -394,7 +394,7 @@ class GForecast extends PureComponent {
             price7: kati.avg7,
             price8: kati.avg8,
             price9: kati.avg9,
-            lemedian: kati.lemedian,
+            median: kati.median,
           };
         });
         this.setState({
@@ -403,7 +403,7 @@ class GForecast extends PureComponent {
       });
     this.CreeOldata();
   }
-  trouveLeMedian(letableau) {
+  trouveMedian(letableau) {
     var leMedian;
     let Mukubwa = Math.max(
       letableau[0],
@@ -451,7 +451,7 @@ class GForecast extends PureComponent {
       return (
         <tr key={priceFromApi.id}>
           <td align="center">{priceFromApi.user}</td>
-          <td align="center"><b>${Math.round(priceFromApi.lamoyenne)}/oz</b></td>
+          <td align="center"><b>${Math.round(priceFromApi.mean)}/oz</b></td>
           <td align="center">{priceFromApi.dateforecast}</td>
           <td align="center">{priceFromApi.price1 * 100}%</td>
           <td align="center">{priceFromApi.price2 * 100}%</td>
@@ -470,7 +470,7 @@ class GForecast extends PureComponent {
       return (
         <tr key={arOlddata.id}>
           <td align="center">{arOlddata.user}</td>
-          <td align="center"><b>${Math.round(arOlddata.lamoyenne)}/oz</b></td>
+          <td align="center"><b>${Math.round(arOlddata.mean)}/oz</b></td>
           <td align="center">{arOlddata.dateforecast}</td>
           <td align="center">{Math.round(arOlddata.price1 * 100)}%</td>
           <td align="center">{Math.round(arOlddata.price2 * 100)}%</td>
@@ -499,7 +499,7 @@ class GForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="14" align="center" width="100%">
-                  <b>Gold Forecasts - {this.state.mois}</b>
+                  <b>Gold Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>
@@ -507,10 +507,10 @@ class GForecast extends PureComponent {
                   <select
                     id="mnth"
                     name="month"
-                    value={this.state.mois}
+                    value={this.state.month}
                     onChange={(e) => {
                       this.setState({
-                        mois: e.target.value,
+                        month: e.target.value,
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
@@ -520,12 +520,12 @@ class GForecast extends PureComponent {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
+                      .map((lemonth, index) => (
                         <option
-                          key={index /* lemois.value */}
-                          value={lemois.value}
+                          key={index /* lemonth.value */}
+                          value={lemonth.value}
                         >
-                          {lemois + " " + new Date().getFullYear()}
+                          {lemonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>
@@ -580,7 +580,7 @@ class GForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>{this.state.month}</b>
                 </td>
                 <td align="center">
                   <b>Expected Value</b>
@@ -632,7 +632,7 @@ class GForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>{this.state.month}</b>
                 </td>
                 <td align="center">
                   <b>Expected Value</b>
@@ -730,7 +730,7 @@ class GForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="13" align="center" width="100%">
-                  <b>Most Recent Gold Forecasts - {this.state.mois}</b>
+                  <b>Most Recent Gold Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>
@@ -781,7 +781,7 @@ class GForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="13" align="center" width="100%">
-                  <b>Older Gold Forecasts - {this.state.mois}</b>
+                  <b>Older Gold Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>

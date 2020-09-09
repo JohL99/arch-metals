@@ -39,11 +39,11 @@ router.post("/enregistrer", (req, res) => {
 // @route   GET api/cinput/dernierda
 // @desc    Renvoie tous les trucks devant arriver
 // @access  Public
-router.get("/dernierda/:mois", (req, res) => {
+router.get("/dernierda/:month", (req, res) => {
   const errors = {};
 
   Forecast.aggregate([
-    { $match: { month: req.params.mois } },
+    { $match: { month: req.params.month } },
     { $sort: { dateForecast: 1 } },
     {
       $group: {

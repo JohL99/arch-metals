@@ -20,7 +20,7 @@ router.post("/sauvegarde", (req, res) => {
   const newMenji = new Menji({
     user: req.body.user,
     commodity: req.body.commodity,
-    mois: req.body.mois,
+    month: req.body.month,
     dateforecast: req.body.dateforecast,
     price1: req.body.price1,
     price2: req.body.price2,
@@ -31,8 +31,8 @@ router.post("/sauvegarde", (req, res) => {
     price7: req.body.price7,
     price8: req.body.price8,
     price9: req.body.price9,
-    lamoyenne: req.body.lamoyenne,
-    lemedian: req.body.lemedian,
+    mean: req.body.mean,
+    median: req.body.median,
     specificcomments: req.body.specificcomments,
     generalcomments: req.body.generalcomments,
     documentshared: req.body.documentshared,
@@ -47,14 +47,14 @@ router.post("/sauvegarde", (req, res) => {
 // @route   GET api/cinput/dernierda
 // @desc    Renvoie toutes les dernières entrées des utilisateurs / Returns all the latest user entries
 // @access  Public
-router.get("/dernierda/:lemois&:commodity", (req, res) => {
+router.get("/dernierda/:lemonth&:commodity", (req, res) => {
   const errors = {};
 
   Menji.aggregate([
     {
       $match: {
         $and: [
-          { mois: req.params.lemois },
+          { month: req.params.lemonth },
           { commodity: req.params.commodity },
         ],
       },
@@ -68,7 +68,7 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
       $group: {
         _id: {
           user: "$user",
-          mois: "$mois",
+          month: "$month",
         },
         lastEntry: { $last: "$_dateforecast" },
         detail: { $last: "$$ROOT" },
@@ -89,16 +89,16 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
 });
 
 // @route   GET api/cinput/dernierda1
-// @desc    Renvoie toutes les dernières entrées des utilisateurs par mois / Returns all the latest user entries by month
+// @desc    Renvoie toutes les dernières entrées des utilisateurs par month / Returns all the latest user entries by month
 // @access  Public
-router.get("/dernierda1/:lemois&:commodity", (req, res) => {
+router.get("/dernierda1/:lemonth&:commodity", (req, res) => {
   const errors = {};
 
   Menji.aggregate([
     {
       $match: {
         $and: [
-          { mois: req.params.lemois },
+          { month: req.params.lemonth },
           { commodity: req.params.commodity },
         ],
       },
@@ -111,7 +111,7 @@ router.get("/dernierda1/:lemois&:commodity", (req, res) => {
         lastEntry: { $max: "$dateforecast" },
         autre: {
           user: "$user",
-          mois: "$mois",
+          month: "$month",
           price1: "$price1",
           price2: "$price2",
           price3: "$price3",
@@ -121,8 +121,8 @@ router.get("/dernierda1/:lemois&:commodity", (req, res) => {
           price7: "$price7",
           price8: "$price8",
           price9: "$price9",
-          lemedian: "$lemedian",
-          lamoyenne: "$lamoyenne",
+          median: "$median",
+          mean: "$mean",
           specificcomments: "$specificcomments",
           generalcomments: "$generalcomments",
         },
@@ -145,14 +145,14 @@ router.get("/dernierda1/:lemois&:commodity", (req, res) => {
 // @route   GET api/cinput/dernierda
 // @desc    Renvoie tous les trucks devant arriver
 // @access  Public
-router.get("/olda/:lemois&:commodity", (req, res) => {
+router.get("/olda/:lemonth&:commodity", (req, res) => {
   const errors = {};
 
   Menji.aggregate([
     {
       $match: {
         $and: [
-          { mois: req.params.lemois },
+          { month: req.params.lemonth },
           { commodity: req.params.commodity },
         ],
       },
@@ -164,7 +164,7 @@ router.get("/olda/:lemois&:commodity", (req, res) => {
       $group: {
         _id: {
           user: "$user",
-          mois: "$mois",
+          month: "$month",
         },
         lastEntry: { $last: "$_id" },
         nombre: { $sum: 1 },
@@ -187,12 +187,12 @@ router.get("/olda/:lemois&:commodity", (req, res) => {
 // @route   GET  api/prices/:id
 // @desc    Get price by id
 // @access  Public
-router.get("/olda1/:lemois&:commodity&:nombre", (req, res) => {
+router.get("/olda1/:lemonth&:commodity&:nombre", (req, res) => {
   const errors = {};
   var x = parseInt(req.params.nombre);
 
   Menji.find({
-    $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
+    $and: [{ month: req.params.lemonth }, { commodity: req.params.commodity }],
   })
     .sort({ $natural: -1 })
 
@@ -204,13 +204,13 @@ router.get("/olda1/:lemois&:commodity&:nombre", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET  api/all/:lemois&:commodity
+// @route   GET  api/all/:lemonth&:commodity
 // @desc    Get all data
 // @access  Public
-router.get("/all/:lemois&:commodity", (req, res) => {
+router.get("/all/:lemonth&:commodity", (req, res) => {
   const errors = {};
   Menji.find({
-    $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
+    $and: [{ month: req.params.lemonth }, { commodity: req.params.commodity }],
   })
     .sort({ _id: 1 })
     .then((menjis) => {
@@ -220,10 +220,10 @@ router.get("/all/:lemois&:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET api/menji/moymois
+// @route   GET api/menji/moymonth
 // @desc    Renvoie toutes les moyennes par date
 // @access  Public
-router.get("/moymois/:commodity", (req, res) => {
+router.get("/moymonth/:commodity", (req, res) => {
   const errors = {};
   Menji.aggregate([
     {
@@ -234,7 +234,7 @@ router.get("/moymois/:commodity", (req, res) => {
 
     {
       $group: {
-        _id: "$mois",
+        _id: "$month",
         avg1: { $avg: { $multiply: ["$price1", 100] } },
         avg2: { $avg: { $multiply: ["$price2", 100] } },
         avg3: { $avg: { $multiply: ["$price3", 100] } },
@@ -244,7 +244,7 @@ router.get("/moymois/:commodity", (req, res) => {
         avg7: { $avg: { $multiply: ["$price7", 100] } },
         avg8: { $avg: { $multiply: ["$price8", 100] } },
         avg9: { $avg: { $multiply: ["$price9", 100] } },
-        median: { $avg: "$lemedian" },
+        median: { $avg: "$median" },
       },
     },
   ])
@@ -261,10 +261,10 @@ router.get("/moymois/:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET api/menji/moymois
-// @desc    Renvoie renvoie nombre d'entrées par mois
+// @route   GET api/menji/moymonth
+// @desc    Renvoie renvoie nombre d'entrées par month
 // @access  Public
-router.get("/comptemois/:commodity", (req, res) => {
+router.get("/comptemonth/:commodity", (req, res) => {
   const errors = {};
   Menji.aggregate([
     {
@@ -277,7 +277,7 @@ router.get("/comptemois/:commodity", (req, res) => {
     },
     {
       $group: {
-        _id: "$mois",
+        _id: "$month",
         compte: { $sum: 1 },
       },
     },
@@ -295,16 +295,16 @@ router.get("/comptemois/:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET api/menji/moyunmois
+// @route   GET api/menji/moyunmonth
 // @desc    Renvoie toutes les moyennes par date
 // @access  Public
-router.get("/moyunmois/:lemois&:commodity", (req, res) => {
+router.get("/moyunmonth/:lemonth&:commodity", (req, res) => {
   const errors = {};
   Menji.aggregate([
     {
       $match: {
         $and: [
-          { mois: req.params.lemois },
+          { month: req.params.lemonth },
           { commodity: req.params.commodity },
         ],
       },
@@ -312,7 +312,7 @@ router.get("/moyunmois/:lemois&:commodity", (req, res) => {
 
     {
       $group: {
-        _id: "$mois",
+        _id: "$month",
         avg1: { $avg: { $multiply: ["$price1", 100] } },
         avg2: { $avg: { $multiply: ["$price2", 100] } },
         avg3: { $avg: { $multiply: ["$price3", 100] } },
@@ -322,7 +322,7 @@ router.get("/moyunmois/:lemois&:commodity", (req, res) => {
         avg7: { $avg: { $multiply: ["$price7", 100] } },
         avg8: { $avg: { $multiply: ["$price8", 100] } },
         avg9: { $avg: { $multiply: ["$price9", 100] } },
-        median: { $avg: "$lemedian" },
+        median: { $avg: "$median" },
       },
     },
   ])
@@ -339,10 +339,10 @@ router.get("/moyunmois/:lemois&:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET api/menji/moytousmois
-// @desc    Renvoie toutes les moyennes par mois
+// @route   GET api/menji/moytousmonth
+// @desc    Renvoie toutes les moyennes par month
 // @access  Public
-router.get("/moytousmois/:commodity", (req, res) => {
+router.get("/moytousmonth/:commodity", (req, res) => {
   const errors = {};
   Menji.aggregate([
     {
@@ -353,7 +353,7 @@ router.get("/moytousmois/:commodity", (req, res) => {
 
     {
       $group: {
-        _id: "$mois",
+        _id: "$month",
         avg1: { $avg: { $multiply: ["$price1", 100] } },
         avg2: { $avg: { $multiply: ["$price2", 100] } },
         avg3: { $avg: { $multiply: ["$price3", 100] } },
@@ -363,7 +363,7 @@ router.get("/moytousmois/:commodity", (req, res) => {
         avg7: { $avg: { $multiply: ["$price7", 100] } },
         avg8: { $avg: { $multiply: ["$price8", 100] } },
         avg9: { $avg: { $multiply: ["$price9", 100] } },
-        median: { $avg: "$lemedian" },
+        median: { $avg: "$median" },
       },
     },
   ])
@@ -380,14 +380,14 @@ router.get("/moytousmois/:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET  api/user/:lemois&:commodity&:user
+// @route   GET  api/user/:lemonth&:commodity&:user
 // @desc    Get data per user
 // @access  Public
-router.get("/userd/:lemois&:commodity&:user", (req, res) => {
+router.get("/userd/:lemonth&:commodity&:user", (req, res) => {
   const errors = {};
   Menji.find({
     $and: [
-      { mois: req.params.lemois },
+      { month: req.params.lemonth },
       { commodity: req.params.commodity },
       { user: req.params.user },
     ],
@@ -403,14 +403,14 @@ router.get("/userd/:lemois&:commodity&:user", (req, res) => {
 // @route   GET api/cinput/dernierda
 // @desc    Renvoie toutes les dernières entrées des utilisateurs
 // @access  Public
-router.get("/dernierdauser/:lemois&:commodity&:user", (req, res) => {
+router.get("/dernierdauser/:lemonth&:commodity&:user", (req, res) => {
   const errors = {};
 
   Menji.aggregate([
     {
       $match: {
         $and: [
-          { mois: req.params.lemois },
+          { month: req.params.lemonth },
           { commodity: req.params.commodity },
           { user: req.params.user },
         ],
@@ -425,7 +425,7 @@ router.get("/dernierdauser/:lemois&:commodity&:user", (req, res) => {
       $group: {
         _id: {
           user: "$user",
-          mois: "$mois",
+          month: "$month",
         },
         lastEntry: { $last: "$_dateforecast" },
         detail: { $last: "$$ROOT" },

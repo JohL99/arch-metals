@@ -11,7 +11,7 @@ const MenjiSchema = new Schema({
     type: String,
     required: true,
   },
-  mois: {
+  month: {
     type: String,
     required: true,
   },
@@ -55,11 +55,11 @@ const MenjiSchema = new Schema({
     type: Number,
     default: 0,
   },
-  lemedian: {
+  median: {
     type: Number,
     default: 0,
   },
-  lamoyenne: {
+  mean: {
     type: Number,
     default: 0,
   },

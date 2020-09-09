@@ -4,7 +4,7 @@ class MonthForecastGold extends Component {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -36,9 +36,9 @@ class MonthForecastGold extends Component {
       lesmoyennes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
     };
     this.fillPrices = this.fillPrices.bind(this);
-    this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.trouveMedian = this.trouveMedian.bind(this);
   }
-  trouveLeMedian() {
+  trouveMedian() {
     var leMedian;
     let Mukubwa = Math.max(
       this.state.lesmoyennes[0],
@@ -73,7 +73,7 @@ class MonthForecastGold extends Component {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commois/" + sanza + "&Gold")
+    fetch("/api/beyi/commonth/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -148,8 +148,8 @@ class MonthForecastGold extends Component {
             price7: price.detail.price7,
             price8: price.detail.price8,
             price9: price.detail.price9,
-            lemedian: price.detail.lemedian,
-            lamoyenne: price.detail.lamoyenne,
+            median: price.detail.median,
+            mean: price.detail.mean,
             specificcomments: price.detail.specificcomments,
           };
         });
@@ -167,8 +167,8 @@ class MonthForecastGold extends Component {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             }, */
           ].concat(priceFromApi),
@@ -196,7 +196,7 @@ class MonthForecastGold extends Component {
       return (
         <tr key={priceFromApi.id}>
           <td align="center"><b>{priceFromApi.user}</b></td>
-          <td align="center"><b>${Math.round(priceFromApi.lamoyenne)}/oz</b></td>
+          <td align="center"><b>${Math.round(priceFromApi.mean)}/oz</b></td>
           <td align="center">{priceFromApi.price1 * 100}%</td>
           <td align="center">{priceFromApi.price2 * 100}%</td>
           <td align="center">{priceFromApi.price3 * 100}%</td>

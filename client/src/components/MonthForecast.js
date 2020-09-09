@@ -4,7 +4,7 @@ class MonthForecast extends Component {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -36,9 +36,9 @@ class MonthForecast extends Component {
       lesmoyennes: [],
     };
     this.fillPrices = this.fillPrices.bind(this);
-    this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.trouveMedian = this.trouveMedian.bind(this);
   }
-  trouveLeMedian() {
+  trouveMedian() {
     var leMedian;
     let Mukubwa = Math.max(
       this.state.lesmoyennes[0],
@@ -73,7 +73,7 @@ class MonthForecast extends Component {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commois/" + sanza + "&Copper")
+    fetch("/api/beyi/commonth/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -148,8 +148,8 @@ class MonthForecast extends Component {
             price7: price.detail.price7,
             price8: price.detail.price8,
             price9: price.detail.price9,
-            lemedian: price.detail.lemedian,
-            lamoyenne: price.detail.lamoyenne,
+            median: price.detail.median,
+            mean: price.detail.mean,
             specificcomments: price.detail.specificcomments,
           };
         });
@@ -166,8 +166,8 @@ class MonthForecast extends Component {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(priceFromApi),
@@ -196,8 +196,8 @@ class MonthForecast extends Component {
       return (
         <tr key={priceFromApi.id}>
           <td>{priceFromApi.user}</td>
-          <td>{priceFromApi.lamoyenne}</td>
-          <td>{priceFromApi.lemedian}</td>
+          <td>{priceFromApi.mean}</td>
+          <td>{priceFromApi.median}</td>
           <td>{priceFromApi.price1 * 100}%</td>
           <td>{priceFromApi.price2 * 100}%</td>
           <td>{priceFromApi.price3 * 100}%</td>
@@ -279,7 +279,7 @@ class MonthForecast extends Component {
                       this.state.price8 * this.state.lesmoyennes[7] +
                       this.state.price9 * this.state.lesmoyennes[8]
                   )}</b></td>
-              <td><b>{this.trouveLeMedian()}</b></td>
+              <td><b>{this.trouveMedian()}</b></td>
               <td><b>{Math.round(this.state.lesmoyennes[0] * 100)}%</b></td>
               <td><b>{Math.round(this.state.lesmoyennes[1] * 100)}%</b></td>
               <td><b>{Math.round(this.state.lesmoyennes[2] * 100)}%</b></td>

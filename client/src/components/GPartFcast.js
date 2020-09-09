@@ -92,7 +92,7 @@ class GPartFcast extends PureComponent {
     let poctFromApi = {};
     let pnovFromApi = {};
     let pdecFromApi = {};
-    fetch("/api/beyi/commois/" + "September 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "September 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -116,7 +116,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "October 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "October 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -142,7 +142,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "November 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "November 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -168,7 +168,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "December 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "December 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -227,7 +227,7 @@ class GPartFcast extends PureComponent {
             price7: september.price7,
             price8: september.price8,
             price9: september.price9,
-            lemedian: september.lemedian,
+            median: september.median,
             dateforecast: this.convert_to_utc(new Date(september.dateforecast)),
             specificcomments: september.specificcomments,
             generalcomments: september.generalcomments,
@@ -271,7 +271,7 @@ class GPartFcast extends PureComponent {
             price7: october.price7,
             price8: october.price8,
             price9: october.price9,
-            lemedian: october.lemedian,
+            median: october.median,
             dateforecast: this.convert_to_utc(new Date(october.dateforecast)),
             specificcomments: october.specificcomments,
             generalcomments: october.generalcomments,
@@ -314,7 +314,7 @@ class GPartFcast extends PureComponent {
             price7: november.price7,
             price8: november.price8,
             price9: november.price9,
-            lemedian: november.lemedian,
+            median: november.median,
             dateforecast: this.convert_to_utc(new Date(november.dateforecast)),
             specificcomments: november.specificcomments,
             generalcomments: november.generalcomments,
@@ -357,7 +357,7 @@ class GPartFcast extends PureComponent {
             price7: december.price7,
             price8: december.price8,
             price9: december.price9,
-            lemedian: december.lemedian,
+            median: december.median,
             dateforecast: this.convert_to_utc(new Date(december.dateforecast)),
             specificcomments: december.specificcomments,
             generalcomments: december.generalcomments,

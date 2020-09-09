@@ -89,9 +89,9 @@ export class MonthPrices extends Component {
                     <option value="">-- Select a month --</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemois) => (
-                        <option key={lemois.value} value={lemois.value}>
-                          {lemois + " " + new Date().getFullYear()}
+                      .map((lemonth) => (
+                        <option key={lemonth.value} value={lemonth.value}>
+                          {lemonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>

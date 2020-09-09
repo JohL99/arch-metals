@@ -11,7 +11,7 @@ const BouleSchema = new Schema({
     type: String,
     required: true,
   },
-  mois: {
+  month: {
     type: String,
     required: true,
   },

@@ -56,7 +56,7 @@ class Graph1 extends PureComponent {
     this.state = {
       dateforecast: "",
       commodity: "",
-      mois: "",
+      month: "",
       comex: "",
       cum_average: "",
       donnees1: [8],
@@ -77,7 +77,7 @@ class Graph1 extends PureComponent {
       },
     };
     this.fillPrices = this.fillPrices.bind(this);
-    //this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    //this.trouveMedian = this.trouveMedian.bind(this);
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -90,7 +90,7 @@ class Graph1 extends PureComponent {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commois/" + sanza + "&Copper")
+    fetch("/api/beyi/commonth/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -195,8 +195,8 @@ class Graph1 extends PureComponent {
             price7: price.detail.price7,
             price8: price.detail.price8,
             price9: price.detail.price9,
-            lemedian: price.detail.lemedian,
-            lamoyenne: price.detail.lamoyenne,
+            median: price.detail.median,
+            mean: price.detail.mean,
             specificcomments: price.detail.specificcomments,
           };
         });
@@ -213,8 +213,8 @@ class Graph1 extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(priceFromApi),

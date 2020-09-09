@@ -15,7 +15,7 @@ class GSummary extends PureComponent {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       dateforecast: "",
       priceAvr: "",
@@ -28,8 +28,8 @@ class GSummary extends PureComponent {
       price7: "",
       price8: "",
       price9: "",
-      lamoyenne: "",
-      lemedian: "",
+      mean: "",
+      median: "",
       months: [
         "January",
         "February",
@@ -59,7 +59,7 @@ class GSummary extends PureComponent {
       maloba: [],
     };
     this.CreeOldata = this.CreeOldata.bind(this);
-    this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.trouveMedian = this.trouveMedian.bind(this);
   }
   CreeOldata() {
     let lesmoyennesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -110,7 +110,7 @@ class GSummary extends PureComponent {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    fetch("/api/beyi/commois/" + sanza + "&Gold")
+    fetch("/api/beyi/commonth/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -176,8 +176,8 @@ class GSummary extends PureComponent {
             price7: price.detail.price7,
             price8: price.detail.price8,
             price9: price.detail.price9,
-            lemedian: price.detail.lemedian,
-            lamoyenne: price.detail.lamoyenne,
+            median: price.detail.median,
+            mean: price.detail.mean,
             specificcomments: price.detail.specificcomments,
           };
         });
@@ -196,8 +196,8 @@ class GSummary extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(priceFromApi),
@@ -258,8 +258,8 @@ class GSummary extends PureComponent {
             price7: talo.price7,
             price8: talo.price8,
             price9: talo.price9,
-            lemedian: talo.lemedian,
-            lamoyenne: talo.lamoyenne,
+            median: talo.median,
+            mean: talo.mean,
             specificcomments: talo.specificcomments,
           };
         });
@@ -278,8 +278,8 @@ class GSummary extends PureComponent {
               price7: "",
               price8: "",
               price9: "",
-              lemedian: "",
-              lamoyenne: "",
+              median: "",
+              mean: "",
               specificcomments: "",
             },
           ].concat(taloyaApi),
@@ -310,7 +310,7 @@ class GSummary extends PureComponent {
         });
       });
   }
-  trouveLeMedian() {
+  trouveMedian() {
     var leMedian;
     let Mukubwa = Math.max(
       this.state.lesmoyennes[0],
@@ -353,7 +353,7 @@ class GSummary extends PureComponent {
       return (
         <tr key={priceFromApi.id}>
           <td align="center">{priceFromApi.user}</td>
-          <td align="center"><b>${Math.round(priceFromApi.lamoyenne)}/oz</b></td>
+          <td align="center"><b>${Math.round(priceFromApi.mean)}/oz</b></td>
           <td align="center">{priceFromApi.dateforecast} </td>
           <td align="center">{priceFromApi.price1 * 100}%</td>
           <td align="center">{priceFromApi.price2 * 100}%</td>
@@ -381,17 +381,17 @@ class GSummary extends PureComponent {
           <table border="1">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="70%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
+                <td colSpan="14" align="center" width="70%"><b>Most Recent Gold Forecasts - {this.state.month}</b></td>
               </tr>
               <tr>
                 <td width="10%" align="center">
                   <select
                     id="mnth"
                     name="month"
-                    value={this.state.mois}
+                    value={this.state.month}
                     onChange={(e) => {
                       this.setState({
-                        mois: e.target.value,
+                        month: e.target.value,
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
@@ -401,11 +401,11 @@ class GSummary extends PureComponent {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
-                        <option key={index /* lemois.value */}
-                          value={lemois.value}
+                      .map((lemonth, index) => (
+                        <option key={index /* lemonth.value */}
+                          value={lemonth.value}
                         >
-                          {lemois + " " + new Date().getFullYear()}
+                          {lemonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>
@@ -424,7 +424,7 @@ class GSummary extends PureComponent {
               </tr>
               <tr>
                 <td align="center"><b>Forecasts</b></td>
-                <td align="center"><b>${/* this.trouveLeMedian() */ Math.round(this.calculeLaMoyenne())}/oz</b></td>
+                <td align="center"><b>${/* this.trouveMedian() */ Math.round(this.calculeLaMoyenne())}/oz</b></td>
                 <td align="center"><b>{this.state.lesprice.length}</b></td>
                 <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
@@ -483,7 +483,7 @@ class GSummary extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="70%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
+                <td colSpan="14" align="center" width="70%"><b>Most Recent Gold Forecasts - {this.state.month}</b></td>
               </tr>
               <tr align="center">
                 <td width="10%"><b>Participant</b></td>

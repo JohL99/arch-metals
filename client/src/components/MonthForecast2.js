@@ -4,7 +4,7 @@ class MonthForecast extends Component {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -44,7 +44,7 @@ class MonthForecast extends Component {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    fetch("/api/beyi/commois/" + sanza + "&Copper")
+    fetch("/api/beyi/commonth/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })

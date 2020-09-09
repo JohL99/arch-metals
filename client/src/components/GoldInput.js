@@ -10,7 +10,7 @@ class GoldInput extends Component {
     super(props);
     this.state = {
       commodity: "",
-      mois: "",
+      month: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -22,8 +22,8 @@ class GoldInput extends Component {
       price7: "",
       price8: "",
       price9: "",
-      lamoyenne: "",
-      lemedian: "",
+      mean: "",
+      median: "",
       percent1: "",
       percent2: "",
       percent3: "",
@@ -67,8 +67,8 @@ class GoldInput extends Component {
   }
   componentDidUpdate() {
     if (this.state.fraicheur !== 0) {
-      let cemois = this.state.mois;
-      this.setState({ mois: cemois });
+      let cemonth = this.state.month;
+      this.setState({ month: cemonth });
       this.setState({ fraicheur: 0 });
     }
   }
@@ -104,22 +104,22 @@ class GoldInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    var LeMedian =0;
-    if (Max === this.state.percent1) {LeMedian = this.state.price1;} 
-      else if (Max === this.state.percent2) {LeMedian = this.state.price2;} 
-      else if (Max === this.state.percent3) {LeMedian = this.state.price3;} 
-      else if (Max === this.state.percent4) {LeMedian = this.state.price4;} 
-      else if (Max === this.state.percent5) {LeMedian = this.state.price5;} 
-      else if (Max === this.state.percent6) {LeMedian = this.state.price6;} 
-      else if (Max === this.state.percent7) {LeMedian = this.state.price7;} 
-      else if (Max === this.state.percent8) {LeMedian = this.state.price8;} 
-      else if (Max === this.state.percent9) {LeMedian = this.state.price9;}
-    this.setState({ lemedian: LeMedian });
+    var Median =0;
+    if (Max === this.state.percent1) {Median = this.state.price1;} 
+      else if (Max === this.state.percent2) {Median = this.state.price2;} 
+      else if (Max === this.state.percent3) {Median = this.state.price3;} 
+      else if (Max === this.state.percent4) {Median = this.state.price4;} 
+      else if (Max === this.state.percent5) {Median = this.state.price5;} 
+      else if (Max === this.state.percent6) {Median = this.state.price6;} 
+      else if (Max === this.state.percent7) {Median = this.state.price7;} 
+      else if (Max === this.state.percent8) {Median = this.state.price8;} 
+      else if (Max === this.state.percent9) {Median = this.state.price9;}
+    this.setState({ median: Median });
     //**** AJOUT MEDIAN */
     const newEntry = {
       user: user.name,
       commodity: "Gold", //this.state.commodity,
-      mois: this.state.mois,
+      month: this.state.month,
       dateforecast: new Date(),
       //priceAvr: this.state.priceAvr,
       price1: this.state.percent1,
@@ -131,8 +131,8 @@ class GoldInput extends Component {
       price7: this.state.percent7,
       price8: this.state.percent8,
       price9: this.state.percent9,
-      lemedian: LeMedian,
-      lamoyenne: this.state.lamoyenne,
+      median: Median,
+      mean: this.state.mean,
       specificcomments: this.state.specificcomments,
       generalcomments: this.state.generalcomments,
       documentShared: "",
@@ -158,8 +158,8 @@ class GoldInput extends Component {
     this.setState({ specificcomments: "" });
     this.setState({ generalcomments: "" });
     this.setState({ filecomments: "" });
-    let cemois = this.state.mois;
-    this.setState({ mois: cemois });
+    let cemonth = this.state.month;
+    this.setState({ month: cemonth });
     this.setState({ fraicheur: 1 });
     //upload du fichier
     formData.append("myfile", this.state.file);
@@ -185,7 +185,7 @@ class GoldInput extends Component {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    fetch("/api/beyi/commois/" + sanza + "&Gold")
+    fetch("/api/beyi/commonth/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -210,7 +210,7 @@ class GoldInput extends Component {
       .catch((error) => {
         console.log(error);
       });
-    this.setState({ mois: sanza });
+    this.setState({ month: sanza });
   }
   CalculPondere(vraipourcent, indice) {
     this.setState({ priceAvr: "" });
@@ -225,7 +225,7 @@ class GoldInput extends Component {
       this.state.price8 * (indice === 8 ? vraipourcent : this.state.percent8) +
       this.state.price9 * (indice === 9 ? vraipourcent : this.state.percent9);
     this.setState({ priceAvr: Moyenne });
-    this.setState({ lamoyenne: Moyenne });
+    this.setState({ mean: Moyenne });
   }
   cancelCourse = () => {
     this.myFormRef.reset();
@@ -307,10 +307,10 @@ class GoldInput extends Component {
                   <select
                     id="mnth"
                     name="month"
-                    value={this.state.mois}
+                    value={this.state.month}
                     onChange={(e) => {
                       this.setState({
-                        mois: e.target.value,
+                        month: e.target.value,
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
@@ -320,12 +320,12 @@ class GoldInput extends Component {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
+                      .map((lemonth, index) => (
                         <option
-                          key={index /* lemois.value */}
-                          value={lemois.value}
+                          key={index /* lemonth.value */}
+                          value={lemonth.value}
                         >
-                          {lemois + " " + new Date().getFullYear()}
+                          {lemonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>
@@ -751,8 +751,8 @@ class GoldInput extends Component {
           </table>
         </form>
         <div>
-          <GraphGold mweji={this.state.mois} />
-          <MonthForecastGold mweji={this.state.mois} />
+          <GraphGold mweji={this.state.month} />
+          <MonthForecastGold mweji={this.state.month} />
         </div>
       </div>
     );
