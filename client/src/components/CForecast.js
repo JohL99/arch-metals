@@ -104,7 +104,7 @@ class CForecast extends PureComponent {
       }
       return pricedata.commodity;
     });
-    var numberT5 = this.state.alldata.length;
+    var numberT = this.state.alldata.length;
     var number3 = arOlddata.length;
     var number2 = this.state.Aprice.length;
     //var number2 = this.state.alldata.length;
@@ -118,15 +118,15 @@ class CForecast extends PureComponent {
     averagesA[7] = this.state.averagesA[0].price8;
     averagesA[8] = this.state.averagesA[0].price9;
     var number1 = arOlddata.length;
-    averagesO[0] = (averagesA[0] * numberT5 - this.state.averages[0] * number2) / (numberT5 - number2);
-    averagesO[1] = (averagesA[1] * numberT5 - this.state.averages[1] * number2) / (numberT5 - number2);
-    averagesO[2] = (averagesA[2] * numberT5 - this.state.averages[2] * number2) / (numberT5 - number2);
-    averagesO[3] = (averagesA[3] * numberT5 - this.state.averages[3] * number2) / (numberT5 - number2);
-    averagesO[4] = (averagesA[4] * numberT5 - this.state.averages[4] * number2) / (numberT5 - number2);
-    averagesO[5] = (averagesA[5] * numberT5 - this.state.averages[5] * number2) / (numberT5 - number2);
-    averagesO[6] = (averagesA[6] * numberT5 - this.state.averages[6] * number2) / (numberT5 - number2);
-    averagesO[7] = (averagesA[8] * numberT5 - this.state.averages[7] * number2) / (numberT5 - number2);
-    averagesO[8] = (averagesA[8] * numberT5 - this.state.averages[8] * number2) / (numberT5 - number2);
+    averagesO[0] = (averagesA[0] - this.state.averages[0]) / (numberT - number2);
+    averagesO[1] = (averagesA[1] - this.state.averages[1]) / (numberT - number2);
+    averagesO[2] = (averagesA[2] - this.state.averages[2]) / (numberT - number2);
+    averagesO[3] = (averagesA[3] - this.state.averages[3]) / (numberT - number2);
+    averagesO[4] = (averagesA[4] - this.state.averages[4]) / (numberT - number2);
+    averagesO[5] = (averagesA[5] - this.state.averages[5]) / (numberT - number2);
+    averagesO[6] = (averagesA[6] - this.state.averages[6]) / (numberT - number2);
+    averagesO[7] = (averagesA[8] - this.state.averages[7]) / (numberT - number2);
+    averagesO[8] = (averagesA[8] - this.state.averages[8]) / (numberT - number2);
     this.setState({ averagesO });
     this.setState({ olddata: [].concat(arOlddata) });
     //calcul des means
