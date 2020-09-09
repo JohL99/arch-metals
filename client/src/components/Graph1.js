@@ -39,13 +39,13 @@ var kombo = [];
 const data2 = [
   {
     price: "COMEX",
-    pour: 4000,
+    item: 4000,
     pv: 2400,
     amt: 2400,
   },
   {
     price: "Cumulative Average",
-    pour: 3000,
+    item: 3000,
     pv: 1398,
     amt: 2210,
   },
@@ -116,13 +116,13 @@ class Graph1 extends PureComponent {
           }
           let data1 = { ...this.state.data1 };
           data1 = [
-            { price: this.state.element[0], pour: this.state.averages[0] },
+            { price: this.state.element[0], item: this.state.averages[0] },
           ];
           var y = 1;
           for (y == 1; y < 9; y++) {
             data1.push({
               price: this.state.element[y],
-              pour: this.state.averages[y],
+              item: this.state.averages[y],
             });
           }
           this.setState({ data1 });
@@ -170,11 +170,11 @@ class Graph1 extends PureComponent {
           data.datasets.label = "Ndantsi";
           data.datasets.data = meanRepeat;
           /* let data1 = { ...this.state.data1 };
-          data1 = [{ price: kombo[0], pour: meanRepeat[0] }];
+          data1 = [{ price: kombo[0], item: meanRepeat[0] }];
           var y = 1;
           for (y == 1; y < 9; y++) {
             const a = data1.push([
-              { name: this.state.element[y], pour: meanRepeat[y] },
+              { name: this.state.element[y], item: meanRepeat[y] },
             ]);
           } */
           //data2.datasets.data = meanRepeat;
@@ -252,8 +252,8 @@ class Graph1 extends PureComponent {
             <YAxis dataKey="price" type="category" />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pour" fill="#00B050" />
-            {/* <Bar dataKey="pour" fill="#FF0000" /> */}
+            <Bar dataKey="item" fill="#00B050" />
+            {/* <Bar dataKey="item" fill="#FF0000" /> */}
           </BarChart>
         </ResponsiveContainer>
       </div>

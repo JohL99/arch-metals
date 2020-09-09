@@ -178,7 +178,7 @@ class GraphGold extends PureComponent {
             <Tooltip />
             <Legend />
             <Bar dataKey="Percentage" fill="#CC9900" />
-            {/* <Bar dataKey="pour" fill="#BF9000" /> */}
+            {/* <Bar dataKey="item" fill="#BF9000" /> */}
           </BarChart>
         </ResponsiveContainer>
       </div>

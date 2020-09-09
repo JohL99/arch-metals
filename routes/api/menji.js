@@ -2,7 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 /* 
-//pour fichier
+//item fichier
 const multer = require("multer"); */
 
 //load boule model

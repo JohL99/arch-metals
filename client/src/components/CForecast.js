@@ -406,55 +406,55 @@ class CForecast extends PureComponent {
       });
     this.CreeOldata();
   }
-  findMedian(letableau) {
-    var leMedian;
-    let Mukubwa = Math.max(
-      letableau[0],
-      letableau[1],
-      letableau[2],
-      letableau[3],
-      letableau[4],
-      letableau[5],
-      letableau[6],
-      letableau[7],
-      letableau[8]
+  findMedian(aTable) {
+    var aMedian;
+    let Biggest = Math.max(
+      aTable[0],
+      aTable[1],
+      aTable[2],
+      aTable[3],
+      aTable[4],
+      aTable[5],
+      aTable[6],
+      aTable[7],
+      aTable[8]
     );
-    if (Mukubwa === letableau[0]) {
-      leMedian = this.state.price1;
-    } else if (Mukubwa === letableau[1]) {
-      leMedian = this.state.price2;
-    } else if (Mukubwa === letableau[2]) {
-      leMedian = this.state.price3;
-    } else if (Mukubwa === letableau[3]) {
-      leMedian = this.state.price4;
-    } else if (Mukubwa === letableau[4]) {
-      leMedian = this.state.price5;
-    } else if (Mukubwa === letableau[5]) {
-      leMedian = this.state.price6;
-    } else if (Mukubwa === letableau[6]) {
-      leMedian = this.state.price7;
-    } else if (Mukubwa === letableau[7]) {
-      leMedian = this.state.price8;
-    } else if (Mukubwa === letableau[8]) {
-      leMedian = this.state.price9;
+    if (Biggest === aTable[0]) {
+      aMedian = this.state.price1;
+    } else if (Biggest === aTable[1]) {
+      aMedian = this.state.price2;
+    } else if (Biggest === aTable[2]) {
+      aMedian = this.state.price3;
+    } else if (Biggest === aTable[3]) {
+      aMedian = this.state.price4;
+    } else if (Biggest === aTable[4]) {
+      aMedian = this.state.price5;
+    } else if (Biggest === aTable[5]) {
+      aMedian = this.state.price6;
+    } else if (Biggest === aTable[6]) {
+      aMedian = this.state.price7;
+    } else if (Biggest === aTable[7]) {
+      aMedian = this.state.price8;
+    } else if (Biggest === aTable[8]) {
+      aMedian = this.state.price9;
     }
-    return leMedian;
+    return aMedian;
   }
-    findEV(pour) {
+    findEV(item) {
     var EV = 0;
-    if (typeof pour !== "undefined") {
+    if (typeof item !== "undefined") {
       EV =
-        this.state.price1 * (pour[0] / 100) +
-        this.state.price2 * (pour[1] / 100) +
-        this.state.price3 * (pour[2] / 100) +
-        this.state.price4 * (pour[3] / 100) +
-        this.state.price5 * (pour[4] / 100) +
-        this.state.price6 * (pour[5] / 100) +
-        this.state.price7 * (pour[6] / 100) +
-        this.state.price8 * (pour[7] / 100) +
-        this.state.price9 * (pour[8] / 100);
-      //console.log(pour);
-      //console.log(pour[0]);
+        this.state.price1 * (item[0] / 100) +
+        this.state.price2 * (item[1] / 100) +
+        this.state.price3 * (item[2] / 100) +
+        this.state.price4 * (item[3] / 100) +
+        this.state.price5 * (item[4] / 100) +
+        this.state.price6 * (item[5] / 100) +
+        this.state.price7 * (item[6] / 100) +
+        this.state.price8 * (item[7] / 100) +
+        this.state.price9 * (item[8] / 100);
+      //console.log(item);
+      //console.log(item[0]);
       //console.log(EV);
     }
     return EV;

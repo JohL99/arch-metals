@@ -2,12 +2,12 @@ const express = require("express");
 
 const router = express.Router();
 
-//pour fichier
+//item fichier
 const multer = require("multer");
 
 const File = require("../../models/File");
 
-//pour fichier
+//item fichier
 
 const stockage = multer.diskStorage({
   destination: "./public/",

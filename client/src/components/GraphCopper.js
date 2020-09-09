@@ -195,7 +195,7 @@ class GraphCopper extends PureComponent {
             <Tooltip />
             <Legend />
             <Bar dataKey="Percentage" fill="#FF9933" />
-            {/* <Bar dataKey="pour" fill="#C55A11" /> */}
+            {/* <Bar dataKey="item" fill="#C55A11" /> */}
           </BarChart>
         </ResponsiveContainer>
       </div>

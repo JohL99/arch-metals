@@ -311,8 +311,8 @@ class GSummary extends PureComponent {
       });
   }
   findMedian() {
-    var leMedian;
-    let Mukubwa = Math.max(
+    var aMedian;
+    let Biggest = Math.max(
       this.state.averages[0],
       this.state.averages[1],
       this.state.averages[2],
@@ -323,16 +323,16 @@ class GSummary extends PureComponent {
       this.state.averages[7],
       this.state.averages[8]
     );
-    if (Mukubwa === this.state.averages[0]) {leMedian = this.state.price1;} 
-      else if (Mukubwa === this.state.averages[1]) {leMedian = this.state.price2;} 
-      else if (Mukubwa === this.state.averages[2]) {leMedian = this.state.price3;} 
-      else if (Mukubwa === this.state.averages[3]) {leMedian = this.state.price4;} 
-      else if (Mukubwa === this.state.averages[4]) {leMedian = this.state.price5;} 
-      else if (Mukubwa === this.state.averages[5]) {leMedian = this.state.price6;} 
-      else if (Mukubwa === this.state.averages[6]) {leMedian = this.state.price7;} 
-      else if (Mukubwa === this.state.averages[7]) {leMedian = this.state.price8;} 
-      else if (Mukubwa === this.state.averages[8]) {leMedian = this.state.price9;}
-    return leMedian;
+    if (Biggest === this.state.averages[0]) {aMedian = this.state.price1;} 
+      else if (Biggest === this.state.averages[1]) {aMedian = this.state.price2;} 
+      else if (Biggest === this.state.averages[2]) {aMedian = this.state.price3;} 
+      else if (Biggest === this.state.averages[3]) {aMedian = this.state.price4;} 
+      else if (Biggest === this.state.averages[4]) {aMedian = this.state.price5;} 
+      else if (Biggest === this.state.averages[5]) {aMedian = this.state.price6;} 
+      else if (Biggest === this.state.averages[6]) {aMedian = this.state.price7;} 
+      else if (Biggest === this.state.averages[7]) {aMedian = this.state.price8;} 
+      else if (Biggest === this.state.averages[8]) {aMedian = this.state.price9;}
+    return aMedian;
   }
     calculeLaMoyenne() {
     var Kati;
