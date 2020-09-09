@@ -144,7 +144,7 @@ export default function about() {
 	</p>
       <p className="text-justify">
 	Panel participants will be expected to contribute metal price
-	forecasts regularly over four months (september &ndash; December
+	forecasts regularly over four months (September &ndash; December
 	2020), and participation is likely to require approximately thirty
 	minutes per month. In making their metal price forecasts, participants
 	will&nbsp;be asked to provide a brief (maximum 300 characters) indication 

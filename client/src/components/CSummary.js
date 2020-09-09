@@ -39,7 +39,7 @@ class CSummary extends PureComponent {
         "June",
         "July",
         "August",
-        "september",
+        "September",
         "October",
         "November",
         "December",

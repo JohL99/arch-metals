@@ -92,7 +92,7 @@ class GPartFcast extends PureComponent {
     let poctFromApi = {};
     let pnovFromApi = {};
     let pdecFromApi = {};
-    fetch("/api/beyi/commois/" + "september 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "September 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -195,7 +195,7 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
       let averif = 0;
-    fetch("/api/menji/userd/september 2020&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -597,7 +597,7 @@ class GPartFcast extends PureComponent {
             </tr>
             <tr>
               <td align="center"><b>Participant</b></td>
-              <td align="center"><b>september 2020</b></td>
+              <td align="center"><b>September 2020</b></td>
               <td align="center"><b>October 2020</b></td>
               <td align="center"><b>November 2020</b></td>
               <td align="center"><b>December 2020</b></td>
@@ -644,7 +644,7 @@ class GPartFcast extends PureComponent {
               <td colSpan="5" align="center"><b>General Comments</b></td>
             </tr>
             <tr>
-              <td align="left"><b>september:</b> {this.state.comsep}</td>
+              <td align="left"><b>September:</b> {this.state.comsep}</td>
             </tr>
             <tr>
               <td align="left"><b>October:</b> {this.state.comoct}</td>
@@ -660,7 +660,7 @@ class GPartFcast extends PureComponent {
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13"><b>Forecasts - september 2020</b></td>
+              <td align="center" colSpan="13"><b>Forecasts - September 2020</b></td>
             </tr>
             {this.state.pricesep.map(renderpriceSep)}
           </thead>

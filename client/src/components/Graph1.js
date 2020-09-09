@@ -21,7 +21,7 @@ var data1 = {
     "June",
     "July",
     "August",
-    "september",
+    "September",
   ],
   datasets: [
     {

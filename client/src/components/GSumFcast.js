@@ -123,7 +123,7 @@ class GSumFcast extends PureComponent {
           price7[counter + 1] = price.floorprice + price.constant1 * 6;
           price8[counter + 1] = price.floorprice + price.constant1 * 7;
           price9[counter + 1] = price.floorprice + price.constant1 * 8;
-          if (moisprice[counter + 1] === "september 2020") {this.setState({ sepprice: counter + 1 });} 
+          if (moisprice[counter + 1] === "September 2020") {this.setState({ sepprice: counter + 1 });} 
             else if (moisprice[counter + 1] === "October 2020") {this.setState({ octprice: counter + 1 });} 
             else if (moisprice[counter + 1] === "November 2020") {this.setState({ novprice: counter + 1 });} 
             else if (moisprice[counter + 1] === "December 2020") {this.setState({ decprice: counter + 1 });}
@@ -181,7 +181,7 @@ class GSumFcast extends PureComponent {
           avg8[counter + 1] = Math.round(price.avg8);
           avg9[counter + 1] = Math.round(price.avg9);
           avmedian[counter + 1] = Math.round(price.median);
-          if (moispour[counter + 1] === "september 2020") {this.setState({ seppour: counter + 1 });} 
+          if (moispour[counter + 1] === "September 2020") {this.setState({ seppour: counter + 1 });} 
             else if (moispour[counter + 1] === "October 2020") {this.setState({ octpour: counter + 1 });} 
             else if (moispour[counter + 1] === "November 2020") {this.setState({ novpour: counter + 1 });} 
             else if (moispour[counter + 1] === "December 2020") {this.setState({ decpour: counter + 1 });}
@@ -213,7 +213,7 @@ class GSumFcast extends PureComponent {
       })
       .then((data5) => {
         let beyiFromApi = data5.map((price) => {
-          if (price._id === "september 2020") {this.setState({ sepnb: price.compte });} 
+          if (price._id === "September 2020") {this.setState({ sepnb: price.compte });} 
             else if (price._id === "October 2020") {this.setState({ octnb: price.compte });} 
             else if (price._id === "November 2020") {this.setState({ novnb: price.compte });} 
             else if (price._id === "December 2020") {this.setState({ decnb: price.compte });}
@@ -227,7 +227,7 @@ class GSumFcast extends PureComponent {
       });
     this.graphi();
     this.trouveev();
-    this.fillgeneralcomments("september 2020");
+    this.fillgeneralcomments("September 2020");
     this.fillgeneralcomments("October 2020");
     this.fillgeneralcomments("November 2020");
     this.fillgeneralcomments("December 2020");
