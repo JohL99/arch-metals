@@ -22,7 +22,7 @@ export class MonthPrices extends Component {
         "June",
         "July",
         "August",
-        "September",
+        "sepember",
         "October",
         "November",
         "December",

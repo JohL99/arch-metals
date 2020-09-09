@@ -89,7 +89,7 @@ router.get("/commois/:lemois&:commodity", (req, res) => {
 });
 
 // @route   GET api/beyi/comm/:commodity
-// @desc    Renvoie tous les prix pour tous les mois
+// @desc    Renvoie tous les price pour tous les mois
 // @access  Public
 router.get("/comm/:commodity", (req, res) => {
   Beyi.find({

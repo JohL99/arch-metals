@@ -55,13 +55,13 @@ class GForecast extends PureComponent {
         "June",
         "July",
         "August",
-        "September",
+        "sepember",
         "October",
         "November",
         "December",
       ],
       median: "",
-      lesprix: [],
+      lesprice: [],
       foreprices: [],
       lesmoyennes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       njina: [],
@@ -95,18 +95,18 @@ class GForecast extends PureComponent {
     //Soustraction des données récentes
     var arOlddata = [...this.state.alldata];
     var arAlldata = [...this.state.alldata];
-    var arLesprix = [...this.state.lesprix];
+    var arLesprice = [...this.state.lesprice];
     var index;
-    let yaKala = arLesprix.map((prixdata) => {
-      index = arrayObjectIndexOf(arOlddata, prixdata.id, "id");
+    let yaKala = arLesprice.map((pricedata) => {
+      index = arrayObjectIndexOf(arOlddata, pricedata.id, "id");
       if (index !== -1) {
         arOlddata.splice(index, 1);
       }
-      return prixdata.commodity;
+      return pricedata.commodity;
     });
     var nombreT5 = this.state.alldata.length;
     var nombre3 = arOlddata.length;
-    var nombre2 = this.state.lesprix.length;
+    var nombre2 = this.state.lesprice.length;
     //var nombre2 = this.state.alldata.length;
     lesmoyennesA[0] = this.state.lesmoyennesA[0].price1;
     lesmoyennesA[1] = this.state.lesmoyennesA[0].price2;
@@ -139,15 +139,15 @@ class GForecast extends PureComponent {
     this.state.njina[6] = this.state.price7;
     this.state.njina[7] = this.state.price8;
     this.state.njina[8] = this.state.price9;
-    lesmoyennesP[0] = arLesprix.price1;
-    lesmoyennesP[1] = arLesprix.price2;
-    lesmoyennesP[2] = arLesprix.price3;
-    lesmoyennesP[3] = arLesprix.price4;
-    lesmoyennesP[4] = arLesprix.price5;
-    lesmoyennesP[5] = arLesprix.price6;
-    lesmoyennesP[6] = arLesprix.price7;
-    lesmoyennesP[7] = arLesprix.price8;
-    lesmoyennesP[8] = arLesprix.price9;
+    lesmoyennesP[0] = arLesprice.price1;
+    lesmoyennesP[1] = arLesprice.price2;
+    lesmoyennesP[2] = arLesprice.price3;
+    lesmoyennesP[3] = arLesprice.price4;
+    lesmoyennesP[4] = arLesprice.price5;
+    lesmoyennesP[5] = arLesprice.price6;
+    lesmoyennesP[6] = arLesprice.price7;
+    lesmoyennesP[7] = arLesprice.price8;
+    lesmoyennesP[8] = arLesprice.price9;
     let donnees1 = { ...this.state.donnees1 };
     donnees1 = [
       {
@@ -171,8 +171,8 @@ class GForecast extends PureComponent {
     donnees1.shift();
     this.setState({ donnees1 });
     //on enlève la ligne vide
-    arLesprix.shift();
-    this.setState({ lesprix: arLesprix });
+    arLesprice.shift();
+    this.setState({ lesprice: arLesprice });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -191,19 +191,19 @@ class GForecast extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((mutengo) => {
+        let talo = data.map((price) => {
           //put it in an array
-          this.setState({ price1: mutengo.floorprice + mutengo.constant1 * 0 });
-          this.setState({ price2: mutengo.floorprice + mutengo.constant1 * 1 });
-          this.setState({ price3: mutengo.floorprice + mutengo.constant1 * 2 });
-          this.setState({ price4: mutengo.floorprice + mutengo.constant1 * 3 });
-          this.setState({ price5: mutengo.floorprice + mutengo.constant1 * 4 });
-          this.setState({ price6: mutengo.floorprice + mutengo.constant1 * 5 });
-          this.setState({ price7: mutengo.floorprice + mutengo.constant1 * 6 });
-          this.setState({ price8: mutengo.floorprice + mutengo.constant1 * 7 });
-          this.setState({ price9: mutengo.floorprice + mutengo.constant1 * 8 });
+          this.setState({ price1: price.floorprice + price.constant1 * 0 });
+          this.setState({ price2: price.floorprice + price.constant1 * 1 });
+          this.setState({ price3: price.floorprice + price.constant1 * 2 });
+          this.setState({ price4: price.floorprice + price.constant1 * 3 });
+          this.setState({ price5: price.floorprice + price.constant1 * 4 });
+          this.setState({ price6: price.floorprice + price.constant1 * 5 });
+          this.setState({ price7: price.floorprice + price.constant1 * 6 });
+          this.setState({ price8: price.floorprice + price.constant1 * 7 });
+          this.setState({ price9: price.floorprice + price.constant1 * 8 });
           return {
-            id: mutengo._id,
+            id: price._id,
           };
         });
       })
@@ -216,17 +216,17 @@ class GForecast extends PureComponent {
         return response1.json();
       })
       .then((data1) => {
-        let prixFromApi = data1.map((prix, x, index) => {
+        let priceFromApi = data1.map((price, x, index) => {
           var nombre = index.length;
-          somme[0] = somme[0] + prix.detail.price1;
-          somme[1] = somme[1] + prix.detail.price2;
-          somme[2] = somme[2] + prix.detail.price3;
-          somme[3] = somme[3] + prix.detail.price4;
-          somme[4] = somme[4] + prix.detail.price5;
-          somme[5] = somme[5] + prix.detail.price6;
-          somme[6] = somme[6] + prix.detail.price7;
-          somme[7] = somme[7] + prix.detail.price8;
-          somme[8] = somme[8] + prix.detail.price9;
+          somme[0] = somme[0] + price.detail.price1;
+          somme[1] = somme[1] + price.detail.price2;
+          somme[2] = somme[2] + price.detail.price3;
+          somme[3] = somme[3] + price.detail.price4;
+          somme[4] = somme[4] + price.detail.price5;
+          somme[5] = somme[5] + price.detail.price6;
+          somme[6] = somme[6] + price.detail.price7;
+          somme[7] = somme[7] + price.detail.price8;
+          somme[8] = somme[8] + price.detail.price9;
           var moyenneEncore = [];
           moyenneEncore[0] = somme[0] / nombre;
           moyenneEncore[1] = somme[1] / nombre;
@@ -239,25 +239,25 @@ class GForecast extends PureComponent {
           moyenneEncore[8] = somme[8] / nombre;
           this.setState({ lesmoyennes: [].concat(moyenneEncore) });
           return {
-            id: prix.detail._id,
-            user: prix._id.user,
-            dateforecast: this.convert_to_utc(new Date(prix.detail.dateforecast)),
-            price1: prix.detail.price1,
-            price2: prix.detail.price2,
-            price3: prix.detail.price3,
-            price4: prix.detail.price4,
-            price5: prix.detail.price5,
-            price6: prix.detail.price6,
-            price7: prix.detail.price7,
-            price8: prix.detail.price8,
-            price9: prix.detail.price9,
-            lemedian: prix.detail.lemedian,
-            lamoyenne: prix.detail.lamoyenne,
-            specificcomments: prix.detail.specificcomments,
+            id: price.detail._id,
+            user: price._id.user,
+            dateforecast: this.convert_to_utc(new Date(price.detail.dateforecast)),
+            price1: price.detail.price1,
+            price2: price.detail.price2,
+            price3: price.detail.price3,
+            price4: price.detail.price4,
+            price5: price.detail.price5,
+            price6: price.detail.price6,
+            price7: price.detail.price7,
+            price8: price.detail.price8,
+            price9: price.detail.price9,
+            lemedian: price.detail.lemedian,
+            lamoyenne: price.detail.lamoyenne,
+            specificcomments: price.detail.specificcomments,
           };
         });
         this.setState({
-          lesprix: [
+          lesprice: [
             {
               id: "",
               user: "",
@@ -275,7 +275,7 @@ class GForecast extends PureComponent {
               lamoyenne: "",
               specificcomments: "",
             },
-          ].concat(prixFromApi),
+          ].concat(priceFromApi),
         });
       })
       .catch((error1) => {
@@ -447,22 +447,22 @@ class GForecast extends PureComponent {
     return EV;
   }
   render() {
-    const renderPrix = (prixFromApi) => {
+    const renderprice = (priceFromApi) => {
       return (
-        <tr key={prixFromApi.id}>
-          <td align="center">{prixFromApi.user}</td>
-          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/oz</b></td>
-          <td align="center">{prixFromApi.dateforecast}</td>
-          <td align="center">{prixFromApi.price1 * 100}%</td>
-          <td align="center">{prixFromApi.price2 * 100}%</td>
-          <td align="center">{prixFromApi.price3 * 100}%</td>
-          <td align="center">{prixFromApi.price4 * 100}%</td>
-          <td align="center">{prixFromApi.price5 * 100}%</td>
-          <td align="center">{prixFromApi.price6 * 100}%</td>
-          <td align="center">{prixFromApi.price7 * 100}%</td>
-          <td align="center">{prixFromApi.price8 * 100}%</td>
-          <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td align="center">{prixFromApi.specificcomments}</td>
+        <tr key={priceFromApi.id}>
+          <td align="center">{priceFromApi.user}</td>
+          <td align="center"><b>${Math.round(priceFromApi.lamoyenne)}/oz</b></td>
+          <td align="center">{priceFromApi.dateforecast}</td>
+          <td align="center">{priceFromApi.price1 * 100}%</td>
+          <td align="center">{priceFromApi.price2 * 100}%</td>
+          <td align="center">{priceFromApi.price3 * 100}%</td>
+          <td align="center">{priceFromApi.price4 * 100}%</td>
+          <td align="center">{priceFromApi.price5 * 100}%</td>
+          <td align="center">{priceFromApi.price6 * 100}%</td>
+          <td align="center">{priceFromApi.price7 * 100}%</td>
+          <td align="center">{priceFromApi.price8 * 100}%</td>
+          <td align="center">{priceFromApi.price9 * 100}%</td>
+          <td align="center">{priceFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -567,7 +567,7 @@ class GForecast extends PureComponent {
               <tr>
                 <td align="center"><b>Most Recent Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.trouveEV(this.state.lesmoyennes) * 100)/*Math.round(this.state.EVR)*/}/oz</b></td>
-                <td align="center"><b>{this.state.lesprix.length}</b></td>
+                <td align="center"><b>{this.state.lesprice.length}</b></td>
                 <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
                 <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
@@ -774,7 +774,7 @@ class GForecast extends PureComponent {
                   <b>Justifications</b>
                 </td>
               </tr>
-              {this.state.lesprix.map(renderPrix)}
+              {this.state.lesprice.map(renderprice)}
             </tbody>
           </table>
           <table className="table table-bordered">

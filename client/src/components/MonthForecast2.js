@@ -51,19 +51,19 @@ class MonthForecast extends Component {
       .then((data) => {
         let yx = data;
         console.log(yx);
-        let talo = data.map((mutengo) => {
+        let talo = data.map((price) => {
           //put it in array
-          this.setState({ price1: mutengo.floorprice + mutengo.constant1 * 0 });
-          this.setState({ price2: mutengo.floorprice + mutengo.constant1 * 1 });
-          this.setState({ price3: mutengo.floorprice + mutengo.constant1 * 2 });
-          this.setState({ price4: mutengo.floorprice + mutengo.constant1 * 3 });
-          this.setState({ price5: mutengo.floorprice + mutengo.constant1 * 4 });
-          this.setState({ price6: mutengo.floorprice + mutengo.constant1 * 5 });
-          this.setState({ price7: mutengo.floorprice + mutengo.constant1 * 6 });
-          this.setState({ price8: mutengo.floorprice + mutengo.constant1 * 7 });
-          this.setState({ price9: mutengo.floorprice + mutengo.constant1 * 8 });
+          this.setState({ price1: price.floorprice + price.constant1 * 0 });
+          this.setState({ price2: price.floorprice + price.constant1 * 1 });
+          this.setState({ price3: price.floorprice + price.constant1 * 2 });
+          this.setState({ price4: price.floorprice + price.constant1 * 3 });
+          this.setState({ price5: price.floorprice + price.constant1 * 4 });
+          this.setState({ price6: price.floorprice + price.constant1 * 5 });
+          this.setState({ price7: price.floorprice + price.constant1 * 6 });
+          this.setState({ price8: price.floorprice + price.constant1 * 7 });
+          this.setState({ price9: price.floorprice + price.constant1 * 8 });
           return {
-            id: mutengo._id,
+            id: price._id,
           };
         });
       })
@@ -78,7 +78,7 @@ class MonthForecast extends Component {
       })
       .then((data1) => {
         let yx1 = data1;
-        let pourcent = data1.map((mutengo1, index) => {
+        let pourcent = data1.map((price1, index) => {
           //put it in array
           const {
             user,
@@ -92,7 +92,7 @@ class MonthForecast extends Component {
             price8,
             price9,
             specificcomments,
-          } = mutengo1; //destructuring
+          } = price1; //destructuring
           return;
           <tr key={index}>
             <td>{user}</td>

@@ -43,7 +43,7 @@ class GraphGold extends PureComponent {
       comments: "",
       totpercent: "",
       median: "",
-      lesprix: [],
+      lesprice: [],
       njina: [],
       lesmoyennes: [],
       donnees1: [8],
@@ -67,18 +67,18 @@ class GraphGold extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((mutengo) => {var njina = { ...this.state.njina };
+        let talo = data.map((price) => {var njina = { ...this.state.njina };
           var i = 0;
-          for (i === 0; i < 9; i++) {njina[i] = mutengo.floorprice + mutengo.constant1 * i;}
+          for (i === 0; i < 9; i++) {njina[i] = price.floorprice + price.constant1 * i;}
           this.setState({ njina });
-          for (i === 0; i < 9; i++) {kombo[i] = mutengo.floorprice + mutengo.constant1 * i;}
+          for (i === 0; i < 9; i++) {kombo[i] = price.floorprice + price.constant1 * i;}
           let donnees1 = { ...this.state.donnees1 };
           donnees1 = [{price: this.state.njina[0], Percentage: this.state.lesmoyennes[0],},];
           var y = 1;
           for (y === 1; y < 9; y++) {donnees1.push({price: this.state.njina[y], Percentage: this.state.lesmoyennes[y],});}
           this.setState({ donnees1 });
           return {
-            id: mutengo._id,
+            id: price._id,
           };
         });
       })
@@ -91,17 +91,17 @@ class GraphGold extends PureComponent {
         return response1.json();
       })
       .then((data1) => {
-        let prixFromApi = data1.map((prix, x, index) => {
+        let priceFromApi = data1.map((price, x, index) => {
           var nombre = index.length;
-          somme[0] = somme[0] + prix.detail.price1;
-          somme[1] = somme[1] + prix.detail.price2;
-          somme[2] = somme[2] + prix.detail.price3;
-          somme[3] = somme[3] + prix.detail.price4;
-          somme[4] = somme[4] + prix.detail.price5;
-          somme[5] = somme[5] + prix.detail.price6;
-          somme[6] = somme[6] + prix.detail.price7;
-          somme[7] = somme[7] + prix.detail.price8;
-          somme[8] = somme[8] + prix.detail.price9;
+          somme[0] = somme[0] + price.detail.price1;
+          somme[1] = somme[1] + price.detail.price2;
+          somme[2] = somme[2] + price.detail.price3;
+          somme[3] = somme[3] + price.detail.price4;
+          somme[4] = somme[4] + price.detail.price5;
+          somme[5] = somme[5] + price.detail.price6;
+          somme[6] = somme[6] + price.detail.price7;
+          somme[7] = somme[7] + price.detail.price8;
+          somme[8] = somme[8] + price.detail.price9;
           var moyenneEncore = [];
           moyenneEncore[0] = (somme[0] / nombre) * 100;
           moyenneEncore[1] = (somme[1] / nombre) * 100;
@@ -114,23 +114,23 @@ class GraphGold extends PureComponent {
           moyenneEncore[8] = (somme[8] / nombre) * 100;
           this.setState({ lesmoyennes: [].concat(moyenneEncore) });
           return {
-            user: prix._id.user,
-            price1: prix.detail.price1,
-            price2: prix.detail.price2,
-            price3: prix.detail.price3,
-            price4: prix.detail.price4,
-            price5: prix.detail.price5,
-            price6: prix.detail.price6,
-            price7: prix.detail.price7,
-            price8: prix.detail.price8,
-            price9: prix.detail.price9,
-            lemedian: prix.detail.lemedian,
-            lamoyenne: prix.detail.lamoyenne,
-            specificcomments: prix.detail.specificcomments,
+            user: price._id.user,
+            price1: price.detail.price1,
+            price2: price.detail.price2,
+            price3: price.detail.price3,
+            price4: price.detail.price4,
+            price5: price.detail.price5,
+            price6: price.detail.price6,
+            price7: price.detail.price7,
+            price8: price.detail.price8,
+            price9: price.detail.price9,
+            lemedian: price.detail.lemedian,
+            lamoyenne: price.detail.lamoyenne,
+            specificcomments: price.detail.specificcomments,
           };
         });
         this.setState({
-          lesprix: [
+          lesprice: [
             {
               user: "",
               price1: "",
@@ -146,7 +146,7 @@ class GraphGold extends PureComponent {
               lamoyenne: "",
               specificcomments: "",
             },
-          ].concat(prixFromApi),
+          ].concat(priceFromApi),
         });
       })
       .catch((error1) => {

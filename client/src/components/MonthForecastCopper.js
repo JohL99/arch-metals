@@ -31,7 +31,7 @@ class MonthForecastCopper extends Component {
       comments: "",
       totpercent: "",
       median: "",
-      lesprix: [],
+      lesprice: [],
       foreprices: [10],
       lesmoyennes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
     };
@@ -79,19 +79,19 @@ class MonthForecastCopper extends Component {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((mutengo) => {
+        let talo = data.map((price) => {
           //put it in array
-          this.setState({ price1: mutengo.floorprice + mutengo.constant1 * 0 });
-          this.setState({ price2: mutengo.floorprice + mutengo.constant1 * 1 });
-          this.setState({ price3: mutengo.floorprice + mutengo.constant1 * 2 });
-          this.setState({ price4: mutengo.floorprice + mutengo.constant1 * 3 });
-          this.setState({ price5: mutengo.floorprice + mutengo.constant1 * 4 });
-          this.setState({ price6: mutengo.floorprice + mutengo.constant1 * 5 });
-          this.setState({ price7: mutengo.floorprice + mutengo.constant1 * 6 });
-          this.setState({ price8: mutengo.floorprice + mutengo.constant1 * 7 });
-          this.setState({ price9: mutengo.floorprice + mutengo.constant1 * 8 });
+          this.setState({ price1: price.floorprice + price.constant1 * 0 });
+          this.setState({ price2: price.floorprice + price.constant1 * 1 });
+          this.setState({ price3: price.floorprice + price.constant1 * 2 });
+          this.setState({ price4: price.floorprice + price.constant1 * 3 });
+          this.setState({ price5: price.floorprice + price.constant1 * 4 });
+          this.setState({ price6: price.floorprice + price.constant1 * 5 });
+          this.setState({ price7: price.floorprice + price.constant1 * 6 });
+          this.setState({ price8: price.floorprice + price.constant1 * 7 });
+          this.setState({ price9: price.floorprice + price.constant1 * 8 });
           return {
-            id: mutengo._id,
+            id: price._id,
           };
         });
       })
@@ -104,17 +104,17 @@ class MonthForecastCopper extends Component {
         return response1.json();
       })
       .then((data1) => {
-        let prixFromApi = data1.map((prix, x, index) => {
+        let priceFromApi = data1.map((price, x, index) => {
           var nombre = index.length;
-          somme[0] = somme[0] + prix.detail.price1;
-          somme[1] = somme[1] + prix.detail.price2;
-          somme[2] = somme[2] + prix.detail.price3;
-          somme[3] = somme[3] + prix.detail.price4;
-          somme[4] = somme[4] + prix.detail.price5;
-          somme[5] = somme[5] + prix.detail.price6;
-          somme[6] = somme[6] + prix.detail.price7;
-          somme[7] = somme[7] + prix.detail.price8;
-          somme[8] = somme[8] + prix.detail.price9;
+          somme[0] = somme[0] + price.detail.price1;
+          somme[1] = somme[1] + price.detail.price2;
+          somme[2] = somme[2] + price.detail.price3;
+          somme[3] = somme[3] + price.detail.price4;
+          somme[4] = somme[4] + price.detail.price5;
+          somme[5] = somme[5] + price.detail.price6;
+          somme[6] = somme[6] + price.detail.price7;
+          somme[7] = somme[7] + price.detail.price8;
+          somme[8] = somme[8] + price.detail.price9;
           var moyenneEncore = [];
           moyenneEncore[0] = somme[0] / nombre;
           moyenneEncore[1] = somme[1] / nombre;
@@ -138,24 +138,24 @@ class MonthForecastCopper extends Component {
             moyenneEncore[7],
             moyenneEncore[8]); */
           return {
-            user: prix._id.user,
-            price1: prix.detail.price1,
-            price2: prix.detail.price2,
-            price3: prix.detail.price3,
-            price4: prix.detail.price4,
-            price5: prix.detail.price5,
-            price6: prix.detail.price6,
-            price7: prix.detail.price7,
-            price8: prix.detail.price8,
-            price9: prix.detail.price9,
-            lemedian: prix.detail.lemedian,
-            lamoyenne: prix.detail.lamoyenne,
-            specificcomments: prix.detail.specificcomments,
+            user: price._id.user,
+            price1: price.detail.price1,
+            price2: price.detail.price2,
+            price3: price.detail.price3,
+            price4: price.detail.price4,
+            price5: price.detail.price5,
+            price6: price.detail.price6,
+            price7: price.detail.price7,
+            price8: price.detail.price8,
+            price9: price.detail.price9,
+            lemedian: price.detail.lemedian,
+            lamoyenne: price.detail.lamoyenne,
+            specificcomments: price.detail.specificcomments,
           };
         });
-        //prixFromApi.shift();
+        //priceFromApi.shift();
         this.setState({
-          lesprix: [
+          lesprice: [
             /* {
               user: "",
               price1: "",
@@ -171,7 +171,7 @@ class MonthForecastCopper extends Component {
               lamoyenne: "",
               specificcomments: "",
             }, */
-          ].concat(prixFromApi),
+          ].concat(priceFromApi),
         });
       })
       .catch((error1) => {
@@ -179,9 +179,9 @@ class MonthForecastCopper extends Component {
       });
     //ajout
   }
-  /* calculeMoyenne(lesprix) {
-    const monobjet = lesprix.map((leprix, somme, occ) => {
-      somme = somme + leprix.price1;
+  /* calculeMoyenne(lesprice) {
+    const monobjet = lesprice.map((leprice, somme, occ) => {
+      somme = somme + leprice.price1;
       return somme / 2;
     });
   }
@@ -192,21 +192,21 @@ class MonthForecastCopper extends Component {
     }
   }
   render() {
-    const renderPrix = (prixFromApi) => {
+    const renderprice = (priceFromApi) => {
       return (
-        <tr key={prixFromApi.id}>
-          <td align="center"><b>{prixFromApi.user}</b></td>
-          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/MT</b></td>
-          <td align="center">{prixFromApi.price1 * 100}%</td>
-          <td align="center">{prixFromApi.price2 * 100}%</td>
-          <td align="center">{prixFromApi.price3 * 100}%</td>
-          <td align="center">{prixFromApi.price4 * 100}%</td>
-          <td align="center">{prixFromApi.price5 * 100}%</td>
-          <td align="center">{prixFromApi.price6 * 100}%</td>
-          <td align="center">{prixFromApi.price7 * 100}%</td>
-          <td align="center">{prixFromApi.price8 * 100}%</td>
-          <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td align="center">{prixFromApi.specificcomments}</td>
+        <tr key={priceFromApi.id}>
+          <td align="center"><b>{priceFromApi.user}</b></td>
+          <td align="center"><b>${Math.round(priceFromApi.lamoyenne)}/MT</b></td>
+          <td align="center">{priceFromApi.price1 * 100}%</td>
+          <td align="center">{priceFromApi.price2 * 100}%</td>
+          <td align="center">{priceFromApi.price3 * 100}%</td>
+          <td align="center">{priceFromApi.price4 * 100}%</td>
+          <td align="center">{priceFromApi.price5 * 100}%</td>
+          <td align="center">{priceFromApi.price6 * 100}%</td>
+          <td align="center">{priceFromApi.price7 * 100}%</td>
+          <td align="center">{priceFromApi.price8 * 100}%</td>
+          <td align="center">{priceFromApi.price9 * 100}%</td>
+          <td align="center">{priceFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -231,7 +231,7 @@ class MonthForecastCopper extends Component {
               <td align="center"><b>${this.state.price9}/MT</b></td>
               <td align="center"><b>Justifications</b></td>
             </tr>
-            {this.state.lesprix.map(renderPrix)}
+            {this.state.lesprice.map(renderprice)}
             <tr>
               <td align="center"><b>Average</b></td>
               <td align="center">
