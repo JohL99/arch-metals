@@ -60,7 +60,7 @@ class GraphCopper extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
@@ -70,11 +70,11 @@ class GraphCopper extends PureComponent {
         let talo = data.map((mutengo) => {
           var njina = { ...this.state.njina };
           var i = 0;
-          for (i == 0; i < 9; i++) {
+          for (i === 0; i < 9; i++) {
             njina[i] = mutengo.floorprice + mutengo.constant1 * i;
           }
           this.setState({ njina });
-          for (i == 0; i < 9; i++) {
+          for (i === 0; i < 9; i++) {
             kombo[i] = mutengo.floorprice + mutengo.constant1 * i;
           }
           let donnees1 = { ...this.state.donnees1 };
@@ -85,7 +85,7 @@ class GraphCopper extends PureComponent {
             },
           ];
           var y = 1;
-          for (y == 1; y < 9; y++) {
+          for (y === 1; y < 9; y++) {
             donnees1.push({
               price: this.state.njina[y],
               Percentage: this.state.lesmoyennes[y],

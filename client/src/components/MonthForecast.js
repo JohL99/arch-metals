@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 class MonthForecast extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +38,6 @@ class MonthForecast extends Component {
     this.fillPrices = this.fillPrices.bind(this);
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
   }
-
   trouveLeMedian() {
     var leMedian;
     let Mukubwa = Math.max(
@@ -53,29 +51,17 @@ class MonthForecast extends Component {
       this.state.lesmoyennes[7],
       this.state.lesmoyennes[8]
     );
-
-    if (Mukubwa === this.state.lesmoyennes[0]) {
-      leMedian = this.state.price1;
-    } else if (Mukubwa === this.state.lesmoyennes[1]) {
-      leMedian = this.state.price2;
-    } else if (Mukubwa === this.state.lesmoyennes[2]) {
-      leMedian = this.state.price3;
-    } else if (Mukubwa === this.state.lesmoyennes[3]) {
-      leMedian = this.state.price4;
-    } else if (Mukubwa === this.state.lesmoyennes[4]) {
-      leMedian = this.state.price5;
-    } else if (Mukubwa === this.state.lesmoyennes[5]) {
-      leMedian = this.state.price6;
-    } else if (Mukubwa === this.state.lesmoyennes[6]) {
-      leMedian = this.state.price7;
-    } else if (Mukubwa === this.state.lesmoyennes[7]) {
-      leMedian = this.state.price8;
-    } else if (Mukubwa === this.state.lesmoyennes[8]) {
-      leMedian = this.state.price9;
-    }
+    if (Mukubwa === this.state.lesmoyennes[0]) {leMedian = this.state.price1;} 
+      else if (Mukubwa === this.state.lesmoyennes[1]) {leMedian = this.state.price2;} 
+      else if (Mukubwa === this.state.lesmoyennes[2]) {leMedian = this.state.price3;} 
+      else if (Mukubwa === this.state.lesmoyennes[3]) {leMedian = this.state.price4;} 
+      else if (Mukubwa === this.state.lesmoyennes[4]) {leMedian = this.state.price5;} 
+      else if (Mukubwa === this.state.lesmoyennes[5]) {leMedian = this.state.price6;} 
+      else if (Mukubwa === this.state.lesmoyennes[6]) {leMedian = this.state.price7;} 
+      else if (Mukubwa === this.state.lesmoyennes[7]) {leMedian = this.state.price8;} 
+      else if (Mukubwa === this.state.lesmoyennes[8]) {leMedian = this.state.price9;}
     return leMedian;
   }
-
   fillPrices(sanza) {
     this.setState({ price1: "" });
     this.setState({ price2: "" });
@@ -86,14 +72,13 @@ class MonthForecast extends Component {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-
         let talo = data.map((mutengo) => {
           //put it in array
           this.setState({ price1: mutengo.floorprice + mutengo.constant1 * 0 });
@@ -121,7 +106,6 @@ class MonthForecast extends Component {
       .then((data1) => {
         let prixFromApi = data1.map((prix, x, index) => {
           var nombre = index.length;
-
           somme[0] = somme[0] + prix.detail.price1;
           somme[1] = somme[1] + prix.detail.price2;
           somme[2] = somme[2] + prix.detail.price3;
@@ -131,9 +115,7 @@ class MonthForecast extends Component {
           somme[6] = somme[6] + prix.detail.price7;
           somme[7] = somme[7] + prix.detail.price8;
           somme[8] = somme[8] + prix.detail.price9;
-
           var moyenneEncore = [];
-
           moyenneEncore[0] = somme[0] / nombre;
           moyenneEncore[1] = somme[1] / nombre;
           moyenneEncore[2] = somme[2] / nombre;
@@ -143,7 +125,6 @@ class MonthForecast extends Component {
           moyenneEncore[6] = somme[6] / nombre;
           moyenneEncore[7] = somme[7] / nombre;
           moyenneEncore[8] = somme[8] / nombre;
-
           this.setState({ lesmoyennes: [].concat(moyenneEncore) });
           /* 
           let Maxi =
@@ -156,7 +137,6 @@ class MonthForecast extends Component {
             moyenneEncore[6],
             moyenneEncore[7],
             moyenneEncore[8]); */
-
           return {
             user: prix._id.user,
             price1: prix.detail.price1,
@@ -199,22 +179,18 @@ class MonthForecast extends Component {
 
     //ajout
   }
-
   /* calculeMoyenne(lesprix) {
     const monobjet = lesprix.map((leprix, somme, occ) => {
       somme = somme + leprix.price1;
-
       return somme / 2;
     });
   }
  */
-
   componentDidUpdate(prevProps) {
     if (prevProps.mweji !== this.props.mweji) {
       this.fillPrices(this.props.mweji);
     }
   }
-
   render() {
     const renderPrix = (prixFromApi) => {
       return (
@@ -224,7 +200,7 @@ class MonthForecast extends Component {
           <td>{prixFromApi.lemedian}</td>
           <td>{prixFromApi.price1 * 100}%</td>
           <td>{prixFromApi.price2 * 100}%</td>
-          <td>{prixFromApi.price3 * 100}% </td>
+          <td>{prixFromApi.price3 * 100}%</td>
           <td>{prixFromApi.price4 * 100}%</td>
           <td>{prixFromApi.price5 * 100}%</td>
           <td>{prixFromApi.price6 * 100}%</td>
@@ -235,14 +211,13 @@ class MonthForecast extends Component {
         </tr>
       );
     };
-
     return (
       <div>
         <table className="table table-bordered">
           <tbody>
             <tr>
               <td colSpan="24">
-                <b>Current: Copper - {this.props.mweji} Forecasts</b>
+                <b>Most Recent Copper Forecasts - {this.props.mweji}</b>
               </td>
             </tr>
             <tr>
@@ -250,7 +225,7 @@ class MonthForecast extends Component {
                 <b>{this.props.mweji}</b>
               </td>
               <td>
-                <b>Mean</b>
+                <b>EV</b>
               </td>
               <td>
                 <b>Median</b>
@@ -282,16 +257,14 @@ class MonthForecast extends Component {
               <td>
                 <b>{this.state.price9}</b>
               </td>
-
               <td>
-                <b>Participant's Specific Remarks</b>
+                <b>Justifications</b>
               </td>
             </tr>
             {this.state.lesprix.map(renderPrix)}
-
             <tr>
               <td>
-                <b>Average</b>{" "}
+                <b>Average</b>
               </td>
               <td>
                 <b>
@@ -305,40 +278,18 @@ class MonthForecast extends Component {
                       this.state.price7 * this.state.lesmoyennes[6] +
                       this.state.price8 * this.state.lesmoyennes[7] +
                       this.state.price9 * this.state.lesmoyennes[8]
-                  )}
-                </b>
-              </td>
-              <td>
-                <b>{this.trouveLeMedian()}</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[0] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[1] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[2] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[3] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[4] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[5] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[6] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[7] * 100)}%</b>{" "}
-              </td>
-              <td>
-                <b>{Math.round(this.state.lesmoyennes[8] * 100)}%</b>{" "}
-              </td>
-              <td>{} </td>
+                  )}</b></td>
+              <td><b>{this.trouveLeMedian()}</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[0] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[1] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[2] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[3] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[4] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[5] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[6] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[7] * 100)}%</b></td>
+              <td><b>{Math.round(this.state.lesmoyennes[8] * 100)}%</b></td>
+              <td>{}</td>
             </tr>
           </tbody>
         </table>

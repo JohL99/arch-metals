@@ -3,7 +3,7 @@ import React from "react";
 export default function Contacts() {
   return (
     <div>
-      <h3>Contacts</h3>
+      <h3>Contact Us</h3>
       <p className="text-justify">
         If you are unhappy, or if you have any complaints about the research
         project in the first instance, please feel free to let us know by
@@ -17,15 +17,13 @@ export default function Contacts() {
         Supervisor involved, and the particulars of the complaint you wish to
         make.
       </p>
-      Researcher: John Lamprecht Email:
-      <a href="mailto:John.Lamprecht@online.liverpool.ac.uk">
-        John.Lamprecht@online.liverpool.ac.uk
-      </a>
+	<p className="text-justify">Researcher: John Lamprecht Email: John.Lamprecht@online.liverpool.ac.uk</p>
       <br />
-      Supervisor: Jim Hanly Email:
-      <a href="mailto:Jim.Hanly@online.liverpool.ac.uk">
-        Jim.Hanly@online.liverpool.ac.uk
-      </a>
+      <p className="text-justify">Supervisor: Jim Hanly Email: Jim.Hanly@online.liverpool.ac.uk</p>
+      <br />
+	<h3>Website Issues</h3>
+	<p className="text-justify">
+        Researcher: John Lamprecht Email: JCL@consensusmetals.info</p>
       <br />
     </div>
   );

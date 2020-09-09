@@ -1,6 +1,5 @@
 import React, { PureComponent } from "react";
 /* import { Doughnut, HorizontalBar, Bar } from "react-chartjs-2"; */
-
 import {
   BarChart,
   Bar,
@@ -12,7 +11,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
 var data1 = {
   labels: [
     "January",
@@ -27,98 +25,40 @@ var data1 = {
   ],
   datasets: [
     {
-      label: "My First dataset",
+      label: "comex",
       backgroundColor: "rgba(255,99,132,0.2)",
       borderColor: "rgba(255,99,132,1)",
       borderWidth: 1,
       hoverBackgroundColor: "rgba(255,99,132,0.4)",
       hoverBorderColor: "rgba(255,99,132,1)",
-      data: [65, 59, 80, 81, 56, 55, 40, 25, 38],
+      data: [0, 0],
     },
   ],
 };
 var kombo = [];
-
 const data2 = [
   {
-    price: "Page A",
+    price: "COMEX",
     pour: 4000,
     pv: 2400,
     amt: 2400,
   },
   {
-    price: "Page B",
+    price: "Cumulative Average",
     pour: 3000,
     pv: 1398,
     amt: 2210,
   },
-  {
-    price: "Page C",
-    pour: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    price: "Page D",
-    pour: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    price: "Page E",
-    pour: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    price: "Page F",
-    pour: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    price: "Page G",
-    pour: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
-
+  ];
 class Graph1 extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
+      dateforecast: "",
       commodity: "",
       mois: "",
-      user: "",
-      priceAvr: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
-      price6: "",
-      price7: "",
-      price8: "",
-      price9: "",
-      percent1: "",
-      percent2: "",
-      percent3: "",
-      percent4: "",
-      percent5: "",
-      percent6: "",
-      percent7: "",
-      percent8: "",
-      percent9: "",
-      justif: "",
-      generalcomments: "",
-      specificcomments: "",
-      comments: "",
-      totpercent: "",
-      median: "",
-      lesprix: [],
-      njina: [],
-      lesmoyennes: [],
+      comex: "",
+      cum_average: "",
       donnees1: [8],
       donnees: {
         labels: [],
@@ -136,11 +76,9 @@ class Graph1 extends PureComponent {
         ],
       },
     };
-
     this.fillPrices = this.fillPrices.bind(this);
     //this.trouveLeMedian = this.trouveLeMedian.bind(this);
   }
-
   fillPrices(sanza) {
     this.setState({ price1: "" });
     this.setState({ price2: "" });
@@ -151,25 +89,21 @@ class Graph1 extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-
         let talo = data.map((mutengo) => {
           //put it in array
-
           /*  var donnees = { ...this.state.donnees };
           var i = 0;
           for (i == 0; i < 9; i++) {
             donnees.labels[i] = mutengo.floorprice + mutengo.constant1 * i;
           } */
           // this.setState({ donnees });
-
           var njina = { ...this.state.njina };
           var i = 0;
           for (i == 0; i < 9; i++) {
@@ -177,16 +111,13 @@ class Graph1 extends PureComponent {
           }
           this.setState({ njina });
           //console.log(this.state.njina);
-
           for (i == 0; i < 9; i++) {
             kombo[i] = mutengo.floorprice + mutengo.constant1 * i;
           }
-
           let donnees1 = { ...this.state.donnees1 };
           donnees1 = [
             { price: this.state.njina[0], pour: this.state.lesmoyennes[0] },
           ];
-
           var y = 1;
           for (y == 1; y < 9; y++) {
             donnees1.push({
@@ -194,10 +125,8 @@ class Graph1 extends PureComponent {
               pour: this.state.lesmoyennes[y],
             });
           }
-
           this.setState({ donnees1 });
           console.log(this.state.donnees1);
-
           return {
             id: mutengo._id,
           };
@@ -215,7 +144,6 @@ class Graph1 extends PureComponent {
       .then((data1) => {
         let prixFromApi = data1.map((prix, x, index) => {
           var nombre = index.length;
-
           somme[0] = somme[0] + prix.detail.price1;
           somme[1] = somme[1] + prix.detail.price2;
           somme[2] = somme[2] + prix.detail.price3;
@@ -225,9 +153,7 @@ class Graph1 extends PureComponent {
           somme[6] = somme[6] + prix.detail.price7;
           somme[7] = somme[7] + prix.detail.price8;
           somme[8] = somme[8] + prix.detail.price9;
-
           var moyenneEncore = [];
-
           moyenneEncore[0] = (somme[0] / nombre) * 100;
           moyenneEncore[1] = (somme[1] / nombre) * 100;
           moyenneEncore[2] = (somme[2] / nombre) * 100;
@@ -237,15 +163,12 @@ class Graph1 extends PureComponent {
           moyenneEncore[6] = (somme[6] / nombre) * 100;
           moyenneEncore[7] = (somme[7] / nombre) * 100;
           moyenneEncore[8] = (somme[8] / nombre) * 100;
-
           this.setState({ lesmoyennes: [].concat(moyenneEncore) });
           //console.log(moyenneEncore);
-
           let donnees = { ...this.state.donnees };
           donnees.labels = kombo;
           donnees.datasets.label = "Ndantsi";
           donnees.datasets.data = moyenneEncore;
-
           /* let donnees1 = { ...this.state.donnees1 };
           donnees1 = [{ price: kombo[0], pour: moyenneEncore[0] }];
           var y = 1;
@@ -255,16 +178,12 @@ class Graph1 extends PureComponent {
             ]);
           } */
           //data2.datasets.data = moyenneEncore;
-
           //donnees.labels = { ...this.state.njina };
           this.setState({ donnees });
-
           //this.setState({ donnees1 });
-
           //console.log(this.state.donnees1);
           /*  let lineChart = this.reference.chartInstance;
           lineChart.update(); */
-
           return {
             user: prix._id.user,
             price1: prix.detail.price1,
@@ -305,16 +224,13 @@ class Graph1 extends PureComponent {
         console.log(error1);
       });
   }
-
   componentDidUpdate(prevProps) {
     if (prevProps.mweji !== this.props.mweji) {
       this.fillPrices(this.props.mweji, data1);
     }
   }
-
   render() {
     /* const donnees1 = this.state.donnees1;
-
     console.log(donnees1); */
     return (
       <div style={{ width: "70%", height: 300 }}>
@@ -336,8 +252,8 @@ class Graph1 extends PureComponent {
             <YAxis dataKey="price" type="category" />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pour" fill="#8884d8" />
-            {/* <Bar dataKey="pour" fill="#82ca9d" /> */}
+            <Bar dataKey="pour" fill="#00B050" />
+            {/* <Bar dataKey="pour" fill="#FF0000" /> */}
           </BarChart>
         </ResponsiveContainer>
       </div>

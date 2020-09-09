@@ -71,7 +71,7 @@ router.get("/lemois/:lemois", (req, res) => {
 });
 
 // @route   GET api/beyi/commois/:lemois&:commodity
-// @desc    Renvoie le mois et le commodity donnés en paramètre
+// @desc    Renvoie le mois et le commodity donnés en paramètre / Returns the month and commodity given in parameter
 // @access  Public
 router.get("/commois/:lemois&:commodity", (req, res) => {
   Beyi.find({

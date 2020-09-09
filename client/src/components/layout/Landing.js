@@ -9,15 +9,17 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">
-                  Consensus Deliberation Panel – Metal Forecasts
+                <p></p>
+                <p></p>
+                <h1 className="display-4 mb-4">
+                  Consensus Metals Forecasting Panel
                 </h1>
-                <p className="lead"> Copper and Gold </p>
+                <h2 class="display-4 mb-5">Copper and Gold</h2>
                 <hr />
-                <Link to="/register" className="btn btn-lg btn-info mr-2">
+                <Link to="/register" className="btn btn-md btn-info mr-2">
                   Sign Up
                 </Link>
-                <Link to="/login" className="btn btn-lg btn-light">
+                <Link to="/login" className="btn btn-md btn-light">
                   Login
                 </Link>
               </div>

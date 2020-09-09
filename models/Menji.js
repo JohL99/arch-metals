@@ -17,7 +17,7 @@ const MenjiSchema = new Schema({
   },
   dateforecast: {
     type: Date,
-    required: false,
+    required: true,
   },
   price1: {
     type: Number,

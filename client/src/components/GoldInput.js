@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MonthForecastGold from "./MonthForecastGold";
 import GraphGold from "./GraphGold";
+import isEmpty from "../validation/is-empty";
 class GoldInput extends Component {
   constructor(props) {
     super(props);
@@ -61,7 +62,6 @@ class GoldInput extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -73,6 +73,19 @@ class GoldInput extends Component {
     }
   }
   onSubmit(e) {
+    if (
+      isEmpty(this.state.percent1) &&
+      isEmpty(this.state.percent2) &&
+      isEmpty(this.state.percent3) &&
+      isEmpty(this.state.percent4) &&
+      isEmpty(this.state.percent5) &&
+      isEmpty(this.state.percent6) &&
+      isEmpty(this.state.percent7) &&
+      isEmpty(this.state.percent8) &&
+      isEmpty(this.state.percent9)
+    ) {
+      return;
+    }
     var date1 = new Date();
     var date2 = date1.toLocaleString();
     const { user } = this.props.auth;
@@ -91,26 +104,16 @@ class GoldInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    var LeMedian = 0;
-    if (Max == this.state.percent1) {
-      LeMedian = this.state.price1;
-    } else if (Max == this.state.percent2) {
-      LeMedian = this.state.price2;
-    } else if (Max == this.state.percent3) {
-      LeMedian = this.state.price3;
-    } else if (Max == this.state.percent4) {
-      LeMedian = this.state.price4;
-    } else if (Max == this.state.percent5) {
-      LeMedian = this.state.price5;
-    } else if (Max == this.state.percent6) {
-      LeMedian = this.state.price6;
-    } else if (Max == this.state.percent7) {
-      LeMedian = this.state.price7;
-    } else if (Max == this.state.percent8) {
-      LeMedian = this.state.price8;
-    } else if (Max == this.state.percent9) {
-      LeMedian = this.state.price9;
-    }
+    var LeMedian =0;
+    if (Max === this.state.percent1) {LeMedian = this.state.price1;} 
+      else if (Max === this.state.percent2) {LeMedian = this.state.price2;} 
+      else if (Max === this.state.percent3) {LeMedian = this.state.price3;} 
+      else if (Max === this.state.percent4) {LeMedian = this.state.price4;} 
+      else if (Max === this.state.percent5) {LeMedian = this.state.price5;} 
+      else if (Max === this.state.percent6) {LeMedian = this.state.price6;} 
+      else if (Max === this.state.percent7) {LeMedian = this.state.price7;} 
+      else if (Max === this.state.percent8) {LeMedian = this.state.price8;} 
+      else if (Max === this.state.percent9) {LeMedian = this.state.price9;}
     this.setState({ lemedian: LeMedian });
     //**** AJOUT MEDIAN */
     const newEntry = {
@@ -254,39 +257,51 @@ class GoldInput extends Component {
             <tbody>
               <tr>
                 <td colSpan="12" align="center">
-                  <b>Consensus Deliberation Panel - Gold Forecasts</b>
+                  <b>Consensus Metals Panel - Gold Forecast Inputs</b>
                 </td>
               </tr>
               <tr>
                 <td className="first" align="center">
-                  <label>Metal</label>
+                  <label>
+                    <b>Metal</b>
+                  </label>
                 </td>
                 <td align="center">
                   <b>Gold</b>
                 </td>
-                <td className="instruction" rowSpan="3" align="left" colSpan="11">
+                <td
+                  className="instruction"
+                  rowSpan="3"
+                  colSpan="11"
+                  align="left"
+                >
                   <b>Instructions</b>:{" "}
                   <i>
-                    Please select a month on the <b>Left</b> for which you want
-                    to make a gold price forecast. Once the month has been
-                    choosen, please select the expected probability you want to
-                    assign to the indicated price baskets, such that the
-                    total probabilities sums to 100%. It would be appreciated 
-                    if you could also provide an indication of the basis 
-                    for your gold price forecast in the text box beneath 
-                    the forecast probability table. Based on the combined 
-                    inputs of all panel participants, a consensus gold  
-                    price forecast is been computed. In the general comments 
-                    section please feel free to comment on the consensus
-                    gold price forecast relative to your views and that 
-                    of other participants. You can also make comments about
-                    other participant’s views in the general comments section.
+                    <td align="justify">
+                      Please select a month on the <b>Left</b> for which you
+                      want to make a gold price forecast. Once the month has
+                      been choosen, please select the expected probability you
+                      want to assign to the indicated price baskets, such that
+                      the total probabilities sums to 100%. It would be
+                      appreciated if you could also provide an indication of the
+                      basis for your gold price forecast in the text box
+                      beneath the forecast probability table. Based on the
+                      combined inputs of all panel participants, a consensus
+                      gold price forecast will been computed. In the general
+                      comments section please feel free to comment on the
+                      consensus gold price forecast relative to your views and
+                      that of other participants. You can also make comments
+                      about other participant’s views in the general comments
+                      section.
+                    </td>
                   </i>
                 </td>
               </tr>
               <tr>
-                <td className="first">
-                  <label>Month</label>
+                <td className="first" align="center">
+                  <label>
+                    <b>Month</b>
+                  </label>
                 </td>
                 <td align="center">
                   <select
@@ -302,11 +317,7 @@ class GoldInput extends Component {
                       this.fillPrices(e.target.value);
                     }}
                   >
-                    <option value="">
-                      {this.state.months[this.state.currentmonth] +
-                        " " +
-                        new Date().getFullYear()}
-                    </option>
+                    <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
                       .map((lemois, index) => (
@@ -322,358 +333,361 @@ class GoldInput extends Component {
               </tr>
               <tr>
                 <td className="first" align="center">
-                  <label>Username</label>
+                  <label>
+                    <b>Username</b>
+                  </label>
                 </td>
                 <td align="center">
                   <h3>{user.name}</h3>
                 </td>
               </tr>
               <tr>
-                <td className="first" align="center">Forecast Price</td>
-                <td align="center">
-                  Gold ($/oz){" "}
-                  {
-                    /*this.state.months[new Date().getMonth()]*/ this.state
-                      .month
-                  }
-                </td>
-                <td id="avrg" align="center">{this.state.priceAvr}</td>
-                <td id="" align="center">
-                  {" "}
-                  {this.state.price1}{" "}
-                </td>
-                <td id="" align="center">
-                  {this.state.price2}
-                </td>
-                <td id="" align="center">
-                  {this.state.price3}
-                </td>
-                <td id="" align="center">
-                  {this.state.price4}
-                </td>
-                <td id="" align="center">
-                  {this.state.price5}
-                </td>
-                <td id="" align="center">
-                  {this.state.price6}
-                </td>
-                <td id="" align="center">
-                  {this.state.price7}
-                </td>
-                <td id="" align="center">
-                  {this.state.price8}
-                </td>
-                <td id="" align="center">
-                  {this.state.price9}
-                </td>
+                <td className="first" align="center"><b>Expected Price</b></td>
+                <td id="avrg" align="center"><b>${this.state.priceAvr}/oz</b></td>
+                <td align="center">{"  "}</td>
+                <td id="" align="center"><b>${this.state.price1}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price2}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price3}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price4}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price5}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price6}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price7}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price8}/oz</b></td>
+                <td id="" align="center"><b>${this.state.price9}/oz</b></td>
               </tr>
               <tr>
-                <td className="first" align="center">Forecast Estimate</td>
-                <td align="left">NB: total must sum to 100%</td>
-                <td id="sum_percent" align="center">{this.state.totpercent} %</td>
+                <td className="first" align="center"><b>Expected Probability</b></td>
+                <td align="center"><i>NB: the total must sum to 100%</i></td>
+                <td id="sum_percent" align="center">{this.state.totpercent}%</td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent1"
+                    type="number"
                     value={this.state.percent1}
                     onChange={(e) => {
                       this.setState({
                         percent1: e.target.value,
                         validationError:
-                          e.target.value === "" ? "You must select the percentage" : "",
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
+                            : "",
                       });
                       this.CalculPondere(e.target.value, 1);
                       this.TotalPourcent(e.target.value, 1);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent2"
+                    type="number"
                     value={this.state.percent2}
                     onChange={(e) => {
                       this.setState({
                         percent2: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 2);
                       this.TotalPourcent(e.target.value, 2);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent3"
+                    type="number"
                     value={this.state.percent3}
                     onChange={(e) => {
                       this.setState({
                         percent3: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 3);
                       this.TotalPourcent(e.target.value, 3);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent4"
+                    type="number"
                     value={this.state.percent4}
                     onChange={(e) => {
                       this.setState({
                         percent4: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 4);
                       this.TotalPourcent(e.target.value, 4);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent5"
+                    type="number"
                     value={this.state.percent5}
                     onChange={(e) => {
                       this.setState({
                         percent5: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 5);
                       this.TotalPourcent(e.target.value, 5);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent6"
+                    type="number"
                     value={this.state.percent6}
                     onChange={(e) => {
                       this.setState({
                         percent6: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 6);
                       this.TotalPourcent(e.target.value, 6);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent7"
+                    type="number"
                     value={this.state.percent7}
                     onChange={(e) => {
                       this.setState({
                         percent7: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 7);
                       this.TotalPourcent(e.target.value, 7);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent8"
+                    type="number"
                     value={this.state.percent8}
                     onChange={(e) => {
                       this.setState({
                         percent8: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 8);
                       this.TotalPourcent(e.target.value, 8);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
                 <td id="" align="center">
                   <select
                     className="percent"
                     name="percent9"
+                    type="number"
                     value={this.state.percent9}
                     onChange={(e) => {
                       this.setState({
                         percent9: e.target.value,
                         validationError:
-                          e.target.value === ""
-                            ? "You must select the percentage"
+                          e.target.value === "0.01"
+                            ? "Choose a percentage"
                             : "",
                       });
                       this.CalculPondere(e.target.value, 9);
                       this.TotalPourcent(e.target.value, 9);
                     }}
                   >
-                      <option value="0"> 0%</option>
-                      <option value="0.10"> 10%</option>
-                      <option value="0.20"> 20%</option>
-                      <option value="0.30"> 30%</option>
-                      <option value="0.40"> 40%</option>
-                      <option value="0.50"> 50%</option>
-                      <option value="0.60"> 60%</option>
-                      <option value="0.70"> 70%</option>
-                      <option value="0.80"> 80%</option>
-                      <option value="0.90"> 90%</option>
-                      <option value="1">100%</option>
+                    <option value="0.01">{" "}??%</option>
+                    <option value="0.0">{"  "}0%</option>
+                    <option value="0.1">{" "}10%</option>
+                    <option value="0.2">{" "}20%</option>
+                    <option value="0.3">{" "}30%</option>
+                    <option value="0.4">{" "}40%</option>
+                    <option value="0.5">{" "}50%</option>
+                    <option value="0.6">{" "}60%</option>
+                    <option value="0.7">{" "}70%</option>
+                    <option value="0.8">{" "}80%</option>
+                    <option value="0.9">{" "}90%</option>
+                    <option value="1.0">100%</option>
                   </select>
                 </td>
               </tr>
               <tr>
-                <td className="first" align="center">Forecast Justication</td>
+                <td className="first" align="center">
+                  <b>Forecast Justication</b>
+                </td>
                 <td colSpan="11">
                   <textarea
                     name="specificcomments"
+                    isRequired="true"
                     onChange={this.onChange}
                     value={this.state.specificcomments}
-                    placeholder="NB: Please briefly explain the basis for your gold price forecast
-
-
-                  "
+                    placeholder="Please briefly explain the basis for your gold price forecast."
                     rows="4"
+                    align="justify"
+                    wrap="soft"
                     style={{ width: "100%" }}
                   ></textarea>
                 </td>
               </tr>
               <tr>
-                <td className="first" align="center">General Comments</td>
+                <td className="first" align="center">
+                  <b>General Comments</b>
+                </td>
                 <td colSpan="11">
                   <textarea
                     name="generalcomments"
+                    isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-		placeholder="NB: If you wish to make any general comments about the consensus 
-		gold price forecast or other participant's forecasts. If you wish to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link.               			
-
-                  "
-                    rows="8"
+                    placeholder="If you wish to make any general comments about the consensus gold price forecast or other participant's forecasts. If you wish to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link."
+                    rows="4"
+                    align="justify"
+                    wrap="soft"
                     style={{ width: "100%" }}
                   ></textarea>
                 </td>
               </tr>
               <tr>
-                <td className="first">Submit Forecast</td>
+                <td className="first" align="center">
+                  <b>Submit Forecast</b>
+                </td>
                 <td align="center">
                   {/*    <button
                   type="button"
@@ -683,21 +697,26 @@ class GoldInput extends Component {
                   Yes
                 </button> */}
                   <input
-                    type="submit"
+                    type="submit" formtarget="Your forecast has been submitted"
                     placeholder="YES"
                     className="btn btn-info btn-block mt-4"
                   />
                 </td>
                 <td colSpan="10" align="left">
                   <i>
-                    NB: You can submit forecasts as often as you choose. Please
-                    try keep forecasts realistic. Any abnormal or extreme
-                    forecasts will be impact on your ranking calculations.
+                    <td align="justify">
+                      {"  "}You can submit forecasts as often as you choose.
+                      Please try keep forecasts realistic. Any abnormal or
+                      extreme forecasts will be impact on the aggregated
+                      consensus gold price.
+                    </td>
                   </i>
                 </td>
               </tr>
               <tr>
-                <td className="first">Date</td>
+                <td className="first" align="center">
+                  <b>Date</b>
+                </td>
                 <td align="center">
                   {new Date().toLocaleDateString("en-US", {
                     weekday: "long",
@@ -706,24 +725,34 @@ class GoldInput extends Component {
                     day: "numeric",
                   })}
                 </td>
-                <td colSpan="10" rowSpan="2" align="center">
+                <td colSpan="10" rowSpan="2" align="left">
                   <i>
-                    NB: This will be the date and time used to record your
-                    gold price forecast. The date and time will also be
-                    used in the ranking calculations.
+                    <td align="justify">
+                      {"  "}This will be the date and time used to record your
+                      gold price forecast. The date and time will also be used
+                      in the ranking calculations.
+                    </td>
                   </i>
                 </td>
               </tr>
               <tr>
-                <td className="first" align="center">Time</td>
-                <td>{new Date().toLocaleTimeString("en-US", {hour: '2-digit', minute: '2-digit', hour12: true})}</td>
+                <td className="first" align="center">
+                  <b>Time</b>
+                </td>
+                <td align="center">
+                  {new Date().toLocaleTimeString("en-US", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })}
+                </td>
               </tr>
             </tbody>
           </table>
         </form>
         <div>
-          <MonthForecastGold mweji={this.state.mois} />
           <GraphGold mweji={this.state.mois} />
+          <MonthForecastGold mweji={this.state.mois} />
         </div>
       </div>
     );

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 class MonthForecast extends Component {
   constructor(props) {
     super(props);
@@ -31,12 +30,10 @@ class MonthForecast extends Component {
       specificcomments: "",
       comments: "",
       totpercent: "",
-
       foreprices: [][8],
     };
     this.fillPrices = this.fillPrices.bind(this);
   }
-
   fillPrices(sanza) {
     this.setState({ price1: "" });
     this.setState({ price2: "" });
@@ -47,16 +44,13 @@ class MonthForecast extends Component {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-
         console.log(yx);
-
         let talo = data.map((mutengo) => {
           //put it in array
           this.setState({ price1: mutengo.floorprice + mutengo.constant1 * 0 });
@@ -77,7 +71,6 @@ class MonthForecast extends Component {
         console.log(error);
       });
   }
-
   renderTableData(sanza) {
     fetch("/api/menji/dernierda/" + sanza + "&Copper")
       .then((response1) => {
@@ -85,7 +78,6 @@ class MonthForecast extends Component {
       })
       .then((data1) => {
         let yx1 = data1;
-
         let pourcent = data1.map((mutengo1, index) => {
           //put it in array
           const {
@@ -114,13 +106,11 @@ class MonthForecast extends Component {
         console.log(error);
       });
   }
-
   componentDidUpdate(prevProps) {
     if (prevProps.mweji !== this.props.mweji) {
       this.fillPrices(this.props.mweji);
     }
   }
-
   render() {
     //this.fillPrices(this.props.mweji);
     return (
@@ -129,7 +119,7 @@ class MonthForecast extends Component {
           <tbody>
             <tr>
               <td colSpan="24">
-                <b>Current: Copper - {this.props.mweji} Forecasts</b>
+                <b>Most Recent Copper - {this.props.mweji} Forecasts</b>
               </td>
             </tr>
             <tr>
@@ -137,7 +127,7 @@ class MonthForecast extends Component {
                 <b>{this.props.mweji}</b>
               </td>
               <td>
-                <b>Mean</b>
+                <b>EV</b>
               </td>
               <td>
                 <b>Median</b>
@@ -169,9 +159,8 @@ class MonthForecast extends Component {
               <td>
                 <b>{this.state.price9}</b>
               </td>
-
               <td>
-                <b>Participant's Specific Remarks</b>
+                <b>Justifications</b>
               </td>
             </tr>
             <tr>

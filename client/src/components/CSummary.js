@@ -62,7 +62,7 @@ class CSummary extends PureComponent {
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
   }
   CreeOldata() {
-    let lesmoyennesP = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let lesmoyennesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     function arrayObjectIndexOf(myArray, searchTerm, property) {
       for (var i = 0, len = myArray.length; i < len; i++) {
         if (myArray[i][property] === searchTerm) return i;
@@ -109,7 +109,7 @@ class CSummary extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
@@ -166,7 +166,7 @@ class CSummary extends PureComponent {
           return {
             id: prix.detail._id,
             user: prix._id.user,
-            dateforecast: prix.detail.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(prix.detail.dateforecast)),
             price1: prix.detail.price1,
             price2: prix.detail.price2,
             price3: prix.detail.price3,
@@ -212,6 +212,32 @@ class CSummary extends PureComponent {
     this.fillotherdata(sanza);
     //ajout
   }
+  convert_to_utc = (dateStr) => {
+    //check whether time is in PM or AM
+    var hours = dateStr.getHours();
+    var hours = (hours+24-2)%24;
+    var mid="am";
+    if(hours==0){ //At 00 hours we need to show 12 am
+    hours=12;
+    }
+    else if(hours>12)
+    {
+    hours=hours%12;
+    mid="pm";
+    }
+    var newdate = 
+	dateStr.toUTCString().split(" ")[0] + 
+	dateStr.toUTCString().split(" ")[1] + 
+	" " + 
+	dateStr.toUTCString().split(" ")[2] + 
+	" " + 
+	dateStr.toUTCString().split(" ")[3] + 
+	" " + 
+	dateStr.toUTCString().split(" ")[4].split(":")[0] + 
+	":" + 
+	dateStr.toUTCString().split(" ")[4].split(":")[1];
+    return newdate + " " + mid;
+  };
   fillotherdata(sanza1) {
     fetch("/api/menji/all/" + sanza1 + "&Copper")
       .then((response2) => {
@@ -222,7 +248,7 @@ class CSummary extends PureComponent {
           return {
             id: talo._id,
             user: talo.user,
-            dateforecast: talo.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(talo.dateforecast)),
             price1: talo.price1,
             price2: talo.price2,
             price3: talo.price3,
@@ -263,7 +289,7 @@ class CSummary extends PureComponent {
       });
   }
   fillgeneralcomments(sanza2) {
-    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&7")
+    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&8")
       .then((response3) => {
         return response3.json();
       })
@@ -297,33 +323,37 @@ class CSummary extends PureComponent {
       this.state.lesmoyennes[7],
       this.state.lesmoyennes[8]
     );
-    if (Mukubwa === this.state.lesmoyennes[0]) {
-      leMedian = this.state.price1;
-    } else if (Mukubwa === this.state.lesmoyennes[1]) {
-      leMedian = this.state.price2;
-    } else if (Mukubwa === this.state.lesmoyennes[2]) {
-      leMedian = this.state.price3;
-    } else if (Mukubwa === this.state.lesmoyennes[3]) {
-      leMedian = this.state.price4;
-    } else if (Mukubwa === this.state.lesmoyennes[4]) {
-      leMedian = this.state.price5;
-    } else if (Mukubwa === this.state.lesmoyennes[5]) {
-      leMedian = this.state.price6;
-    } else if (Mukubwa === this.state.lesmoyennes[6]) {
-      leMedian = this.state.price7;
-    } else if (Mukubwa === this.state.lesmoyennes[7]) {
-      leMedian = this.state.price8;
-    } else if (Mukubwa === this.state.lesmoyennes[8]) {
-      leMedian = this.state.price9;
-    }
+    if (Mukubwa === this.state.lesmoyennes[0]) {leMedian = this.state.price1;} 
+      else if (Mukubwa === this.state.lesmoyennes[1]) {leMedian = this.state.price2;} 
+      else if (Mukubwa === this.state.lesmoyennes[2]) {leMedian = this.state.price3;} 
+      else if (Mukubwa === this.state.lesmoyennes[3]) {leMedian = this.state.price4;} 
+      else if (Mukubwa === this.state.lesmoyennes[4]) {leMedian = this.state.price5;} 
+      else if (Mukubwa === this.state.lesmoyennes[5]) {leMedian = this.state.price6;} 
+      else if (Mukubwa === this.state.lesmoyennes[6]) {leMedian = this.state.price7;} 
+      else if (Mukubwa === this.state.lesmoyennes[7]) {leMedian = this.state.price8;} 
+      else if (Mukubwa === this.state.lesmoyennes[8]) {leMedian = this.state.price9;}
     return leMedian;
+  }
+    calculeLaMoyenne() {
+    var Kati;
+    Kati =
+      this.state.price1 * this.state.lesmoyennes[0] +
+      this.state.price2 * this.state.lesmoyennes[1] +
+      this.state.price3 * this.state.lesmoyennes[2] +
+      this.state.price4 * this.state.lesmoyennes[3] +
+      this.state.price5 * this.state.lesmoyennes[4] +
+      this.state.price6 * this.state.lesmoyennes[5] +
+      this.state.price7 * this.state.lesmoyennes[6] +
+      this.state.price8 * this.state.lesmoyennes[7] +
+      this.state.price9 * this.state.lesmoyennes[8];
+    return Kati;
   }
   render() {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
           <td align="center">{prixFromApi.user}</td>
-          <td align="center">{Math.round(prixFromApi.lamoyenne)}</td>
+          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/MT</b></td>
           <td align="center">{prixFromApi.dateforecast} </td>
           <td align="center">{prixFromApi.price1 * 100}%</td>
           <td align="center">{prixFromApi.price2 * 100}%</td>
@@ -338,9 +368,10 @@ class CSummary extends PureComponent {
         </tr>
       );
     };
+    
     const renderMaloba = (malobayaApi) => {
       return (
-        <tr key={malobayaApi.id}>
+        <tr align="left" key={malobayaApi.id}>
           <td>{malobayaApi.generalcomments}</td>
         </tr>
       );
@@ -351,8 +382,8 @@ class CSummary extends PureComponent {
           <table border="1">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
-                  Copper {this.state.mois}
+                <td colSpan="14" align="center" width="70%">
+                  <b>Most Recent Copper Forecasts - {this.state.mois}</b>
                 </td>
               </tr>
               <tr>
@@ -382,150 +413,98 @@ class CSummary extends PureComponent {
                         </option>
                       ))}
                   </select>
-                </td>
-                <td align="center">
-                  <b>EV</b>{" "}
-                </td>
-                <td align="center">
-                  <b>No. Forecasts</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price1}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price2}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price3}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price4}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price5}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price6}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price7}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price8}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price9}</b>
-                </td>
-                <td width="35%" rowSpan="11">
-                  <table className="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td align="center">
-                          <b>General Comments</b>
-                        </td>
-                      </tr>
-                      {this.state.maloba.map(renderMaloba)}
-                    </tbody>
-                  </table>
-                </td>
+                </td><td align="center"><b>Expected Value</b></td>
+                <td align="center"><b>No. Forecasts</b></td>
+                <td align="center"><b>${this.state.price1}/MT</b></td>
+                <td align="center"><b>${this.state.price2}/MT</b></td>
+                <td align="center"><b>${this.state.price3}/MT</b></td>
+                <td align="center"><b>${this.state.price4}/MT</b></td>
+                <td align="center"><b>${this.state.price5}/MT</b></td>
+                <td align="center"><b>${this.state.price6}/MT</b></td>
+                <td align="center"><b>${this.state.price7}/MT</b></td>
+                <td align="center"><b>${this.state.price8}/MT</b></td>
+                <td align="center"><b>${this.state.price9}/MT</b></td>
               </tr>
               <tr>
-                <td align="center">Most Recent Forecasts</td>
-                <td align="center">{this.trouveLeMedian()} </td>
-                <td align="center">{this.state.lesprix.length}</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
-              </tr>
-              <tr>
-                <td colSpan="12">
-                  {" "}
-                  <div style={{ width: "100%", height: 400 }}>
-                    <ResponsiveContainer>
-                      <BarChart
-                        layout="vertical"
-                        width={500}
-                        height={500}
-                        data={this.state.donnees1}
-                        margin={{
-                          top: 5,
-                          right: 5,
-                          left: 5,
-                          bottom: 5,
-                        }}
-                      >
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis type="number" />
-                        <YAxis dataKey="price" type="category" />
-                        <Tooltip />
-                        <Legend />
-                        <Bar dataKey="RecentData" fill="#8884d8" />
-                        {/*  <Bar dataKey="OldData" fill="#82ca9d" />
-                        <Bar dataKey="AllData" fill="#89914c" /> */}
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
+                <td align="center">
+		  <b>Forecasts</b>
+		</td>
+    <td align="center"><b>${/* this.trouveLeMedian() */ Math.round(this.calculeLaMoyenne())}/MT</b></td>
+    <td align="center"><b>{this.state.lesprix.length}</b></td>
+    <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
+    <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
+    </tr>
+    <tr>
+    <td colSpan="12">
+      <div style={{ width: "100%", height: 300 }}>
+        <ResponsiveContainer>
+        <BarChart
+          layout="vertical"
+          width={500}
+          height={300}
+          data={this.state.donnees1}
+          margin={{
+            top: 5,
+            right: 5,
+            left: 5,
+            bottom: 5,
+      }}
+      >
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis type="number" />
+        <YAxis dataKey="price" type="category" />
+        <Tooltip />
+        <Legend />
+        <Bar dataKey="RecentData" fill="#CC6600" />
+         {/*  <Bar dataKey="OldData" fill="#FF0000" />
+          <Bar dataKey="AllData" fill="#00B050" /> */}
+        </BarChart>
+        </ResponsiveContainer>
+      </div>
+      </td>
+      </tr>
+    <tr>
+      <td colSpan="12" rowSpan="12">
+      <table className="table table-bordered">
+        <tbody>
+          <tr>
+          <td align="center"><b>Most Recent General Comments</b></td>
+          </tr>
+          {this.state.maloba.map(renderMaloba)}
+          </tbody>
+          </table>
+          </td>
+          </tr>
+          </tbody>
           </table>
           <table className="table table-bordered">
-            <tbody>
-              <tr>
-                <td colSpan="14" align="center" width="100%">
-                  <b>
-                    Most Recent Copper Forecasts - {this.state.mois}
-                  </b>
-                </td>
-              </tr>
-              <tr align="center">
-                <td width="10%">
-                  <b>{this.state.mois}</b>
-                </td>
-                <td>
-                  <b>EV</b>{" "}
-                </td>
-                <td>
-                  <b>Date</b>
-                </td>
-                <td>
-                  <b>{this.state.price1}</b>
-                </td>
-                <td>
-                  <b>{this.state.price2}</b>
-                </td>
-                <td>
-                  <b>{this.state.price3}</b>
-                </td>
-                <td>
-                  <b>{this.state.price4}</b>
-                </td>
-                <td>
-                  <b>{this.state.price5}</b>
-                </td>
-                <td>
-                  <b>{this.state.price6}</b>
-                </td>
-                <td>
-                  <b>{this.state.price7}</b>
-                </td>
-                <td>
-                  <b>{this.state.price8}</b>
-                </td>
-                <td>
-                  <b>{this.state.price9}</b>
-                </td>
-                <td width="35%">
-                  <b>Justifications</b>
-                </td>
-              </tr>
-              {this.state.lesprix.map(renderPrix)}
+          <tbody>
+          <tr>
+          <td colSpan="14" align="center" width="70%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+          </tr>
+           <tr align="center">
+           <td width="10%"><b>Participant</b></td>
+            <td><b>Expected Value</b></td>
+            <td><b>Date</b></td>
+            <td><b>${this.state.price1}/MT</b></td>
+            <td><b>${this.state.price2}/MT</b></td>
+            <td><b>${this.state.price3}/MT</b></td>
+            <td><b>${this.state.price4}/MT</b></td>
+            <td><b>${this.state.price5}/MT</b></td>
+            <td><b>${this.state.price6}/MT</b></td>
+            <td><b>${this.state.price7}/MT</b></td>
+            <td><b>${this.state.price8}/MT</b></td>
+            <td><b>${this.state.price9}/MT</b></td>
+            <td width="35%"><b>Justifications</b></td>
+            </tr>
+             {this.state.lesprix.map(renderPrix)}
             </tbody>
           </table>
         </center>

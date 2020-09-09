@@ -11,6 +11,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import Navbar from "./layout/Navbar";
 class CForecast extends PureComponent {
   constructor(props) {
     super(props);
@@ -70,17 +71,21 @@ class CForecast extends PureComponent {
       lesmoyennesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       lesmoyennesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       maloba: [],
+      EVR: 0,
+      EVO: 0,
+      EVA: 0,
     };
     this.CreeOldata = this.CreeOldata.bind(this);
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
     this.recuperemoyenneT = this.recuperemoyenneT.bind(this);
+    this.trouveEV = this.trouveEV.bind(this);
   }
   CreeOldata() {
-    let somme1 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    let somme2 = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    let lesmoyennesO = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    let lesmoyennesA = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
-    let lesmoyennesP = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let somme2 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let lesmoyennesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let lesmoyennesA = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let lesmoyennesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     function arrayObjectIndexOf(myArray, searchTerm, property) {
       for (var i = 0, len = myArray.length; i < len; i++) {
         if (myArray[i][property] === searchTerm) return i;
@@ -113,33 +118,15 @@ class CForecast extends PureComponent {
     lesmoyennesA[7] = this.state.lesmoyennesA[0].price8;
     lesmoyennesA[8] = this.state.lesmoyennesA[0].price9;
     var nombre1 = arOlddata.length;
-    lesmoyennesO[0] =
-      (lesmoyennesA[0] * nombreT5 - this.state.lesmoyennes[0] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[1] =
-      (lesmoyennesA[1] * nombreT5 - this.state.lesmoyennes[1] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[2] =
-      (lesmoyennesA[2] * nombreT5 - this.state.lesmoyennes[2] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[3] =
-      (lesmoyennesA[3] * nombreT5 - this.state.lesmoyennes[3] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[4] =
-      (lesmoyennesA[4] * nombreT5 - this.state.lesmoyennes[4] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[5] =
-      (lesmoyennesA[5] * nombreT5 - this.state.lesmoyennes[5] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[6] =
-      (lesmoyennesA[6] * nombreT5 - this.state.lesmoyennes[6] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[7] =
-      (lesmoyennesA[8] * nombreT5 - this.state.lesmoyennes[7] * nombre2) /
-      (nombreT5 - nombre2);
-    lesmoyennesO[8] =
-      (lesmoyennesA[8] * nombreT5 - this.state.lesmoyennes[8] * nombre2) /
-      (nombreT5 - nombre2);
+    lesmoyennesO[0] = (lesmoyennesA[0] * nombreT5 - this.state.lesmoyennes[0] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[1] = (lesmoyennesA[1] * nombreT5 - this.state.lesmoyennes[1] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[2] = (lesmoyennesA[2] * nombreT5 - this.state.lesmoyennes[2] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[3] = (lesmoyennesA[3] * nombreT5 - this.state.lesmoyennes[3] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[4] = (lesmoyennesA[4] * nombreT5 - this.state.lesmoyennes[4] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[5] = (lesmoyennesA[5] * nombreT5 - this.state.lesmoyennes[5] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[6] = (lesmoyennesA[6] * nombreT5 - this.state.lesmoyennes[6] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[7] = (lesmoyennesA[8] * nombreT5 - this.state.lesmoyennes[7] * nombre2) / (nombreT5 - nombre2);
+    lesmoyennesO[8] = (lesmoyennesA[8] * nombreT5 - this.state.lesmoyennes[8] * nombre2) / (nombreT5 - nombre2);
     this.setState({ lesmoyennesO });
     this.setState({ olddata: [].concat(arOlddata) });
     //calcul des moyennes
@@ -173,7 +160,7 @@ class CForecast extends PureComponent {
     this.setState({ lesmoyennesA });
     this.setState({ lesmoyennesO });
     var y = 0;
-    for (y == 0; y < 9; y++) {
+    for (y === 0; y < 9; y++) {
       donnees1.push({
         price: this.state.njina[y],
         RecentData: this.state.lesmoyennes[y] * 100,
@@ -197,7 +184,7 @@ class CForecast extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
@@ -254,7 +241,7 @@ class CForecast extends PureComponent {
           return {
             id: prix.detail._id,
             user: prix._id.user,
-            dateforecast: prix.detail.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(prix.detail.dateforecast)),
             price1: prix.detail.price1,
             price2: prix.detail.price2,
             price3: prix.detail.price3,
@@ -297,6 +284,26 @@ class CForecast extends PureComponent {
     this.fillotherdata(sanza);
     //ajout
   }
+  convert_to_utc = (dateStr) => {
+    //check whether time is in PM or AM
+    var hours = dateStr.getHours();
+    var hours = (hours+24-2)%24;
+    var mid='am';
+    if(hours==0){ //At 00 hours we need to show 12 am
+    hours=12;
+    }
+    else if(hours>12)
+    {
+    hours=hours%12;
+    mid='pm';
+    }
+    var newdate = dateStr.toUTCString().split(' ')[0] + dateStr.toUTCString().split(' ')[1] + ' ' 
+    + dateStr.toUTCString().split(' ')[2] + ' '
+    + dateStr.toUTCString().split(' ')[3] + ' ' 
+    + dateStr.toUTCString().split(' ')[4].split(':')[0]
+    + ":" + dateStr.toUTCString().split(' ')[4].split(':')[1];
+    return newdate + " " + mid;
+  }
   fillotherdata(sanza1) {
     this.recuperemoyenneT(sanza1);
     fetch("/api/menji/all/" + sanza1 + "&Copper")
@@ -308,7 +315,7 @@ class CForecast extends PureComponent {
           return {
             id: talo._id,
             user: talo.user,
-            dateforecast: talo.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(talo.dateforecast)),
             price1: talo.price1,
             price2: talo.price2,
             price3: talo.price3,
@@ -346,10 +353,12 @@ class CForecast extends PureComponent {
         });
         this.CreeOldata();
         this.fillgeneralcomments(sanza1);
+	this.setState({ EVO: this.trouveEV(this.state.lesmoyennesO) });
+        this.setState({ EVA: this.trouveEV(this.state.lesmoyennesA) });
       });
   }
   fillgeneralcomments(sanza2) {
-    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&10")
+    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&4")
       .then((response3) => {
         return response3.json();
       })
@@ -431,16 +440,35 @@ class CForecast extends PureComponent {
     }
     return leMedian;
   }
+    trouveEV(pour) {
+    var EV = 0;
+    if (typeof pour !== "undefined") {
+      EV =
+        this.state.price1 * (pour[0] / 100) +
+        this.state.price2 * (pour[1] / 100) +
+        this.state.price3 * (pour[2] / 100) +
+        this.state.price4 * (pour[3] / 100) +
+        this.state.price5 * (pour[4] / 100) +
+        this.state.price6 * (pour[5] / 100) +
+        this.state.price7 * (pour[6] / 100) +
+        this.state.price8 * (pour[7] / 100) +
+        this.state.price9 * (pour[8] / 100);
+      //console.log(pour);
+      //console.log(pour[0]);
+      //console.log(EV);
+    }
+    return EV;
+  }
   render() {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
           <td align="center">{prixFromApi.user}</td>
-          <td align="center">{Math.round(prixFromApi.lamoyenne)}</td>
-          <td align="center">{prixFromApi.dateforecast} </td>
+          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/MT</b></td>
+          <td align="center">{prixFromApi.dateforecast}</td>
           <td align="center">{prixFromApi.price1 * 100}%</td>
           <td align="center">{prixFromApi.price2 * 100}%</td>
-          <td align="center">{prixFromApi.price3 * 100}% </td>
+          <td align="center">{prixFromApi.price3 * 100}%</td>
           <td align="center">{prixFromApi.price4 * 100}%</td>
           <td align="center">{prixFromApi.price5 * 100}%</td>
           <td align="center">{prixFromApi.price6 * 100}%</td>
@@ -455,11 +483,11 @@ class CForecast extends PureComponent {
       return (
         <tr key={arOlddata.id}>
           <td align="center">{arOlddata.user}</td>
-          <td align="center">{Math.round(arOlddata.lamoyenne)}</td>
-          <td align="center">{arOlddata.dateforecast} </td>
+          <td align="center"><b>${Math.round(arOlddata.lamoyenne)}/MT</b></td>
+          <td align="center">{arOlddata.dateforecast}</td>
           <td align="center">{Math.round(arOlddata.price1 * 100)}%</td>
           <td align="center">{Math.round(arOlddata.price2 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price3 * 100)}% </td>
+          <td align="center">{Math.round(arOlddata.price3 * 100)}%</td>
           <td align="center">{Math.round(arOlddata.price4 * 100)}%</td>
           <td align="center">{Math.round(arOlddata.price5 * 100)}%</td>
           <td align="center">{Math.round(arOlddata.price6 * 100)}%</td>
@@ -473,7 +501,7 @@ class CForecast extends PureComponent {
     const renderMaloba = (malobayaApi) => {
       return (
         <tr key={malobayaApi.id}>
-          <td align="center">{malobayaApi.generalcomments}</td>
+          <td align="left">{malobayaApi.generalcomments}</td>
         </tr>
       );
     };
@@ -484,7 +512,7 @@ class CForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="14" align="center" width="100%">
-                  Copper Forecasts - 2020
+                  <b>Copper Forecasts - {this.state.mois}</b>
                 </td>
               </tr>
               <tr>
@@ -502,7 +530,7 @@ class CForecast extends PureComponent {
                       this.fillPrices(e.target.value);
                     }}
                   >
-                    <option value=""> Select a month </option>
+                    <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
                       .map((lemois, index) => (
@@ -516,53 +544,43 @@ class CForecast extends PureComponent {
                   </select>
                 </td>
                 <td align="center">
-                  <b>EV</b>{" "}
+                  <b>Expected Value</b>
                 </td>
                 <td align="center">
                   <b>No. Forecasts</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price1}</b>
+                  <b>${this.state.price1}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price2}</b>{" "}
+                  <b>${this.state.price2}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price3}</b>
+                  <b>${this.state.price3}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price4}</b>
+                  <b>${this.state.price4}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price5}</b>
+                  <b>${this.state.price5}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price6}</b>
+                  <b>${this.state.price6}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price7}</b>
+                  <b>${this.state.price7}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price8}</b>{" "}
+                  <b>${this.state.price8}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price9}</b>{" "}
-                </td>
-                <td width="35%" align="center" rowSpan="11">
-                  <table className="table table-bordered">
-                    <tbody>
-                      <tr>
-                        <td align="center">Most Recent General Comments</td>
-                      </tr>
-                      {this.state.maloba.map(renderMaloba)}
-                    </tbody>
-                  </table>
+                  <b>${this.state.price9}/MT</b>
                 </td>
               </tr>
               <tr>
-                <td align="center">Most Recent Forecasts</td>
-                <td align="center">{this.trouveLeMedian(this.state.lesmoyennes)}</td>
-                <td align="center">{this.state.lesprix.length}</td>
+                <td align="center"><b>Most Recent Forecasts</b></td>
+                <td align="center"><b>${Math.round(this.trouveEV(this.state.lesmoyennes) * 100)/*Math.round(this.state.EVR)*/}/MT</b></td>
+                <td align="center"><b>{this.state.lesprix.length}</b></td>
                 <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
                 <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
@@ -574,9 +592,113 @@ class CForecast extends PureComponent {
                 <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
               </tr>
               <tr>
+                <td width="10%" align="center">
+                  <b>{this.state.mois}</b>
+                </td>
+                <td align="center">
+                  <b>Expected Value</b>
+                </td>
+                <td align="center">
+                  <b>No. Forecasts</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price1}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price2}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price3}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price4}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price5}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price6}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price7}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price8}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price9}/MT</b>
+                </td>
+              </tr>
+              <tr>
+                <td width="10%" align="center"><b>Older Forecasts</b></td>
+                <td align="center"><b>${Math.round(this.state.EVO)/* Math.round(this.trouveEV(this.state.lesmoyennesO)) */}/MT</b></td> 
+		            <td align="center"><b>{this.state.olddata.length}</b></td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[0])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[1])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[2])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[3])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[4])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[5])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[6])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[7])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesO[8])}%</td>
+              </tr>
+              <tr>
+                <td width="10%" align="center">
+                  <b>{this.state.mois}</b>
+                </td>
+                <td align="center">
+                  <b>Expected Value</b>
+                </td>
+                <td align="center">
+                  <b>No. Forecasts</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price1}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price2}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price3}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price4}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price5}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price6}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price7}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price8}/MT</b>
+                </td>
+                <td align="center">
+                  <b>${this.state.price9}/MT</b>
+                </td>
+              </tr>
+              <tr>
+                <td width="10%" align="center">
+		              <b>All Forecasts</b></td>
+                <td align="center"><b>${Math.round(this.state.EVA)/*Math.round(this.trouveEV(this.state.lesmoyennesA))*/}/MT</b></td>
+                <td align="center"><b>{this.state.alldata.length}</b></td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[0])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[1])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[2])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[3])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[4])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[5])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[6])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[7])}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennesA[8])}%</td>
+              </tr>
+              <tr>
                 <td colSpan="12" align="center">
-                  {" "}
-                  <div style={{ width: "100%", height: 400 }}>
+                  <div style={{ width: "100%", height: 300 }}>
                     <ResponsiveContainer>
                       <BarChart
                         layout="vertical"
@@ -604,119 +726,25 @@ class CForecast extends PureComponent {
                 </td>
               </tr>
               <tr>
-                <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+              <td width="35%" align="center" rowSpan="11" colSpan="12">
+                  <table className="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <td align="center"><b>Most Recent General Comments</b></td>
+                      </tr>
+                      {this.state.maloba.map(renderMaloba)}
+                    </tbody>
+                  </table>
                 </td>
-                <td align="center">
-                  <b>EV</b>{" "}
-                </td>
-                <td align="center">
-                  <b>No. Forecasts</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price1}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price2}</b>{" "}
-                </td>
-                <td align="center">
-                  <b>{this.state.price3}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price4}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price5}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price6}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price7}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price8}</b>{" "}
-                </td>
-                <td align="center">
-                  <b>{this.state.price9}</b>{" "}
-                </td>
-              </tr>
-              <tr>
-                <td width="10%" align="center">Older Fcasts</td>
-                <td align="center">{this.trouveLeMedian(this.state.lesmoyennesO)}</td>
-                <td align="center">{this.state.olddata.length}</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[0])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[1])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[2])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[3])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[4])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[5])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[6])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[7])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[8])}%</td>
-              </tr>
-              <tr>
-                <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
-                </td>
-                <td align="center">
-                  <b>EV</b>{" "}
-                </td>
-                <td align="center">
-                  <b>No. Forecasts</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price1}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price2}</b>{" "}
-                </td>
-                <td align="center">
-                  <b>{this.state.price3}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price4}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price5}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price6}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price7}</b>
-                </td>
-                <td align="center">
-                  <b>{this.state.price8}</b>{" "}
-                </td>
-                <td align="center">
-                  <b>{this.state.price9}</b>{" "}
-                </td>
-              </tr>
-              <tr>
-                <td width="10%" align="center">All Forecasts</td>
-                <td align="center">{this.trouveLeMedian(this.state.lesmoyennesA)}</td>
-                <td align="center">{this.state.alldata.length}</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[0])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[1])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[2])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[3])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[4])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[5])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[6])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[7])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[8])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesA[9])}%</td>
               </tr>
             </tbody>
           </table>
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="13" align="center" width="100%">
                   <b>
-                    Most Recent Copper Forecasts -{" "}
-                    {this.state.mois}
+                    Most Recent Copper Forecasts - {this.state.mois}
                   </b>
                 </td>
               </tr>
@@ -725,40 +753,40 @@ class CForecast extends PureComponent {
                   <b>{this.state.mois}</b>
                 </td>
                 <td align="center">
-                  <b>EV</b>{" "}
+                  <b>Expected Value</b>
                 </td>
                 <td align="center">
                   <b>Date</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price1}</b>
+                  <b>${this.state.price1}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price2}</b>{" "}
+                  <b>${this.state.price2}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price3}</b>
+                  <b>${this.state.price3}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price4}</b>
+                  <b>${this.state.price4}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price5}</b>
+                  <b>${this.state.price5}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price6}</b>
+                  <b>${this.state.price6}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price7}</b>
+                  <b>${this.state.price7}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price8}</b>{" "}
+                  <b>${this.state.price8}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price9}</b>{" "}
+                  <b>${this.state.price9}/MT</b>
                 </td>
                 <td width="35%" align="center">
-                  <b>Specific Comments</b>
+                  <b>Justifications</b>
                 </td>
               </tr>
               {this.state.lesprix.map(renderPrix)}
@@ -767,7 +795,7 @@ class CForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="13" align="center" width="100%">
                   <b>Older Copper Forecasts - {this.state.mois}</b>
                 </td>
               </tr>
@@ -776,40 +804,40 @@ class CForecast extends PureComponent {
                   <b>{this.state.mois}</b>
                 </td>
                 <td align="center">
-                  <b>EV</b>{" "}
+                  <b>Expected Value</b>
                 </td>
                 <td align="center">
                   <b>Date</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price1}</b>
+                  <b>${this.state.price1}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price2}</b>{" "}
+                  <b>${this.state.price2}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price3}</b>
+                  <b>${this.state.price3}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price4}</b>
+                  <b>${this.state.price4}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price5}</b>
+                  <b>${this.state.price5}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price6}</b>
+                  <b>${this.state.price6}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price7}</b>
+                  <b>${this.state.price7}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price8}</b>{" "}
+                  <b>${this.state.price8}/MT</b>
                 </td>
                 <td align="center">
-                  <b>{this.state.price9}</b>{" "}
+                  <b>${this.state.price9}/MT</b>
                 </td>
                 <td width="35%" align="center">
-                  <b>Specific Comments</b>
+                  <b>Justifications</b>
                 </td>
               </tr>
               {this.state.olddata.map(renderOld)}

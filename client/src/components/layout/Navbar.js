@@ -24,7 +24,7 @@ class Navbar extends Component {
             aria-haspopup="false"
             aria-expanded="true"
           >
-            Home
+            About
           </Link>
           <div
             className="dropdown-menu"
@@ -33,9 +33,9 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/About">
               About the research
             </Link>
-            <Link className="dropdown-item" to="/TetCs">
+            {/* <Link className="dropdown-item" to="/TetCs">
               T&amp;Cs
-            </Link>
+            </Link> */}
             <Link className="dropdown-item" to="/Contacts">
               Contact us
             </Link>
@@ -51,7 +51,7 @@ class Navbar extends Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Participants
+            Registration
           </Link>
           <div
             className="dropdown-menu"
@@ -61,38 +61,11 @@ class Navbar extends Component {
               Registration Page
             </Link>
             <Link className="dropdown-item" to="/PConsent">
-              Research Background
+              Additional Information
             </Link>
           </div>
         </li>
-        <li className="nav-item dropdown">
-          <Link
-            className="nav-link dropdown-toggle"
-            to="/"
-            id="navbarDropdownMenuLink2"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Forecast Rankings
-          </Link>
-          <div
-            className="dropdown-menu"
-            aria-labelledby="navbarDropdownMenuLink2"
-          >
-            <Link className="dropdown-item" to="/RMethod">
-              Ranking Methodology
-            </Link>
-            <Link className="dropdown-item" to="/CRanking">
-              Copper Rankings
-            </Link>
-            <Link className="dropdown-item" to="/GRanking">
-              Gold Rankings
-            </Link>
-          </div>
-        </li>
-        <li className="nav-item dropdown">
+	<li className="nav-item dropdown">
           <Link
             className="nav-link dropdown-toggle"
             to="#"
@@ -114,11 +87,11 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/GSumFcast">
               Gold Summary
             </Link>
-            <Link className="dropdown-item" to="/CSummary">
-              Copper Monthly Summary
+          <Link className="dropdown-item" to="/CSummary">
+              Copper Monthly Summaries
             </Link>
             <Link className="dropdown-item" to="/GSummary">
-              Gold Monthly Summary
+              Gold Monthly Summaries
             </Link>
             <Link className="dropdown-item" to="/CPartFcast">
               Copper Participants
@@ -127,7 +100,7 @@ class Navbar extends Component {
               Gold Participants
             </Link>
           </div>
-        </li>
+        </li>        
         <li className="nav-item dropdown">
           <Link
             className="nav-link dropdown-toggle"
@@ -149,6 +122,12 @@ class Navbar extends Component {
             </Link>
             <Link className="dropdown-item" to="/Goldinput">
               Gold Inputs
+            </Link>
+            <Link className="dropdown-item" to="/coppercomex">
+              Copper Comex Prices
+            </Link>
+            <Link className="dropdown-item" to="/goldcomex">
+              Gold Comex Prices
             </Link>
           </div>
         </li>
@@ -176,15 +155,42 @@ class Navbar extends Component {
             </Link>
           </div>
         </li>
-        <li className="nav-item button-toggle">
+        <li className="nav-item dropdown">
+          <Link
+            className="nav-link dropdown-toggle"
+            to="/"
+            id="navbarDropdownMenuLink2"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Participants's Rankings
+          </Link>
+          <div
+            className="dropdown-menu"
+            aria-labelledby="navbarDropdownMenuLink2"
+           > 
+            <Link className="dropdown-item" to="/RMethod">
+              Ranking Methodology
+            </Link>
+            <Link className="dropdown-item" to="/CRanking">
+              Copper Rankings
+            </Link>
+            <Link className="dropdown-item" to="/GRanking">
+              Gold Rankings
+            </Link>
+          </div>
+        </li>
+	<li className="nav-item button-toggle">
           <button
             className="btn btn-outline-secondary my-2 my-sm-0"
             onClick={this.onLogoutClick.bind(this)}
           >
-            Logout
+              Logout
           </button>
-        </li>
-      </ul>
+          </li>
+        </ul>
     );
     const chrislinks = (
       <ul className="navbar-nav">
@@ -198,7 +204,7 @@ class Navbar extends Component {
             aria-haspopup="false"
             aria-expanded="true"
           >
-            Home
+            About
           </Link>
           <div
             className="dropdown-menu"
@@ -207,9 +213,9 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/About">
               About the research
             </Link>
-            <Link className="dropdown-item" to="/TetCs">
+            {/* <Link className="dropdown-item" to="/TetCs">
               T&amp;Cs
-            </Link>
+            </Link> */}
             <Link className="dropdown-item" to="/Contacts">
               Contact us
             </Link>
@@ -225,7 +231,7 @@ class Navbar extends Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Participants
+            Registration
           </Link>
           <div
             className="dropdown-menu"
@@ -235,34 +241,7 @@ class Navbar extends Component {
               Registration Page
             </Link>
             <Link className="dropdown-item" to="/PConsent">
-              Research Background
-            </Link>
-          </div>
-        </li>
-        <li className="nav-item dropdown">
-          <Link
-            className="nav-link dropdown-toggle"
-            to="/"
-            id="navbarDropdownMenuLink2"
-            role="button"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Forecast Rankings
-          </Link>
-          <div
-            className="dropdown-menu"
-            aria-labelledby="navbarDropdownMenuLink2"
-          >
-            <Link className="dropdown-item" to="/RMethod">
-              Ranking Methodology
-            </Link>
-            <Link className="dropdown-item" to="/CRanking">
-              Copper Rankings
-            </Link>
-            <Link className="dropdown-item" to="/GRanking">
-              Gold Rankings
+              Additional Information
             </Link>
           </div>
         </li>
@@ -288,13 +267,13 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/GSumFcast">
               Gold Summary
             </Link>
-            <Link className="dropdown-item" to="/CSummary">
-              Copper Monthly Summary
+           <Link className="dropdown-item" to="/CSummary">
+              Copper Monthly Summaries
             </Link>
             <Link className="dropdown-item" to="/GSummary">
-              Gold Monthly Summary
+              Gold Monthly Summaries
             </Link>
-            <Link className="dropdown-item" to="/CPartFcast">
+           <Link className="dropdown-item" to="/CPartFcast">
               Copper Participants
             </Link>
             <Link className="dropdown-item" to="/GPartFcast">
@@ -324,6 +303,12 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/Goldinput">
               Gold Inputs
             </Link>
+            <Link className="dropdown-item" to="/coppercomex">
+              Copper Comex Prices
+            </Link>
+            <Link className="dropdown-item" to="/goldcomex">
+              Gold Comex Prices
+            </Link>
           </div>
         </li>
         <li className="nav-item dropdown">
@@ -350,21 +335,48 @@ class Navbar extends Component {
             </Link>
           </div>
         </li>
-        <li className="nav-item button-toggle">
-          <button
+        <li className="nav-item dropdown">
+          <Link
+            className="nav-link dropdown-toggle"
+            to="/"
+            id="navbarDropdownMenuLink2"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Participants's Rankings
+          </Link>
+          <div
+            className="dropdown-menu"
+            aria-labelledby="navbarDropdownMenuLink2"
+          >
+            <Link className="dropdown-item" to="/RMethod">
+              Ranking Methodology
+            </Link>   
+	    <Link className="dropdown-item" to="/CRanking">
+              Copper Rankings
+            </Link>
+            <Link className="dropdown-item" to="/GRanking">
+              Gold Rankings
+            </Link>
+            </div>
+        </li>
+	<li className="nav-item button-toggle">
+    <button
             className="btn btn-outline-secondary my-2 my-sm-0"
             onClick={this.onLogoutClick.bind(this)}
           >
-            Logout
-          </button>
-        </li>
-      </ul>
+         <a href="/">Logout</a>
+    </button>
+  </li>
+</ul>
     );
     const nonauthlinks = <div></div>;
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
+      <div className="nav-holder"><nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <Link className="navnav-link" to="/">
-          CONSENSUS METALS
+          <b>CONSENSUS METALS</b>
         </Link>
         <button
           className="navbar-toggler"
@@ -381,20 +393,20 @@ class Navbar extends Component {
           <div className="navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               {isAuthenticated
-                ? user == "Chris Lamprecht"
+                ? user === "Chris Lamprecht"
                   ? chrislinks
                   : authlinks
                 : nonauthlinks}
             </div>
           </div>
         </div>
-      </nav>
+      </nav></div>
     );
   }
 }
 Navbar.propTypes = {
   logoutUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,

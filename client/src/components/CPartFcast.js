@@ -10,9 +10,7 @@ import React, { PureComponent } from "react";
   Legend,
   ResponsiveContainer,
 } from "recharts"; */
-
 import GraphCG from "./GraphCG";
-
 class CPartFcast extends PureComponent {
   constructor(props) {
     super(props);
@@ -25,7 +23,7 @@ class CPartFcast extends PureComponent {
       novembers: [],
       decembers: [],
       prixaug: [],
-      prixsept: [],
+      prixsep: [],
       prixoct: [],
       prixnov: [],
       prixdec: [],
@@ -48,7 +46,28 @@ class CPartFcast extends PureComponent {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  convert_to_utc = (dateStr) => {
+    //check whether time is in PM or AM
+    var hours = dateStr.getHours();
+    var hours = (hours+24-2)%24;
+    var mid='am';
+    if(hours==0){ //At 00 hours we need to show 12 am
+    hours=12;
+    }
+    else if(hours>12)
+    {
+    hours=hours%12;
+    mid='pm';
+    }
 
+    var newdate = dateStr.toUTCString().split(' ')[0] + dateStr.toUTCString().split(' ')[1] + ' ' 
+    + dateStr.toUTCString().split(' ')[2] + ' '
+    + dateStr.toUTCString().split(' ')[3] + ' ' 
+    + dateStr.toUTCString().split(' ')[4].split(':')[0]
+    + ":" + dateStr.toUTCString().split(' ')[4].split(':')[1];
+
+    return newdate + " " + mid;
+  }
   componentDidMount() {
     fetch("/api/users/tous")
       .then((response) => {
@@ -69,37 +88,10 @@ class CPartFcast extends PureComponent {
       });
   }
   fillprices(utilisateur, produit) {
-    let paugFromApi = {};
     let psepFromApi = {};
     let poctFromApi = {};
     let pnovFromApi = {};
     let pdecFromApi = {};
-    fetch("/api/beyi/commois/" + "August 2020" + "&Copper")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let yx = data;
-        paugFromApi = data.map((mutengo) => {
-          return {
-            pour1: mutengo.floorprice + mutengo.constant1 * 0,
-            pour2: mutengo.floorprice + mutengo.constant1 * 1,
-            pour3: mutengo.floorprice + mutengo.constant1 * 2,
-            pour4: mutengo.floorprice + mutengo.constant1 * 3,
-            pour5: mutengo.floorprice + mutengo.constant1 * 4,
-            pour6: mutengo.floorprice + mutengo.constant1 * 5,
-            pour7: mutengo.floorprice + mutengo.constant1 * 6,
-            pour8: mutengo.floorprice + mutengo.constant1 * 7,
-            pour9: mutengo.floorprice + mutengo.constant1 * 8,
-          };
-        });
-        this.setState({
-          prixaug: [].concat(paugFromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
     fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
       .then((response) => {
         return response.json();
@@ -119,9 +111,7 @@ class CPartFcast extends PureComponent {
             pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
-        this.setState({
-          prixsept: [].concat(psepFromApi),
-        });
+        this.setState({prixsep: [].concat(psepFromApi),});
       })
       .catch((error) => {
         console.log(error);
@@ -204,55 +194,7 @@ class CPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    let averif = 0;
-    fetch("/api/menji/userd/August 2020&" + produit + "&" + utilisateur)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let augustFromApi = data.map((august) => {
-          let xEV =
-            paugFromApi[0].pour1 * august.price1 +
-            paugFromApi[0].pour2 * august.price2 +
-            paugFromApi[0].pour3 * august.price3 +
-            paugFromApi[0].pour4 * august.price4 +
-            paugFromApi[0].pour5 * august.price5 +
-            paugFromApi[0].pour6 * august.price6 +
-            paugFromApi[0].pour7 * august.price7 +
-            paugFromApi[0].pour8 * august.price8 +
-            paugFromApi[0].pour9 * august.price9;
-
-          this.setState({ evaug: xEV });
-          this.setState({ comaug: august.generalcomments });
-
-          //console.log(august);
-          return {
-            EV: xEV,
-            price1: august.price1,
-            price2: august.price2,
-            price3: august.price3,
-            price4: august.price4,
-            price5: august.price5,
-            price6: august.price6,
-            price7: august.price7,
-            price8: august.price8,
-            price9: august.price9,
-            lemedian: august.lemedian,
-            dateforecast: august.dateforecast,
-            specificcomments: august.specificcomments,
-            generalcomments: august.generalcomments,
-          };
-        });
-
-        this.setState({
-          augusts: [].concat(augustFromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    averif = 0;
-
+      let averif = 0;
     fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -273,6 +215,7 @@ class CPartFcast extends PureComponent {
           this.setState({ evsep: xEV });
           this.setState({ comsep: september.generalcomments });
 
+          //console.log(september);
           return {
             EV: xEV,
             price1: september.price1,
@@ -285,7 +228,7 @@ class CPartFcast extends PureComponent {
             price8: september.price8,
             price9: september.price9,
             lemedian: september.lemedian,
-            dateforecast: september.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(september.dateforecast)),
             specificcomments: september.specificcomments,
             generalcomments: september.generalcomments,
           };
@@ -299,7 +242,6 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-
     fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -316,10 +258,8 @@ class CPartFcast extends PureComponent {
             poctFromApi[0].pour7 * october.price7 +
             poctFromApi[0].pour8 * october.price8 +
             poctFromApi[0].pour9 * october.price9;
-
           this.setState({ evoct: xEV });
           this.setState({ comoct: october.generalcomments });
-
           return {
             EV: xEV,
             price1: october.price1,
@@ -332,7 +272,7 @@ class CPartFcast extends PureComponent {
             price8: october.price8,
             price9: october.price9,
             lemedian: october.lemedian,
-            dateforecast: october.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(october.dateforecast)),
             specificcomments: october.specificcomments,
             generalcomments: october.generalcomments,
           };
@@ -361,10 +301,8 @@ class CPartFcast extends PureComponent {
             pnovFromApi[0].pour7 * november.price7 +
             pnovFromApi[0].pour8 * november.price8 +
             pnovFromApi[0].pour9 * november.price9;
-
           this.setState({ evnov: xEV });
           this.setState({ comnov: november.generalcomments });
-
           return {
             EV: xEV,
             price1: november.price1,
@@ -377,7 +315,7 @@ class CPartFcast extends PureComponent {
             price8: november.price8,
             price9: november.price9,
             lemedian: november.lemedian,
-            dateforecast: november.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(november.dateforecast)),
             specificcomments: november.specificcomments,
             generalcomments: november.generalcomments,
           };
@@ -390,7 +328,6 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-
     fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -407,10 +344,8 @@ class CPartFcast extends PureComponent {
             pdecFromApi[0].pour7 * december.price7 +
             pdecFromApi[0].pour8 * december.price8 +
             pdecFromApi[0].pour9 * december.price9;
-
           this.setState({ evdec: xEV });
           this.setState({ comdec: december.generalcomments });
-
           return {
             EV: xEV,
             price1: december.price1,
@@ -423,7 +358,7 @@ class CPartFcast extends PureComponent {
             price8: december.price8,
             price9: december.price9,
             lemedian: december.lemedian,
-            dateforecast: december.dateforecast,
+            dateforecast: this.convert_to_utc(new Date(december.dateforecast)),
             specificcomments: december.specificcomments,
             generalcomments: december.generalcomments,
           };
@@ -436,113 +371,81 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
   }
-
   graphi() {
     //graphique
-
     var donnees1 = [];
     //donnees = { ...this.state.donnees1 };
     donnees1.push({
-      price: this.state.prixaug.price1,
-      August20: this.state.augusts.price1,
-      Sept20: this.state.septembers.price1,
-      October20: this.state.octobers.price1,
-      November20: this.state.novembers.price1,
-      December20: this.state.decembers.price1,
+      price: this.state.prixsep.price1,
+      Sep20: this.state.septembers.price1,
+      Oct20: this.state.octobers.price1,
+      Nov20: this.state.novembers.price1,
+      Dec20: this.state.decembers.price1,
     });
     donnees1.push({
-      price: this.state.prixaug.price2,
-      August20: this.state.augusts.price2,
-      Sept20: this.state.septembers.price2,
-      October20: this.state.octobers.price2,
-      November20: this.state.novembers.price2,
-      December20: this.state.decembers.price2,
+      price: this.state.prixsep.price2,
+      Sep20: this.state.septembers.price2,
+      Oct20: this.state.octobers.price2,
+      Nov20: this.state.novembers.price2,
+      Dec20: this.state.decembers.price2,
     });
     donnees1.push({
-      price: this.state.prixaug.price3,
-      August20: this.state.augusts.price3,
-      Sept20: this.state.septembers.price3,
-      October20: this.state.octobers.price3,
-      November20: this.state.novembers.price3,
-      December20: this.state.decembers.price3,
+      price: this.state.prixsep.price3,
+      Sep20: this.state.septembers.price3,
+      Oct20: this.state.octobers.price3,
+      Nov20: this.state.novembers.price3,
+      Dec20: this.state.decembers.price3,
     });
     donnees1.push({
-      price: this.state.prixaug.price4,
-      August20: this.state.augusts.price4,
-      Sept20: this.state.septembers.price4,
-      October20: this.state.octobers.price4,
-      November20: this.state.novembers.price4,
-      December20: this.state.decembers.price4,
+      price: this.state.prixsep.price4,
+      Sep20: this.state.septembers.price4,
+      Oct20: this.state.octobers.price4,
+      Nov20: this.state.novembers.price4,
+      Dec20: this.state.decembers.price4,
     });
     donnees1.push({
-      price: this.state.prixaug.price5,
-      August20: this.state.augusts.price5,
-      Sept20: this.state.septembers.price5,
-      October20: this.state.octobers.price5,
-      November20: this.state.novembers.price5,
-      December20: this.state.decembers.price5,
+      price: this.state.prixsep.price5,
+      Sep20: this.state.septembers.price5,
+      Oct20: this.state.octobers.price5,
+      Nov20: this.state.novembers.price5,
+      Dec20: this.state.decembers.price5,
     });
     donnees1.push({
-      price: this.state.prixaug.price6,
-      August20: this.state.augusts.price6,
-      Sept20: this.state.septembers.price6,
-      October20: this.state.octobers.price6,
-      November20: this.state.novembers.price6,
-      December20: this.state.decembers.price6,
+      price: this.state.prixsep.price6,
+      Sep20: this.state.septembers.price6,
+      Oct20: this.state.octobers.price6,
+      Nov20: this.state.novembers.price6,
+      Dec20: this.state.decembers.price6,
     });
     donnees1.push({
-      price: this.state.prixaug.price7,
-      August20: this.state.augusts.price7,
-      Sept20: this.state.septembers.price7,
-      October20: this.state.octobers.price7,
-      November20: this.state.novembers.price7,
-      December20: this.state.decembers.price7,
+      price: this.state.prixsep.price7,
+      Sep20: this.state.septembers.price7,
+      Oct20: this.state.octobers.price7,
+      Nov20: this.state.novembers.price7,
+      Dec20: this.state.decembers.price7,
     });
     donnees1.push({
-      price: this.state.prixaug.price8,
-      August20: this.state.augusts.price8,
-      Sept20: this.state.septembers.price8,
-      October20: this.state.octobers.price8,
-      November20: this.state.novembers.price8,
-      December20: this.state.decembers.price8,
+      price: this.state.prixsep.price8,
+      Sep20: this.state.septembers.price8,
+      Oct20: this.state.octobers.price8,
+      Nov20: this.state.novembers.price8,
+      Dec20: this.state.decembers.price8,
     });
     donnees1.push({
-      price: this.state.prixaug.price9,
-      August20: this.state.augusts.price9,
-      Sept20: this.state.septembers.price9,
-      October20: this.state.octobers.price9,
-      November20: this.state.novembers.price9,
-      December20: this.state.decembers.price9,
+      price: this.state.prixsep.price9,
+      Sep20: this.state.septembers.price9,
+      Oct20: this.state.octobers.price9,
+      Nov20: this.state.novembers.price9,
+      Dec20: this.state.decembers.price9,
     });
     this.setState({ donnees1 });
     //console.log(donnees1);
   }
-
   render() {
-    const renderAugust = (augustFromApi) => {
-      return (
-        <tr key={augustFromApi.id}>
-          <td align="center">{augustFromApi.user}</td>
-          <td align="center">{augustFromApi.EV}</td>
-          <td align="center">{augustFromApi.dateforecast}</td>
-          <td align="center">{augustFromApi.price1 * 100}%%</td>
-          <td align="center">{augustFromApi.price2 * 100}%</td>
-          <td align="center">{augustFromApi.price3 * 100}%</td>
-          <td align="center">{augustFromApi.price4 * 100}%</td>
-          <td align="center">{augustFromApi.price5 * 100}%</td>
-          <td align="center">{augustFromApi.price6 * 100}%</td>
-          <td align="center">{augustFromApi.price7 * 100}%</td>
-          <td align="center">{augustFromApi.price8 * 100}%</td>
-          <td align="center">{augustFromApi.price9 * 100}%</td>
-          <td align="center">{augustFromApi.specificcomments}</td>
-        </tr>
-      );
-    };
     const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
-          <td align="center">{septemberFromApi.user}</td>
-          <td align="center">{septemberFromApi.EV}</td>
+          <td align="center"><b>${septemberFromApi.EV}/MT</b></td>
           <td align="center">{septemberFromApi.dateforecast}</td>
           <td align="center">{septemberFromApi.price1 * 100}%</td>
           <td align="center">{septemberFromApi.price2 * 100}%</td>
@@ -557,11 +460,10 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderOctober = (octoberFromApi) => {
+        const renderOctober = (octoberFromApi) => {
       return (
         <tr key={octoberFromApi.id}>
-          <td align="center">{octoberFromApi.user}</td>
-          <td align="center">{octoberFromApi.EV}</td>
+          <td align="center"><b>${octoberFromApi.EV}/MT</b></td>
           <td align="center">{octoberFromApi.dateforecast}</td>
           <td align="center">{octoberFromApi.price1 * 100}%</td>
           <td align="center">{octoberFromApi.price2 * 100}%</td>
@@ -579,8 +481,7 @@ class CPartFcast extends PureComponent {
     const renderNovember = (novemberFromApi) => {
       return (
         <tr key={novemberFromApi.id}>
-          <td align="center">{novemberFromApi.user}</td>
-          <td align="center">{novemberFromApi.EV}</td>
+          <td align="center"><b>${novemberFromApi.EV}/MT</b></td>
           <td align="center">{novemberFromApi.dateforecast}</td>
           <td align="center">{novemberFromApi.price1 * 100}%</td>
           <td align="center">{novemberFromApi.price2 * 100}%</td>
@@ -598,8 +499,7 @@ class CPartFcast extends PureComponent {
     const renderDecember = (decemberFromApi) => {
       return (
         <tr key={decemberFromApi.id}>
-          <td align="center">{decemberFromApi.user}</td>
-          <td align="center">{decemberFromApi.EV}</td>
+          <td align="center"><b>${decemberFromApi.EV}/MT</b></td>
           <td align="center">{decemberFromApi.dateforecast}</td>
           <td align="center">{decemberFromApi.price1 * 100}%</td>
           <td align="center">{decemberFromApi.price2 * 100}%</td>
@@ -614,98 +514,75 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderPrixAug = (paugFromApi) => {
-      return (
-        <tr key={paugFromApi.id}>
-          <td align="center">{"August 2020"}</td>
-          <td align="center">{"EV"}</td>
-          <td align="center">{"Date"}</td>
-          <td align="center">{paugFromApi.pour1}</td>
-          <td align="center">{paugFromApi.pour2}</td>
-          <td align="center">{paugFromApi.pour3}</td>
-          <td align="center">{paugFromApi.pour4}</td>
-          <td align="center">{paugFromApi.pour5}</td>
-          <td align="center">{paugFromApi.pour6}</td>
-          <td align="center">{paugFromApi.pour7}</td>
-          <td align="center">{paugFromApi.pour8}</td>
-          <td align="center">{paugFromApi.pour9}</td>
-          <td align="center">{"Justifications"}</td>
-        </tr>
-      );
-    };
-    const renderPrixSept = (psepFromApi) => {
+    const renderPrixSep = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
-          <td align="center">{"September 2020"}</td>
-          <td align="center">{"EV"}</td>
-          <td align="center">{"Date"}</td>
-          <td align="center">{psepFromApi.pour1}</td>
-          <td align="center">{psepFromApi.pour2}</td>
-          <td align="center">{psepFromApi.pour3}</td>
-          <td align="center">{psepFromApi.pour4}</td>
-          <td align="center">{psepFromApi.pour5}</td>
-          <td align="center">{psepFromApi.pour6}</td>
-          <td align="center">{psepFromApi.pour7}</td>
-          <td align="center">{psepFromApi.pour8}</td>
-          <td align="center">{psepFromApi.pour9}</td>
-          <td align="center">{"Jusifications"}</td>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>{"Date"}</b></td>
+          <td align="center"><b>${psepFromApi.pour1}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour2}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour3}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour4}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour5}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour6}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour7}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour8}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour9}/MT</b></td>
+          <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
-    const renderPrixOct = (poctFromApi) => {
+        const renderPrixOct = (poctFromApi) => {
       return (
         <tr key={poctFromApi.id}>
-          <td align="center">{"October 2020"}</td>
-          <td align="center">{"EV"}</td>
-          <td align="center">{"Date"}</td>
-          <td align="center">{poctFromApi.pour1}</td>
-          <td align="center">{poctFromApi.pour2}</td>
-          <td align="center">{poctFromApi.pour3}</td>
-          <td align="center">{poctFromApi.pour4}</td>
-          <td align="center">{poctFromApi.pour5}</td>
-          <td align="center">{poctFromApi.pour6}</td>
-          <td align="center">{poctFromApi.pour7}</td>
-          <td align="center">{poctFromApi.pour8}</td>
-          <td align="center">{poctFromApi.pour9}</td>
-          <td align="center">{"Justifications"}</td>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>{"Date"}</b></td>
+          <td align="center"><b>${poctFromApi.pour1}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour2}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour3}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour4}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour5}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour6}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour7}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour8}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour9}/MT</b></td>
+          <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
     const renderPrixNov = (pnovFromApi) => {
       return (
         <tr key={pnovFromApi.id}>
-          <td align="center">{"November 2020"}</td>
-          <td align="center">{"EV"}</td>
-          <td align="center">{"Date"}</td>
-          <td align="center">{pnovFromApi.pour1}</td>
-          <td align="center">{pnovFromApi.pour2}</td>
-          <td align="center">{pnovFromApi.pour3}</td>
-          <td align="center">{pnovFromApi.pour4}</td>
-          <td align="center">{pnovFromApi.pour5}</td>
-          <td align="center">{pnovFromApi.pour6}</td>
-          <td align="center">{pnovFromApi.pour7}</td>
-          <td align="center">{pnovFromApi.pour8}</td>
-          <td align="center">{pnovFromApi.pour9}</td>
-          <td align="center">{"Justifications"}</td>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>{"Date"}</b></td>
+          <td align="center"><b>${pnovFromApi.pour1}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour2}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour3}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour4}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour5}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour6}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour7}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour8}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour9}/MT</b></td>
+          <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
     const renderPrixDec = (pdecFromApi) => {
       return (
         <tr key={pdecFromApi.id}>
-          <td align="center">{"December 2020"}</td>
-          <td align="center">{"EV"}</td>
-          <td align="center">{"Date"}</td>
-          <td align="center">{pdecFromApi.pour1}</td>
-          <td align="center">{pdecFromApi.pour2}</td>
-          <td align="center">{pdecFromApi.pour3}</td>
-          <td align="center">{pdecFromApi.pour4}</td>
-          <td align="center">{pdecFromApi.pour5}</td>
-          <td align="center">{pdecFromApi.pour6}</td>
-          <td align="center">{pdecFromApi.pour7}</td>
-          <td align="center">{pdecFromApi.pour8}</td>
-          <td align="center">{pdecFromApi.pour9}</td>
-          <td align="center">{"Justifications"}</td>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>{"Date"}</b></td>
+          <td align="center"><b>${pdecFromApi.pour1}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour2}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour3}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour4}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour5}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour6}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour7}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour8}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour9}/MT</b></td>
+          <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -715,21 +592,19 @@ class CPartFcast extends PureComponent {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-                Forecasts
+                <b>Most Recent Copper Forecasts - Expected Value</b>
               </td>
             </tr>
             <tr>
-              <td align="center">EV</td>
-              <td align="center">August 2020</td>
-              <td align="center">September 2020</td>
-              <td align="center">October 2020</td>
-              <td align="center">November 2020</td>
-              <td align="center">December 2020</td>
-              <td align="center">General Comments</td>
+              <td align="center"><b>Participant</b></td>
+              <td align="center"><b>September 2020</b></td>
+              <td align="center"><b>October 2020</b></td>
+              <td align="center"><b>November 2020</b></td>
+              <td align="center"><b>December 2020</b></td>
             </tr>
             <tr>
               <td align="center">
-                <span className="label label-primary">Participant:</span>
+                <span className="label label-primary"></span>
                 <select
                   className="form-control form-control-lg"
                   value={this.state.user}
@@ -738,7 +613,7 @@ class CPartFcast extends PureComponent {
                       user: e.target.value,
                       validationError:
                         e.target.value === ""
-                          ? "You need to choose a participant"
+                          ? "Choose a participant"
                           : "",
                     });
                     this.fillprices(e.target.value, "Copper");
@@ -751,83 +626,50 @@ class CPartFcast extends PureComponent {
                   ))}
                 </select>
               </td>
-              <td align="center">{this.state.evaug}</td>
-              <td align="center">{this.state.evsep}</td>
-              <td align="center">{this.state.evoct}</td>
-              <td align="center">{this.state.evnov}</td>
-              <td align="center">{this.state.evdec}</td>
-              <td rowSpan="2" align="center">
-                {this.state.comaug}{" "}
-              </td>
+              <td align="center"><b>${this.state.evsep}/MT</b></td>
+              <td align="center"><b>${this.state.evoct}/MT</b></td>
+              <td align="center"><b>${this.state.evnov}/MT</b></td>
+              <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
             <tr>
-              <td rowSpan="12" align="center" colSpan="6">
+              <td align="center" colSpan="5">
                 <GraphCG mambo={this.state.donnees1} />
               </td>
             </tr>
-            <tr></tr>
+            </tbody>
+        </table>
+        <table className="table table-bordered">
+          <tbody>
             <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comsep}
-              </td>
+              <td colSpan="5" align="center"><b>General Comments</b></td>
             </tr>
-            <tr></tr>
             <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comoct}
-              </td>
+              <td align="left"><b>September:</b> {this.state.comsep}</td>
             </tr>
-            <tr></tr>
             <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comnov}
-              </td>
+              <td align="left"><b>October:</b> {this.state.comoct}</td>
             </tr>
-            <tr></tr>
             <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comdec}
-              </td>
+              <td align="left"><b>November:</b> {this.state.comnov}</td>
             </tr>
-            <tr></tr>
             <tr>
-              <td rowSpan="2" align="center"></td>
+              <td align="left"><b>December:</b> {this.state.comdec}</td>
             </tr>
-            <tr></tr>
-            <tr>
-              <td rowSpan="2" align="center"></td>
-            </tr>
-            <tr></tr>
           </tbody>
         </table>
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13">
-                Forecasts August 2020
-              </td>
+              <td align="center" colSpan="13"><b>Forecasts - September 2020</b></td>
             </tr>
-            {this.state.prixaug.map(renderPrixAug)}
-          </thead>
-          <tbody>{this.state.augusts.map(renderAugust)}</tbody>
-        </table>
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <td align="center" colSpan="13">
-                Forecasts September 2020
-              </td>
-            </tr>
-            {this.state.prixsept.map(renderPrixSept)}
+            {this.state.prixsep.map(renderPrixSep)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13">
-                Forecasts October 2020
-              </td>
+              <td align="center" colSpan="13"><b>Forecasts - October 2020</b></td>
             </tr>
             {this.state.prixoct.map(renderPrixOct)}
           </thead>
@@ -836,9 +678,7 @@ class CPartFcast extends PureComponent {
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13">
-                Forecasts November 2020
-              </td>
+              <td align="center" colSpan="13"><b>Forecasts - November 2020</b></td>
             </tr>
             {this.state.prixnov.map(renderPrixNov)}
           </thead>
@@ -847,9 +687,7 @@ class CPartFcast extends PureComponent {
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13">
-                Forecasts December 2020
-              </td>
+              <td align="center" colSpan="13"><b>Forecasts - December 2020</b></td>
             </tr>
             {this.state.prixdec.map(renderPrixDec)}
           </thead>

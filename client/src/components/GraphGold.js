@@ -60,37 +60,22 @@ class GraphGold extends PureComponent {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((mutengo) => {
-          var njina = { ...this.state.njina };
+        let talo = data.map((mutengo) => {var njina = { ...this.state.njina };
           var i = 0;
-          for (i == 0; i < 9; i++) {
-            njina[i] = mutengo.floorprice + mutengo.constant1 * i;
-          }
+          for (i === 0; i < 9; i++) {njina[i] = mutengo.floorprice + mutengo.constant1 * i;}
           this.setState({ njina });
-          for (i == 0; i < 9; i++) {
-            kombo[i] = mutengo.floorprice + mutengo.constant1 * i;
-          }
+          for (i === 0; i < 9; i++) {kombo[i] = mutengo.floorprice + mutengo.constant1 * i;}
           let donnees1 = { ...this.state.donnees1 };
-          donnees1 = [
-            {
-              price: this.state.njina[0],
-              Percentage: this.state.lesmoyennes[0],
-            },
-          ];
+          donnees1 = [{price: this.state.njina[0], Percentage: this.state.lesmoyennes[0],},];
           var y = 1;
-          for (y == 1; y < 9; y++) {
-            donnees1.push({
-              price: this.state.njina[y],
-              Percentage: this.state.lesmoyennes[y],
-            });
-          }
+          for (y === 1; y < 9; y++) {donnees1.push({price: this.state.njina[y], Percentage: this.state.lesmoyennes[y],});}
           this.setState({ donnees1 });
           return {
             id: mutengo._id,
@@ -169,9 +154,7 @@ class GraphGold extends PureComponent {
       });
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.mweji !== this.props.mweji) {
-      this.fillPrices(this.props.mweji);
-    }
+    if (prevProps.mweji !== this.props.mweji) {this.fillPrices(this.props.mweji);}
   }
   render() {
     return (
@@ -190,8 +173,8 @@ class GraphGold extends PureComponent {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="percentage" />
-            <YAxis dataKey="price" type="number" />
+            <XAxis type="number" />
+            <YAxis dataKey="price" type="category" />
             <Tooltip />
             <Legend />
             <Bar dataKey="Percentage" fill="#CC9900" />

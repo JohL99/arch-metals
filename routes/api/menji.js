@@ -45,7 +45,7 @@ router.post("/sauvegarde", (req, res) => {
 });
 
 // @route   GET api/cinput/dernierda
-// @desc    Renvoie toutes les dernières entrées des utilisateurs
+// @desc    Renvoie toutes les dernières entrées des utilisateurs / Returns all the latest user entries
 // @access  Public
 router.get("/dernierda/:lemois&:commodity", (req, res) => {
   const errors = {};
@@ -88,8 +88,8 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET api/cinput/dernierda
-// @desc    Renvoie toutes les dernières entrées des utilisateurs par mois
+// @route   GET api/cinput/dernierda1
+// @desc    Renvoie toutes les dernières entrées des utilisateurs par mois / Returns all the latest user entries by month
 // @access  Public
 router.get("/dernierda1/:lemois&:commodity", (req, res) => {
   const errors = {};

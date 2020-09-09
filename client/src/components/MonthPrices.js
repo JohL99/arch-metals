@@ -3,9 +3,7 @@ import axios from "axios";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import TextFieldGroup from "./common/TextFieldGroup";
-
 import { registerPrice } from "../actions/inputAct";
-
 //commodity, month, floorprice, ratio
 export class MonthPrices extends Component {
   constructor(props) {
@@ -31,47 +29,38 @@ export class MonthPrices extends Component {
       ],
       errors: {},
     };
-
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
   componentDidMount() {
     /* 
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     } */
   }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
     }
   }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-
   onSubmit(e) {
     e.preventDefault();
-
     const newPrice = {
       commodity: this.state.commodity,
       month: this.state.month,
       floorprice: this.state.floorprice,
       constant1: this.state.constant1,
     };
-
     axios
       .post("api/beyi/enregistrer", newPrice)
       .then((res) => console.log(res.data))
       .catch((err) => this.setState({ errors: err.response.data }));
     this.setState({ month: "", commodity: "", floorprice: "", constant1: "" });
-
     // this.props.registerPrice(newPrice, this.props.history);
   }
-
   render() {
     return (
       <div>
@@ -107,7 +96,6 @@ export class MonthPrices extends Component {
                       ))}
                   </select>
                 </div>
-
                 <div className="form-group">
                   <select
                     name="commodity"
@@ -120,7 +108,6 @@ export class MonthPrices extends Component {
                     <option value="Gold">Gold</option>
                   </select>
                 </div>
-
                 <TextFieldGroup
                   placeholder="Floor price"
                   name="floorprice"
@@ -128,7 +115,6 @@ export class MonthPrices extends Component {
                   value={this.state.floorprice}
                   onChange={this.onChange}
                 />
-
                 <TextFieldGroup
                   placeholder="constant"
                   name="constant1"
@@ -136,7 +122,6 @@ export class MonthPrices extends Component {
                   value={this.state.constant1}
                   onChange={this.onChange}
                 />
-
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
@@ -146,17 +131,14 @@ export class MonthPrices extends Component {
     );
   }
 }
-
 MonthPrices.protoTypes = {
   registerPrice: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
-
 const mapStateToProps = (state) => ({
   auth: state.auth,
   input: state.input,
 });
-
 export default connect(mapStateToProps, {
   /* registerPrice, */
 })(MonthPrices);

@@ -1,12 +1,11 @@
 import React from "react";
-
 export default function TetCs() {
   return (
     <div>
       <h3>TERMS AND CONDITIONS</h3>
       <p className="text-justify">
         The Consensus Deliberation Panel, including the web site at
-        www.XXXXX.com (the &quot;Site&quot;), are part of a doctoral research
+        http://www.consensusmetals.org (the &quot;Site&quot;), are part of a doctoral research
         project been undertaken by John Lamprecht through the University of
         Liverpool. By accessing the Site or participating in submitting metal
         price forecasts, you (&quot;you&quot; or the &quot;User&quot;) signify
@@ -44,13 +43,14 @@ export default function TetCs() {
         &quot;posted&quot;), the Site are the sole responsibility of the person
         from whom such Content originated.
       </p>
-      <p className="text-justify"></p>The Content is to be used for
+      <p className="text-justify">
+	The Content is to be used for
       informational purposes only and does not constitute investment advice or
       recommendations of any nature. No liability of whatever nature will arise
       for any investment or other decisions based upon any Content and/or
       decisions based upon a contrarian view of any Content, and which is
       expressly contrary to the intention of the research projects aims.
-      <p />
+      </p>
       <h4>User Content Posted on the Site</h4>
       <p className="text-justify">
         You are solely responsible for the Content that you post on the Site, or
@@ -127,7 +127,8 @@ export default function TetCs() {
         violation of any law or used in furtherance of any such violation; or
         contain libelous, defamatory or otherwise unlawful material.
       </p>
-      In addition, you agree not to use the Site to:
+      <p className="text-justify">
+	In addition, you agree not to use the Site to:
       <ul>
         <li>
           {" "}
@@ -202,6 +203,7 @@ export default function TetCs() {
           force of law.
         </li>
       </ul>
+	</p>
       <h4>Privacy</h4>
       <p className="text-justify">
         The Privacy Policy describes the type of data that is collected and

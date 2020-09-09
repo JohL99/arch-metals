@@ -28,15 +28,16 @@ const UserSchema = new Schema({
   },
   realname: {
     type: String,
-    required: false,
+    required: true,
   },
 
   commodity: {
     type: String,
-    required: false,
+    required: true,
   },
   age: {
     type: String,
+    required: false,
   },
   sex: {
     type: String,
@@ -54,64 +55,63 @@ const UserSchema = new Schema({
     type: String,
     required: false,
   },
-
   forecastingapproach: {
     type: String,
     required: false,
   },
-
   bio: {
     type: String,
     required: false,
   },
-
   cq1: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq2: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq3: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq4: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq5: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq6: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq7: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq8: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq9: {
     type: String,
     default: "Yes",
+    required: true,
   },
   cq10: {
     type: String,
     default: "Yes",
-  },
-  cq11: {
-    type: String,
-    default: "Yes",
-  },
-  cq12: {
-    type: String,
-    default: "Yes",
+    required: true,
   },
 });
 

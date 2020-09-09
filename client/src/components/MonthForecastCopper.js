@@ -32,7 +32,7 @@ class MonthForecastCopper extends Component {
       totpercent: "",
       median: "",
       lesprix: [],
-      foreprices: [],
+      foreprices: [10],
       lesmoyennes: [0, 0, 0, 0, 0, 0, 0, 0, 0],
     };
     this.fillPrices = this.fillPrices.bind(this);
@@ -51,25 +51,15 @@ class MonthForecastCopper extends Component {
       this.state.lesmoyennes[7],
       this.state.lesmoyennes[8]
     );
-    if (Mukubwa === this.state.lesmoyennes[0]) {
-      leMedian = this.state.price1;
-    } else if (Mukubwa === this.state.lesmoyennes[1]) {
-      leMedian = this.state.price2;
-    } else if (Mukubwa === this.state.lesmoyennes[2]) {
-      leMedian = this.state.price3;
-    } else if (Mukubwa === this.state.lesmoyennes[3]) {
-      leMedian = this.state.price4;
-    } else if (Mukubwa === this.state.lesmoyennes[4]) {
-      leMedian = this.state.price5;
-    } else if (Mukubwa === this.state.lesmoyennes[5]) {
-      leMedian = this.state.price6;
-    } else if (Mukubwa === this.state.lesmoyennes[6]) {
-      leMedian = this.state.price7;
-    } else if (Mukubwa === this.state.lesmoyennes[7]) {
-      leMedian = this.state.price8;
-    } else if (Mukubwa === this.state.lesmoyennes[8]) {
-      leMedian = this.state.price9;
-    }
+    if (Mukubwa === this.state.lesmoyennes[0]) {leMedian = this.state.price1;} 
+      else if (Mukubwa === this.state.lesmoyennes[1]) {leMedian = this.state.price2;} 
+      else if (Mukubwa === this.state.lesmoyennes[2]) {leMedian = this.state.price3;} 
+      else if (Mukubwa === this.state.lesmoyennes[3]) {leMedian = this.state.price4;} 
+      else if (Mukubwa === this.state.lesmoyennes[4]) {leMedian = this.state.price5;} 
+      else if (Mukubwa === this.state.lesmoyennes[5]) {leMedian = this.state.price6;} 
+      else if (Mukubwa === this.state.lesmoyennes[6]) {leMedian = this.state.price7;} 
+      else if (Mukubwa === this.state.lesmoyennes[7]) {leMedian = this.state.price8;} 
+      else if (Mukubwa === this.state.lesmoyennes[8]) {leMedian = this.state.price9;}
     return leMedian;
   }
   fillPrices(sanza) {
@@ -82,7 +72,7 @@ class MonthForecastCopper extends Component {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    let somme = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0);
+    let somme = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
@@ -205,9 +195,8 @@ class MonthForecastCopper extends Component {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
-          <td align="center">{prixFromApi.user}</td>
-          <td align="center">{Math.round(prixFromApi.lamoyenne)}</td>
-          <td align="center">{Math.round(prixFromApi.lemedian)}</td>
+          <td align="center"><b>{prixFromApi.user}</b></td>
+          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/MT</b></td>
           <td align="center">{prixFromApi.price1 * 100}%</td>
           <td align="center">{prixFromApi.price2 * 100}%</td>
           <td align="center">{prixFromApi.price3 * 100}%</td>
@@ -226,102 +215,47 @@ class MonthForecastCopper extends Component {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="24" align="center">
-                <b>Most Recent Copper {this.props.mweji} Forecasts</b>
-              </td>
+              <td colSpan="24" align="center"><b>Most Recent Copper Forecasts - {this.props.mweji}</b></td>
             </tr>
             <tr>
-              <td align="center">
-                <b>{this.props.mweji}</b>
-              </td>
-              <td align="center">
-                <b>EV</b>
-              </td>
-              <td align="center">
-                <b>Median</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price1}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price2}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price3}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price4}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price5}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price6}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price7}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price8}</b>
-              </td>
-              <td align="center">
-                <b>{this.state.price9}</b>
-              </td>
-              <td align="center">
-                <b>Comments</b>
-              </td>
+              <td align="center"><b>Participant</b></td>
+              <td align="center"><b>Expected Value</b></td>
+              <td align="center"><b>${this.state.price1}/MT</b></td>
+              <td align="center"><b>${this.state.price2}/MT</b></td>
+              <td align="center"><b>${this.state.price3}/MT</b></td>
+              <td align="center"><b>${this.state.price4}/MT</b></td>
+              <td align="center"><b>${this.state.price5}/MT</b></td>
+              <td align="center"><b>${this.state.price6}/MT</b></td>
+              <td align="center"><b>${this.state.price7}/MT</b></td>
+              <td align="center"><b>${this.state.price8}/MT</b></td>
+              <td align="center"><b>${this.state.price9}/MT</b></td>
+              <td align="center"><b>Justifications</b></td>
             </tr>
             {this.state.lesprix.map(renderPrix)}
             <tr>
+              <td align="center"><b>Average</b></td>
               <td align="center">
-                <b>Average</b>{" "}
-              </td>
-              <td align="center">
-                <b>
-                  {Math.round(
+                <b>${Math.round(
                     this.state.price1 * this.state.lesmoyennes[0] +
-                      this.state.price2 * this.state.lesmoyennes[1] +
-                      this.state.price3 * this.state.lesmoyennes[2] +
-                      this.state.price4 * this.state.lesmoyennes[3] +
-                      this.state.price5 * this.state.lesmoyennes[4] +
-                      this.state.price6 * this.state.lesmoyennes[5] +
-                      this.state.price7 * this.state.lesmoyennes[6] +
-                      this.state.price8 * this.state.lesmoyennes[7] +
-                      this.state.price9 * this.state.lesmoyennes[8]
-                  )}
-                </b>
-              </td>
-              <td align="center">
-                <b>{this.trouveLeMedian()}</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[0] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[1] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[2] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[3] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[4] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[5] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[6] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[7] * 100)}%</b>{" "}
-              </td>
-              <td align="center">
-                <b>{Math.round(this.state.lesmoyennes[8] * 100)}%</b>{" "}
-              </td>
-              <td align="center">{} </td>
+                    this.state.price2 * this.state.lesmoyennes[1] +
+                    this.state.price3 * this.state.lesmoyennes[2] +
+                    this.state.price4 * this.state.lesmoyennes[3] +
+                    this.state.price5 * this.state.lesmoyennes[4] +
+                    this.state.price6 * this.state.lesmoyennes[5] +
+                    this.state.price7 * this.state.lesmoyennes[6] +
+                    this.state.price8 * this.state.lesmoyennes[7] +
+                    this.state.price9 * this.state.lesmoyennes[8]
+                  )}/MT</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[0] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[1] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[2] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[3] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[4] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[5] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[6] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[7] * 100)}%</b></td>
+              <td align="center"><b>{Math.round(this.state.lesmoyennes[8] * 100)}%</b></td>
+              <td align="center">{}</td>
             </tr>
           </tbody>
         </table>
