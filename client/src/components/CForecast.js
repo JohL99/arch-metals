@@ -55,7 +55,7 @@ class CForecast extends PureComponent {
         "June",
         "July",
         "August",
-        "sepember",
+        "september",
         "October",
         "November",
         "December",

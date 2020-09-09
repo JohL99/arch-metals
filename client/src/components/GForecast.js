@@ -55,7 +55,7 @@ class GForecast extends PureComponent {
         "June",
         "July",
         "August",
-        "sepember",
+        "september",
         "October",
         "November",
         "December",
