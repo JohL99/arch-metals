@@ -62,8 +62,8 @@ class CSumFcast extends PureComponent {
     this.faisQlq();
     this.graphi();
   }
-  fillgeneralcomments() {
-    fetch("/api/menji/olda1/September 2020&" + "&Copper" + "&8")
+  fillgeneralcomments(sanza2) {
+    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&8")
       .then((response3) => {
         return response3.json();
       })
