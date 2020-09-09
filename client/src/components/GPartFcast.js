@@ -631,11 +631,6 @@ class GPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evnov}/oz</b></td>
               <td align="center"><b>${this.state.evdec}/oz</b></td>
             </tr>
-            <tr>
-              <td align="center" colSpan="5">
-                <GraphCG mambo={this.state.donnees1} />
-              </td>
-            </tr>
             </tbody>
         </table>
         <table className="table table-bordered">

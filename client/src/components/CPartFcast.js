@@ -631,11 +631,6 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evnov}/MT</b></td>
               <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
-            <tr>
-              <td align="center" colSpan="5">
-                <GraphCG mambo={this.state.donnees1} />
-              </td>
-            </tr>
             </tbody>
         </table>
         <table className="table table-bordered">
