@@ -734,43 +734,43 @@ class GForecast extends PureComponent {
                 </td>
               </tr>
               <tr>
-                <td width="10%" align="center">
+                <td align="center" width="10%">
                   <b>Participant</b>
                 </td>
-                <td width="10%" align="center">
+                <td align="center" width="10%">
                   <b>Expected Value</b>
                 </td>
-                <td width="10%" align="center">
+                <td align="center" width="15%">
                   <b>Date</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price1}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price2}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price3}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price4}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price5}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price6}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price7}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price8}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price9}/oz</b>
                 </td>
-                <td width="50%" align="center">
+                <td align="center" width="80%">
                   <b>Justifications</b>
                 </td>
               </tr>
@@ -785,43 +785,43 @@ class GForecast extends PureComponent {
                 </td>
               </tr>
               <tr>
-                <td width="10%" align="center">
+                <td align="center" width="10%">
                   <b>Participant</b>
                 </td>
-                <td width="10%" align="center">
+                <td align="center" width="10%">
                   <b>Expected Value</b>
                 </td>
-                <td width="10%" align="center">
+                <td align="center" width="15%">
                   <b>Date</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price1}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price2}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price3}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price4}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price5}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price6}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price7}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price8}/oz</b>
                 </td>
-                <td align="center">
+                <td align="center" width="8%">
                   <b>${this.state.price9}/oz</b>
                 </td>
-                <td width="50%" align="center">
+                <td align="center" width="80%">
                   <b>Justifications</b>
                 </td>
               </tr>
