@@ -735,12 +735,12 @@ class GForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>Participant</b>
                 </td>
-                <td align="center">
+                <td width="10%" align="center">
                   <b>Expected Value</b>
                 </td>
-                <td align="center">
+                <td width="10%" align="center">
                   <b>Date</b>
                 </td>
                 <td align="center">
@@ -770,7 +770,7 @@ class GForecast extends PureComponent {
                 <td align="center">
                   <b>${this.state.price9}/oz</b>
                 </td>
-                <td width="35%" align="center">
+                <td width="50%" align="center">
                   <b>Justifications</b>
                 </td>
               </tr>
@@ -786,12 +786,12 @@ class GForecast extends PureComponent {
               </tr>
               <tr>
                 <td width="10%" align="center">
-                  <b>{this.state.mois}</b>
+                  <b>Participant</b>
                 </td>
-                <td align="center">
+                <td width="10%" align="center">
                   <b>Expected Value</b>
                 </td>
-                <td align="center">
+                <td width="10%" align="center">
                   <b>Date</b>
                 </td>
                 <td align="center">
@@ -821,7 +821,7 @@ class GForecast extends PureComponent {
                 <td align="center">
                   <b>${this.state.price9}/oz</b>
                 </td>
-                <td width="35%" align="center">
+                <td width="50%" align="center">
                   <b>Justifications</b>
                 </td>
               </tr>
