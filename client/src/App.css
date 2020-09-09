@@ -2479,19 +2479,19 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-sm {
-  height: calc(1.25em + 0.25rem + 1px);
-  padding: 0.15rem 0.15rem;
+  height: calc(1.5em + 0.25rem + 1px);
+  padding: 0.25rem 0.25rem;
   font-size: 12px;
   line-height: 1.5;
-  border-radius: 0.15rem;
+  border-radius: 0.25rem;
 }
 
 .form-control-lg {
-  height: calc(1.25em + 0.25rem + 1px);
-  padding: 0.15rem 0.25rem;
+  height: calc(1.5em + 0.25rem + 1px);
+  padding: 0.25rem 0.25rem;
   font-size: 12px;
-  line-height: 1.25;
-  border-radius: 0.15rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
 }
 
 select.form-control[size],
@@ -2509,7 +2509,7 @@ textarea.form-control {
 
 .form-text {
   display: block;
-  margin-top: 0.15rem;
+  margin-top: 0.25rem;
 }
 
 .form-row {
