@@ -118,15 +118,15 @@ class CForecast extends PureComponent {
     averagesA[8] = this.state.averagesA[0].price9;
   this.setState({ averagesA });
     
-    averagesO[0] = (averagesA[0] - averagesR[0]) / (numberT - numberR);
-    averagesO[1] = (averagesA[1] - averagesR[1]) / (numberT - numberR);
-    averagesO[2] = (averagesA[2] - averagesR[2]) / (numberT - numberR);
-    averagesO[3] = (averagesA[3] - averagesR[3]) / (numberT - numberR);
-    averagesO[4] = (averagesA[4] - averagesR[4]) / (numberT - numberR);
-    averagesO[5] = (averagesA[5] - averagesR[5]) / (numberT - numberR);
-    averagesO[6] = (averagesA[6] - averagesR[6]) / (numberT - numberR);
-    averagesO[7] = (averagesA[8] - averagesR[7]) / (numberT - numberR);
-    averagesO[8] = (averagesA[8] - averagesR[8]) / (numberT - numberR);
+    averagesO[0] = (averagesA[0] * numberT - averagesR[0] * numberR) / (numberT - numberR);
+    averagesO[1] = (averagesA[1] * numberT - averagesR[1] * numberR) / (numberT - numberR);
+    averagesO[2] = (averagesA[2] * numberT - averagesR[2] * numberR) / (numberT - numberR);
+    averagesO[3] = (averagesA[3] * numberT - averagesR[3] * numberR) / (numberT - numberR);
+    averagesO[4] = (averagesA[4] * numberT - averagesR[4] * numberR) / (numberT - numberR);
+    averagesO[5] = (averagesA[5] * numberT - averagesR[5] * numberR) / (numberT - numberR);
+    averagesO[6] = (averagesA[6] * numberT - averagesR[6] * numberR) / (numberT - numberR);
+    averagesO[7] = (averagesA[8] * numberT - averagesR[7] * numberR) / (numberT - numberR);
+    averagesO[8] = (averagesA[8] * numberT - averagesR[8] * numberR) / (numberT - numberR);
   this.setState({ averagesO });
     this.setState({ olddata: [].concat(Olddata) });
     
