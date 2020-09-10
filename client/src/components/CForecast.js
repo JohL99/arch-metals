@@ -61,7 +61,7 @@ class CForecast extends PureComponent {
         "December",
       ],
       median: "",
-      Recentdata: [],
+      Rprice: [],
       foreprices: [],
       averages: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       element: [],
@@ -94,9 +94,9 @@ class CForecast extends PureComponent {
     //Extraction of the recent data
     var Olddata = [...this.state.alldata];
     var Alldata = [...this.state.alldata];
-    var Recentdata = [...this.state.Recentdata];
+    var Rprice = [...this.state.Rprice];
     var index;
-    let Variable1 = Recentdata.map((pricedata) => {
+    let Variable1 = Rprice.map((pricedata) => {
       index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
       if (index !== -1) {
         Olddata.splice(index, 0);
@@ -105,7 +105,7 @@ class CForecast extends PureComponent {
     });
     var numberT = this.state.alldata.length;
     var numberO = (numberT - numberR);
-    var numberR = this.state.Recentdata.length;
+    var numberR = this.state.Rprice.length;
     //var numberR = this.state.recentdata.length;
     averagesA[0] = this.state.averagesA[0].price1;
     averagesA[1] = this.state.averagesA[0].price2;
@@ -138,15 +138,15 @@ class CForecast extends PureComponent {
     this.state.element[6] = this.state.price7;
     this.state.element[7] = this.state.price8;
     this.state.element[8] = this.state.price9;
-    averagesR[0] = Recentdata.price1;
-    averagesR[1] = Recentdata.price2;
-    averagesR[2] = Recentdata.price3;
-    averagesR[3] = Recentdata.price4;
-    averagesR[4] = Recentdata.price5;
-    averagesR[5] = Recentdata.price6;
-    averagesR[6] = Recentdata.price7;
-    averagesR[7] = Recentdata.price8;
-    averagesR[8] = Recentdata.price9;
+    averagesR[0] = Rprice.price1;
+    averagesR[1] = Rprice.price2;
+    averagesR[2] = Rprice.price3;
+    averagesR[3] = Rprice.price4;
+    averagesR[4] = Rprice.price5;
+    averagesR[5] = Rprice.price6;
+    averagesR[6] = Rprice.price7;
+    averagesR[7] = Rprice.price8;
+    averagesR[8] = Rprice.price9;
     let data1 = { ...this.state.data1 };
     data1 = [
       {
@@ -170,8 +170,8 @@ class CForecast extends PureComponent {
     data1.shift();
     this.setState({ data1 });
     
-    Recentdata.shift();
-    this.setState({ Recentdata: Recentdata });
+    Rprice.shift();
+    this.setState({ Rprice: Rprice });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -256,7 +256,7 @@ class CForecast extends PureComponent {
           };
         });
         this.setState({
-          Recentdata: [
+          Rprice: [
             {
               id: "",
               user: "",
@@ -497,14 +497,14 @@ class CForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="14" align="center" width="90%">
                   <b>Copper Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>
                 <td width="10%">
                   <select
-                    id="mnth"
+                    id="month"
                     name="month"
                     value={this.state.month}
                     onChange={(e) => {
@@ -545,7 +545,7 @@ class CForecast extends PureComponent {
                 <td align="center"><b>Most Recent Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)
                     /*Math.round(this.state.EVR)*/}/MT</b></td>
-                <td align="center"><b>{this.state.Recentdata.length}</b></td>
+                <td align="center"><b>{this.state.Rprice.length}</b></td>
                 <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
@@ -616,7 +616,7 @@ class CForecast extends PureComponent {
               </tr>
               <tr>
                 <td colSpan="12" align="center">
-                  <div style={{ width: "100%", height: 300 }}>
+                  <div style={{ width: "90%", height: 300 }}>
                     <ResponsiveContainer>
                       <BarChart
                         layout="vertical"
@@ -679,7 +679,7 @@ class CForecast extends PureComponent {
                 <td align="center" width="8%"><b>${this.state.price9}/MT</b></td>
                 <td align="center" width="80%"><b>Justifications</b></td>
               </tr>
-              {this.state.Recentdata.map(renderprice)}
+              {this.state.Rprice.map(renderprice)}
             </tbody>
           </table>
           <table className="table table-bordered">
