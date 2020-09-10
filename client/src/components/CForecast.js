@@ -91,6 +91,17 @@ class CForecast extends PureComponent {
       }
       return -1;
     }
+    /*
+     *  implementation where some_total is the the total of the array
+     *  some_total = arrayObjectTotal(some_array, array.property);
+    */
+    function arrayObjectTotal(myArray, property) {
+      var total = 0;
+      for (var i = 0, len = myArray.length; i < len; i++) {
+        total = total + myArray[i][property];
+      }
+      return total;
+    }
     //Extraction of the recent data
     var Olddata = [...this.state.alldata];
     var Alldata = [...this.state.alldata];
@@ -108,14 +119,14 @@ class CForecast extends PureComponent {
     var numberR = this.state.Rprice.length;
     //var numberR = this.state.recentdata.length;
     averagesA[0] = this.state.averagesA[0].price1;
-    averagesA[1] = this.state.averagesA[0].price2;
-    averagesA[2] = this.state.averagesA[0].price3;
-    averagesA[3] = this.state.averagesA[0].price4;
-    averagesA[4] = this.state.averagesA[0].price5;
-    averagesA[5] = this.state.averagesA[0].price6;
-    averagesA[6] = this.state.averagesA[0].price7;
-    averagesA[7] = this.state.averagesA[0].price8;
-    averagesA[8] = this.state.averagesA[0].price9;
+    averagesA[1] = this.state.averagesA[1].price2;
+    averagesA[2] = this.state.averagesA[2].price3;
+    averagesA[3] = this.state.averagesA[3].price4;
+    averagesA[4] = this.state.averagesA[4].price5;
+    averagesA[5] = this.state.averagesA[5].price6;
+    averagesA[6] = this.state.averagesA[6].price7;
+    averagesA[7] = this.state.averagesA[7].price8;
+    averagesA[8] = this.state.averagesA[8].price9;
     var numberO = Olddata.length;
     averagesO[0] = (averagesA[0] - averagesR[0]) / numberO;
     averagesO[1] = (averagesA[1] - averagesR[1]) / numberO;
