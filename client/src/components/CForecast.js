@@ -160,7 +160,7 @@ class CForecast extends PureComponent {
     this.setState({ averagesA });
     this.setState({ averagesO });
     var y = 0;
-    for (y === 0; y < 19; y++) {
+    for (y === 0; y < 9; y++) {
       data1.push({
         price: this.state.element[y],
         RecentData: this.state.averagesR[y] * 100,
