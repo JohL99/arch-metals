@@ -96,7 +96,8 @@ class CForecast extends PureComponent {
     var Rprice = [...this.state.Aprice];
     var index;
     let Variable1 = Rprice.map((pricedata) => {
-      index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
+      //index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
+      index = 10;
       if (index !== -1) {
         Olddata.splice(index, 1);
       }
