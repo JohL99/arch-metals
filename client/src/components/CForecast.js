@@ -118,15 +118,15 @@ class CForecast extends PureComponent {
     averagesA[7] = this.state.averagesA[0].price8;
     averagesA[8] = this.state.averagesA[0].price9;
     var number1 = Olddata.length;
-    averagesO[0] = (averagesA[0] - this.state.averages[0]) / (numberT - number2);
-    averagesO[1] = (averagesA[1] - this.state.averages[1]) / (numberT - number2);
-    averagesO[2] = (averagesA[2] - this.state.averages[2]) / (numberT - number2);
-    averagesO[3] = (averagesA[3] - this.state.averages[3]) / (numberT - number2);
-    averagesO[4] = (averagesA[4] - this.state.averages[4]) / (numberT - number2);
-    averagesO[5] = (averagesA[5] - this.state.averages[5]) / (numberT - number2);
-    averagesO[6] = (averagesA[6] - this.state.averages[6]) / (numberT - number2);
-    averagesO[7] = (averagesA[8] - this.state.averages[7]) / (numberT - number2);
-    averagesO[8] = (averagesA[8] - this.state.averages[8]) / (numberT - number2);
+    averagesO[0] = (averagesA[0] - this.state.averagesR[0]) / (numberT - number2);
+    averagesO[1] = (averagesA[1] - this.state.averagesR[1]) / (numberT - number2);
+    averagesO[2] = (averagesA[2] - this.state.averagesR[2]) / (numberT - number2);
+    averagesO[3] = (averagesA[3] - this.state.averagesR[3]) / (numberT - number2);
+    averagesO[4] = (averagesA[4] - this.state.averagesR[4]) / (numberT - number2);
+    averagesO[5] = (averagesA[5] - this.state.averagesR[5]) / (numberT - number2);
+    averagesO[6] = (averagesA[6] - this.state.averagesR[6]) / (numberT - number2);
+    averagesO[7] = (averagesA[8] - this.state.averagesR[7]) / (numberT - number2);
+    averagesO[8] = (averagesA[8] - this.state.averagesR[8]) / (numberT - number2);
     this.setState({ averagesO });
     this.setState({ olddata: [].concat(Olddata) });
     //calculates the mean
@@ -152,7 +152,7 @@ class CForecast extends PureComponent {
     data1 = [
       {
         price: this.state.element[0],
-        recentdate: this.state.averages[0],
+        recentdata: this.state.averagesR[0],
         olddata: averagesO[0],
         alldata: averagesA[0],
       },
@@ -160,10 +160,10 @@ class CForecast extends PureComponent {
     this.setState({ averagesA });
     this.setState({ averagesO });
     var y = 0;
-    for (y === 0; y < 9; y++) {
+    for (y === 0; y < 19; y++) {
       data1.push({
         price: this.state.element[y],
-        RecentData: this.state.averages[y] * 100,
+        RecentData: this.state.averagesR[y] * 100,
         OldData: averagesO[y],
         AllData: averagesA[y],
       });
@@ -419,40 +419,30 @@ class CForecast extends PureComponent {
       aTable[7],
       aTable[8]
     );
-    if (Biggest === aTable[0]) {
-      aMedian = this.state.price1;
-    } else if (Biggest === aTable[1]) {
-      aMedian = this.state.price2;
-    } else if (Biggest === aTable[2]) {
-      aMedian = this.state.price3;
-    } else if (Biggest === aTable[3]) {
-      aMedian = this.state.price4;
-    } else if (Biggest === aTable[4]) {
-      aMedian = this.state.price5;
-    } else if (Biggest === aTable[5]) {
-      aMedian = this.state.price6;
-    } else if (Biggest === aTable[6]) {
-      aMedian = this.state.price7;
-    } else if (Biggest === aTable[7]) {
-      aMedian = this.state.price8;
-    } else if (Biggest === aTable[8]) {
-      aMedian = this.state.price9;
-    }
+    if (Biggest === aTable[0]) {aMedian = this.state.price1;} 
+    else if (Biggest === aTable[1]) {aMedian = this.state.price2;} 
+    else if (Biggest === aTable[2]) {aMedian = this.state.price3;} 
+    else if (Biggest === aTable[3]) {aMedian = this.state.price4;} 
+    else if (Biggest === aTable[4]) {aMedian = this.state.price5;} 
+    else if (Biggest === aTable[5]) {aMedian = this.state.price6;} 
+    else if (Biggest === aTable[6]) {aMedian = this.state.price7;} 
+    else if (Biggest === aTable[7]) {aMedian = this.state.price8;} 
+    else if (Biggest === aTable[8]) {aMedian = this.state.price9;}
     return aMedian;
   }
     findEV(item) {
     var EV = 0;
     if (typeof item !== "undefined") {
       EV =
-        this.state.price1 * (item[0] / 100) +
-        this.state.price2 * (item[1] / 100) +
-        this.state.price3 * (item[2] / 100) +
-        this.state.price4 * (item[3] / 100) +
-        this.state.price5 * (item[4] / 100) +
-        this.state.price6 * (item[5] / 100) +
-        this.state.price7 * (item[6] / 100) +
-        this.state.price8 * (item[7] / 100) +
-        this.state.price9 * (item[8] / 100);
+        Math.round(this.state.price1 * (item[0] / 100)) +
+        Math.round(this.state.price2 * (item[1] / 100)) +
+        Math.round(this.state.price3 * (item[2] / 100)) +
+        Math.round(this.state.price4 * (item[3] / 100)) +
+        Math.round(this.state.price5 * (item[4] / 100)) +
+        Math.round(this.state.price6 * (item[5] / 100)) +
+        Math.round(this.state.price7 * (item[6] / 100)) +
+        Math.round(this.state.price8 * (item[7] / 100)) +
+        Math.round(this.state.price9 * (item[8] / 100));
       //console.log(item);
       //console.log(item[0]);
       //console.log(EV);
@@ -559,15 +549,15 @@ class CForecast extends PureComponent {
                 <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)
                 /*Math.round(this.state.EVR)*/}/MT</b></td>
                 <td align="center"><b>{this.state.Rprice.length}</b></td>
-                <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[3] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[4] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[5] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[6] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[7] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[8] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[0] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[1] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[2] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[3] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[4] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[5] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[6] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[7] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[8] * 100)}%</td>
               </tr>
               <tr>
                 <td width="10%" align="center"><b>{this.state.month}</b></td>

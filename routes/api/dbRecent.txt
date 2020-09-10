@@ -1,0 +1,59 @@
+const express = require("express");
+
+const router = express.Router();
+/* 
+//item fichier
+const multer = require("multer"); */
+
+//load boule model
+const Menji = require("../../models/Menji");
+
+//@route GET api/Menji/test
+//@desc test Menji route
+//@access Public
+router.get("/test", (req, res) => res.json({ msg: "Menji ok" }));
+
+// @route   GET api/cinput/dernierda
+// @desc    Renvoie toutes les dernières entrées des utilisateurs / Returns all the latest user entries
+// @access  Public
+router.get("/dernierda/:Amonth&:commodity", (req, res) => {
+  const errors = {};
+
+  Menji.aggregate([
+    {
+      $match: {
+        $and: [
+          { month: req.params.Amonth },
+          { commodity: req.params.commodity },
+        ],
+      },
+    },
+
+    {
+      $sort: { dateforecast: 1, commodity: 1, user: 1 },
+    },
+
+    {
+      $group: {
+        _id: {
+          commodity: "$commodity",
+	  month: "$month",
+	  user: "$user",
+       },
+        lastEntry: { $last: "$_dateforecast" },
+        detail: { $last: "$$ROOT" },
+      },
+    },
+  ])
+
+    /* .populate({ path: "user" }) */
+    .then((forecasts) => {
+      if (!forecasts) {
+        errors.noforecast = "no forecast";
+        return res.status(404).json(errors);
+      }
+
+      res.json(forecasts);
+    })
+    .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
+});

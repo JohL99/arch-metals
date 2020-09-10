@@ -1,0 +1,30 @@
+const express = require("express");
+
+const router = express.Router();
+/* 
+//item file
+const multer = require("multer"); */
+
+//load boule model
+const Menji = require("../../models/Menji");
+
+//@route GET api/Menji/test
+//@desc test Menji route
+//@access Public
+router.get("/test", (req, res) => res.json({ msg: "Menji ok" }));
+
+// @route   GET  api/all/:Amonth&:commodity
+// @desc    Get all data
+// @access  Public
+router.get("/all/:Amonth&:commodity", (req, res) => {
+  const errors = {};
+  Menji.find({
+    $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
+  })
+    .sort({ dateforecast: -1 })
+    .then((menjis) => {
+      res.json(menjis);
+      //console.log(menjis);
+    })
+    .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
+});

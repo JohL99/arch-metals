@@ -194,7 +194,7 @@ router.get("/olda1/:Amonth&:commodity&:number", (req, res) => {
   Menji.find({
     $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
   })
-    .sort({ $natural: -1 })
+    .sort({ dateforecast: -1 })
 
     .limit(x)
     .then((menjis) => {
@@ -212,7 +212,7 @@ router.get("/all/:Amonth&:commodity", (req, res) => {
   Menji.find({
     $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
   })
-    .sort({ _id: 1 })
+    .sort({ dateforecast: -1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
@@ -221,7 +221,7 @@ router.get("/all/:Amonth&:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moymonth
-// @desc    Renvoie toutes les means par date
+// @desc    Renvoie toutes les means par date / Return all means by date
 // @access  Public
 router.get("/moymonth/:commodity", (req, res) => {
   const errors = {};
@@ -262,7 +262,7 @@ router.get("/moymonth/:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moymonth
-// @desc    Renvoie renvoie number d'entrées par month
+// @desc    Renvoie renvoie number d'entrées par month / Returns returns number of entries per month
 // @access  Public
 router.get("/comptemonth/:commodity", (req, res) => {
   const errors = {};
@@ -284,6 +284,7 @@ router.get("/comptemonth/:commodity", (req, res) => {
   ])
 
     /* .populate({ path: "user" }) */
+    .sort({ dateforecast: 1 })
     .then((forecasts) => {
       if (!forecasts) {
         errors.noforecast = "no forecast";
@@ -296,7 +297,7 @@ router.get("/comptemonth/:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moyunmonth
-// @desc    Renvoie toutes les means par date
+// @desc    Renvoie toutes les means par date / Return all means by date
 // @access  Public
 router.get("/moyunmonth/:Amonth&:commodity", (req, res) => {
   const errors = {};
@@ -328,6 +329,7 @@ router.get("/moyunmonth/:Amonth&:commodity", (req, res) => {
   ])
 
     /* .populate({ path: "user" }) */
+    .sort({ dateforecast: 1 })
     .then((forecasts) => {
       if (!forecasts) {
         errors.noforecast = "no forecast";
@@ -340,7 +342,7 @@ router.get("/moyunmonth/:Amonth&:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moytousmonth
-// @desc    Renvoie toutes les means par month
+// @desc    Renvoie toutes les means par month / Return all means per month
 // @access  Public
 router.get("/moytousmonth/:commodity", (req, res) => {
   const errors = {};
