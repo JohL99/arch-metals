@@ -551,15 +551,15 @@ class CForecast extends PureComponent {
                 <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)
                     /*Math.round(this.state.EVR)*/}/MT</b></td>
                 <td align="center"><b>{this.state.Rprice.length}</b></td>
-                <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[3] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[4] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[5] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[6] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[7] * 100)}%</td>
-                <td align="center">{Math.round(this.state.averages[8] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[0] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[1] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[2] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[3] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[4] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[5] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[6] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[7] * 100)}%</td>
+                <td align="center">{Math.round(this.state.averagesR[8] * 100)}%</td>
               </tr>
               <tr>
                 <td width="10%" align="center"><b>{this.state.month}</b></td>
@@ -581,23 +581,23 @@ class CForecast extends PureComponent {
                     /* Math.round(this.findEV(this.state.averagesO)) */}/MT</b></td> 
 		            <td align="center"><b>{(this.state.alldata.length - this.state.Rprice.length)}</b></td>
                 <td align="center">{Math.round((this.state.averagesA[0] * this.state.alldata.length
-                  - this.state.averages[0] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[0] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[1] * this.state.alldata.length
-                  - this.state.averages[1] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[1] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[2] * this.state.alldata.length
-                  - this.state.averages[2] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[2] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[3] * this.state.alldata.length
-                  - this.state.averages[3] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[3] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[4] * this.state.alldata.length
-                  - this.state.averages[4] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[4] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[5] * this.state.alldata.length
-                  - this.state.averages[5] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[5] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[6] * this.state.alldata.length
-                  - this.state.averages[6] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[6] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[7] * this.state.alldata.length
-                  - this.state.averages[7] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[7] * this.state.Rprice.length))}%</td>
                 <td align="center">{Math.round((this.state.averagesA[8] * this.state.alldata.length
-                  - this.state.averages[8] * this.state.Rprice.length))}%</td>
+                  - this.state.averagesR[8] * this.state.Rprice.length))}%</td>
               </tr>
               <tr>
                 <td width="10%" align="center"><b>{this.state.month}</b></td>
