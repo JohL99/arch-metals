@@ -117,15 +117,15 @@ class CForecast extends PureComponent {
     averagesA[7] = this.state.averagesA[0].price8;
     averagesA[8] = this.state.averagesA[0].price9;
     var numberO = Olddata.length;
-    averagesO[0] = (averagesA[0] - this.state.averagesR[0]) / numberO;
-    averagesO[1] = (averagesA[1] - this.state.averagesR[1]) / numberO;
-    averagesO[2] = (averagesA[2] - this.state.averagesR[2]) / numberO;
-    averagesO[3] = (averagesA[3] - this.state.averagesR[3]) / numberO;
-    averagesO[4] = (averagesA[4] - this.state.averagesR[4]) / numberO;
-    averagesO[5] = (averagesA[5] - this.state.averagesR[5]) / numberO;
-    averagesO[6] = (averagesA[6] - this.state.averagesR[6]) / numberO;
-    averagesO[7] = (averagesA[8] - this.state.averagesR[7]) / numberO;
-    averagesO[8] = (averagesA[8] - this.state.averagesR[8]) / numberO;
+    averagesO[0] = (averagesA[0] - averagesR[0]) / numberO;
+    averagesO[1] = (averagesA[1] - averagesR[1]) / numberO;
+    averagesO[2] = (averagesA[2] - averagesR[2]) / numberO;
+    averagesO[3] = (averagesA[3] - averagesR[3]) / numberO;
+    averagesO[4] = (averagesA[4] - averagesR[4]) / numberO;
+    averagesO[5] = (averagesA[5] - averagesR[5]) / numberO;
+    averagesO[6] = (averagesA[6] - averagesR[6]) / numberO;
+    averagesO[7] = (averagesA[8] - averagesR[7]) / numberO;
+    averagesO[8] = (averagesA[8] - averagesR[8]) / numberO;
     this.setState({ averagesO });
     this.setState({ olddata: [].concat(Olddata) });
     //calculates the means
@@ -574,7 +574,7 @@ class CForecast extends PureComponent {
                 <td width="10%" align="center"><b>Older Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.state.EVO)
                     /* Math.round(this.findEV(this.state.averagesO)) */}/MT</b></td> 
-		            <td align="center"><b>{this.state.olddata.length}</b></td>
+		            <td align="center"><b>{this.state.numberO}</b></td>
                 <td align="center">{Math.round(this.state.averagesO[0])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[1])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[2])}%</td>
