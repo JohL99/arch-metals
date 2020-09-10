@@ -61,14 +61,15 @@ router.get("/dernierda/:Amonth&:commodity", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1, user: 1 },
+      $sort: { dateforecast: 1, commodity: 1, user: 1 },
     },
 
     {
       $group: {
         _id: {
-          user: "$user",
-          month: "$month",
+          commodity: "$commodity",
+	  month: "$month",
+	  user: "$user",
         },
         lastEntry: { $last: "$_dateforecast" },
         detail: { $last: "$$ROOT" },
@@ -194,7 +195,7 @@ router.get("/olda1/:Amonth&:commodity&:number", (req, res) => {
   Menji.find({
     $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
   })
-    .sort({ dateforecast: -1 })
+    .sort({ dateforecast: -1, commodity: 1, month: 1 })
 
     .limit(x)
     .then((menjis) => {
@@ -297,7 +298,7 @@ router.get("/comptemonth/:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moyunmonth
-// @desc    Renvoie toutes les means par date / Return all means by date
+// @desc    Renvoie toutes les means par date / Return all means by month
 // @access  Public
 router.get("/moyunmonth/:Amonth&:commodity", (req, res) => {
   const errors = {};
