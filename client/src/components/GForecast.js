@@ -75,12 +75,12 @@ class GForecast extends PureComponent {
       EVO: 0,
       EVA: 0,
     };
-    this.CreeOldata = this.CreeOldata.bind(this);
+    this.FindOldata = this.FindOldata.bind(this);
     this.findMedian = this.findMedian.bind(this);
     this.recovermeanT = this.recovermeanT.bind(this);
     this.findEV = this.findEV.bind(this);
   }
-  CreeOldata() {
+  FindOldata() {
     let sum1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     let sum2 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     let averagesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -95,9 +95,9 @@ class GForecast extends PureComponent {
     //Soustraction des données récentes
     var arOlddata = [...this.state.alldata];
     var arAlldata = [...this.state.alldata];
-    var arAprice = [...this.state.Aprice];
+    var Rprice = [...this.state.Aprice];
     var index;
-    let Variable1 = arAprice.map((pricedata) => {
+    let Variable1 = Rprice.map((pricedata) => {
       index = arrayObjectIndexOf(arOlddata, pricedata.id, "id");
       if (index !== -1) {
         arOlddata.splice(index, 1);
@@ -139,15 +139,15 @@ class GForecast extends PureComponent {
     this.state.element[6] = this.state.price7;
     this.state.element[7] = this.state.price8;
     this.state.element[8] = this.state.price9;
-    averagesP[0] = arAprice.price1;
-    averagesP[1] = arAprice.price2;
-    averagesP[2] = arAprice.price3;
-    averagesP[3] = arAprice.price4;
-    averagesP[4] = arAprice.price5;
-    averagesP[5] = arAprice.price6;
-    averagesP[6] = arAprice.price7;
-    averagesP[7] = arAprice.price8;
-    averagesP[8] = arAprice.price9;
+    averagesP[0] = Rprice.price1;
+    averagesP[1] = Rprice.price2;
+    averagesP[2] = Rprice.price3;
+    averagesP[3] = Rprice.price4;
+    averagesP[4] = Rprice.price5;
+    averagesP[5] = Rprice.price6;
+    averagesP[6] = Rprice.price7;
+    averagesP[7] = Rprice.price8;
+    averagesP[8] = Rprice.price9;
     let data1 = { ...this.state.data1 };
     data1 = [
       {
@@ -171,8 +171,8 @@ class GForecast extends PureComponent {
     data1.shift();
     this.setState({ data1 });
     //on enlève la ligne vide
-    arAprice.shift();
-    this.setState({ Aprice: arAprice });
+    Rprice.shift();
+    this.setState({ Aprice: Rprice });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -191,7 +191,7 @@ class GForecast extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((price) => {
+        let bucket = data.map((price) => {
           //put it in an array
           this.setState({ price1: price.floorprice + price.constant1 * 0 });
           this.setState({ price2: price.floorprice + price.constant1 * 1 });
@@ -308,23 +308,23 @@ class GForecast extends PureComponent {
     this.recovermeanT(sanza1);
     fetch("/api/menji/all/" + sanza1 + "&Gold")
       .then((response2) => {return response2.json();})
-      .then((data2) => {let taloyaApi = data2.map((talo) => {
+      .then((data2) => {let taloyaApi = data2.map((bucket) => {
           return {
-            id: talo._id,
-            user: talo.user,
-            dateforecast: this.convert_to_utc(new Date(talo.dateforecast)),
-            price1: talo.price1,
-            price2: talo.price2,
-            price3: talo.price3,
-            price4: talo.price4,
-            price5: talo.price5,
-            price6: talo.price6,
-            price7: talo.price7,
-            price8: talo.price8,
-            price9: talo.price9,
-            median: talo.median,
-            mean: talo.mean,
-            specificcomments: talo.specificcomments,
+            id: bucket._id,
+            user: bucket.user,
+            dateforecast: this.convert_to_utc(new Date(bucket.dateforecast)),
+            price1: bucket.price1,
+            price2: bucket.price2,
+            price3: bucket.price3,
+            price4: bucket.price4,
+            price5: bucket.price5,
+            price6: bucket.price6,
+            price7: bucket.price7,
+            price8: bucket.price8,
+            price9: bucket.price9,
+            median: bucket.median,
+            mean: bucket.mean,
+            specificcomments: bucket.specificcomments,
           };
         });
         this.setState({
@@ -348,7 +348,7 @@ class GForecast extends PureComponent {
             },
           ].concat(taloyaApi),
         });
-        this.CreeOldata();
+        this.FindOldata();
         this.fillgeneralcomments(sanza1);
 	this.setState({ EVO: this.findEV(this.state.averagesO) });
         this.setState({ EVA: this.findEV(this.state.averagesA) });
@@ -401,7 +401,7 @@ class GForecast extends PureComponent {
           averagesA: katiyaApi,
         });
       });
-    this.CreeOldata();
+    this.FindOldata();
   }
   findMedian(aTable) {
     var aMedian;
@@ -520,12 +520,12 @@ class GForecast extends PureComponent {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemonth, index) => (
+                      .map((Amonth, index) => (
                         <option
-                          key={index /* lemonth.value */}
-                          value={lemonth.value}
+                          key={index /* Amonth.value */}
+                          value={Amonth.value}
                         >
-                          {lemonth + " " + new Date().getFullYear()}
+                          {Amonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>

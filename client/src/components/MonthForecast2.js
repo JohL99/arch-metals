@@ -51,7 +51,7 @@ class MonthForecast extends Component {
       .then((data) => {
         let yx = data;
         console.log(yx);
-        let talo = data.map((price) => {
+        let bucket = data.map((price) => {
           //put it in array
           this.setState({ price1: price.floorprice + price.constant1 * 0 });
           this.setState({ price2: price.floorprice + price.constant1 * 1 });

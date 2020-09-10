@@ -58,10 +58,10 @@ class GSummary extends PureComponent {
       olddata: [],
       recent: [],
     };
-    this.CreeOldata = this.CreeOldata.bind(this);
+    this.FindOldata = this.FindOldata.bind(this);
     this.findMedian = this.findMedian.bind(this);
   }
-  CreeOldata() {
+  FindOldata() {
     let averagesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     function arrayObjectIndexOf(myArray, searchTerm, property) {
       for (var i = 0, len = myArray.length; i < len; i++) {
@@ -70,7 +70,7 @@ class GSummary extends PureComponent {
       return -1;
     }
     //Soustraction des données récentes
-    var arAprice = [...this.state.Aprice];
+    var Rprice = [...this.state.Aprice];
     //calcul des means
     this.state.element[0] = this.state.price1;
     this.state.element[1] = this.state.price2;
@@ -116,7 +116,7 @@ class GSummary extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((price) => {
+        let bucket = data.map((price) => {
           //put it in an array
           this.setState({ price1: price.floorprice + price.constant1 * 0 });
           this.setState({ price2: price.floorprice + price.constant1 * 1 });
@@ -244,23 +244,23 @@ class GSummary extends PureComponent {
         return response2.json();
       })
       .then((data2) => {
-        let taloyaApi = data2.map((talo) => {
+        let taloyaApi = data2.map((bucket) => {
           return {
-            id: talo._id,
-            user: talo.user,
-            dateforecast: this.convert_to_utc(new Date(talo.dateforecast)),
-            price1: talo.price1,
-            price2: talo.price2,
-            price3: talo.price3,
-            price4: talo.price4,
-            price5: talo.price5,
-            price6: talo.price6,
-            price7: talo.price7,
-            price8: talo.price8,
-            price9: talo.price9,
-            median: talo.median,
-            mean: talo.mean,
-            specificcomments: talo.specificcomments,
+            id: bucket._id,
+            user: bucket.user,
+            dateforecast: this.convert_to_utc(new Date(bucket.dateforecast)),
+            price1: bucket.price1,
+            price2: bucket.price2,
+            price3: bucket.price3,
+            price4: bucket.price4,
+            price5: bucket.price5,
+            price6: bucket.price6,
+            price7: bucket.price7,
+            price8: bucket.price8,
+            price9: bucket.price9,
+            median: bucket.median,
+            mean: bucket.mean,
+            specificcomments: bucket.specificcomments,
           };
         });
         this.setState({
@@ -284,7 +284,7 @@ class GSummary extends PureComponent {
             },
           ].concat(taloyaApi),
         });
-        this.CreeOldata();
+        this.FindOldata();
         this.fillgeneralcomments(sanza1);
       });
   }
@@ -401,11 +401,11 @@ class GSummary extends PureComponent {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemonth, index) => (
-                        <option key={index /* lemonth.value */}
-                          value={lemonth.value}
+                      .map((Amonth, index) => (
+                        <option key={index /* Amonth.value */}
+                          value={Amonth.value}
                         >
-                          {lemonth + " " + new Date().getFullYear()}
+                          {Amonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>

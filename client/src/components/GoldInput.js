@@ -191,7 +191,7 @@ class GoldInput extends Component {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((price) => {
+        let bucket = data.map((price) => {
           //put it in an array
           this.setState({ price1: price.floorprice + price.constant1 * 0 });
           this.setState({ price2: price.floorprice + price.constant1 * 1 });
@@ -320,12 +320,12 @@ class GoldInput extends Component {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((lemonth, index) => (
+                      .map((Amonth, index) => (
                         <option
-                          key={index /* lemonth.value */}
-                          value={lemonth.value}
+                          key={index /* Amonth.value */}
+                          value={Amonth.value}
                         >
-                          {lemonth + " " + new Date().getFullYear()}
+                          {Amonth + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>

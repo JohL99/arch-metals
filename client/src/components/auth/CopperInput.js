@@ -123,7 +123,7 @@ class CopperInput extends Component {
         })
         .then((data) => {
           let yx = data;
-          let talo = data.map((price) => {
+          let bucket = data.map((price) => {
             this.setState({price1: price.floorprice + price.constant1 * 0});
             this.setState({price2: price.floorprice + price.constant1 * 1});
             this.setState({price3: price.floorprice + price.constant1 * 2});
@@ -397,11 +397,11 @@ class CopperInput extends Component {
                     <option value="">Select a month</option>
                     {this.state.months
                         .slice(new Date().getMonth(), 12)
-                        .map((lemonth, index) => (
-                            <option key={index /* lemonth.value */}
-                                    value={lemonth.value}
+                        .map((Amonth, index) => (
+                            <option key={index /* Amonth.value */}
+                                    value={Amonth.value}
                             >
-                              {lemonth + " " + new Date().getFullYear()}
+                              {Amonth + " " + new Date().getFullYear()}
                             </option>
                         ))}
                   </select>

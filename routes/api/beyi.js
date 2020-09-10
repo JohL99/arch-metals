@@ -54,11 +54,11 @@ router.get("/id/:id", (req, res) => {
     );
 });
 
-// @route   GET api/beyi/:lemonth
+// @route   GET api/beyi/:Amonth
 // @desc    Renvoie le month donné en paramètre
 // @access  Public
-router.get("/lemonth/:lemonth", (req, res) => {
-  Beyi.find({ month: req.params.lemonth })
+router.get("/Amonth/:Amonth", (req, res) => {
+  Beyi.find({ month: req.params.Amonth })
     .then((mabeyi) => {
       if (!mabeyi) {
         errors.nobeyi = "no price";
@@ -70,12 +70,12 @@ router.get("/lemonth/:lemonth", (req, res) => {
     .catch((err) => res.status(404).json({ mabeyi: "no price" }));
 });
 
-// @route   GET api/beyi/commonth/:lemonth&:commodity
+// @route   GET api/beyi/commonth/:Amonth&:commodity
 // @desc    Renvoie le month et le commodity donnés en paramètre / Returns the month and commodity given in parameter
 // @access  Public
-router.get("/commonth/:lemonth&:commodity", (req, res) => {
+router.get("/commonth/:Amonth&:commodity", (req, res) => {
   Beyi.find({
-    $and: [{ month: req.params.lemonth }, { commodity: req.params.commodity }],
+    $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
   })
     .then((mabeyi) => {
       if (!mabeyi) {

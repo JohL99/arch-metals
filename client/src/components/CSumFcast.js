@@ -110,7 +110,7 @@ class CSumFcast extends PureComponent {
         let price7 = [...this.state.price7];
         let price8 = [...this.state.price8];
         let price9 = [...this.state.price9];
-        let talo = data.map((price) => {
+        let bucket = data.map((price) => {
           //put it in an array
           monthprice[counter + 1] = price.month;
           //put it in an array
@@ -457,23 +457,23 @@ class CSumFcast extends PureComponent {
     });
   }
   render() {
-    const renderprice = (talo) => {
+    const renderprice = (bucket) => {
       return (
-        <tr key={talo.id}>
+        <tr key={bucket.id}>
           <td rowSpan="2" align="center" width="10%">
-            {talo.month}
+            {bucket.month}
           </td>
           <td>{"EV"}</td>
           <td>{"No."}</td>
-          <td>{talo.price1}</td>
-          <td>{talo.price2}</td>
-          <td>{talo.price3}</td>
-          <td>{talo.price4}</td>
-          <td>{talo.price5}</td>
-          <td>{talo.price6}</td>
-          <td>{talo.price7}</td>
-          <td>{talo.price8}</td>
-          <td>{talo.price9}</td>
+          <td>{bucket.price1}</td>
+          <td>{bucket.price2}</td>
+          <td>{bucket.price3}</td>
+          <td>{bucket.price4}</td>
+          <td>{bucket.price5}</td>
+          <td>{bucket.price6}</td>
+          <td>{bucket.price7}</td>
+          <td>{bucket.price8}</td>
+          <td>{bucket.price9}</td>
         </tr>
       );
     };

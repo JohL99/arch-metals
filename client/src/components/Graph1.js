@@ -96,7 +96,7 @@ class Graph1 extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((price) => {
+        let bucket = data.map((price) => {
           //put it in array
           /*  var data = { ...this.state.data };
           var i = 0;

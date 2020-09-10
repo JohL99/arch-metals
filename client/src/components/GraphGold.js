@@ -67,7 +67,7 @@ class GraphGold extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let talo = data.map((price) => {var element = { ...this.state.element };
+        let bucket = data.map((price) => {var element = { ...this.state.element };
           var i = 0;
           for (i === 0; i < 9; i++) {element[i] = price.floorprice + price.constant1 * i;}
           this.setState({ element });
