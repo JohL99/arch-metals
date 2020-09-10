@@ -99,7 +99,7 @@ class CForecast extends PureComponent {
     var index;
     let Variable1 = Rprice.map((pricedata) => {
       index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
-      if (index !== -1) {
+      if (index !== 0) {
         Olddata.splice(index, 1);
       }
       return pricedata.commodity;
