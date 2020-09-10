@@ -61,6 +61,7 @@ class CForecast extends PureComponent {
         "December",
       ],
       median: "",
+      Recentdata: [],
       foreprices: [],
       averages: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       element: [],
@@ -71,14 +72,13 @@ class CForecast extends PureComponent {
       averagesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       averagesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       averagesR: [0, 0, 0, 0, 0, 0, 0, 0, 0],
-      recent: [],
       EVR: 0,
       EVO: 0,
       EVA: 0,
     };
     this.FindOldata = this.FindOldata.bind(this);
     this.findMedian = this.findMedian.bind(this);
-    this.recovermeanT = this.recovermeanT.bind(this);
+    this.calcmeanT = this.calcmeanT.bind(this);
     this.findEV = this.findEV.bind(this);
   }
   FindOldata() {
@@ -91,22 +91,22 @@ class CForecast extends PureComponent {
       }
       return -1;
     }
-    //Extract recent data
+    //Extraction of the recent data
     var Olddata = [...this.state.alldata];
-    var arAlldata = [...this.state.alldata];
-    var Recentdata = [...this.state.Recentdata];
+    var Alldata = [...this.state.alldata];
+    var Recentdata = [...this.state.recentdata];
     var index;
-    let Variable1 = Recentdata.map((recentdata) => {
+    let recentdata = Recentdata.map((recentdata) => {
       index = arrayObjectIndexOf(Olddata, recentdata.id, "id");
       if (index !== -1) {
-        Olddata.splice(index, 1);
+        Olddata.splice(index, 0);
       }
       return recentdata.commodity;
     });
     var numberT = this.state.alldata.length;
-    var numberR = this.state.Recentdata.length;
     var numberO = (numberT - numberR);
-    //var numberT = this.state.alldata.length;
+    var numberR = this.state.recentdata.length;
+    
     averagesA[0] = this.state.averagesA[0].price1;
     averagesA[1] = this.state.averagesA[0].price2;
     averagesA[2] = this.state.averagesA[0].price3;
@@ -117,6 +117,7 @@ class CForecast extends PureComponent {
     averagesA[7] = this.state.averagesA[0].price8;
     averagesA[8] = this.state.averagesA[0].price9;
     
+    var numberO = Olddata.length;
     averagesO[0] = (averagesA[0] - this.state.averagesR[0]) / numberO;
     averagesO[1] = (averagesA[1] - this.state.averagesR[1]) / numberO;
     averagesO[2] = (averagesA[2] - this.state.averagesR[2]) / numberO;
@@ -128,7 +129,7 @@ class CForecast extends PureComponent {
     averagesO[8] = (averagesA[8] - this.state.averagesR[8]) / numberO;
     this.setState({ averagesO });
     this.setState({ olddata: [].concat(Olddata) });
-    //calcul des means
+    
     this.state.element[0] = this.state.price1;
     this.state.element[1] = this.state.price2;
     this.state.element[2] = this.state.price3;
@@ -138,7 +139,6 @@ class CForecast extends PureComponent {
     this.state.element[6] = this.state.price7;
     this.state.element[7] = this.state.price8;
     this.state.element[8] = this.state.price9;
-    
     averagesR[0] = Recentdata.price1;
     averagesR[1] = Recentdata.price2;
     averagesR[2] = Recentdata.price3;
@@ -152,9 +152,9 @@ class CForecast extends PureComponent {
     data1 = [
       {
         price: this.state.element[0],
-        recentdata: this.state.averagesR[0],
-        olddata: this.state.averagesO[0],
-        alldata: this.state.averagesA[0],
+        recentdata: averagesR[0],
+        olddata: averagesO[0],
+        alldata: averagesA[0],
       },
     ];
     this.setState({ averagesA });
@@ -163,16 +163,15 @@ class CForecast extends PureComponent {
     for (y === 0; y < 9; y++) {
       data1.push({
         price: this.state.element[y],
-        RecentData: this.state.averageR[y] * 100,
+        RecentData: this.state.averagesR[y] * 100,
         OldData: averagesO[y],
         AllData: averagesA[y],
       });
     }
     data1.shift();
     this.setState({ data1 });
-    //Remove empty lines
     Recentdata.shift();
-    this.setState({ Recentdata: Recentdata });
+    this.setState({ Recentdata: recentdata });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -191,8 +190,7 @@ class CForecast extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let bucket = data.map((price) => {
-          //put it in an array
+        let prices = data.map((price) => {
           this.setState({ price1: price.floorprice + price.constant1 * 0 });
           this.setState({ price2: price.floorprice + price.constant1 * 1 });
           this.setState({ price3: price.floorprice + price.constant1 * 2 });
@@ -210,13 +208,13 @@ class CForecast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    //prendre les valeurs
+    //Extract data by month by commodity
     fetch("/api/menji/dernierda/" + sanza + "&Copper")
       .then((response1) => {
         return response1.json();
       })
       .then((data1) => {
-        let priceFromApi = data1.map((price, x, index) => {
+        let RecentdataApi = data1.map((price, x, index) => {
           var number = index.length;
           sum[0] = sum[0] + price.detail.price1;
           sum[1] = sum[1] + price.detail.price2;
@@ -257,7 +255,7 @@ class CForecast extends PureComponent {
           };
         });
         this.setState({
-          Recentdata: [
+          recentdata: [
             {
               id: "",
               user: "",
@@ -275,14 +273,14 @@ class CForecast extends PureComponent {
               mean: "",
               specificcomments: "",
             },
-          ].concat(priceFromApi),
+          ].concat(RecentdataApi),
         });
       })
       .catch((error1) => {
         console.log(error1);
       });
     this.fillotherdata(sanza);
-    //ajout
+    //add
   }
   convert_to_utc = (dateStr) => {
     //check whether time is in PM or AM
@@ -305,10 +303,10 @@ class CForecast extends PureComponent {
     return newdate + " " + mid;
   }
   fillotherdata(sanza1) {
-    this.recovermeanT(sanza1);
+    this.calcmeanT(sanza1);
     fetch("/api/menji/all/" + sanza1 + "&Copper")
       .then((response2) => {return response2.json();})
-      .then((data2) => {let taloyaApi = data2.map((bucket) => {
+      .then((data2) => {let alldataApi = data2.map((bucket) => {
           return {
             id: bucket._id,
             user: bucket.user,
@@ -346,11 +344,11 @@ class CForecast extends PureComponent {
               mean: "",
               specificcomments: "",
             },
-          ].concat(taloyaApi),
+          ].concat(alldataApi),
         });
         this.FindOldata();
         this.fillgeneralcomments(sanza1);
-	      this.setState({ EVO: this.findEV(this.state.averagesO) });
+	this.setState({ EVO: this.findEV(this.state.averagesO) });
         this.setState({ EVA: this.findEV(this.state.averagesA) });
       });
   }
@@ -360,45 +358,45 @@ class CForecast extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let recentyaApi = data3.map((info) => {
+        let recentdataApi = data3.map((info) => {
           return {
             id: info._id,
             generalcomments: info.generalcomments,
           };
         });
         this.setState({
-          recent: [
+          recentdata: [
             {
               id: "",
               generalcomments: "",
             },
-          ].concat(recentyaApi),
+          ].concat(recentdataApi),
         });
       });
   }
-  recovermeanT(sanza) {
+  calcmeanT(sanza) {
     fetch("/api/menji/moyunmonth/" + sanza + "&Copper")
       .then((response4) => {
         return response4.json();
       })
       .then((data4) => {
-        let katiyaApi = data4.map((kati) => {
+        let probabilitiesApi = data4.map((probability) => {
           return {
-            id: kati._id,
-            price1: kati.avg1,
-            price2: kati.avg2,
-            price3: kati.avg3,
-            price4: kati.avg4,
-            price5: kati.avg5,
-            price6: kati.avg6,
-            price7: kati.avg7,
-            price8: kati.avg8,
-            price9: kati.avg9,
-            median: kati.median,
+            id: probability._id,
+            price1: probability.avg1,
+            price2: probability.avg2,
+            price3: probability.avg3,
+            price4: probability.avg4,
+            price5: probability.avg5,
+            price6: probability.avg6,
+            price7: probability.avg7,
+            price8: probability.avg8,
+            price9: probability.avg9,
+            median: probability.median,
           };
         });
         this.setState({
-          averagesA: katiyaApi,
+          averagesA: probabilitiesApi,
         });
       });
     this.FindOldata();
@@ -447,22 +445,22 @@ class CForecast extends PureComponent {
     return EV;
   }
   render() {
-    const renderprice = (priceFromApi) => {
+    const renderdata = (RecentdataApi) => {
       return (
-        <tr key={priceFromApi.id}>
-          <td align="center">{priceFromApi.user}</td>
-          <td align="center"><b>${Math.round(priceFromApi.mean)}/MT</b></td>
-          <td align="center">{priceFromApi.dateforecast}</td>
-          <td align="center">{priceFromApi.price1 * 100}%</td>
-          <td align="center">{priceFromApi.price2 * 100}%</td>
-          <td align="center">{priceFromApi.price3 * 100}%</td>
-          <td align="center">{priceFromApi.price4 * 100}%</td>
-          <td align="center">{priceFromApi.price5 * 100}%</td>
-          <td align="center">{priceFromApi.price6 * 100}%</td>
-          <td align="center">{priceFromApi.price7 * 100}%</td>
-          <td align="center">{priceFromApi.price8 * 100}%</td>
-          <td align="center">{priceFromApi.price9 * 100}%</td>
-          <td align="center">{priceFromApi.specificcomments}</td>
+        <tr key={RecentdataApi.id}>
+          <td align="center">{RecentdataApi.user}</td>
+          <td align="center"><b>${Math.round(RecentdataApi.mean)}/MT</b></td>
+          <td align="center">{RecentdataApi.dateforecast}</td>
+          <td align="center">{RecentdataApi.price1 * 100}%</td>
+          <td align="center">{RecentdataApi.price2 * 100}%</td>
+          <td align="center">{RecentdataApi.price3 * 100}%</td>
+          <td align="center">{RecentdataApi.price4 * 100}%</td>
+          <td align="center">{RecentdataApi.price5 * 100}%</td>
+          <td align="center">{RecentdataApi.price6 * 100}%</td>
+          <td align="center">{RecentdataApi.price7 * 100}%</td>
+          <td align="center">{RecentdataApi.price8 * 100}%</td>
+          <td align="center">{RecentdataApi.price9 * 100}%</td>
+          <td align="center">{RecentdataApi.specificcomments}</td>
         </tr>
       );
     };
@@ -485,14 +483,14 @@ class CForecast extends PureComponent {
         </tr>
       );
     };
-    const renderMaloba = (recentyaApi) => {
+    const renderMaloba = (recentdataApi) => {
       return (
-        <tr key={recentyaApi.id}>
-          <td align="left">{recentyaApi.generalcomments}</td>
+        <tr key={recentdataApi.id}>
+          <td align="left">{recentdataApi.generalcomments}</td>
         </tr>
       );
     };
-    return (
+     return (
       <div>
         <center>
           <table className="table table-bordered">
@@ -530,44 +528,22 @@ class CForecast extends PureComponent {
                       ))}
                   </select>
                 </td>
-                <td align="center">
-                  <b>Expected Value</b>
-                </td>
-                <td align="center">
-                  <b>No. Forecasts</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price1}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price2}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price3}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price4}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price5}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price6}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price7}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price8}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price9}/MT</b>
-                </td>
+                <td align="center"><b>Expected Value</b></td>
+                <td align="center"><b>No. Forecasts</b></td>
+                <td align="center"><b>${this.state.price1}/MT</b></td>
+                <td align="center"><b>${this.state.price2}/MT</b></td>
+                <td align="center"><b>${this.state.price3}/MT</b></td>
+                <td align="center"><b>${this.state.price4}/MT</b></td>
+                <td align="center"><b>${this.state.price5}/MT</b></td>
+                <td align="center"><b>${this.state.price6}/MT</b></td>
+                <td align="center"><b>${this.state.price7}/MT</b></td>
+                <td align="center"><b>${this.state.price8}/MT</b></td>
+                <td align="center"><b>${this.state.price9}/MT</b></td>
               </tr>
               <tr>
                 <td align="center"><b>Most Recent Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)
-                /*Math.round(this.state.EVR)*/}/MT</b></td>
+                    /*Math.round(this.state.EVR)*/}/MT</b></td>
                 <td align="center"><b>{this.state.Recentdata.length}</b></td>
                 <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
@@ -580,46 +556,23 @@ class CForecast extends PureComponent {
                 <td align="center">{Math.round(this.state.averages[8] * 100)}%</td>
               </tr>
               <tr>
-                <td width="10%" align="center">
-                  <b>{this.state.month}</b>
-                </td>
-                <td align="center">
-                  <b>Expected Value</b>
-                </td>
-                <td align="center">
-                  <b>No. Forecasts</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price1}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price2}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price3}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price4}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price5}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price6}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price7}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price8}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price9}/MT</b>
-                </td>
+                <td width="10%" align="center"><b>{this.state.month}</b></td>
+                <td align="center"><b>Expected Value</b></td>
+                <td align="center"><b>No. Forecasts</b></td>
+                <td align="center"><b>${this.state.price1}/MT</b></td>
+                <td align="center"><b>${this.state.price2}/MT</b></td>
+                <td align="center"><b>${this.state.price3}/MT</b></td>
+                <td align="center"><b>${this.state.price4}/MT</b></td>
+                <td align="center"><b>${this.state.price5}/MT</b></td>
+                <td align="center"><b>${this.state.price6}/MT</b></td>
+                <td align="center"><b>${this.state.price7}/MT</b></td>
+                <td align="center"><b>${this.state.price8}/MT</b></td>
+                <td align="center"><b>${this.state.price9}/MT</b></td>
               </tr>
               <tr>
                 <td width="10%" align="center"><b>Older Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.state.EVO)/* Math.round(this.findEV(this.state.averagesO)) */}/MT</b></td> 
+                <td align="center"><b>${Math.round(this.state.EVO)
+                    /* Math.round(this.findEV(this.state.averagesO)) */}/MT</b></td> 
 		            <td align="center"><b>{this.state.olddata.length}</b></td>
                 <td align="center">{Math.round(this.state.averagesO[0])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[1])}%</td>
@@ -632,47 +585,24 @@ class CForecast extends PureComponent {
                 <td align="center">{Math.round(this.state.averagesO[8])}%</td>
               </tr>
               <tr>
-                <td width="10%" align="center">
-                  <b>{this.state.month}</b>
-                </td>
-                <td align="center">
-                  <b>Expected Value</b>
-                </td>
-                <td align="center">
-                  <b>No. Forecasts</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price1}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price2}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price3}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price4}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price5}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price6}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price7}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price8}/MT</b>
-                </td>
-                <td align="center">
-                  <b>${this.state.price9}/MT</b>
-                </td>
+                <td width="10%" align="center"><b>{this.state.month}</b></td>
+                <td align="center"><b>Expected Value</b></td>
+                <td align="center"><b>No. Forecasts</b></td>
+                <td align="center"><b>${this.state.price1}/MT</b></td>
+                <td align="center"><b>${this.state.price2}/MT</b></td>
+                <td align="center"><b>${this.state.price3}/MT</b></td>
+                <td align="center"><b>${this.state.price4}/MT</b></td>
+                <td align="center"><b>${this.state.price5}/MT</b></td>
+                <td align="center"><b>${this.state.price6}/MT</b></td>
+                <td align="center"><b>${this.state.price7}/MT</b></td>
+                <td align="center"><b>${this.state.price8}/MT</b></td>
+                <td align="center"><b>${this.state.price9}/MT</b></td>
               </tr>
               <tr>
                 <td width="10%" align="center">
 		              <b>All Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.state.EVA)/*Math.round(this.findEV(this.state.averagesA))*/}/MT</b></td>
+                <td align="center"><b>${Math.round(this.state.EVA)
+                    /*Math.round(this.findEV(this.state.averagesA))*/}/MT</b></td>
                 <td align="center"><b>{this.state.alldata.length}</b></td>
                 <td align="center">{Math.round(this.state.averagesA[0])}%</td>
                 <td align="center">{Math.round(this.state.averagesA[1])}%</td>
@@ -731,7 +661,8 @@ class CForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="13" align="center" width="100%">
-                  <b>Most Recent Copper Forecasts - {this.state.month}</b></td>
+                  <b>Most Recent Copper Forecasts - {this.state.month}</b>
+                </td>
               </tr>
               <tr>
                 <td align="center" width="10%"><b>Participant</b></td>
@@ -748,7 +679,7 @@ class CForecast extends PureComponent {
                 <td align="center" width="8%"><b>${this.state.price9}/MT</b></td>
                 <td align="center" width="80%"><b>Justifications</b></td>
               </tr>
-              {this.state.Recent.map(renderprice)}
+              {this.state.Recentdata.map(renderdata)}
             </tbody>
           </table>
           <table className="table table-bordered">
