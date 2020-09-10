@@ -91,18 +91,7 @@ class CForecast extends PureComponent {
       }
       return -1;
     }
-    /*
-     *  implementation where some_total is the the total of the array
-     *  some_total = arrayObjectTotal(some_array, array.property);
-    */
-    function arrayObjectTotal(myArray, property) {
-      var total = 0;
-      for (var i = 0, len = myArray.length; i < len; i++) {
-        total = total + myArray[i][property];
-      }
-      return total;
-    }
-    //Extraction of the recent data
+        //Extraction of the recent data
     var Olddata = [...this.state.alldata];
     var Alldata = [...this.state.alldata];
     var Rprice = [...this.state.Rprice];
@@ -110,35 +99,37 @@ class CForecast extends PureComponent {
     let Variable1 = Rprice.map((pricedata) => {
       index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
       if (index !== -1) {
-        Olddata.splice(index, 0);
+        Olddata.splice(index, 1);
       }
       return pricedata.commodity;
     });
     var numberT = this.state.alldata.length;
-    var numberO = (numberT - numberR);
+    var numberO = (this.state.alldata.length - this.state.Rprice.length);
     var numberR = this.state.Rprice.length;
     //var numberR = this.state.recentdata.length;
     averagesA[0] = this.state.averagesA[0].price1;
-    averagesA[1] = this.state.averagesA[1].price2;
-    averagesA[2] = this.state.averagesA[2].price3;
-    averagesA[3] = this.state.averagesA[3].price4;
-    averagesA[4] = this.state.averagesA[4].price5;
-    averagesA[5] = this.state.averagesA[5].price6;
-    averagesA[6] = this.state.averagesA[6].price7;
-    averagesA[7] = this.state.averagesA[7].price8;
-    averagesA[8] = this.state.averagesA[8].price9;
-    var numberO = Olddata.length;
-    averagesO[0] = (averagesA[0] - averagesR[0]) / numberO;
-    averagesO[1] = (averagesA[1] - averagesR[1]) / numberO;
-    averagesO[2] = (averagesA[2] - averagesR[2]) / numberO;
-    averagesO[3] = (averagesA[3] - averagesR[3]) / numberO;
-    averagesO[4] = (averagesA[4] - averagesR[4]) / numberO;
-    averagesO[5] = (averagesA[5] - averagesR[5]) / numberO;
-    averagesO[6] = (averagesA[6] - averagesR[6]) / numberO;
-    averagesO[7] = (averagesA[8] - averagesR[7]) / numberO;
-    averagesO[8] = (averagesA[8] - averagesR[8]) / numberO;
-    this.setState({ averagesO });
+    averagesA[1] = this.state.averagesA[0].price2;
+    averagesA[2] = this.state.averagesA[0].price3;
+    averagesA[3] = this.state.averagesA[0].price4;
+    averagesA[4] = this.state.averagesA[0].price5;
+    averagesA[5] = this.state.averagesA[0].price6;
+    averagesA[6] = this.state.averagesA[0].price7;
+    averagesA[7] = this.state.averagesA[0].price8;
+    averagesA[8] = this.state.averagesA[0].price9;
+  this.setState({ averagesA });
+    
+    averagesO[0] = (averagesA[0] - averagesR[0]) / (numberT - numberR);
+    averagesO[1] = (averagesA[1] - averagesR[1]) / (numberT - numberR);
+    averagesO[2] = (averagesA[2] - averagesR[2]) / (numberT - numberR);
+    averagesO[3] = (averagesA[3] - averagesR[3]) / (numberT - numberR);
+    averagesO[4] = (averagesA[4] - averagesR[4]) / (numberT - numberR);
+    averagesO[5] = (averagesA[5] - averagesR[5]) / (numberT - numberR);
+    averagesO[6] = (averagesA[6] - averagesR[6]) / (numberT - numberR);
+    averagesO[7] = (averagesA[8] - averagesR[7]) / (numberT - numberR);
+    averagesO[8] = (averagesA[8] - averagesR[8]) / (numberT - numberR);
+  this.setState({ averagesO });
     this.setState({ olddata: [].concat(Olddata) });
+    
     //calculates the means
     this.state.element[0] = this.state.price1;
     this.state.element[1] = this.state.price2;
@@ -149,6 +140,7 @@ class CForecast extends PureComponent {
     this.state.element[6] = this.state.price7;
     this.state.element[7] = this.state.price8;
     this.state.element[8] = this.state.price9;
+    
     averagesR[0] = Rprice.price1;
     averagesR[1] = Rprice.price2;
     averagesR[2] = Rprice.price3;
@@ -158,6 +150,7 @@ class CForecast extends PureComponent {
     averagesR[6] = Rprice.price7;
     averagesR[7] = Rprice.price8;
     averagesR[8] = Rprice.price9;
+  this.setState({ averagesR });
     let data1 = { ...this.state.data1 };
     data1 = [
       {
@@ -585,7 +578,7 @@ class CForecast extends PureComponent {
                 <td width="10%" align="center"><b>Older Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.state.EVO)
                     /* Math.round(this.findEV(this.state.averagesO)) */}/MT</b></td> 
-		            <td align="center"><b>{this.state.numberO}</b></td>
+		            <td align="center"><b>{(this.state.alldata.length - this.state.Rprice.length)}</b></td>
                 <td align="center">{Math.round(this.state.averagesO[0])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[1])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[2])}%</td>
