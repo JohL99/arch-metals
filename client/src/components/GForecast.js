@@ -61,7 +61,7 @@ class GForecast extends PureComponent {
         "December",
       ],
       median: "",
-      Aprice: [],
+      Rprice: [],
       foreprices: [],
       averages: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       element: [],
@@ -95,7 +95,7 @@ class GForecast extends PureComponent {
     //Soustraction des données récentes
     var arOlddata = [...this.state.alldata];
     var arAlldata = [...this.state.alldata];
-    var Rprice = [...this.state.Aprice];
+    var Rprice = [...this.state.Rprice];
     var index;
     let Variable1 = Rprice.map((pricedata) => {
       index = arrayObjectIndexOf(arOlddata, pricedata.id, "id");
@@ -106,7 +106,7 @@ class GForecast extends PureComponent {
     });
     var numberT = this.state.alldata.length;
     var number3 = arOlddata.length;
-    var number2 = this.state.Aprice.length;
+    var number2 = this.state.Rprice.length;
     //var number2 = this.state.alldata.length;
     averagesA[0] = this.state.averagesA[0].price1;
     averagesA[1] = this.state.averagesA[0].price2;
@@ -172,7 +172,7 @@ class GForecast extends PureComponent {
     this.setState({ data1 });
     //on enlève la ligne vide
     Rprice.shift();
-    this.setState({ Aprice: Rprice });
+    this.setState({ Rprice: Rprice });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -257,7 +257,7 @@ class GForecast extends PureComponent {
           };
         });
         this.setState({
-          Aprice: [
+          Rprice: [
             {
               id: "",
               user: "",
@@ -567,7 +567,7 @@ class GForecast extends PureComponent {
               <tr>
                 <td align="center"><b>Most Recent Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)/*Math.round(this.state.EVR)*/}/oz</b></td>
-                <td align="center"><b>{this.state.Aprice.length}</b></td>
+                <td align="center"><b>{this.state.Rprice.length}</b></td>
                 <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
@@ -774,7 +774,7 @@ class GForecast extends PureComponent {
                   <b>Justifications</b>
                 </td>
               </tr>
-              {this.state.Aprice.map(renderprice)}
+              {this.state.Rprice.map(renderprice)}
             </tbody>
           </table>
           <table className="table table-bordered">

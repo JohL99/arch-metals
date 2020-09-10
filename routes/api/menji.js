@@ -222,7 +222,7 @@ router.get("/all/:Amonth&:commodity", (req, res) => {
 });
 
 // @route   GET api/menji/moymonth
-// @desc    Renvoie toutes les means par date / Return all means by date
+// @desc    Renvoie toutes les means par date / Return all means by month
 // @access  Public
 router.get("/moymonth/:commodity", (req, res) => {
   const errors = {};

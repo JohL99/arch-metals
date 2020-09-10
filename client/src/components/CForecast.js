@@ -61,15 +61,16 @@ class CForecast extends PureComponent {
         "December",
       ],
       median: "",
-      Aprice: [],
       foreprices: [],
       averages: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       element: [],
       data1: [8],
       olddata: [],
       alldata: [],
+      recentdata: [],
       averagesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       averagesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      averagesR: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       recent: [],
       EVR: 0,
       EVO: 0,
@@ -93,19 +94,19 @@ class CForecast extends PureComponent {
     //Extract recent data
     var Olddata = [...this.state.alldata];
     var arAlldata = [...this.state.alldata];
-    var Rprice = [...this.state.Aprice];
+    var Recentdata = [...this.state.Recentdata];
     var index;
-    let Variable1 = Rprice.map((pricedata) => {
-      index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
+    let Variable1 = Recentdata.map((recentdata) => {
+      index = arrayObjectIndexOf(Olddata, recentdata.id, "id");
       if (index !== -1) {
         Olddata.splice(index, 1);
       }
-      return pricedata.commodity;
+      return recentdata.commodity;
     });
     var numberT = this.state.alldata.length;
-    var numberR = this.state.Aprice.length;
+    var numberR = this.state.Recentdata.length;
     var numberO = (numberT - numberR);
-    //var number2 = this.state.alldata.length;
+    //var numberT = this.state.alldata.length;
     averagesA[0] = this.state.averagesA[0].price1;
     averagesA[1] = this.state.averagesA[0].price2;
     averagesA[2] = this.state.averagesA[0].price3;
@@ -138,22 +139,22 @@ class CForecast extends PureComponent {
     this.state.element[7] = this.state.price8;
     this.state.element[8] = this.state.price9;
     
-    averagesR[0] = Rprice.price1;
-    averagesR[1] = Rprice.price2;
-    averagesR[2] = Rprice.price3;
-    averagesR[3] = Rprice.price4;
-    averagesR[4] = Rprice.price5;
-    averagesR[5] = Rprice.price6;
-    averagesR[6] = Rprice.price7;
-    averagesR[7] = Rprice.price8;
-    averagesR[8] = Rprice.price9;
+    averagesR[0] = Recentdata.price1;
+    averagesR[1] = Recentdata.price2;
+    averagesR[2] = Recentdata.price3;
+    averagesR[3] = Recentdata.price4;
+    averagesR[4] = Recentdata.price5;
+    averagesR[5] = Recentdata.price6;
+    averagesR[6] = Recentdata.price7;
+    averagesR[7] = Recentdata.price8;
+    averagesR[8] = Recentdata.price9;
     let data1 = { ...this.state.data1 };
     data1 = [
       {
         price: this.state.element[0],
         recentdata: this.state.averagesR[0],
-        olddata: averagesO[0],
-        alldata: averagesA[0],
+        olddata: this.state.averagesO[0],
+        alldata: this.state.averagesA[0],
       },
     ];
     this.setState({ averagesA });
@@ -162,16 +163,16 @@ class CForecast extends PureComponent {
     for (y === 0; y < 9; y++) {
       data1.push({
         price: this.state.element[y],
-        RecentData: this.state.averages[y] * 100,
+        RecentData: this.state.averageR[y] * 100,
         OldData: averagesO[y],
         AllData: averagesA[y],
       });
     }
     data1.shift();
     this.setState({ data1 });
-    //on enlève la ligne vide
-    Rprice.shift();
-    this.setState({ Aprice: Rprice });
+    //Remove empty lines
+    Recentdata.shift();
+    this.setState({ Recentdata: Recentdata });
   }
   fillPrices(sanza) {
     this.setState({ price1: "" });
@@ -256,7 +257,7 @@ class CForecast extends PureComponent {
           };
         });
         this.setState({
-          Aprice: [
+          Recentdata: [
             {
               id: "",
               user: "",
@@ -349,7 +350,7 @@ class CForecast extends PureComponent {
         });
         this.FindOldata();
         this.fillgeneralcomments(sanza1);
-	this.setState({ EVO: this.findEV(this.state.averagesO) });
+	      this.setState({ EVO: this.findEV(this.state.averagesO) });
         this.setState({ EVA: this.findEV(this.state.averagesA) });
       });
   }
@@ -565,8 +566,9 @@ class CForecast extends PureComponent {
               </tr>
               <tr>
                 <td align="center"><b>Most Recent Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)/*Math.round(this.state.EVR)*/}/MT</b></td>
-                <td align="center"><b>{this.state.Aprice.length}</b></td>
+                <td align="center"><b>${Math.round(this.findEV(this.state.averages) * 100)
+                /*Math.round(this.state.EVR)*/}/MT</b></td>
+                <td align="center"><b>{this.state.Recentdata.length}</b></td>
                 <td align="center">{Math.round(this.state.averages[0] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[1] * 100)}%</td>
                 <td align="center">{Math.round(this.state.averages[2] * 100)}%</td>
@@ -729,100 +731,46 @@ class CForecast extends PureComponent {
             <tbody>
               <tr>
                 <td colSpan="13" align="center" width="100%">
-                  <b>Most Recent Copper Forecasts - {this.state.month}</b>
-                </td>
+                  <b>Most Recent Copper Forecasts - {this.state.month}</b></td>
               </tr>
               <tr>
-                <td align="center" width="10%">
-                  <b>Participant</b>
-                </td>
-                <td align="center" width="10%">
-                  <b>Expected Value</b>
-                </td>
-                <td align="center" width="15%">
-                  <b>Date</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price1}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price2}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price3}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price4}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price5}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price6}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price7}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price8}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price9}/MT</b>
-                </td>
-                <td align="center" width="80%">
-                  <b>Justifications</b>
-                </td>
+                <td align="center" width="10%"><b>Participant</b></td>
+                <td align="center" width="10%"><b>Expected Value</b></td>
+                <td align="center" width="15%"><b>Date</b></td>
+                <td align="center" width="8%"><b>${this.state.price1}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price2}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price3}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price4}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price5}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price6}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price7}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price8}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price9}/MT</b></td>
+                <td align="center" width="80%"><b>Justifications</b></td>
               </tr>
-              {this.state.Aprice.map(renderprice)}
+              {this.state.Recent.map(renderprice)}
             </tbody>
           </table>
           <table className="table table-bordered">
             <tbody>
               <tr>
                 <td colSpan="13" align="center" width="100%">
-                  <b>Older Copper Forecasts - {this.state.month}</b>
-                </td>
+                  <b>Older Copper Forecasts - {this.state.month}</b></td>
               </tr>
               <tr>
-                <td align="center" width="10%">
-                  <b>Participant</b>
-                </td>
-                <td align="center" width="10%">
-                  <b>Expected Value</b>
-                </td>
-                <td align="center" width="15%">
-                  <b>Date</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price1}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price2}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price3}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price4}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price5}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price6}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price7}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price8}/MT</b>
-                </td>
-                <td align="center" width="8%">
-                  <b>${this.state.price9}/MT</b>
-                </td>
-                <td align="center" width="80%">
-                  <b>Justifications</b>
-                </td>
+                <td align="center" width="10%"><b>Participant</b></td>
+                <td align="center" width="10%"><b>Expected Value</b></td>
+                <td align="center" width="15%"><b>Date</b></td>
+                <td align="center" width="8%"><b>${this.state.price1}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price2}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price3}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price4}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price5}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price6}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price7}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price8}/MT</b></td>
+                <td align="center" width="8%"><b>${this.state.price9}/MT</b></td>
+                <td align="center" width="80%"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>
