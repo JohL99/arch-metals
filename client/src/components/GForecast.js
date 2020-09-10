@@ -70,6 +70,7 @@ class GForecast extends PureComponent {
       alldata: [],
       averagesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       averagesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      averagesR: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       recent: [],
       EVR: 0,
       EVO: 0,
@@ -77,15 +78,13 @@ class GForecast extends PureComponent {
     };
     this.FindOldata = this.FindOldata.bind(this);
     this.findMedian = this.findMedian.bind(this);
-    this.recovermeanT = this.recovermeanT.bind(this);
+    this.calcmeanT = this.calcmeanT.bind(this);
     this.findEV = this.findEV.bind(this);
   }
   FindOldata() {
-    let sum1 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let sum2 = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     let averagesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     let averagesA = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let averagesP = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let averagesR = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     function arrayObjectIndexOf(myArray, searchTerm, property) {
       for (var i = 0, len = myArray.length; i < len; i++) {
         if (myArray[i][property] === searchTerm) return i;
@@ -93,21 +92,21 @@ class GForecast extends PureComponent {
       return -1;
     }
     //Soustraction des données récentes
-    var arOlddata = [...this.state.alldata];
-    var arAlldata = [...this.state.alldata];
+    var Olddata = [...this.state.alldata];
+    var Alldata = [...this.state.alldata];
     var Rprice = [...this.state.Rprice];
     var index;
     let Variable1 = Rprice.map((pricedata) => {
-      index = arrayObjectIndexOf(arOlddata, pricedata.id, "id");
+      index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
       if (index !== -1) {
-        arOlddata.splice(index, 1);
+        Olddata.splice(index, 1);
       }
       return pricedata.commodity;
     });
     var numberT = this.state.alldata.length;
-    var number3 = arOlddata.length;
-    var number2 = this.state.Rprice.length;
-    //var number2 = this.state.alldata.length;
+    var numberO = (numberT - numberR);
+    var numberR = this.state.Rprice.length;
+    //var numberR = this.state.recentdata.length;
     averagesA[0] = this.state.averagesA[0].price1;
     averagesA[1] = this.state.averagesA[0].price2;
     averagesA[2] = this.state.averagesA[0].price3;
@@ -117,19 +116,19 @@ class GForecast extends PureComponent {
     averagesA[6] = this.state.averagesA[0].price7;
     averagesA[7] = this.state.averagesA[0].price8;
     averagesA[8] = this.state.averagesA[0].price9;
-    var number1 = arOlddata.length;
-    averagesO[0] = (averagesA[0] * numberT - this.state.averages[0] * number2) / (numberT - number2);
-    averagesO[1] = (averagesA[1] * numberT - this.state.averages[1] * number2) / (numberT - number2);
-    averagesO[2] = (averagesA[2] * numberT - this.state.averages[2] * number2) / (numberT - number2);
-    averagesO[3] = (averagesA[3] * numberT - this.state.averages[3] * number2) / (numberT - number2);
-    averagesO[4] = (averagesA[4] * numberT - this.state.averages[4] * number2) / (numberT - number2);
-    averagesO[5] = (averagesA[5] * numberT - this.state.averages[5] * number2) / (numberT - number2);
-    averagesO[6] = (averagesA[6] * numberT - this.state.averages[6] * number2) / (numberT - number2);
-    averagesO[7] = (averagesA[8] * numberT - this.state.averages[7] * number2) / (numberT - number2);
-    averagesO[8] = (averagesA[8] * numberT - this.state.averages[8] * number2) / (numberT - number2);
+    var number1 = Olddata.length;
+    averagesO[0] = (averagesA[0] * numberT - this.state.averages[0] * numberR) / (numberT - numberR);
+    averagesO[1] = (averagesA[1] * numberT - this.state.averages[1] * numberR) / (numberT - numberR);
+    averagesO[2] = (averagesA[2] * numberT - this.state.averages[2] * numberR) / (numberT - numberR);
+    averagesO[3] = (averagesA[3] * numberT - this.state.averages[3] * numberR) / (numberT - numberR);
+    averagesO[4] = (averagesA[4] * numberT - this.state.averages[4] * numberR) / (numberT - numberR);
+    averagesO[5] = (averagesA[5] * numberT - this.state.averages[5] * numberR) / (numberT - numberR);
+    averagesO[6] = (averagesA[6] * numberT - this.state.averages[6] * numberR) / (numberT - numberR);
+    averagesO[7] = (averagesA[8] * numberT - this.state.averages[7] * numberR) / (numberT - numberR);
+    averagesO[8] = (averagesA[8] * numberT - this.state.averages[8] * numberR) / (numberT - numberR);
     this.setState({ averagesO });
-    this.setState({ olddata: [].concat(arOlddata) });
-    //calcul des means
+    this.setState({ olddata: [].concat(Olddata) });
+    //calculates the means
     this.state.element[0] = this.state.price1;
     this.state.element[1] = this.state.price2;
     this.state.element[2] = this.state.price3;
@@ -139,15 +138,15 @@ class GForecast extends PureComponent {
     this.state.element[6] = this.state.price7;
     this.state.element[7] = this.state.price8;
     this.state.element[8] = this.state.price9;
-    averagesP[0] = Rprice.price1;
-    averagesP[1] = Rprice.price2;
-    averagesP[2] = Rprice.price3;
-    averagesP[3] = Rprice.price4;
-    averagesP[4] = Rprice.price5;
-    averagesP[5] = Rprice.price6;
-    averagesP[6] = Rprice.price7;
-    averagesP[7] = Rprice.price8;
-    averagesP[8] = Rprice.price9;
+    averagesR[0] = Rprice.price1;
+    averagesR[1] = Rprice.price2;
+    averagesR[2] = Rprice.price3;
+    averagesR[3] = Rprice.price4;
+    averagesR[4] = Rprice.price5;
+    averagesR[5] = Rprice.price6;
+    averagesR[6] = Rprice.price7;
+    averagesR[7] = Rprice.price8;
+    averagesR[8] = Rprice.price9;
     let data1 = { ...this.state.data1 };
     data1 = [
       {
@@ -170,7 +169,7 @@ class GForecast extends PureComponent {
     }
     data1.shift();
     this.setState({ data1 });
-    //on enlève la ligne vide
+    
     Rprice.shift();
     this.setState({ Rprice: Rprice });
   }
@@ -210,7 +209,7 @@ class GForecast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    //prendre les valeurs
+    //Extract data by month by commodity
     fetch("/api/menji/dernierda/" + sanza + "&Gold")
       .then((response1) => {
         return response1.json();
@@ -282,7 +281,7 @@ class GForecast extends PureComponent {
         console.log(error1);
       });
     this.fillotherdata(sanza);
-    //ajout
+    //add
   }
   convert_to_utc = (dateStr) => {
     //check whether time is in PM or AM
@@ -305,7 +304,7 @@ class GForecast extends PureComponent {
     return newdate + " " + mid;
   }
   fillotherdata(sanza1) {
-    this.recovermeanT(sanza1);
+    this.calcmeanT(sanza1);
     fetch("/api/menji/all/" + sanza1 + "&Gold")
       .then((response2) => {return response2.json();})
       .then((data2) => {let taloyaApi = data2.map((bucket) => {
@@ -376,7 +375,7 @@ class GForecast extends PureComponent {
         });
       });
   }
-  recovermeanT(sanza) {
+  calcmeanT(sanza) {
     fetch("/api/menji/moyunmonth/" + sanza + "&Gold")
       .then((response4) => {
         return response4.json();
@@ -466,22 +465,22 @@ class GForecast extends PureComponent {
         </tr>
       );
     };
-    const renderOld = (arOlddata) => {
+    const renderOld = (Olddata) => {
       return (
-        <tr key={arOlddata.id}>
-          <td align="center">{arOlddata.user}</td>
-          <td align="center"><b>${Math.round(arOlddata.mean)}/oz</b></td>
-          <td align="center">{arOlddata.dateforecast}</td>
-          <td align="center">{Math.round(arOlddata.price1 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price2 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price3 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price4 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price5 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price6 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price7 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price8 * 100)}%</td>
-          <td align="center">{Math.round(arOlddata.price9 * 100)}%</td>
-          <td align="center">{arOlddata.specificcomments}</td>
+        <tr key={Olddata.id}>
+          <td align="center">{Olddata.user}</td>
+          <td align="center"><b>${Math.round(Olddata.mean)}/oz</b></td>
+          <td align="center">{Olddata.dateforecast}</td>
+          <td align="center">{Math.round(Olddata.price1 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price2 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price3 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price4 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price5 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price6 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price7 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price8 * 100)}%</td>
+          <td align="center">{Math.round(Olddata.price9 * 100)}%</td>
+          <td align="center">{Olddata.specificcomments}</td>
         </tr>
       );
     };

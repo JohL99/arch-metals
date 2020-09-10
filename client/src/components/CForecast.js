@@ -68,10 +68,10 @@ class CForecast extends PureComponent {
       data1: [8],
       olddata: [],
       alldata: [],
-      recentdata: [],
       averagesO: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       averagesA: [0, 0, 0, 0, 0, 0, 0, 0, 0],
       averagesR: [0, 0, 0, 0, 0, 0, 0, 0, 0],
+      recent: [],
       EVR: 0,
       EVO: 0,
       EVA: 0,
@@ -94,19 +94,19 @@ class CForecast extends PureComponent {
     //Extraction of the recent data
     var Olddata = [...this.state.alldata];
     var Alldata = [...this.state.alldata];
-    var Recentdata = [...this.state.recentdata];
+    var Recentdata = [...this.state.Recentdata];
     var index;
-    let recentdata = Recentdata.map((recentdata) => {
-      index = arrayObjectIndexOf(Olddata, recentdata.id, "id");
+    let Variable1 = Recentdata.map((pricedata) => {
+      index = arrayObjectIndexOf(Olddata, pricedata.id, "id");
       if (index !== -1) {
         Olddata.splice(index, 0);
       }
-      return recentdata.commodity;
+      return pricedata.commodity;
     });
     var numberT = this.state.alldata.length;
     var numberO = (numberT - numberR);
-    var numberR = this.state.recentdata.length;
-    
+    var numberR = this.state.Recentdata.length;
+    //var numberR = this.state.recentdata.length;
     averagesA[0] = this.state.averagesA[0].price1;
     averagesA[1] = this.state.averagesA[0].price2;
     averagesA[2] = this.state.averagesA[0].price3;
@@ -128,7 +128,7 @@ class CForecast extends PureComponent {
     averagesO[8] = (averagesA[8] - this.state.averagesR[8]) / numberO;
     this.setState({ averagesO });
     this.setState({ olddata: [].concat(Olddata) });
-    
+    //calculates the means
     this.state.element[0] = this.state.price1;
     this.state.element[1] = this.state.price2;
     this.state.element[2] = this.state.price3;
@@ -151,7 +151,7 @@ class CForecast extends PureComponent {
     data1 = [
       {
         price: this.state.element[0],
-        recentdate: averagesR[0],
+        recentdate: this.state.averages[0],
         olddata: averagesO[0],
         alldata: averagesA[0],
       },
@@ -191,6 +191,7 @@ class CForecast extends PureComponent {
       .then((data) => {
         let yx = data;
         let bucket = data.map((price) => {
+          //put it in an array
           this.setState({ price1: price.floorprice + price.constant1 * 0 });
           this.setState({ price2: price.floorprice + price.constant1 * 1 });
           this.setState({ price3: price.floorprice + price.constant1 * 2 });
@@ -306,7 +307,7 @@ class CForecast extends PureComponent {
     this.calcmeanT(sanza1);
     fetch("/api/menji/all/" + sanza1 + "&Copper")
       .then((response2) => {return response2.json();})
-      .then((data2) => {let alldataApi = data2.map((bucket) => {
+      .then((data2) => {let taloyaApi = data2.map((bucket) => {
           return {
             id: bucket._id,
             user: bucket.user,
@@ -344,7 +345,7 @@ class CForecast extends PureComponent {
               mean: "",
               specificcomments: "",
             },
-          ].concat(alldataApi),
+          ].concat(taloyaApi),
         });
         this.FindOldata();
         this.fillgeneralcomments(sanza1);
@@ -358,7 +359,7 @@ class CForecast extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let recentdataApi = data3.map((info) => {
+        let recentyaApi = data3.map((info) => {
           return {
             id: info._id,
             generalcomments: info.generalcomments,
@@ -370,7 +371,7 @@ class CForecast extends PureComponent {
               id: "",
               generalcomments: "",
             },
-          ].concat(recentdataApi),
+          ].concat(recentyaApi),
         });
       });
   }
@@ -380,23 +381,23 @@ class CForecast extends PureComponent {
         return response4.json();
       })
       .then((data4) => {
-        let probabilitiesApi = data4.map((probability) => {
+        let katiyaApi = data4.map((kati) => {
           return {
-            id: probability._id,
-            price1: probability.avg1,
-            price2: probability.avg2,
-            price3: probability.avg3,
-            price4: probability.avg4,
-            price5: probability.avg5,
-            price6: probability.avg6,
-            price7: probability.avg7,
-            price8: probability.avg8,
-            price9: probability.avg9,
-            median: probability.median,
+            id: kati._id,
+            price1: kati.avg1,
+            price2: kati.avg2,
+            price3: kati.avg3,
+            price4: kati.avg4,
+            price5: kati.avg5,
+            price6: kati.avg6,
+            price7: kati.avg7,
+            price8: kati.avg8,
+            price9: kati.avg9,
+            median: kati.median,
           };
         });
         this.setState({
-          averagesA: probabilitiesApi,
+          averagesA: katiyaApi,
         });
       });
     this.FindOldata();
@@ -483,10 +484,10 @@ class CForecast extends PureComponent {
         </tr>
       );
     };
-    const renderMaloba = (recentdataApi) => {
+    const renderMaloba = (recentyaApi) => {
       return (
-        <tr key={recentdataApi.id}>
-          <td align="left">{recentdataApi.generalcomments}</td>
+        <tr key={recentyaApi.id}>
+          <td align="left">{recentyaApi.generalcomments}</td>
         </tr>
       );
     };
