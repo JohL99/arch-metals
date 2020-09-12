@@ -59,6 +59,9 @@ class GoldInput extends Component {
       fichier: null,
       fraicheur: 0,
     };
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }

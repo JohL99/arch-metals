@@ -1,8 +1,8 @@
 import React from "react";
 export default function about() {
   return (
-    <div>
-      <h3>Introduction</h3>
+<div>
+    <h3>Introduction</h3>
 	<p className="text-justify">
 	Over the last decade, the total impairments for only the top forty
 	mining organizations were around two hundred and forty-eight billion

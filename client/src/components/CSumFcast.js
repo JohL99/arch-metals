@@ -55,6 +55,9 @@ class CSumFcast extends PureComponent {
       lesCast: [],
       recent: [],
     };
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     this.fillgeneralcomments = this.fillgeneralcomments.bind(this);
     this.renderTableData = this.renderTableData.bind(this);
   }

@@ -58,6 +58,9 @@ class CSummary extends PureComponent {
       olddata: [],
       recent: [],
     };
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     this.FindOldata = this.FindOldata.bind(this);
     this.findMedian = this.findMedian.bind(this);
   }

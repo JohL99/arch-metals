@@ -39,6 +39,9 @@ class GPartFcast extends PureComponent {
       comnov: "",
       comdec: "",
     };
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
     this.graphi = this.graphi.bind(this);
