@@ -60,11 +60,7 @@ export const logoutUser = () => (dispatch) => {
   // Remove auth header for future requests
   setAuthToken(false);
   // Set current user to {} which will set isAuthenticated to false
-  dispatch(
-    function(){
-      setCurrentUser({});
-      this.location.pathname = "/logout";
-
-    });
+  this.location.pathname = "/logout";
+  dispatch(setCurrentUser({}));
   
 };
