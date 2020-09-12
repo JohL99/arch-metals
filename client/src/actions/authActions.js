@@ -3,11 +3,8 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
 
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
-
-const history = useHistory();
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
@@ -64,6 +61,5 @@ export const logoutUser = () => (dispatch) => {
   setAuthToken(false);
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
-  history.push('/login');
   
 };
