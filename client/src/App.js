@@ -46,7 +46,7 @@ if (localStorage.jwtToken) {
   if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
-
+      
     // Clear current Profile
     //store.dispatch(clearCurrentProfile());
     // Redirect to login
@@ -77,8 +77,8 @@ function App() {
             <Route exact path="/GSumFcast" component={GSumFcast} />
             <Route exact path="/GPartFcast" component={GPartFcast} />
             <Route exact path="/Register" component={Register} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/logout" component={Landing} />
+            <Route exact path="/Login" component={Login} />
+            <Route exact path="/Logout" component={Landing} />
             <Route exact path="/consent" component={Consent} />
             <Route exact path="/CopperInput" component={CopperInput} />
             <Route exact path="/GoldInput" component={GoldInput} />

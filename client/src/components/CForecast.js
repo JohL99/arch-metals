@@ -502,7 +502,7 @@ class CForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="90%">
+                <td colSpan="14" align="center" width="100%">
                   <b>Copper Forecasts - {this.state.month}</b>
                 </td>
               </tr>
@@ -681,17 +681,17 @@ class CForecast extends PureComponent {
               <tr>
                 <td align="center" width="10%"><b>Participant</b></td>
                 <td align="center" width="10%"><b>Expected Value</b></td>
-                <td align="center" width="15%"><b>Date</b></td>
-                <td align="center" width="8%"><b>${this.state.price1}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price2}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price3}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price4}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price5}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price6}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price7}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price8}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price9}/MT</b></td>
-                <td align="center" width="80%"><b>Justifications</b></td>
+                <td align="center" width="10%"><b>Date</b></td>
+                <td align="center"><b>${this.state.price1}/MT</b></td>
+                <td align="center"><b>${this.state.price2}/MT</b></td>
+                <td align="center"><b>${this.state.price3}/MT</b></td>
+                <td align="center"><b>${this.state.price4}/MT</b></td>
+                <td align="center"><b>${this.state.price5}/MT</b></td>
+                <td align="center"><b>${this.state.price6}/MT</b></td>
+                <td align="center"><b>${this.state.price7}/MT</b></td>
+                <td align="center"><b>${this.state.price8}/MT</b></td>
+                <td align="center"><b>${this.state.price9}/MT</b></td>
+                <td align="center" width="34%"><b>Justifications</b></td>
               </tr>
               {this.state.Rprice.map(renderprice)}
             </tbody>
@@ -705,17 +705,17 @@ class CForecast extends PureComponent {
               <tr>
                 <td align="center" width="10%"><b>Participant</b></td>
                 <td align="center" width="10%"><b>Expected Value</b></td>
-                <td align="center" width="15%"><b>Date</b></td>
-                <td align="center" width="8%"><b>${this.state.price1}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price2}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price3}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price4}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price5}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price6}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price7}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price8}/MT</b></td>
-                <td align="center" width="8%"><b>${this.state.price9}/MT</b></td>
-                <td align="center" width="80%"><b>Justifications</b></td>
+                <td align="center" width="10%"><b>Date</b></td>
+                <td align="center"><b>${this.state.price1}/MT</b></td>
+                <td align="center"><b>${this.state.price2}/MT</b></td>
+                <td align="center"><b>${this.state.price3}/MT</b></td>
+                <td align="center"><b>${this.state.price4}/MT</b></td>
+                <td align="center"><b>${this.state.price5}/MT</b></td>
+                <td align="center"><b>${this.state.price6}/MT</b></td>
+                <td align="center"><b>${this.state.price7}/MT</b></td>
+                <td align="center"><b>${this.state.price8}/MT</b></td>
+                <td align="center"><b>${this.state.price9}/MT</b></td>
+                <td align="center" width="34%"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>

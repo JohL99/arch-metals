@@ -499,14 +499,14 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="90%">
+                <td colSpan="12" align="center" width="100%">
                   <b>Gold Forecasts - {this.state.month}</b>
                 </td>
               </tr>
               <tr>
                 <td width="10%">
                   <select
-                    id="mnth"
+                    id="month"
                     name="month"
                     value={this.state.month}
                     onChange={(e) => {
@@ -669,17 +669,17 @@ class GForecast extends PureComponent {
               <tr>
                 <td align="center" width="10%"><b>Participant</b></td>
                 <td align="center" width="10%"><b>Expected Value</b></td>
-                <td align="center" width="15%"><b>Date</b></td>
-                <td align="center" width="8%"><b>${this.state.price1}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price2}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price3}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price4}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price5}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price6}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price7}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price8}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price9}/oz</b></td>
-                <td align="center" width="80%"><b>Justifications</b></td>
+                <td align="center" width="10%"><b>Date</b></td>
+                <td align="center"><b>${this.state.price1}/oz</b></td>
+                <td align="center"><b>${this.state.price2}/oz</b></td>
+                <td align="center"><b>${this.state.price3}/oz</b></td>
+                <td align="center"><b>${this.state.price4}/oz</b></td>
+                <td align="center"><b>${this.state.price5}/oz</b></td>
+                <td align="center"><b>${this.state.price6}/oz</b></td>
+                <td align="center"><b>${this.state.price7}/oz</b></td>
+                <td align="center"><b>${this.state.price8}/oz</b></td>
+                <td align="center"><b>${this.state.price9}/oz</b></td>
+                <td align="center" width="34%"><b>Justifications</b></td>
               </tr>
               {this.state.Rprice.map(renderprice)}
             </tbody>
@@ -694,17 +694,17 @@ class GForecast extends PureComponent {
               <tr>
                 <td align="center" width="10%"><b>Participant</b></td>
                 <td align="center" width="10%"><b>Expected Value</b></td>
-                <td align="center" width="15%"><b>Date</b></td>
-                <td align="center" width="8%"><b>${this.state.price1}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price2}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price3}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price4}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price5}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price6}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price7}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price8}/oz</b></td>
-                <td align="center" width="8%"><b>${this.state.price9}/oz</b></td>
-                <td align="center" width="80%"><b>Justifications</b></td>
+                <td align="center" width="10%"><b>Date</b></td>
+                <td align="center"><b>${this.state.price1}/oz</b></td>
+                <td align="center"><b>${this.state.price2}/oz</b></td>
+                <td align="center"><b>${this.state.price3}/oz</b></td>
+                <td align="center"><b>${this.state.price4}/oz</b></td>
+                <td align="center"><b>${this.state.price5}/oz</b></td>
+                <td align="center"><b>${this.state.price6}/oz</b></td>
+                <td align="center"><b>${this.state.price7}/oz</b></td>
+                <td align="center"><b>${this.state.price8}/oz</b></td>
+                <td align="center"><b>${this.state.price9}/oz</b></td>
+                <td align="center" width="34%"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>

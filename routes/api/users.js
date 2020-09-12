@@ -128,5 +128,51 @@ router.get("/tous", (req, res) => {
     .catch((err) => res.status(404).json({ utilisateur: "no user" }));
 });
 
+module.exports = router;
+
+
+//@route GET api/users/cuusers
+//@desc return all users
+//@access Private
+router.get("/cuusers/:Copper&:CopperGold", (req, res) => {
+  const errors = {};
+
+  User.find({
+    $and: [{ commodity: req.params.commodity }, { commodity: req.params.commodity }],
+  })
+    .then((utilisateurs) => {
+      if (!utilisateurs) {
+        errors.nocustomer = "no user";
+        return res.status(404).json(errors);
+      }
+
+      res.json(utilisateurs);
+    })
+    .catch((err) => res.status(404).json({ utilisateur: "no user" }));
+});
+
+
+module.exports = router;
+
+//@route GET api/users/auuusers
+//@desc return all users
+//@access Private
+router.get("/auusers/:Gold&:CopperGold", (req, res) => {
+  const errors = {};
+
+  User.find({
+    $and: [{ commodity: req.params.commodity }, { commodity: req.params.commodity }],
+  })
+    .then((utilisateurs) => {
+      if (!utilisateurs) {
+        errors.nocustomer = "no user";
+        return res.status(404).json(errors);
+      }
+
+      res.json(utilisateurs);
+    })
+    .catch((err) => res.status(404).json({ utilisateur: "no user" }));
+});
+
 
 module.exports = router;
