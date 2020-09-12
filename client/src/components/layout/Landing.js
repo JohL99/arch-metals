@@ -16,6 +16,7 @@ class Landing extends Component {
                 </h1>
                 <h2 class="display-4 mb-5">Copper and Gold</h2>
                 <hr />
+                
                 <Link to="/register" className="btn btn-md btn-info mr-2">
                   Sign Up
                 </Link>
