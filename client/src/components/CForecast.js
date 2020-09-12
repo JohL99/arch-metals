@@ -220,44 +220,44 @@ class CForecast extends PureComponent {
         return response1.json();
       })
       .then((data1) => {
-        let priceFromApi = data1.map((price, x, index) => {
+        let lastFromApi = data1.map((last, x, index) => {
           var number = index.length;
-          sum[0] = sum[0] + price.detail.price1;
-          sum[1] = sum[1] + price.detail.price2;
-          sum[2] = sum[2] + price.detail.price3;
-          sum[3] = sum[3] + price.detail.price4;
-          sum[4] = sum[4] + price.detail.price5;
-          sum[5] = sum[5] + price.detail.price6;
-          sum[6] = sum[6] + price.detail.price7;
-          sum[7] = sum[7] + price.detail.price8;
-          sum[8] = sum[8] + price.detail.price9;
-          var meanRepeat = [];
-          meanRepeat[0] = sum[0] / number;
-          meanRepeat[1] = sum[1] / number;
-          meanRepeat[2] = sum[2] / number;
-          meanRepeat[3] = sum[3] / number;
-          meanRepeat[4] = sum[4] / number;
-          meanRepeat[5] = sum[5] / number;
-          meanRepeat[6] = sum[6] / number;
-          meanRepeat[7] = sum[7] / number;
-          meanRepeat[8] = sum[8] / number;
-          this.setState({ averages: [].concat(meanRepeat) });
+          sum[0] = sum[0] + last.detail.price1;
+          sum[1] = sum[1] + last.detail.price2;
+          sum[2] = sum[2] + last.detail.price3;
+          sum[3] = sum[3] + last.detail.price4;
+          sum[4] = sum[4] + last.detail.price5;
+          sum[5] = sum[5] + last.detail.price6;
+          sum[6] = sum[6] + last.detail.price7;
+          sum[7] = sum[7] + last.detail.price8;
+          sum[8] = sum[8] + last.detail.price9;
+          var meanCalc = [];
+          meanCalc[0] = sum[0] / number;
+          meanCalc[1] = sum[1] / number;
+          meanCalc[2] = sum[2] / number;
+          meanCalc[3] = sum[3] / number;
+          meanCalc[4] = sum[4] / number;
+          meanCalc[5] = sum[5] / number;
+          meanCalc[6] = sum[6] / number;
+          meanCalc[7] = sum[7] / number;
+          meanCalc[8] = sum[8] / number;
+          this.setState({ averagesR: [].concat(meanCalc) });
           return {
-            id: price.detail._id,
-            user: price._id.user,
-            dateforecast: this.convert_to_utc(new Date(price.detail.dateforecast)),
-            price1: price.detail.price1,
-            price2: price.detail.price2,
-            price3: price.detail.price3,
-            price4: price.detail.price4,
-            price5: price.detail.price5,
-            price6: price.detail.price6,
-            price7: price.detail.price7,
-            price8: price.detail.price8,
-            price9: price.detail.price9,
-            median: price.detail.median,
-            mean: price.detail.mean,
-            specificcomments: price.detail.specificcomments,
+            id: last.detail._id,
+            user: last._id.user,
+            dateforecast: this.convert_to_utc(new Date(last.detail.dateforecast)),
+            price1: last.detail.price1,
+            price2: last.detail.price2,
+            price3: last.detail.price3,
+            price4: last.detail.price4,
+            price5: last.detail.price5,
+            price6: last.detail.price6,
+            price7: last.detail.price7,
+            price8: last.detail.price8,
+            price9: last.detail.price9,
+            median: last.detail.median,
+            mean: last.detail.mean,
+            specificcomments: last.detail.specificcomments,
           };
         });
         this.setState({
@@ -279,7 +279,7 @@ class CForecast extends PureComponent {
               mean: "",
               specificcomments: "",
             },
-          ].concat(priceFromApi),
+          ].concat(lastFromApi),
         });
       })
       .catch((error1) => {
@@ -288,7 +288,7 @@ class CForecast extends PureComponent {
     this.fillotherdata(sanza);
     //add
   }
-  convert_to_utc = (dateStr) => {
+    convert_to_utc = (dateStr) => {
     //check whether time is in PM or AM
     var hours = dateStr.getHours();
     var hours = (hours+24-2)%24;
@@ -451,22 +451,22 @@ class CForecast extends PureComponent {
     return EV;
   }
   render() {
-    const renderprice = (priceFromApi) => {
+    const renderprice = (lastFromApi) => {
       return (
-        <tr key={priceFromApi.id}>
-          <td align="center">{priceFromApi.user}</td>
-          <td align="center"><b>${Math.round(priceFromApi.mean)}/MT</b></td>
-          <td align="center">{priceFromApi.dateforecast}</td>
-          <td align="center">{priceFromApi.price1 * 100}%</td>
-          <td align="center">{priceFromApi.price2 * 100}%</td>
-          <td align="center">{priceFromApi.price3 * 100}%</td>
-          <td align="center">{priceFromApi.price4 * 100}%</td>
-          <td align="center">{priceFromApi.price5 * 100}%</td>
-          <td align="center">{priceFromApi.price6 * 100}%</td>
-          <td align="center">{priceFromApi.price7 * 100}%</td>
-          <td align="center">{priceFromApi.price8 * 100}%</td>
-          <td align="center">{priceFromApi.price9 * 100}%</td>
-          <td align="center">{priceFromApi.specificcomments}</td>
+        <tr key={lastFromApi.id}>
+          <td align="center">{lastFromApi.user}</td>
+          <td align="center"><b>${Math.round(lastFromApi.mean)}/MT</b></td>
+          <td align="center">{lastFromApi.dateforecast}</td>
+          <td align="center">{lastFromApi.price1 * 100}%</td>
+          <td align="center">{lastFromApi.price2 * 100}%</td>
+          <td align="center">{lastFromApi.price3 * 100}%</td>
+          <td align="center">{lastFromApi.price4 * 100}%</td>
+          <td align="center">{lastFromApi.price5 * 100}%</td>
+          <td align="center">{lastFromApi.price6 * 100}%</td>
+          <td align="center">{lastFromApi.price7 * 100}%</td>
+          <td align="center">{lastFromApi.price8 * 100}%</td>
+          <td align="center">{lastFromApi.price9 * 100}%</td>
+          <td align="center">{lastFromApi.specificcomments}</td>
         </tr>
       );
     };

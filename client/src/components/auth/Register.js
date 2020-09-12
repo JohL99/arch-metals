@@ -133,7 +133,7 @@ class Register extends Component {
                   error={errors.password2}
                 />
                 <TextFieldGroup
-                  placeholder="Email – For Logon & Confidential official communication only"
+                  placeholder="Email – For Logon &amp; Confidential official communication only"
                   name="email"
                   type="email"
                   value={this.state.email}
