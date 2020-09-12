@@ -4,11 +4,17 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 class Navbar extends Component {
+  constructor(){
+    this.gotoTop();
+  }
   onLogoutClick(e) {
     e.preventDefault();
     //this.props.clearCurrentProfile();
     // this.props.history.push('/Landing');
     this.props.logoutUser();
+  }
+  gotoTop() {
+    window.scroll(0,0);
   }
   render() {
     const { isAuthenticated, user } = this.props.auth;
