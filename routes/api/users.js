@@ -137,9 +137,8 @@ module.exports = router;
 router.get("/cuusers/:Copper&:CopperGold", (req, res) => {
   const errors = {};
 
-  User.find({
-    $and: [{ commodity: req.params.commodity }, { commodity: req.params.commodity }],
-  })
+  User.find([ { $match: { $or: [ { commodity: req.params.commodity }, { commodity: req.params.commodity },],},},],)
+    
     .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";
@@ -150,7 +149,6 @@ router.get("/cuusers/:Copper&:CopperGold", (req, res) => {
     })
     .catch((err) => res.status(404).json({ utilisateur: "no user" }));
 });
-
 
 module.exports = router;
 
