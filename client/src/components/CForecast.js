@@ -509,7 +509,7 @@ class CForecast extends PureComponent {
               <tr>
                 <td width="10%">
                   <select
-                    id="month"
+                    id="mnth"
                     name="month"
                     value={this.state.month}
                     onChange={(e) => {
@@ -679,9 +679,9 @@ class CForecast extends PureComponent {
                 </td>
               </tr>
               <tr>
-                <td align="center" width="10%"><b>Participant</b></td>
-                <td align="center" width="10%"><b>Expected Value</b></td>
-                <td align="center" width="10%"><b>Date</b></td>
+                <td align="center"><b>Participant</b></td>
+                <td align="center"><b>Expected Value</b></td>
+                <td align="center"><b>Date</b></td>
                 <td align="center"><b>${this.state.price1}/MT</b></td>
                 <td align="center"><b>${this.state.price2}/MT</b></td>
                 <td align="center"><b>${this.state.price3}/MT</b></td>
@@ -691,7 +691,7 @@ class CForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/MT</b></td>
                 <td align="center"><b>${this.state.price8}/MT</b></td>
                 <td align="center"><b>${this.state.price9}/MT</b></td>
-                <td align="center" width="34%"><b>Justifications</b></td>
+                <td align="center" width="50%"><b>Justifications</b></td>
               </tr>
               {this.state.Rprice.map(renderprice)}
             </tbody>
@@ -703,9 +703,9 @@ class CForecast extends PureComponent {
                   <b>Older Copper Forecasts - {this.state.month}</b></td>
               </tr>
               <tr>
-                <td align="center" width="10%"><b>Participant</b></td>
-                <td align="center" width="10%"><b>Expected Value</b></td>
-                <td align="center" width="10%"><b>Date</b></td>
+                <td align="center"><b>Participant</b></td>
+                <td align="center"><b>Expected Value</b></td>
+                <td align="center"><b>Date</b></td>
                 <td align="center"><b>${this.state.price1}/MT</b></td>
                 <td align="center"><b>${this.state.price2}/MT</b></td>
                 <td align="center"><b>${this.state.price3}/MT</b></td>
@@ -715,7 +715,7 @@ class CForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/MT</b></td>
                 <td align="center"><b>${this.state.price8}/MT</b></td>
                 <td align="center"><b>${this.state.price9}/MT</b></td>
-                <td align="center" width="34%"><b>Justifications</b></td>
+                <td align="center" width="50%"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>

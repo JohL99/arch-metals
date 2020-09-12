@@ -489,7 +489,7 @@ class CSummary extends PureComponent {
           <table className="table table-bordered">
           <tbody>
           <tr>
-          <td colSpan="14" align="center" width="70%"><b>Most Recent Copper Forecasts - {this.state.month}</b></td>
+          <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.month}</b></td>
           </tr>
            <tr align="center">
            <td width="10%"><b>Participant</b></td>
@@ -504,7 +504,7 @@ class CSummary extends PureComponent {
             <td><b>${this.state.price7}/MT</b></td>
             <td><b>${this.state.price8}/MT</b></td>
             <td><b>${this.state.price9}/MT</b></td>
-            <td width="35%"><b>Justifications</b></td>
+            <td width="50%"><b>Justifications</b></td>
             </tr>
              {this.state.Aprice.map(renderprice)}
             </tbody>
