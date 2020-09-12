@@ -603,10 +603,10 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>December 2020</b></td>
             </tr>
             <tr>
-              <td align="center">
+              <td align="left">
                 <span className="label label-primary"></span>
                 <select
-                  className="form-control form-control-lg"
+                  className=""
                   value={this.state.user}
                   onChange={(e) => {
                     this.setState({

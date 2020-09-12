@@ -9,7 +9,7 @@ class Dashboard extends PureComponent {
         this.chat();
     }
     render() {
-        return <div class="alert alert-" role="alert">
+        return <div class="alert alert-info" role="alert">
             <h1>{this.state.message}</h1>
       </div>
     }

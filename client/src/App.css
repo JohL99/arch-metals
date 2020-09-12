@@ -11492,8 +11492,14 @@ nav.navbar{
   margin-top: 5vh;
 }
 
+.footer-parent-holder{
+  position: inherit;
+    margin: 0;
+    height: 13vh;
+}
+
 footer{
-  position: relative;
+  position: fixed;
   bottom: 0;
   width: 100%;
 }
