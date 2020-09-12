@@ -69,7 +69,7 @@ class CPartFcast extends PureComponent {
     return newdate + " " + mid;
   }
   componentDidMount() {
-    fetch("/api/users/cuusers/" + "Copper")
+    fetch("/api/users/cuusers/Copper")
       .then((response) => {
         return response.json();
       })
