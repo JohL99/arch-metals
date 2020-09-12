@@ -1,9 +1,9 @@
 import React, { PureComponent, Component } from "react";
 
-class Dashboard extends Component {
+class Dashboard extends PureComponent {
     render() {
         return <div class="alert alert-info" role="alert">
-        A simple info alert—check it out!
+        <h1>Welcome to the dashboard</h1>
       </div>
     }
 }

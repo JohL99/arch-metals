@@ -1,6 +1,8 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
@@ -59,4 +61,5 @@ export const logoutUser = () => (dispatch) => {
   setAuthToken(false);
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+  this.props.history.push('/login');
 };
