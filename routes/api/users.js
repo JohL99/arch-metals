@@ -134,10 +134,10 @@ module.exports = router;
 //@route GET api/users/cuusers
 //@desc return all users
 //@access Private
-router.get("/cuusers/:Copper&:CopperGold", (req, res) => {
+router.get("/cuusers/:Copper", (req, res) => {
   const errors = {};
 
-  User.find([ { $match: { $or: [ { commodity: req.params.commodity }, { commodity: req.params.commodity },],},},],)
+  User.find([ { $match: [ { commodity: req.params.commodity },],},],)
     
     .then((utilisateurs) => {
       if (!utilisateurs) {
@@ -158,9 +158,8 @@ module.exports = router;
 router.get("/auusers/:Gold&:CopperGold", (req, res) => {
   const errors = {};
 
-  User.find({
-    $and: [{ commodity: req.params.commodity }, { commodity: req.params.commodity }],
-  })
+  User.find([ { $match: { $or: [ { commodity: req.params.commodity }, { commodity: req.params.commodity },],},},],)
+
     .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";
