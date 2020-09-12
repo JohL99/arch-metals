@@ -31,6 +31,7 @@ import GForecast from "./components/GForecast";
 import GSummary from "./components/GSummary";
 import GSumFcast from "./components/GSumFcast";
 import GPartFcast from "./components/GPartFcast";
+import Dashboard from "./components/Dashboard";
 //import Graph1 from "./components/Graph1";
 // Check for token
 if (localStorage.jwtToken) {
@@ -50,6 +51,18 @@ if (localStorage.jwtToken) {
     // Redirect to login
     window.location.href = "/login";
   }
+  (function(d,t) {
+    var BASE_URL = "https://app.chatwoot.com";
+    var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src= BASE_URL + "/packs/js/sdk.js";
+    s.parentNode.insertBefore(g,s);
+    g.onload=function(){
+      window.chatwootSDK.run({
+        websiteToken: 's6p8vqywRP8ouGyMuSpBQdSC',
+        baseUrl: BASE_URL
+      })
+    }
+  })(document,"script");
 }
 function App() {
   return (
@@ -81,6 +94,7 @@ function App() {
             <Route exact path="/CopperInput" component={CopperInput} />
             <Route exact path="/GoldInput" component={GoldInput} />
             <Route exact path="/MonthPrices" component={MonthPrices} />
+            <Route exact path="/dashboard" component={Dashboard} />
           </div>
           <Footer />
         </div>
