@@ -478,12 +478,14 @@ class CSumFcast extends PureComponent {
       );
     };
     const renderMaloba = (recentyaApi) => {
-      return (
-        <tr key={recentyaApi.id}>
-          <td align="center">{recentyaApi.month}</td>
-          <td align="left">{recentyaApi.generalcomments}</td>
-        </tr>
-      );
+      if(recentyaApi.id !== ""){
+        return (
+          <tr key={recentyaApi.id}>
+            <td align="center">{recentyaApi.month}</td>
+            <td align="left">{recentyaApi.generalcomments}</td>
+          </tr>
+        );
+      }
     };
     return (
       <div>
