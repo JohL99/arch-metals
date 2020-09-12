@@ -364,7 +364,7 @@ class CSummary extends PureComponent {
           <td align="center">{priceFromApi.price7 * 100}%</td>
           <td align="center">{priceFromApi.price8 * 100}%</td>
           <td align="center">{priceFromApi.price9 * 100}%</td>
-          <td align="center">{priceFromApi.specificcomments}</td>
+          <td align="center"  width="50%">{priceFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -492,7 +492,7 @@ class CSummary extends PureComponent {
           <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.month}</b></td>
           </tr>
            <tr align="center">
-           <td width="10%"><b>Participant</b></td>
+           <td><b>Participant</b></td>
             <td><b>Expected Value</b></td>
             <td><b>Date</b></td>
             <td><b>${this.state.price1}/MT</b></td>
