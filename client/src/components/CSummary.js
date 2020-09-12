@@ -370,11 +370,13 @@ class CSummary extends PureComponent {
     };
     
     const renderMaloba = (recentyaApi) => {
-      return (
-        <tr align="left" key={recentyaApi.id}>
-          <td>{recentyaApi.generalcomments}</td>
-        </tr>
-      );
+      if(recentyaApi.id !== ""){
+        return (
+          <tr align="left" key={recentyaApi.id}>
+            <td>{recentyaApi.generalcomments}</td>
+          </tr>
+        );
+      }
     };
     return (
       <div>

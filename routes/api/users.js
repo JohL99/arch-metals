@@ -128,4 +128,43 @@ router.get("/tous", (req, res) => {
     .catch((err) => res.status(404).json({ utilisateur: "no user" }));
 });
 
+//@route GET api/users/cuUsers
+//@desc return all copper users
+//@access Private
+router.get("/cUsers", (req, res) => {
+  const errors = {};
+
+  User.find({
+    commodity: req.body.commodity
+  })
+    .then((utilisateurs) => {
+      if (!utilisateurs) {
+        errors.nocustomer = "no user";
+        return res.status(404).json(errors);
+      }
+
+      res.json(utilisateurs);
+    })
+    .catch((err) => res.status(404).json({ utilisateur: "no user" }));
+});
+
+
+router.get("/gUsers", (req, res) => {
+  const errors = {};
+
+  User.find({
+    commodity: req.body.commodity
+  })
+    .then((utilisateurs) => {
+      if (!utilisateurs) {
+        errors.nocustomer = "no user";
+        return res.status(404).json(errors);
+      }
+
+      res.json(utilisateurs);
+    })
+    .catch((err) => res.status(404).json({ utilisateur: "no user" }));
+});
+
+
 module.exports = router;

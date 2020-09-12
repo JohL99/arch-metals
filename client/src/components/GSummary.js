@@ -369,6 +369,7 @@ class GSummary extends PureComponent {
       );
     };
     const renderMaloba = (recentyaApi) => {
+      if(recentyaApi.id !== "")
       return (
         <tr align="left" key={recentyaApi.id}>
           <td>{recentyaApi.generalcomments}</td>

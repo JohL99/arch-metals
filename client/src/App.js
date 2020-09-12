@@ -78,7 +78,7 @@ function App() {
             <Route exact path="/GPartFcast" component={GPartFcast} />
             <Route exact path="/Register" component={Register} />
             <Route exact path="/login" component={Login} />
-            <Route exact path="/logout" component={Login} />
+            <Route exact path="/logout" component={Landing} />
             <Route exact path="/consent" component={Consent} />
             <Route exact path="/CopperInput" component={CopperInput} />
             <Route exact path="/GoldInput" component={GoldInput} />

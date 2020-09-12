@@ -11,7 +11,7 @@ export default function Comex_Copper() {
       </div>
         <br />
        <div> 
-        <img width={960} height={420} alt="Comex_Copper" src={ComexCu} />
+        <img width={960} height={400} alt="Comex_Copper" src={ComexCu} />
         <br />
       </div>
     </div>

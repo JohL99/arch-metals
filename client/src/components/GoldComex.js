@@ -11,7 +11,7 @@ export default function Comex_Gold() {
       </div>
         <br />
        <div> 
-        <img width={960} height={420} alt="Comex_Gold" src={ComexAu} />
+        <img width={960} height={400} alt="Comex_Gold" src={ComexAu} />
         <br />
       </div>
     </div>

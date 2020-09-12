@@ -50,7 +50,7 @@ class GoldInput extends Component {
         "June",
         "July",
         "August",
-        "september",
+        "September",
         "October",
         "November",
         "December",

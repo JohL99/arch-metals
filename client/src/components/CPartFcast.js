@@ -69,7 +69,7 @@ class CPartFcast extends PureComponent {
     return newdate + " " + mid;
   }
   componentDidMount() {
-    fetch("/api/users/tous")
+    fetch("/api/users/cUsers")
       .then((response) => {
         return response.json();
       })
@@ -620,6 +620,7 @@ class CPartFcast extends PureComponent {
                   }}
                 >
                   {this.state.users.map((user) => (
+                    
                     <option key={user.value} value={user.value}>
                       {user.display}
                     </option>

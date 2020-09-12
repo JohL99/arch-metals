@@ -91,7 +91,7 @@ class GForecast extends PureComponent {
       }
       return -1;
     }
-    //Soustraction des données récentes
+    //Extraction of the recent data
     var Olddata = [...this.state.alldata];
     var Alldata = [...this.state.alldata];
     var Rprice = [...this.state.Rprice];
@@ -485,11 +485,13 @@ class GForecast extends PureComponent {
       );
     };
     const renderMaloba = (recentyaApi) => {
-      return (
-        <tr key={recentyaApi.id}>
-          <td align="left">{recentyaApi.generalcomments}</td>
-        </tr>
-      );
+      if(recentyaApi.id !== ""){
+        return (
+          <tr key={recentyaApi.id}>
+            <td align="left">{recentyaApi.generalcomments}</td>
+          </tr>
+        );
+      }
     };
     return (
       <div>
@@ -497,7 +499,7 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="14" align="center" width="90%">
                   <b>Gold Forecasts - {this.state.month}</b>
                 </td>
               </tr>
@@ -574,7 +576,7 @@ class GForecast extends PureComponent {
                 <td width="10%" align="center"><b>Older Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.state.EVO)
                     /* Math.round(this.findEV(this.state.averagesO)) */}/oz</b></td> 
-		            <td align="center"><b>{this.state.olddata.length}</b></td>
+		            <td align="center"><b>{(this.state.alldata.length - this.state.Rprice.length)}</b></td>
                 <td align="center">{Math.round(this.state.averagesO[0])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[1])}%</td>
                 <td align="center">{Math.round(this.state.averagesO[2])}%</td>
@@ -660,7 +662,7 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="13" align="center" width="100%">
+                <td colSpan="13" align="center" width="90%">
                   <b>Most Recent Gold Forecasts - {this.state.month}</b>
                 </td>
               </tr>

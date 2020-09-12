@@ -69,7 +69,7 @@ class GPartFcast extends PureComponent {
     return newdate + " " + mid;
   }
   componentDidMount() {
-    fetch("/api/users/tous")
+    fetch("/api/users/gUsers")
       .then((response) => {
         return response.json();
       })
@@ -606,7 +606,7 @@ class GPartFcast extends PureComponent {
               <td align="center">
                 <span className="label label-primary"></span>
                 <select
-                  className="form-control form-control-lg"
+                  className=""
                   value={this.state.user}
                   onChange={(e) => {
                     this.setState({
