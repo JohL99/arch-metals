@@ -138,7 +138,7 @@ module.exports = router;
 router.get("/cuusers/:commodity", (req, res) => {
   const errors = {};
 
-  User.find([ { $match: { commodity: req.params.commodity, },},],)
+  User.match([ { commodity: req.params.commodity, },],)
     
     .then((utilisateurs) => {
       if (!utilisateurs) {
