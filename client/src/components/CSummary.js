@@ -355,19 +355,19 @@ class CSummary extends PureComponent {
     const renderprice = (priceFromApi) => {
       return (
         <tr key={priceFromApi.id}>
-          <th><td align="center">{priceFromApi.user}</td></th>
-          <th><td align="center"><b>${Math.round(priceFromApi.mean)}/MT</b></td></th>
-          <th><td align="center">{priceFromApi.dateforecast} </td></th>
-          <th><td align="center">{priceFromApi.price1 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price2 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price3 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price4 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price5 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price6 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price7 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price8 * 100}%</td></th>
-          <th><td align="center">{priceFromApi.price9 * 100}%</td></th>
-          <th rowspan="2"><td align="left"  width="100%">{priceFromApi.specificcomments}</td ></th>
+          <td align="center">{priceFromApi.user}</td>
+          <td align="center"><b>${Math.round(priceFromApi.mean)}/MT</b></td>
+          <td align="center">{priceFromApi.dateforecast} </td>
+          <td align="center">{priceFromApi.price1 * 100}%</td>
+          <td align="center">{priceFromApi.price2 * 100}%</td>
+          <td align="center">{priceFromApi.price3 * 100}%</td>
+          <td align="center">{priceFromApi.price4 * 100}%</td>
+          <td align="center">{priceFromApi.price5 * 100}%</td>
+          <td align="center">{priceFromApi.price6 * 100}%</td>
+          <td align="center">{priceFromApi.price7 * 100}%</td>
+          <td align="center">{priceFromApi.price8 * 100}%</td>
+          <td align="center">{priceFromApi.price9 * 100}%</td>
+          <td align="left"  width="100%">{priceFromApi.specificcomments}</td >
           </tr>
       );
     };
@@ -495,20 +495,21 @@ class CSummary extends PureComponent {
           <td colSpan="13" align="center" width="100%"><b>Participant Most Recent Copper Forecasts - {this.state.month}</b></td>
           </tr>
            <tr align="center">
-           <th><b>Participant</b></th>
-            <th><b>Expected Value</b></th>
-            <th><b>Date</b></th>
-            <th><b>${this.state.price1}/MT</b></th>
-            <th><b>${this.state.price2}/MT</b></th>
-            <th><b>${this.state.price3}/MT</b></th>
-            <th><b>${this.state.price4}/MT</b></th>
-            <th><b>${this.state.price5}/MT</b></th>
-            <th><b>${this.state.price6}/MT</b></th>
-            <th><b>${this.state.price7}/MT</b></th>
-            <th><b>${this.state.price8}/MT</b></th>
-            <th><b>${this.state.price9}/MT</b></th></tr>
-            <tr><th rowspan="2"><td><b>Justifications</b></td></th></tr>
+           <td><b>Participant</b></td>
+            <td><b>Expected Value</b></td>
+            <td><b>Date</b></td>
+            <td><b>${this.state.price1}/MT</b></td>
+            <td><b>${this.state.price2}/MT</b></td>
+            <td><b>${this.state.price3}/MT</b></td>
+            <td><b>${this.state.price4}/MT</b></td>
+            <td><b>${this.state.price5}/MT</b></td>
+            <td><b>${this.state.price6}/MT</b></td>
+            <td><b>${this.state.price7}/MT</b></td>
+            <td><b>${this.state.price8}/MT</b></td>
+            <td><b>${this.state.price9}/MT</b></td>
+            <td><b>Justifications</b></td>
             {this.state.Aprice.map(renderprice)}
+            </tr>
             </tbody>
           </table>
         </center>
