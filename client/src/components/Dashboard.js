@@ -4,7 +4,7 @@ class Dashboard extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            message:"Welcome to the Consensus Metals Forecasting panel. Any general notifications about website fixes and changes will be posted here. If you need to send a message concerning website issues, please use the Grey communication button in the bottom righthand corner of the webpage."
+            message:"Any general notifications about website fixes and changes will be posted here. If you need to send a message concerning website issues, please use the Grey communication button in the bottom righthand corner of the webpage."
         }
         this.chat();
     }
