@@ -773,8 +773,8 @@ function topFunction() {
             </tbody>
           </table>
         </form>
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         <div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
           <GraphGold mweji={this.state.month} />
           <MonthForecastGold mweji={this.state.month} />
         </div>
