@@ -116,7 +116,7 @@ router.get(
 router.get("/tous", (req, res) => {
   const errors = {};
 
-  Users.find()
+  User.find()
   .sort({commodity: 1, name: 1})
   .then((utilisateurs) => {
       if (!utilisateurs) {
