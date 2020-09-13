@@ -271,7 +271,6 @@ function topFunction() {
     const { user } = this.props.auth;
     return (
       <div>
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         <form
           noValidate
           onSubmit={this.onSubmit}
@@ -774,6 +773,7 @@ function topFunction() {
             </tbody>
           </table>
         </form>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
         <div>
           <GraphGold mweji={this.state.month} />
           <MonthForecastGold mweji={this.state.month} />
