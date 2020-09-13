@@ -113,10 +113,10 @@ router.get(
 //@route GET api/users/tous
 //@desc return all users
 //@access Private
-router.get("/tous/:commodity", (req, res) => {
+router.get("/tous", (req, res) => {
   const errors = {};
 
-  User.find({commodity: req.params.commodity})
+  User.find()
   
   .then((utilisateurs) => {
       if (!utilisateurs) {
