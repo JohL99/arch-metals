@@ -113,11 +113,11 @@ router.get(
 //@route GET api/users/tous
 //@desc return all users
 //@access Private
-router.get("/tous/:commodity", (req, res) => {
+router.get("/tous/", (req, res) => {
   const errors = {};
 
-  Users.find({commodity: req.params.commodity})
-  .sort({name: 1})
+  Users.find()
+  .sort({commodity: 1, name: 1})
   .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";
