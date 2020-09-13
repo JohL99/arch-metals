@@ -512,7 +512,7 @@ class CForecast extends PureComponent {
               <tr>
                 <td width="10%">
                   <select
-                    id="mnth"
+                    id="month"
                     name="month"
                     value={this.state.month}
                     onChange={(e) => {

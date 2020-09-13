@@ -6108,12 +6108,12 @@ a.badge-dark.focus {
 
 .alert-info {
   color: #021f3c;
-  background-color: #cdd8e3;
-  border-color: #b8c8d8;
+  background-color: #F0F0F0;
+  border-color: #000099;
 }
 
 .alert-info hr {
-  border-top-color: #a8bbcf;
+  border-top-color: #000099;
 }
 
 .alert-info .alert-link {

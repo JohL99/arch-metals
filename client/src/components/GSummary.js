@@ -390,7 +390,7 @@ class GSummary extends PureComponent {
               <tr>
                 <td width="10%" align="center">
                   <select
-                    id="mnth"
+                    id="month"
                     name="month"
                     value={this.state.month}
                     onChange={(e) => {
