@@ -116,7 +116,7 @@ router.get(
 router.get("/tous/:commodity", (req, res) => {
   const errors = {};
 
-  User.find({commodity: req.params.commodity})
+  User.find([{$contains: {commodity: req.params.commodity},},],)
   
   .then((utilisateurs) => {
       if (!utilisateurs) {
