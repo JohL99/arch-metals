@@ -251,7 +251,6 @@ class GoldInput extends Component {
     const { user } = this.props.auth;
     return (
       <div>
-        <a name="top"></a>
         <form
           noValidate
           onSubmit={this.onSubmit}
@@ -758,7 +757,6 @@ class GoldInput extends Component {
           <GraphGold mweji={this.state.month} />
           <MonthForecastGold mweji={this.state.month} />
         </div>
-        <a href="#top">Back to top of page</a>
       </div>
     );
   }
