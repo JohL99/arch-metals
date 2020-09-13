@@ -113,10 +113,10 @@ router.get(
 //@route GET api/users/tous
 //@desc return all users
 //@access Private
-router.get("/tous", (req, res) => {
+router.get("/tous/:commodity", (req, res) => {
   const errors = {};
 
-  User.find()
+  User.find({commodity: req.params.commodity})
   
   .then((utilisateurs) => {
       if (!utilisateurs) {
@@ -138,7 +138,7 @@ module.exports = router;
 router.get("/cuusers/:commodity", (req, res) => {
   const errors = {};
 
-  User.match([ { commodity: req.params.commodity, },],)
+  User.find([ {$match: { commodity: req.params.commodity, },},],)
     
     .then((utilisateurs) => {
       if (!utilisateurs) {
