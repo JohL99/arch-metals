@@ -137,9 +137,11 @@ module.exports = router;
 router.get("/cuusers/:commodity", (req, res) => {
   const errors = {};
 
-  User.find([ { commodity: req.params.commodity, },],)
+  Users.find([ { commodity: req.params.commodity, },],)
     
-    .then((utilisateurs) => {
+  .sort({commodity: 1}, {name: 1}, )  
+  
+  .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";
         return res.status(404).json(errors);
