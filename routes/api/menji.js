@@ -461,7 +461,7 @@ router.get("/recentdauser/:commodity&:user", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1 },
+      $sort: { dateforecast: -1 },
     },
 
     {

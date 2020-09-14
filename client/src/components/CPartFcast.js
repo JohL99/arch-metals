@@ -77,8 +77,8 @@ class CPartFcast extends PureComponent {
         return response.json();
       })
       .then((data) => {
-        let utilisateurFromApi = data.map((utilisateur) => {
-          return { value: utilisateur.name, display: utilisateur.name };
+        let utilisateurFromApi = data.map((participant) => {
+          return { value: participant.name, display: participant.name };
         });
         this.setState({
           users: [{ value: "", display: "(Choose Participant)" }].concat(
@@ -90,7 +90,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
   }
-  fillprices(utilisateur, produit) {
+  fillprices(participant, produit) {
     let psepFromApi = {};
     let poctFromApi = {};
     let pnovFromApi = {};
@@ -198,7 +198,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
       let averif = 0;
-    fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/September 2020&" + produit + "&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -245,7 +245,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/October 2020&" + produit + "&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -288,7 +288,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/November 2020&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/November 2020&" + produit + "&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -331,7 +331,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/December 2020&" + produit + "&" + participant)
       .then((response) => {
         return response.json();
       })

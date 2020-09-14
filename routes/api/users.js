@@ -118,15 +118,15 @@ router.get("/tous/:commodity", (req, res) => {
 
   User.find({commodity: req.params.commodity})
   
-  .then((utilisateurs) => {
-      if (!utilisateurs) {
+  .then((participants) => {
+      if (!participants) {
         errors.nocustomer = "no user";
         return res.status(404).json(errors);
       }
 
-      res.json(utilisateurs);
+      res.json(participants);
     })
-    .catch((err) => res.status(404).json({ utilisateur: "no user" }));
+    .catch((err) => res.status(404).json({ participant: "no user" }));
 });
 
 module.exports = router;
