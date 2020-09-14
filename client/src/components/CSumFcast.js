@@ -53,7 +53,7 @@ class CSumFcast extends PureComponent {
       data1: [],
       Aprice: [],
       lesCast: [],
-      recent: [],
+      maloba: [],
     };
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
@@ -71,20 +71,20 @@ class CSumFcast extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let recentyaApi = data3.map((info) => {
+        let malobayaApi = data3.map((liloba) => {
           return {
-            id: info._id,
-            month: info.month,
-            generalcomments: info.generalcomments,
+            id: liloba._id,
+            month: liloba.month,
+            generalcomments: liloba.generalcomments,
           };
         });
         this.setState({
-          recent: [
+          maloba: [
             {
               id: "",
               generalcomments: "",
             },
-          ].concat(recentyaApi),
+          ].concat(malobayaApi),
         });
       });
   }
@@ -113,7 +113,7 @@ class CSumFcast extends PureComponent {
         let price7 = [...this.state.price7];
         let price8 = [...this.state.price8];
         let price9 = [...this.state.price9];
-        let bucket = data.map((price) => {
+        let talo = data.map((price) => {
           //put it in an array
           monthprice[counter + 1] = price.month;
           //put it in an array
@@ -460,32 +460,32 @@ class CSumFcast extends PureComponent {
     });
   }
   render() {
-    const renderprice = (bucket) => {
+    const rendermaloba = (talo) => {
       return (
-        <tr key={bucket.id}>
+        <tr key={talo.id}>
           <td rowSpan="2" align="center" width="10%">
-            {bucket.month}
+            {talo.month}
           </td>
           <td>{"EV"}</td>
           <td>{"No."}</td>
-          <td>{bucket.price1}</td>
-          <td>{bucket.price2}</td>
-          <td>{bucket.price3}</td>
-          <td>{bucket.price4}</td>
-          <td>{bucket.price5}</td>
-          <td>{bucket.price6}</td>
-          <td>{bucket.price7}</td>
-          <td>{bucket.price8}</td>
-          <td>{bucket.price9}</td>
+          <td>{talo.price1}</td>
+          <td>{talo.price2}</td>
+          <td>{talo.price3}</td>
+          <td>{talo.price4}</td>
+          <td>{talo.price5}</td>
+          <td>{talo.price6}</td>
+          <td>{talo.price7}</td>
+          <td>{talo.price8}</td>
+          <td>{talo.price9}</td>
         </tr>
       );
     };
-    const renderMaloba = (recentyaApi) => {
-      if(recentyaApi.id !== ""){
+    const renderMaloba = (malobayaApi) => {
+      if(malobayaApi.id !== ""){
         return (
-          <tr key={recentyaApi.id}>
-            <td align="center">{recentyaApi.month}</td>
-            <td align="left">{recentyaApi.generalcomments}</td>
+          <tr key={malobayaApi.id}>
+            <td align="center">{malobayaApi.month}</td>
+            <td align="left">{malobayaApi.generalcomments}</td>
           </tr>
         );
       }
@@ -669,7 +669,7 @@ class CSumFcast extends PureComponent {
                 <b>Most Recent General Comments</b>
               </td>
             </tr>
-            {this.state.recent.map(renderMaloba)}
+            {this.state.maloba.map(renderMaloba)}
           </tbody>
         </table>
       </div>

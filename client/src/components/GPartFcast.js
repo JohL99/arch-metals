@@ -41,6 +41,9 @@ class GPartFcast extends PureComponent {
       comnov: "",
       comdec: "",
     };
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
   }
@@ -203,7 +206,7 @@ class GPartFcast extends PureComponent {
       });
     
     let averif = 0;
-    fetch("/api/menji/userd/September 2020&" + commodity + "&" + participant)
+    fetch("/api/menji/userd/September 2020&" + "Gold&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -252,7 +255,7 @@ class GPartFcast extends PureComponent {
     averif = 0;
 
     
-    fetch("/api/menji/userd/October 2020&" + commodity + "&" + participant)
+    fetch("/api/menji/userd/October 2020&" + "Gold&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -295,7 +298,7 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/November 2020&" + commodity + "&" + participant)
+    fetch("/api/menji/userd/November 2020&" + "Gold&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -339,7 +342,7 @@ class GPartFcast extends PureComponent {
       });
     averif = 0;
 
-    fetch("/api/menji/userd/December 2020&" + commodity + "&" + participant)
+    fetch("/api/menji/userd/December 2020&" + "Gold&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -382,7 +385,7 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
 
-    fetch("/api/menji/recentdauser/" + commodity + "&" + participant)
+    fetch("/api/menji/recentdauser/Gold&" + participant)
       .then((response) => {
         return response.json();
       })
@@ -704,8 +707,8 @@ class GPartFcast extends PureComponent {
             <Tooltip />
             <Legend />
             <Bar dataKey="Sep20" fill="#00CC00" />
-            <Bar dataKey="Oct20" fill="#7F6000" />
-            <Bar dataKey="Nov20" fill="#00B050" />
+            <Bar dataKey="Oct20" fill="#0000FF" />
+            <Bar dataKey="Nov20" fill="#FFC000" />
             <Bar dataKey="Dec20" fill="#FF0000" />
           </BarChart>
         </ResponsiveContainer>
