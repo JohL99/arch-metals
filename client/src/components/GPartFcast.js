@@ -699,6 +699,7 @@ class GPartFcast extends PureComponent {
             </table>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
+              <div style={{ width: "100%", height: 300 }}>
                 <GraphPartGold mweji={this.state.donnees1} />
                 {/*  <ResponsiveContainer>
                   <BarChart
@@ -724,9 +725,10 @@ class GPartFcast extends PureComponent {
                     <Bar dataKey="Dec20" fill="#FF0000" />
                   </BarChart>
                 </ResponsiveContainer> */}
+              </div>
               </td>
             </tr>
-          <table className="table table-bordered">
+            <table className="table table-bordered">
           <tbody>
             <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
             <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
