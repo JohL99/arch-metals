@@ -664,7 +664,7 @@ class GPartFcast extends PureComponent {
               <td align="center">
                 <span className="label label-primary"></span>
                 <select
-                  className="form-control form-control-lg"
+                  className=""
                   value={this.state.user}
                   onChange={(e) => {
                     this.setState({
@@ -687,8 +687,6 @@ class GPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evnov}/oz</b></td>
               <td align="center"><b>${this.state.evdec}/oz</b></td>
             </tr>
-            </tbody>
-            </table>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
                 <GraphPartGold mweji={this.state.donnees1} />
@@ -719,6 +717,8 @@ class GPartFcast extends PureComponent {
                 </ResponsiveContainer> */}
               </td>
             </tr>
+            </tbody>
+      </table>
       <table className="table table-bordered">
       <tbody>
         <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
