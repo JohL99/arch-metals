@@ -699,8 +699,8 @@ class GPartFcast extends PureComponent {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <YAxis type="number" />
             <XAxis dataKey="price" type="category" />
+            <YAxis type="number" />
             <Tooltip />
             <Legend />
             <Bar dataKey="Sep20" fill="#00CC00" />
