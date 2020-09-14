@@ -97,7 +97,7 @@ class GPartFcast extends PureComponent {
     let pdecFromApi = {};
     var donnees1 = [];
 
-    fetch("/api/beyi/commois/" + "September 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "September 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -123,7 +123,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "October 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "October 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -149,7 +149,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "November 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "November 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -175,7 +175,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "December 2020" + "&Gold")
+    fetch("/api/beyi/commonth/" + "December 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -400,7 +400,7 @@ class GPartFcast extends PureComponent {
             price7: recent.detail.price7 * 100,
             price8: recent.detail.price8 * 100,
             price9: recent.detail.price9 * 100,
-            lemois: recent.detail.month,
+            month: recent.detail.month,
           };
         });
         let sept1 = [];
@@ -410,7 +410,7 @@ class GPartFcast extends PureComponent {
 
         var y = 0;
         for (y == 0; y < 4 /* recentFromApi.length */; y++) {
-          if (recentFromApi[y].lemois == "September 2020") {
+          if (recentFromApi[y].month == "September 2020") {
             sept1[1] = recentFromApi[y].price1;
             sept1[2] = recentFromApi[y].price2;
             sept1[3] = recentFromApi[y].price3;
@@ -422,7 +422,7 @@ class GPartFcast extends PureComponent {
             sept1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].lemois == "October 2020") {
+          if (recentFromApi[y].month == "October 2020") {
             octo1[1] = recentFromApi[y].price1;
             octo1[2] = recentFromApi[y].price2;
             octo1[3] = recentFromApi[y].price3;
@@ -434,7 +434,7 @@ class GPartFcast extends PureComponent {
             octo1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].lemois == "November 2020") {
+          if (recentFromApi[y].month == "November 2020") {
             novem1[1] = recentFromApi[y].price1;
             novem1[2] = recentFromApi[y].price2;
             novem1[3] = recentFromApi[y].price3;
@@ -446,7 +446,7 @@ class GPartFcast extends PureComponent {
             novem1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].lemois == "December 2020") {
+          if (recentFromApi[y].month == "December 2020") {
             decem1[1] = recentFromApi[y].price1;
             decem1[2] = recentFromApi[y].price2;
             decem1[3] = recentFromApi[y].price3;
@@ -498,7 +498,6 @@ class GPartFcast extends PureComponent {
     const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
-          <td align="center">{septemberFromApi.user}</td>
           <td align="center"><b>${septemberFromApi.EV}/oz</b></td>
           <td align="center">{septemberFromApi.dateforecast}</td>
           <td align="center">{septemberFromApi.price1 * 100}%</td>
@@ -517,7 +516,6 @@ class GPartFcast extends PureComponent {
     const renderOctober = (octoberFromApi) => {
       return (
         <tr key={octoberFromApi.id}>
-          <td align="center">{octoberFromApi.user}</td>
           <td align="center"><b>${octoberFromApi.EV}/oz</b></td>
           <td align="center">{octoberFromApi.dateforecast}</td>
           <td align="center">{octoberFromApi.price1 * 100}%</td>
@@ -536,7 +534,6 @@ class GPartFcast extends PureComponent {
     const renderNovember = (novemberFromApi) => {
       return (
         <tr key={novemberFromApi.id}>
-          <td align="center">{novemberFromApi.user}</td>
           <td align="center"><b>${novemberFromApi.EV}/oz</b></td>
           <td align="center">{novemberFromApi.dateforecast}</td>
           <td align="center">{novemberFromApi.price1 * 100}%</td>
@@ -555,7 +552,6 @@ class GPartFcast extends PureComponent {
     const renderDecember = (decemberFromApi) => {
       return (
         <tr key={decemberFromApi.id}>
-          <td align="center">{decemberFromApi.user}</td>
           <td align="center"><b>${decemberFromApi.EV}/oz</b></td>
           <td align="center">{decemberFromApi.dateforecast}</td>
           <td align="center">{decemberFromApi.price1 * 100}%</td>
@@ -574,7 +570,6 @@ class GPartFcast extends PureComponent {
     const renderPrixSep = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
-          <td align="center"><b>{"September 2020"}</b></td>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${psepFromApi.pour1}/oz</b></td>
@@ -593,7 +588,6 @@ class GPartFcast extends PureComponent {
     const renderPrixOct = (poctFromApi) => {
       return (
         <tr key={poctFromApi.id}>
-          <td align="center">{"October 2020"}</td>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${poctFromApi.pour1}/oz</b></td>
@@ -612,7 +606,6 @@ class GPartFcast extends PureComponent {
     const renderPrixNov = (pnovFromApi) => {
       return (
         <tr key={pnovFromApi.id}>
-          <td align="center">{"November 2020"}</td>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${pnovFromApi.pour1}/oz</b></td>
@@ -631,7 +624,6 @@ class GPartFcast extends PureComponent {
     const renderPrixDec = (pdecFromApi) => {
       return (
         <tr key={pdecFromApi.id}>
-          <td align="center">{"December 2020"}</td>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${pdecFromApi.pour1}/oz</b></td>
@@ -694,34 +686,34 @@ class GPartFcast extends PureComponent {
             </table>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
-              <div style={{ width: "70%", height: 300 }}>
-        <ResponsiveContainer>
-          <BarChart
-            layout="horizontal"
-            width={700}
-            height={500}
-            data={this.props.mweji}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
+              <div style={{ width: "100%", height: 400 }}>
+                <ResponsiveContainer>
+                <BarChart
+                layout="horizontal"
+                width={700}
+                height={500}
+                data={this.props.mweji}
+                margin={{
+                top: 5,
+                right: 30,
+                left: 20,
+                bottom: 5,
             }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
-            <YAxis type="number" />
-            <XAxis dataKey="price" type="category" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="Sep20" fill="#00CC00" />
-            <Bar dataKey="Oct20" fill="#7F6000" />
-            <Bar dataKey="Nov20" fill="#00B050" />
-            <Bar dataKey="Dec20" fill="#FF0000" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-        </td>
-        </tr>
+              <CartesianGrid strokeDasharray="3 3" />
+              <YAxis type="number" />
+              <XAxis dataKey="price" type="category" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="Sep20" fill="#00CC00" />
+              <Bar dataKey="Oct20" fill="#7F6000" />
+              <Bar dataKey="Nov20" fill="#00B050" />
+              <Bar dataKey="Dec20" fill="#FF0000" />
+            </BarChart>
+            </ResponsiveContainer>
+          </div>
+          </td>
+          </tr>
       <table className="table table-bordered">
       <tbody>
         <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
