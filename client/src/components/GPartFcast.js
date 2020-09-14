@@ -662,16 +662,15 @@ class GPartFcast extends PureComponent {
               </td>
             </tr>
             <tr>
-              <td align="center">EV ($/MT)</td>
-              <td align="center">September 2020</td>
-              <td align="center">October 2020</td>
-              <td align="center">November 2020</td>
-              <td align="center">December 2020</td>
-              <td align="center">General Comments</td>
+              <td align="center"><b>Participant</b></td>
+              <td align="center"><b>September 2020</b></td>
+              <td align="center"><b>October 2020</b></td>
+              <td align="center"><b>November 2020</b></td>
+              <td align="center"><b>December 2020</b></td>
             </tr>
             <tr>
               <td align="center">
-                <span className="label label-primary">Participant:</span>
+                <span className="label label-primary"></span>
                 <select
                   className="form-control form-control-lg"
                   value={this.state.user}
@@ -695,9 +694,6 @@ class GPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evoct}/oz</b></td>
               <td align="center"><b>${this.state.evnov}/oz</b></td>
               <td align="center"><b>${this.state.evdec}/oz</b></td>
-              <td rowSpan="2" align="center">
-                {this.state.comsep}{" "}
-              </td>
             </tr>
             </tbody>
             </table>
