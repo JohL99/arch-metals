@@ -498,7 +498,7 @@ class CSumFcast extends PureComponent {
               <td colSpan="12" align="center" width="70%"><b>Aggregation of All Copper Forecasts</b></td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.sepprice]*/}<b>september 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.sepprice]*/}<b>September 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
               <td align="center"><b>${this.state.price1[this.state.sepprice]}/MT</b></td>

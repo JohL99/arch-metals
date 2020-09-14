@@ -1,8 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
-/* import {
+import {
   BarChart,
   Bar,
   Cell,
@@ -13,10 +12,6 @@ import { connect } from "react-redux";
   Legend,
   ResponsiveContainer,
 } from "recharts";
- */
-//import GraphCG from "./GraphCG";
-import GraphPartGold from "./GraphPartGold";
-
 class GPartFcast extends PureComponent {
   constructor(props) {
     super(props);
@@ -576,7 +571,7 @@ class GPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderprixsep = (psepFromApi) => {
+    const renderPrixSep = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"September 2020"}</b></td>
@@ -699,44 +694,43 @@ class GPartFcast extends PureComponent {
             </table>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
-              <div style={{ width: "100%", height: 300 }}>
-                <GraphPartGold mweji={this.state.donnees1} />
-                {/*  <ResponsiveContainer>
-                  <BarChart
-                    layout="horizontal"
-                    width={500}
-                    height={300}
-                    data={this.state.donnees1}
-                    margin={{
-                      top: 5,
-                      right: 5,
-                      left: 5,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="price" type="category" />
-                    <YAxis type="number" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Sep20" fill="#00CC00" />
-                    <Bar dataKey="Oct20" fill="#7F6000" />
-                    <Bar dataKey="Nov20" fill="#00B050" />
-                    <Bar dataKey="Dec20" fill="#FF0000" />
-                  </BarChart>
-                </ResponsiveContainer> */}
-              </div>
-              </td>
-            </tr>
-            <table className="table table-bordered">
-          <tbody>
-            <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
-            <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
-            <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
-            <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
-            <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
-          </tbody>
-        </table>
+              <div style={{ width: "70%", height: 300 }}>
+        <ResponsiveContainer>
+          <BarChart
+            layout="horizontal"
+            width={700}
+            height={500}
+            data={this.props.mweji}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <YAxis type="number" />
+            <XAxis dataKey="price" type="category" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Sep20" fill="#00CC00" />
+            <Bar dataKey="Oct20" fill="#7F6000" />
+            <Bar dataKey="Nov20" fill="#00B050" />
+            <Bar dataKey="Dec20" fill="#FF0000" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+        </td>
+        </tr>
+      <table className="table table-bordered">
+      <tbody>
+        <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
+          <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
+          <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
+          <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
+          <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
+      </tbody>
+      </table>
         <table className="table table-bordered">
           <thead>
             <tr>
@@ -744,7 +738,7 @@ class GPartFcast extends PureComponent {
               <b>Forecasts - September 2020</b>
               </td>
             </tr>
-            {this.state.prixsep.map(renderprixsep)}
+            {this.state.prixsep.map(renderPrixSep)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
