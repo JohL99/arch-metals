@@ -450,7 +450,7 @@ class GPartFcast extends PureComponent {
             price7: recent.detail.price7 * 100,
             price8: recent.detail.price8 * 100,
             price9: recent.detail.price9 * 100,
-            lemois: recent.detail.month,
+            month: recent.detail.month,
           };
         });
         let sept1 = [];
@@ -460,7 +460,7 @@ class GPartFcast extends PureComponent {
 
         var y = 0;
         for (y == 0; y < 4 /* recentFromApi.length */; y++) {
-          if (recentFromApi[y].lemois == "September 2020") {
+          if (recentFromApi[y].month == "September 2020") {
             sept1[1] = recentFromApi[y].price1;
             sept1[2] = recentFromApi[y].price2;
             sept1[3] = recentFromApi[y].price3;
@@ -472,7 +472,7 @@ class GPartFcast extends PureComponent {
             sept1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].lemois == "October 2020") {
+          if (recentFromApi[y].month == "October 2020") {
             octo1[1] = recentFromApi[y].price1;
             octo1[2] = recentFromApi[y].price2;
             octo1[3] = recentFromApi[y].price3;
@@ -484,7 +484,7 @@ class GPartFcast extends PureComponent {
             octo1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].lemois == "November 2020") {
+          if (recentFromApi[y].month == "November 2020") {
             novem1[1] = recentFromApi[y].price1;
             novem1[2] = recentFromApi[y].price2;
             novem1[3] = recentFromApi[y].price3;
@@ -496,7 +496,7 @@ class GPartFcast extends PureComponent {
             novem1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].lemois == "December 2020") {
+          if (recentFromApi[y].month == "December 2020") {
             decem1[1] = recentFromApi[y].price1;
             decem1[2] = recentFromApi[y].price2;
             decem1[3] = recentFromApi[y].price3;

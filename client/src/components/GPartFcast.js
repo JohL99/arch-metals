@@ -203,7 +203,7 @@ class GPartFcast extends PureComponent {
       });
     
     let averif = 0;
-    fetch("/api/menji/userd/August 2020&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
