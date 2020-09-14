@@ -683,13 +683,13 @@ class GPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evdec}/oz</b></td>
             </tr>
             <tr>
-            <td rowSpan="12" colSpan="12" align="center"></td>
-            <div style={{ width: "70%", height: 300 }}>
+            <td rowSpan="12" colSpan="12" align="center">
+            <div style={{ width: "100%", height: 300 }}>
               <ResponsiveContainer>
               <BarChart
               layout="horizontal"
-              width={700}
-              height={500}
+              width={500}
+              height={400}
               data={this.props.donnees1}
               margin={{
               top: 5,
@@ -710,16 +710,17 @@ class GPartFcast extends PureComponent {
           </BarChart>
         </ResponsiveContainer>
       </div>
-            </tr>
-            </tbody>
-      </table>
-      <table className="table table-bordered">
-      <tbody>
+      </td>
+      </tr>
+    </tbody>
+    </table>
+    <table className="table table-bordered">
+    <tbody>
         <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
-          <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
-          <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
-          <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
-          <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
+        <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
+        <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
+        <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
+        <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
       </tbody>
       </table>
         <table className="table table-bordered">
