@@ -382,7 +382,7 @@ router.get("/moytousmonth/:commodity", (req, res) => {
     .catch((err) => res.status(404).json({ forecast: "pas de forecast " }));
 });
 
-// @route   GET  api/user/:Amonth&:commodity&:user
+// @route   GET  api/user/:month&:commodity&:user
 // @desc    Get data per user
 // @access  Public
 router.get("/userd/:month&:commodity&:user", (req, res) => {

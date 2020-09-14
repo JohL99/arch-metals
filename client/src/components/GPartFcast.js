@@ -30,7 +30,7 @@ class GPartFcast extends PureComponent {
       decembers: [],
       recents: [],
       prixaug: [],
-      prixsept: [],
+      prixsep: [],
       prixoct: [],
       prixnov: [],
       prixdec: [],
@@ -240,7 +240,7 @@ class GPartFcast extends PureComponent {
             price7: september.price7,
             price8: september.price8,
             price9: september.price9,
-            lemedian: september.lemedian,
+            median: september.median,
             dateforecast: this.convert_to_utc(new Date(september.dateforecast)),
             specificcomments: september.specificcomments,
             generalcomments: september.generalcomments,
@@ -286,7 +286,7 @@ class GPartFcast extends PureComponent {
             price7: october.price7,
             price8: october.price8,
             price9: october.price9,
-            lemedian: october.lemedian,
+            median: october.median,
             dateforecast: this.convert_to_utc(new Date(october.dateforecast)),
             specificcomments: october.specificcomments,
             generalcomments: october.generalcomments,
@@ -329,7 +329,7 @@ class GPartFcast extends PureComponent {
             price7: november.price7,
             price8: november.price8,
             price9: november.price9,
-            lemedian: november.lemedian,
+            median: november.median,
             dateforecast: this.convert_to_utc(new Date(november.dateforecast)),
             specificcomments: november.specificcomments,
             generalcomments: november.generalcomments,
@@ -373,7 +373,7 @@ class GPartFcast extends PureComponent {
             price7: december.price7,
             price8: december.price8,
             price9: december.price9,
-            lemedian: december.lemedian,
+            median: december.median,
             dateforecast: this.convert_to_utc(new Date(december.dateforecast)),
             specificcomments: december.specificcomments,
             generalcomments: december.generalcomments,
@@ -468,15 +468,15 @@ class GPartFcast extends PureComponent {
         // console.log(recentFromApi);
         let leprix = [];
 
-        leprix[1] = this.state.prixsept[0].pour1;
-        leprix[2] = this.state.prixsept[0].pour2;
-        leprix[3] = this.state.prixsept[0].pour3;
-        leprix[4] = this.state.prixsept[0].pour4;
-        leprix[5] = this.state.prixsept[0].pour5;
-        leprix[6] = this.state.prixsept[0].pour6;
-        leprix[7] = this.state.prixsept[0].pour7;
-        leprix[8] = this.state.prixsept[0].pour8;
-        leprix[9] = this.state.prixsept[0].pour9;
+        leprix[1] = this.state.prixsep[0].pour1;
+        leprix[2] = this.state.prixsep[0].pour2;
+        leprix[3] = this.state.prixsep[0].pour3;
+        leprix[4] = this.state.prixsep[0].pour4;
+        leprix[5] = this.state.prixsep[0].pour5;
+        leprix[6] = this.state.prixsep[0].pour6;
+        leprix[7] = this.state.prixsep[0].pour7;
+        leprix[8] = this.state.prixsep[0].pour8;
+        leprix[9] = this.state.prixsep[0].pour9;
         var yy = 1;
         for (yy == 1; yy < 10; yy++) {
           donnees1.push({
@@ -576,7 +576,7 @@ class GPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderPrixSept = (psepFromApi) => {
+    const renderprixsep = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"September 2020"}</b></td>
@@ -699,10 +699,11 @@ class GPartFcast extends PureComponent {
                 {this.state.comsep}{" "}
               </td>
             </tr>
+            </tbody>
+            </table>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
                 <GraphPartGold mweji={this.state.donnees1} />
-
                 {/*  <ResponsiveContainer>
                   <BarChart
                     layout="horizontal"
@@ -729,43 +730,23 @@ class GPartFcast extends PureComponent {
                 </ResponsiveContainer> */}
               </td>
             </tr>
-            <tr></tr>
-            <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comsep}
-              </td>
-            </tr>
-            <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comoct}
-              </td>
-            </tr>
-            <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comnov}
-              </td>
-            </tr>
-            <tr>
-              <td rowSpan="2" align="center">
-                {this.state.comdec}
-              </td>
-            </tr>
-            <tr>
-              <td rowSpan="2" align="center"></td>
-            </tr>
-            <tr>
-              <td rowSpan="2" align="center"></td>
-            </tr>
+          <table className="table table-bordered">
+          <tbody>
+            <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
+            <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
+            <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
+            <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
+            <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
           </tbody>
         </table>
-       <table className="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <td align="center" colSpan="13">
               <b>Forecasts - September 2020</b>
               </td>
             </tr>
-            {this.state.prixsept.map(renderPrixSept)}
+            {this.state.prixsep.map(renderprixsep)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>

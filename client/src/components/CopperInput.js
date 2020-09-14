@@ -320,12 +320,12 @@ class CopperInput extends Component {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((Amonth, index) => (
+                      .map((month, index) => (
                         <option
-                          key={index /* Amonth.value */}
-                          value={Amonth.value}
+                          key={index /* month.value */}
+                          value={month.value}
                         >
-                          {Amonth + " " + new Date().getFullYear()}
+                          {month + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>

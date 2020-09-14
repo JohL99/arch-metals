@@ -16,14 +16,14 @@ router.get("/test", (req, res) => res.json({ msg: "Menji ok" }));
 // @route   GET api/cinput/dernierda
 // @desc    Renvoie toutes les dernières entrées des utilisateurs / Returns all the latest user entries
 // @access  Public
-router.get("/dernierda/:Amonth&:commodity", (req, res) => {
+router.get("/dernierda/:month&:commodity", (req, res) => {
   const errors = {};
 
   Menji.aggregate([
     {
       $match: {
         $and: [
-          { month: req.params.Amonth },
+          { month: req.params.month },
           { commodity: req.params.commodity },
         ],
       },

@@ -13,13 +13,13 @@ const Menji = require("../../models/Menji");
 //@access Public
 router.get("/test", (req, res) => res.json({ msg: "Menji ok" }));
 
-// @route   GET  api/all/:Amonth&:commodity
+// @route   GET  api/all/:month&:commodity
 // @desc    Get all data
 // @access  Public
-router.get("/all/:Amonth&:commodity", (req, res) => {
+router.get("/all/:month&:commodity", (req, res) => {
   const errors = {};
   Menji.find({
-    $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
+    $and: [{ month: req.params.month }, { commodity: req.params.commodity }],
   })
     .sort({ dateforecast: -1 })
     .then((menjis) => {
