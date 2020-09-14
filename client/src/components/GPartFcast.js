@@ -1,7 +1,8 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import {
+
+/* import {
   BarChart,
   Bar,
   Cell,
@@ -12,6 +13,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+ */
+//import GraphCG from "./GraphCG";
+import GraphPartGold from "./GraphPartGold";
+
 class GPartFcast extends PureComponent {
   constructor(props) {
     super(props);
@@ -686,34 +691,34 @@ class GPartFcast extends PureComponent {
             </table>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
-              <div style={{ width: "100%", height: 400 }}>
-                <ResponsiveContainer>
-                <BarChart
-                layout="horizontal"
-                width={700}
-                height={500}
-                data={this.props.mweji}
-                margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-            }}
-          >
-              <CartesianGrid strokeDasharray="3 3" />
-              <YAxis type="number" />
-              <XAxis dataKey="price" type="category" />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey="Sep20" fill="#00CC00" />
-              <Bar dataKey="Oct20" fill="#7F6000" />
-              <Bar dataKey="Nov20" fill="#00B050" />
-              <Bar dataKey="Dec20" fill="#FF0000" />
-            </BarChart>
-            </ResponsiveContainer>
-          </div>
-          </td>
-          </tr>
+                <GraphPartGold mweji={this.state.donnees1} />
+
+                {/*  <ResponsiveContainer>
+                  <BarChart
+                    layout="horizontal"
+                    width={500}
+                    height={300}
+                    data={this.state.donnees1}
+                    margin={{
+                      top: 5,
+                      right: 5,
+                      left: 5,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="price" type="category" />
+                    <YAxis type="number" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="Sep20" fill="#00CC00" />
+                    <Bar dataKey="Oct20" fill="#7F6000" />
+                    <Bar dataKey="Nov20" fill="#00B050" />
+                    <Bar dataKey="Dec20" fill="#FF0000" />
+                  </BarChart>
+                </ResponsiveContainer> */}
+              </td>
+            </tr>
       <table className="table table-bordered">
       <tbody>
         <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
