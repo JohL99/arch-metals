@@ -61,7 +61,7 @@ router.get("/dernierda/:month&:commodity", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1, user: 1 },
+      $sort: { dateforecast: -1, user: 1 },
     },
 
     {
@@ -158,7 +158,7 @@ router.get("/olda/:month&:commodity", (req, res) => {
       },
     },
 
-    { $sort: { user: 1, dateforecast: 1 } },
+    { $sort: { user: 1, dateforecast: -1 } },
 
     {
       $group: {
@@ -284,7 +284,7 @@ router.get("/comptemonth/:commodity", (req, res) => {
   ])
 
     /* .populate({ path: "user" }) */
-    .sort({ dateforecast: 1 })
+    .sort({ dateforecast: -1 })
     .then((forecasts) => {
       if (!forecasts) {
         errors.noforecast = "no forecast";
@@ -329,7 +329,7 @@ router.get("/moyunmonth/:month&:commodity", (req, res) => {
   ])
 
     /* .populate({ path: "user" }) */
-    .sort({ dateforecast: 1 })
+    .sort({ dateforecast: -1 })
     .then((forecasts) => {
       if (!forecasts) {
         errors.noforecast = "no forecast";
@@ -394,7 +394,7 @@ router.get("/userd/:month&:commodity&:user", (req, res) => {
       { user: req.params.user },
     ],
   })
-    .sort({ dateforecast: 1 })
+    .sort({ dateforecast: -1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
@@ -420,7 +420,7 @@ router.get("/dernierdauser/:month&:commodity&:user", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1 },
+      $sort: { dateforecast: -1 },
     },
 
     {
