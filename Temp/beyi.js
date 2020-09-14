@@ -54,86 +54,6 @@ router.get("/id/:id", (req, res) => {
     );
 });
 
-// @route   GET api/beyi/:Amonth
-// @desc    Renvoie le month donné en paramètre
-// @access  Public
-router.get("/Amonth/:Amonth", (req, res) => {
-  Beyi.find({ month: req.params.Amonth })
-    .then((mabeyi) => {
-      if (!mabeyi) {
-        errors.nobeyi = "no price";
-        return res.status(404).json(errors);
-      }
-
-      res.json(mabeyi);
-    })
-    .catch((err) => res.status(404).json({ mabeyi: "no price" }));
-});
-
-// @route   GET api/beyi/commonth/:Amonth&:commodity
-// @desc    Renvoie le month et le commodity donnés en paramètre / Returns the month and commodity given in parameter
-// @access  Public
-router.get("/commonth/:Amonth&:commodity", (req, res) => {
-  Beyi.find({
-    $and: [{ month: req.params.Amonth }, { commodity: req.params.commodity }],
-  })
-    .then((mabeyi) => {
-      if (!mabeyi) {
-        errors.nobeyi = "no price";
-        return res.status(404).json(errors);
-      }
-
-      res.json(mabeyi);
-    })
-    .catch((err) => res.status(404).json({ mabeyi: "no price" }));
-});
-
-// @route   GET api/beyi/comm/:commodity
-// @desc    Renvoie tous les price item tous les month
-// @access  Public
-router.get("/comm/:commodity", (req, res) => {
-  Beyi.find({
-    commodity: req.params.commodity,
-  })
-    .then((mabeyi) => {
-      if (!mabeyi) {
-        errors.nobeyi = "no price";
-        return res.status(404).json(errors);
-      }
-
-      res.json(mabeyi);
-    })
-    .catch((err) => res.status(404).json({ mabeyi: "no price" }));
-});
-
-//
-router.post("/sauvegarde", (req, res) => {
-  const newForecast = new Forecast({
-    user: req.body.user,
-    commodity: req.body.commodity,
-    month: req.body.month,
-    dateForecast: req.body.dateForecast,
-    price1: req.body.price1,
-    price2: req.body.price2,
-    price3: req.body.price3,
-    price4: req.body.price4,
-    price5: req.body.price5,
-    price6: req.body.price6,
-    price7: req.body.price7,
-    price8: req.body.price8,
-    price9: req.body.price9,
-    specificComments: req.body.specificComments,
-    generalcomments: req.body.generalcomments,
-  });
-
-  newForecast
-    .save()
-    .then((aforecast) => res.json(aforecast))
-    .catch((err) => console.log(err));
-});
-
-module.exports = router;
-
 // @route   GET api/beyi/:lemois
 // @desc    Renvoie le mois donné en paramètre
 // @access  Public
@@ -184,3 +104,31 @@ router.get("/comm/:commodity", (req, res) => {
     })
     .catch((err) => res.status(404).json({ mabeyi: "no price" }));
 });
+
+//
+router.post("/sauvegarde", (req, res) => {
+  const newForecast = new Forecast({
+    user: req.body.user,
+    commodity: req.body.commodity,
+    month: req.body.month,
+    dateForecast: req.body.dateForecast,
+    price1: req.body.price1,
+    price2: req.body.price2,
+    price3: req.body.price3,
+    price4: req.body.price4,
+    price5: req.body.price5,
+    price6: req.body.price6,
+    price7: req.body.price7,
+    price8: req.body.price8,
+    price9: req.body.price9,
+    specificComments: req.body.specificComments,
+    generalcomments: req.body.generalcomments,
+  });
+
+  newForecast
+    .save()
+    .then((aforecast) => res.json(aforecast))
+    .catch((err) => console.log(err));
+});
+
+module.exports = router;

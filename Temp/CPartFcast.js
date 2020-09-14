@@ -15,9 +15,9 @@ import { connect } from "react-redux";
 } from "recharts";
  */
 //import GraphCG from "./GraphCG";
-import GraphPartGold from "./GraphPartGold";
+import GraphPartCopper from "./GraphPartCopper";
 
-class GPartFcast extends PureComponent {
+class CPartFcast extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,31 +53,9 @@ class GPartFcast extends PureComponent {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
-  convert_to_utc = (dateStr) => {
-    //check whether time is in PM or AM
-    var hours = dateStr.getHours();
-    var hours = (hours+24-2)%24;
-    var mid='am';
-    if(hours==0){ //At 00 hours we need to show 12 am
-    hours=12;
-    }
-    else if(hours>12)
-    {
-    hours=hours%12;
-    mid='pm';
-    }
-
-    var newdate = dateStr.toUTCString().split(' ')[0] + dateStr.toUTCString().split(' ')[1] + ' ' 
-    + dateStr.toUTCString().split(' ')[2] + ' '
-    + dateStr.toUTCString().split(' ')[3] + ' ' 
-    + dateStr.toUTCString().split(' ')[4].split(':')[0]
-    + ":" + dateStr.toUTCString().split(' ')[4].split(':')[1];
-
-    return newdate + " " + mid;
-  }
 
   componentDidMount() {
-    fetch("/api/users/tous/" + "Gold")
+    fetch("/api/users/tous")
       .then((response) => {
         return response.json();
       })
@@ -96,13 +74,40 @@ class GPartFcast extends PureComponent {
       });
   }
   fillprices(utilisateur, produit) {
+    let paugFromApi = {};
     let psepFromApi = {};
     let poctFromApi = {};
     let pnovFromApi = {};
     let pdecFromApi = {};
     var donnees1 = [];
 
-    fetch("/api/beyi/commois/" + "September 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "August 2020" + "&Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        paugFromApi = data.map((mutengo) => {
+          return {
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
+          };
+        });
+        this.setState({
+          prixaug: [].concat(paugFromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -122,13 +127,13 @@ class GPartFcast extends PureComponent {
           };
         });
         this.setState({
-          prixsep: [].concat(psepFromApi),
+          prixsept: [].concat(psepFromApi),
         });
       })
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "October 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "October 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -154,7 +159,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "November 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "November 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -180,7 +185,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "December 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "December 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -206,9 +211,56 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    
     let averif = 0;
     fetch("/api/menji/userd/August 2020&" + produit + "&" + utilisateur)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let augustFromApi = data.map((august) => {
+          let xEV =
+            paugFromApi[0].pour1 * august.price1 +
+            paugFromApi[0].pour2 * august.price2 +
+            paugFromApi[0].pour3 * august.price3 +
+            paugFromApi[0].pour4 * august.price4 +
+            paugFromApi[0].pour5 * august.price5 +
+            paugFromApi[0].pour6 * august.price6 +
+            paugFromApi[0].pour7 * august.price7 +
+            paugFromApi[0].pour8 * august.price8 +
+            paugFromApi[0].pour9 * august.price9;
+
+          this.setState({ evaug: xEV });
+          this.setState({ comaug: august.generalcomments });
+
+          //console.log(august);
+          return {
+            EV: xEV,
+            price1: august.price1,
+            price2: august.price2,
+            price3: august.price3,
+            price4: august.price4,
+            price5: august.price5,
+            price6: august.price6,
+            price7: august.price7,
+            price8: august.price8,
+            price9: august.price9,
+            lemedian: august.lemedian,
+            dateforecast: august.dateforecast,
+            specificcomments: august.specificcomments,
+            generalcomments: august.generalcomments,
+          };
+        });
+
+        this.setState({
+          augusts: [].concat(augustFromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    averif = 0;
+
+    fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -224,11 +276,9 @@ class GPartFcast extends PureComponent {
             psepFromApi[0].pour7 * september.price7 +
             psepFromApi[0].pour8 * september.price8 +
             psepFromApi[0].pour9 * september.price9;
-
           this.setState({ evsep: xEV });
           this.setState({ comsep: september.generalcomments });
 
-          //console.log(september);
           return {
             EV: xEV,
             price1: september.price1,
@@ -241,22 +291,17 @@ class GPartFcast extends PureComponent {
             price8: september.price8,
             price9: september.price9,
             lemedian: september.lemedian,
-            dateforecast: this.convert_to_utc(new Date(september.dateforecast)),
+            dateforecast: september.dateforecast,
             specificcomments: september.specificcomments,
             generalcomments: september.generalcomments,
           };
         });
-
-        this.setState({
-          septembers: [].concat(septemberFromApi),
-        });
       })
+
       .catch((error) => {
         console.log(error);
       });
     averif = 0;
-
-    
     fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -287,7 +332,7 @@ class GPartFcast extends PureComponent {
             price8: october.price8,
             price9: october.price9,
             lemedian: october.lemedian,
-            dateforecast: this.convert_to_utc(new Date(october.dateforecast)),
+            dateforecast: october.dateforecast,
             specificcomments: october.specificcomments,
             generalcomments: october.generalcomments,
           };
@@ -330,7 +375,7 @@ class GPartFcast extends PureComponent {
             price8: november.price8,
             price9: november.price9,
             lemedian: november.lemedian,
-            dateforecast: this.convert_to_utc(new Date(november.dateforecast)),
+            dateforecast: november.dateforecast,
             specificcomments: november.specificcomments,
             generalcomments: november.generalcomments,
           };
@@ -374,7 +419,7 @@ class GPartFcast extends PureComponent {
             price8: december.price8,
             price9: december.price9,
             lemedian: december.lemedian,
-            dateforecast: this.convert_to_utc(new Date(december.dateforecast)),
+            dateforecast: december.dateforecast,
             specificcomments: december.specificcomments,
             generalcomments: december.generalcomments,
           };
@@ -500,11 +545,30 @@ class GPartFcast extends PureComponent {
   }
 
   render() {
+    const renderAugust = (augustFromApi) => {
+      return (
+        <tr key={augustFromApi.id}>
+          <td align="center">{augustFromApi.user}</td>
+          <td align="center">{augustFromApi.EV}</td>
+          <td align="center">{augustFromApi.dateforecast}</td>
+          <td align="center">{augustFromApi.price1 * 100}%</td>
+          <td align="center">{augustFromApi.price2 * 100}%</td>
+          <td align="center">{augustFromApi.price3 * 100}%</td>
+          <td align="center">{augustFromApi.price4 * 100}%</td>
+          <td align="center">{augustFromApi.price5 * 100}%</td>
+          <td align="center">{augustFromApi.price6 * 100}%</td>
+          <td align="center">{augustFromApi.price7 * 100}%</td>
+          <td align="center">{augustFromApi.price8 * 100}%</td>
+          <td align="center">{augustFromApi.price9 * 100}%</td>
+          <td align="center">{augustFromApi.specificcomments}</td>
+        </tr>
+      );
+    };
     const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
           <td align="center">{septemberFromApi.user}</td>
-          <td align="center"><b>${septemberFromApi.EV}/oz</b></td>
+          <td align="center">{septemberFromApi.EV}</td>
           <td align="center">{septemberFromApi.dateforecast}</td>
           <td align="center">{septemberFromApi.price1 * 100}%</td>
           <td align="center">{septemberFromApi.price2 * 100}%</td>
@@ -523,7 +587,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={octoberFromApi.id}>
           <td align="center">{octoberFromApi.user}</td>
-          <td align="center"><b>${octoberFromApi.EV}/oz</b></td>
+          <td align="center">{octoberFromApi.EV}</td>
           <td align="center">{octoberFromApi.dateforecast}</td>
           <td align="center">{octoberFromApi.price1 * 100}%</td>
           <td align="center">{octoberFromApi.price2 * 100}%</td>
@@ -542,7 +606,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={novemberFromApi.id}>
           <td align="center">{novemberFromApi.user}</td>
-          <td align="center"><b>${novemberFromApi.EV}/oz</b></td>
+          <td align="center">{novemberFromApi.EV}</td>
           <td align="center">{novemberFromApi.dateforecast}</td>
           <td align="center">{novemberFromApi.price1 * 100}%</td>
           <td align="center">{novemberFromApi.price2 * 100}%</td>
@@ -561,7 +625,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={decemberFromApi.id}>
           <td align="center">{decemberFromApi.user}</td>
-          <td align="center"><b>${decemberFromApi.EV}/oz</b></td>
+          <td align="center">{decemberFromApi.EV}</td>
           <td align="center">{decemberFromApi.dateforecast}</td>
           <td align="center">{decemberFromApi.price1 * 100}%</td>
           <td align="center">{decemberFromApi.price2 * 100}%</td>
@@ -576,22 +640,41 @@ class GPartFcast extends PureComponent {
         </tr>
       );
     };
+    const renderPrixAug = (paugFromApi) => {
+      return (
+        <tr key={paugFromApi.id}>
+          <td align="center">{"August 2020"}</td>
+          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"Date"}</td>
+          <td align="center">{paugFromApi.pour1}</td>
+          <td align="center">{paugFromApi.pour2}</td>
+          <td align="center">{paugFromApi.pour3}</td>
+          <td align="center">{paugFromApi.pour4}</td>
+          <td align="center">{paugFromApi.pour5}</td>
+          <td align="center">{paugFromApi.pour6}</td>
+          <td align="center">{paugFromApi.pour7}</td>
+          <td align="center">{paugFromApi.pour8}</td>
+          <td align="center">{paugFromApi.pour9}</td>
+          <td align="center">{"Justifications"}</td>
+        </tr>
+      );
+    };
     const renderPrixSept = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
-          <td align="center"><b>{"September 2020"}</b></td>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${psepFromApi.pour1}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour2}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour3}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour4}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour5}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour6}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour7}/oz</b></td>
-          <td align="center"><b>{psepFromApi.pour8}/oz</b></td>
-          <td align="center"><b>${psepFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Jusifications"}</b></td>
+          <td align="center">{"September 2020"}</td>
+          <td align="center">{"EV ($/oz)"}</td>
+          <td align="center">{"Date"}</td>
+          <td align="center">{psepFromApi.pour1}</td>
+          <td align="center">{psepFromApi.pour2}</td>
+          <td align="center">{psepFromApi.pour3}</td>
+          <td align="center">{psepFromApi.pour4}</td>
+          <td align="center">{psepFromApi.pour5}</td>
+          <td align="center">{psepFromApi.pour6}</td>
+          <td align="center">{psepFromApi.pour7}</td>
+          <td align="center">{psepFromApi.pour8}</td>
+          <td align="center">{psepFromApi.pour9}</td>
+          <td align="center">{"Jusifications"}</td>
         </tr>
       );
     };
@@ -599,18 +682,18 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={poctFromApi.id}>
           <td align="center">{"October 2020"}</td>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${poctFromApi.pour1}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour2}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour3}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour4}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour5}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour6}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour7}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour8}/oz</b></td>
-          <td align="center"><b>${poctFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"Date"}</td>
+          <td align="center">{poctFromApi.pour1}</td>
+          <td align="center">{poctFromApi.pour2}</td>
+          <td align="center">{poctFromApi.pour3}</td>
+          <td align="center">{poctFromApi.pour4}</td>
+          <td align="center">{poctFromApi.pour5}</td>
+          <td align="center">{poctFromApi.pour6}</td>
+          <td align="center">{poctFromApi.pour7}</td>
+          <td align="center">{poctFromApi.pour8}</td>
+          <td align="center">{poctFromApi.pour9}</td>
+          <td align="center">{"Justifications"}</td>
         </tr>
       );
     };
@@ -618,18 +701,18 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={pnovFromApi.id}>
           <td align="center">{"November 2020"}</td>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${pnovFromApi.pour1}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour2}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour3}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour4}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour5}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour6}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour7}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour8}/oz</b></td>
-          <td align="center"><b>${pnovFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"Date"}</td>
+          <td align="center">{pnovFromApi.pour1}</td>
+          <td align="center">{pnovFromApi.pour2}</td>
+          <td align="center">{pnovFromApi.pour3}</td>
+          <td align="center">{pnovFromApi.pour4}</td>
+          <td align="center">{pnovFromApi.pour5}</td>
+          <td align="center">{pnovFromApi.pour6}</td>
+          <td align="center">{pnovFromApi.pour7}</td>
+          <td align="center">{pnovFromApi.pour8}</td>
+          <td align="center">{pnovFromApi.pour9}</td>
+          <td align="center">{"Justifications"}</td>
         </tr>
       );
     };
@@ -637,18 +720,18 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={pdecFromApi.id}>
           <td align="center">{"December 2020"}</td>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${pdecFromApi.pour1}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour2}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour3}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour4}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour5}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour6}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour7}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour8}/oz</b></td>
-          <td align="center"><b>${pdecFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"Date"}</td>
+          <td align="center">{pdecFromApi.pour1}</td>
+          <td align="center">{pdecFromApi.pour2}</td>
+          <td align="center">{pdecFromApi.pour3}</td>
+          <td align="center">{pdecFromApi.pour4}</td>
+          <td align="center">{pdecFromApi.pour5}</td>
+          <td align="center">{pdecFromApi.pour6}</td>
+          <td align="center">{pdecFromApi.pour7}</td>
+          <td align="center">{pdecFromApi.pour8}</td>
+          <td align="center">{pdecFromApi.pour9}</td>
+          <td align="center">{"Justifications"}</td>
         </tr>
       );
     };
@@ -658,11 +741,12 @@ class GPartFcast extends PureComponent {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-              <b>Most Recent Gold Forecasts - Expected Value</b>
+                Forecasts
               </td>
             </tr>
             <tr>
               <td align="center">EV ($/MT)</td>
+              <td align="center">August 2020</td>
               <td align="center">September 2020</td>
               <td align="center">October 2020</td>
               <td align="center">November 2020</td>
@@ -681,7 +765,7 @@ class GPartFcast extends PureComponent {
                       validationError:
                         e.target.value === "" ? "Choose a participant" : "",
                     });
-                    this.fillprices(e.target.value, "Gold");
+                    this.fillprices(e.target.value, "Copper");
                   }}
                 >
                   {this.state.users.map((user) => (
@@ -691,17 +775,18 @@ class GPartFcast extends PureComponent {
                   ))}
                 </select>
               </td>
-              <td align="center"><b>${this.state.evsep}/oz</b></td>
-              <td align="center"><b>${this.state.evoct}/oz</b></td>
-              <td align="center"><b>${this.state.evnov}/oz</b></td>
-              <td align="center"><b>${this.state.evdec}/oz</b></td>
+              <td align="center">{this.state.evaug}</td>
+              <td align="center">{this.state.evsep}</td>
+              <td align="center">{this.state.evoct}</td>
+              <td align="center">{this.state.evnov}</td>
+              <td align="center">{this.state.evdec}</td>
               <td rowSpan="2" align="center">
-                {this.state.comsep}{" "}
+                {this.state.comaug}{" "}
               </td>
             </tr>
             <tr>
               <td rowSpan="12" align="center" colSpan="6">
-                <GraphPartGold mweji={this.state.donnees1} />
+                <GraphPartCopper mweji={this.state.donnees1} />
 
                 {/*  <ResponsiveContainer>
                   <BarChart
@@ -758,11 +843,22 @@ class GPartFcast extends PureComponent {
             </tr>
           </tbody>
         </table>
-       <table className="table table-bordered">
+        <table className="table table-bordered">
           <thead>
             <tr>
               <td align="center" colSpan="13">
-              <b>Forecasts - September 2020</b>
+                Forecasts - August 2020
+              </td>
+            </tr>
+            {this.state.prixaug.map(renderPrixAug)}
+          </thead>
+          <tbody>{this.state.augusts.map(renderAugust)}</tbody>
+        </table>
+        <table className="table table-bordered">
+          <thead>
+            <tr>
+              <td align="center" colSpan="13">
+                Forecasts - September 2020
               </td>
             </tr>
             {this.state.prixsept.map(renderPrixSept)}
@@ -773,7 +869,7 @@ class GPartFcast extends PureComponent {
           <thead>
             <tr>
               <td align="center" colSpan="13">
-              <b>Forecasts - October 2020</b>
+                Forecasts - October 2020
               </td>
             </tr>
             {this.state.prixoct.map(renderPrixOct)}
@@ -784,7 +880,7 @@ class GPartFcast extends PureComponent {
           <thead>
             <tr>
               <td align="center" colSpan="13">
-              <b>Forecasts - November 2020</b>
+                Forecasts - November 2020
               </td>
             </tr>
             {this.state.prixnov.map(renderPrixNov)}
@@ -795,7 +891,7 @@ class GPartFcast extends PureComponent {
           <thead>
             <tr>
               <td align="center" colSpan="13">
-              <b>Forecasts - December 2020</b>
+                Forecasts - December 2020
               </td>
             </tr>
             {this.state.prixdec.map(renderPrixDec)}
@@ -807,11 +903,11 @@ class GPartFcast extends PureComponent {
   }
 }
 
-GPartFcast.propTypes = {
+CPartFcast.propTypes = {
   //logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, {})(GPartFcast);
+export default connect(mapStateToProps, {})(CPartFcast);
