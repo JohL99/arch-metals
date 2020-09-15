@@ -2462,24 +2462,24 @@ select.form-control:focus::-ms-value {
 .form-control-plaintext {
   display: block;
   width: 100%;
-  padding: 0.15rem 0;
-  margin-bottom: 0.15rem;
+  padding: 1px 1px;
+  margin-bottom: 1px;
   font-size: 12px;
-  line-height: 1.25;
+  line-height: 16px;
   color: #495057;
   background-color: transparent;
   border: solid transparent;
-  border-width: 1px 0;
+  border-width: 1px 1px;
 }
 
 .form-control-plaintext.form-control-sm,
 .form-control-plaintext.form-control-lg {
-  padding-right: 0;
-  padding-left: 0;
+  padding-right: 1px;
+  padding-left: 1px;
 }
 
 .form-control-sm {
-  height: calc(12px + 1px + 2px);
+  height: 16px;
   padding: 1px 1px;
   font-size: 12px;
   line-height: 16px;
@@ -2487,7 +2487,7 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-lg {
-  height: calc(12px + 1px + 2px);
+  height: 16px;
   padding: 1px 1px;
   font-size: 12px;
   line-height: 16px;
@@ -2496,20 +2496,20 @@ select.form-control:focus::-ms-value {
 
 select.form-control[size],
 select.form-control[multiple] {
-  height: auto;
+  height: 16px;
 }
 
 textarea.form-control {
-  height: auto;
+  height: 14px;
 }
 
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1px;
 }
 
 .form-text {
   display: block;
-  margin-top: 0.25rem;
+  margin-top: 1px;
 }
 
 .form-row {
