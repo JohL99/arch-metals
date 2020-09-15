@@ -50,6 +50,10 @@ class CSumFcast extends PureComponent {
       octnb: 0,
       novnb: 0,
       decnb: 0,
+      EVsep: 0,
+      EVoct: 0,
+      EVnov: 0,
+      EVdec: 0,
       donnees1: [],
       lesprix: [],
       lesCast: [],
@@ -565,7 +569,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.septprix]}/MT</b></td>
               </tr>
             <tr>
-              <td align="center"><b>${this.state.EVsep[this.state.EVsep]}/MT</b></td>
+              <td align="center"><b>${[this.state.EVsep]}/MT</b></td>
               <td align="center"><b>{this.state.septnb}</b></td>
               <td align="center">{this.state.avg1[this.state.septpour]}%</td>
               <td align="center">{this.state.avg2[this.state.septpour]}%</td>
@@ -592,7 +596,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.octprix]}/MT</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.EVoct[this.state.EVoct]}/MT</b></td>
+              <td align="center"><b>${[this.state.EVoct]}/MT</b></td>
               <td align="center"><b>{this.state.octnb}</b></td>
               <td align="center">{this.state.avg1[this.state.octpour]}%</td>
               <td align="center">{this.state.avg2[this.state.octpour]}%</td>
@@ -626,7 +630,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.novprix]}/MT</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.EVnov[this.state.EVnov]}/MT</b></td>
+              <td align="center"><b>${[this.state.EVnov]}/MT</b></td>
               <td align="center"><b>{this.state.novnb}</b></td>
               <td align="center">{this.state.avg1[this.state.novpour]}%</td>
               <td align="center">{this.state.avg2[this.state.novpour]}%</td>
@@ -653,7 +657,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.decprix]}/MT</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.EVdec[this.state.EVdec]}/MT</b></td>
+              <td align="center"><b>${[this.state.EVdec]}/MT</b></td>
               <td align="center"><b>{this.state.decnb}</b></td>
               <td align="center">{this.state.avg1[this.state.decpour]}%</td>
               <td align="center">{this.state.avg2[this.state.decpour]}%</td>
