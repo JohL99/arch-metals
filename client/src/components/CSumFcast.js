@@ -70,7 +70,7 @@ class CSumFcast extends PureComponent {
     this.graphi();
   }
   fillgeneralcomments(sanza2) {
-    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&8")
+    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&2")
       .then((response3) => {
         return response3.json();
       })
@@ -91,6 +91,10 @@ class CSumFcast extends PureComponent {
           ].concat(malobayaApi),
         });
       });
+      this.fillgeneralcomments("September 2020");
+      this.fillgeneralcomments("October 2020");
+      this.fillgeneralcomments("November 2020");
+      this.fillgeneralcomments("December 2020");
   }
   faisQlq() {
     function arrayObjectIndexOf(myArray, searchTerm, property) {
@@ -234,10 +238,7 @@ class CSumFcast extends PureComponent {
       });
     this.graphi();
     this.trouveev();
-    this.fillgeneralcomments("September 2020");
-    this.fillgeneralcomments("October 2020");
-    this.fillgeneralcomments("November 2020");
-    this.fillgeneralcomments("December 2020");
+    
   }
   graphi() {
     //graphique
