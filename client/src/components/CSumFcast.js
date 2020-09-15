@@ -447,15 +447,15 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });}
       
       var EVDEC =
-      this.state.avg1[this.state.decpour] * this.state.price1[this.state.septprix] +
-      this.state.avg2[this.state.decpour] * this.state.price2[this.state.septprix] +
-      this.state.avg3[this.state.decpour] * this.state.price3[this.state.septprix] +
-      this.state.avg4[this.state.decpour] * this.state.price4[this.state.septprix] +
-      this.state.avg5[this.state.decpour] * this.state.price5[this.state.septprix] +
-      this.state.avg6[this.state.decpour] * this.state.price6[this.state.septprix] +
-      this.state.avg7[this.state.decpour] * this.state.price7[this.state.septprix] +
-      this.state.avg8[this.state.decpour] * this.state.price7[this.state.septprix] +
-      this.state.avg9[this.state.decpour] * this.state.price8[this.state.septprix]
+      Math.round(this.state.avg1[this.state.decpour]) * this.state.price1[this.state.septprix] +
+      Math.round(this.state.avg2[this.state.decpour]) * this.state.price2[this.state.septprix] +
+      Math.round(this.state.avg3[this.state.decpour]) * this.state.price3[this.state.septprix] +
+      Math.round(this.state.avg4[this.state.decpour]) * this.state.price4[this.state.septprix] +
+      Math.round(this.state.avg5[this.state.decpour]) * this.state.price5[this.state.septprix] +
+      Math.round(this.state.avg6[this.state.decpour]) * this.state.price6[this.state.septprix] +
+      Math.round(this.state.avg7[this.state.decpour]) * this.state.price7[this.state.septprix] +
+      Math.round(this.state.avg8[this.state.decpour]) * this.state.price7[this.state.septprix] +
+      Math.round(this.state.avg9[this.state.decpour]) * this.state.price8[this.state.septprix]
       this.setState({EVDEC})
       var EVdec = Math.round(EVDEC / 100);
       this.setState({EVdec: EVdec})
