@@ -1,5 +1,6 @@
 //import React, { Component } from "react";
 import React, { PureComponent } from "react";
+import Navbar from "./layout/Navbar";
 import {
   BarChart,
   Bar,
@@ -11,7 +12,6 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import Navbar from "./layout/Navbar";
 class GForecast extends PureComponent {
   constructor(props) {
     super(props);
@@ -570,49 +570,6 @@ class GForecast extends PureComponent {
                 <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
               </tr>
               <tr>
-                <td width="10%" align="center"><b>{this.state.mois}</b></td>
-                <td align="center"><b>Expected Value</b></td>
-                <td align="center"><b>No. Forecasts</b></td>
-                <td align="center"><b>${this.state.price1}/oz</b></td>
-                <td align="center"><b>${this.state.price2}/oz</b></td>
-                <td align="center"><b>${this.state.price3}/oz</b></td>
-                <td align="center"><b>${this.state.price4}/oz</b></td>
-                <td align="center"><b>${this.state.price5}/oz</b></td>
-                <td align="center"><b>${this.state.price6}/oz</b></td>
-                <td align="center"><b>${this.state.price7}/oz</b></td>
-                <td align="center"><b>${this.state.price8}/oz</b></td>
-                <td align="center"><b>${this.state.price9}/oz</b></td>
-              </tr>
-              <tr>
-                <td width="10%" align="center"><b>Older Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.state.EVO)
-                /* Math.round(this.trouveEV(this.state.lesmoyennesO)) */}/oz</b></td> 
-		            <td align="center"><b>{this.state.olddata.length}</b></td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[0])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[1])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[2])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[3])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[4])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[5])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[6])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[7])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[8])}%</td>
-              </tr>
-              <tr>
-                <td width="10%" align="center"><b>{this.state.mois}</b></td>
-                <td align="center"><b>Expected Value</b></td>
-                <td align="center"><b>No. Forecasts</b></td>
-                <td align="center"><b>${this.state.price1}/oz</b></td>
-                <td align="center"><b>${this.state.price2}/oz</b></td>
-                <td align="center"><b>${this.state.price3}/oz</b></td>
-                <td align="center"><b>${this.state.price4}/oz</b></td>
-                <td align="center"><b>${this.state.price5}/oz</b></td>
-                <td align="center"><b>${this.state.price6}/oz</b></td>
-                <td align="center"><b>${this.state.price7}/oz</b></td>
-                <td align="center"><b>${this.state.price8}/oz</b></td>
-                <td align="center"><b>${this.state.price9}/oz</b></td>
-              </tr>
-              <tr>
                 <td width="10%" align="center"><b>All Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.state.EVA)
                 /*Math.round(this.trouveEV(this.state.lesmoyennesA))*/}/oz</b></td>
@@ -649,7 +606,6 @@ class GForecast extends PureComponent {
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="RecentData" fill="#00B050" />
-                        <Bar dataKey="OldData" fill="#FF0000" />
                         <Bar dataKey="AllData" fill="#FFC000" />
                       </BarChart>
                     </ResponsiveContainer>
