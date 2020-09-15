@@ -445,7 +445,7 @@ class CSumFcast extends PureComponent {
       EVdec = EVdec + this.state.avg7[this.state.decpour] * this.state.price7[this.state.septprix] ;
       EVdec = EVdec + this.state.avg8[this.state.decpour] * this.state.price7[this.state.septprix] ;
       EVdec = EVdec + this.state.avg9[this.state.decpour] * this.state.price8[this.state.septprix] ;
-      EVdec = EVdec / 100;
+      
       this.setState({EVdec: EVdec});
 
       var lemax3 = Math.max(
