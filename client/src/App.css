@@ -2464,8 +2464,8 @@ select.form-control:focus::-ms-value {
   width: 100%;
   padding: 1px 1px;
   margin-bottom: 1px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
   color: #495057;
   background-color: transparent;
   border: solid transparent;
@@ -2479,28 +2479,28 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-sm {
-  height: 16px;
+  height: 22px;
   padding: 1px 1px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
   border-radius: 1px;
 }
 
 .form-control-lg {
-  height: 16px;
+  height: 22px;
   padding: 1px 1px;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 14px;
+  line-height: 18px;
   border-radius: 1px;
 }
 
 select.form-control[size],
 select.form-control[multiple] {
-  height: 16px;
+  height: 22px;
 }
 
 textarea.form-control {
-  height: 14px;
+  height: 18px;
 }
 
 .form-group {
