@@ -462,7 +462,7 @@ class CSummary extends PureComponent {
         <YAxis dataKey="price" type="category" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="RecentData" fill="#c7ba23" />
+        <Bar dataKey="RecentData" fill="#B87333" />
          {/*  <Bar dataKey="OldData" fill="#FF0000" />
           <Bar dataKey="AllData" fill="#00B050" /> */}
         </BarChart>

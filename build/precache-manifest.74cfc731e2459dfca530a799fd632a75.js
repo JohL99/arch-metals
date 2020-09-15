@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5cac81233ee83fa6c58078a3b4941edb",
+    "revision": "cfbebde4966e58894cb09b1839075105",
     "url": "/index.html"
   },
   {
-    "revision": "0d5f7cef5d5be92885d4",
+    "revision": "a1f285bdd7592e2ca5f9",
     "url": "/static/css/main.ec06f79f.chunk.css"
   },
   {
@@ -16,16 +16,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.4c513e54.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "0d5f7cef5d5be92885d4",
-    "url": "/static/js/main.d084506a.chunk.js"
+    "revision": "a1f285bdd7592e2ca5f9",
+    "url": "/static/js/main.80d32eb8.chunk.js"
   },
   {
     "revision": "9b4e396c183e42c1fa5c",
     "url": "/static/js/runtime-main.09b85ec0.js"
   },
   {
-    "revision": "e9beceef38be2803c9ba9f3d592ec11c",
-    "url": "/static/media/Comex_Copper.e9beceef.png"
+    "revision": "29dfbc4536285b84aa283f13929a17cb",
+    "url": "/static/media/Comex_Copper.29dfbc45.png"
   },
   {
     "revision": "f60527e99fca0ca1e1f6d622f3db5ef4",

@@ -338,7 +338,33 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });} 
       else if (this.state.avg9[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price9[this.state.septprix];
       this.setState({ ev });}
-      var lemax1 = Math.max(this.state.avg1[this.state.octpour],
+      
+      var EVsep= 
+      this.state.avg1[this.state.seppour] * this.state.price1[this.state.septprix] +
+      this.state.avg2[this.state.seppour] * this.state.price2[this.state.septprix] +
+      this.state.avg3[this.state.seppour] * this.state.price3[this.state.septprix] +
+      this.state.avg4[this.state.seppour] * this.state.price4[this.state.septprix] +
+      this.state.avg5[this.state.seppour] * this.state.price5[this.state.septprix] +
+      this.state.avg6[this.state.seppour] * this.state.price6[this.state.septprix] +
+      this.state.avg7[this.state.seppour] * this.state.price7[this.state.septprix] +
+      this.state.avg8[this.state.seppour] * this.state.price7[this.state.septprix] +
+      this.state.avg9[this.state.seppour] * this.state.price8[this.state.septprix]
+      this.setState({EVsep: EVsep});
+      
+      var EVoct= 
+      this.state.avg1[this.state.octpour] * this.state.price1[this.state.septprix] +
+      this.state.avg2[this.state.octpour] * this.state.price2[this.state.septprix] +
+      this.state.avg3[this.state.octpour] * this.state.price3[this.state.septprix] +
+      this.state.avg4[this.state.octpour] * this.state.price4[this.state.septprix] +
+      this.state.avg5[this.state.octpour] * this.state.price5[this.state.septprix] +
+      this.state.avg6[this.state.octpour] * this.state.price6[this.state.septprix] +
+      this.state.avg7[this.state.octpour] * this.state.price7[this.state.septprix] +
+      this.state.avg8[this.state.octpour] * this.state.price7[this.state.septprix] +
+      this.state.avg9[this.state.octpour] * this.state.price8[this.state.septprix]
+      this.setState({EVoct: EVoct});
+      
+      var lemax1 = Math.max(
+      this.state.avg1[this.state.octpour],
       this.state.avg2[this.state.octpour],
       this.state.avg3[this.state.octpour],
       this.state.avg4[this.state.octpour],
@@ -366,7 +392,20 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });} 
       else if (this.state.avg9[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price9[this.state.octprix];
       this.setState({ ev });}
-    var lemax2 = Math.max(
+    
+      var EVnov= 
+      this.state.avg1[this.state.novpour] * this.state.price1[this.state.septprix] +
+      this.state.avg2[this.state.novpour] * this.state.price2[this.state.septprix] +
+      this.state.avg3[this.state.novpour] * this.state.price3[this.state.septprix] +
+      this.state.avg4[this.state.novpour] * this.state.price4[this.state.septprix] +
+      this.state.avg5[this.state.novpour] * this.state.price5[this.state.septprix] +
+      this.state.avg6[this.state.novpour] * this.state.price6[this.state.septprix] +
+      this.state.avg7[this.state.novpour] * this.state.price7[this.state.septprix] +
+      this.state.avg8[this.state.novpour] * this.state.price7[this.state.septprix] +
+      this.state.avg9[this.state.novpour] * this.state.price8[this.state.septprix]
+      this.setState({EVnov: EVnov});
+
+      var lemax2 = Math.max(
       this.state.avg1[this.state.novpour],
       this.state.avg2[this.state.novpour],
       this.state.avg3[this.state.novpour],
@@ -395,7 +434,20 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });} 
       else if (this.state.avg9[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price9[this.state.novprix];
       this.setState({ ev });}
-    var lemax3 = Math.max(
+      
+      var EVdec= 
+      this.state.avg1[this.state.decpour] * this.state.price1[this.state.septprix] +
+      this.state.avg2[this.state.decpour] * this.state.price2[this.state.septprix] +
+      this.state.avg3[this.state.decpour] * this.state.price3[this.state.septprix] +
+      this.state.avg4[this.state.decpour] * this.state.price4[this.state.septprix] +
+      this.state.avg5[this.state.decpour] * this.state.price5[this.state.septprix] +
+      this.state.avg6[this.state.decpour] * this.state.price6[this.state.septprix] +
+      this.state.avg7[this.state.decpour] * this.state.price7[this.state.septprix] +
+      this.state.avg8[this.state.decpour] * this.state.price7[this.state.septprix] +
+      this.state.avg9[this.state.decpour] * this.state.price8[this.state.septprix]
+      this.setState({EVdec: EVdec});
+
+      var lemax3 = Math.max(
       this.state.avg1[this.state.decpour],
       this.state.avg2[this.state.decpour],
       this.state.avg3[this.state.decpour],
@@ -512,7 +564,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.septprix]}/MT</b></td>
               </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.septpour]}/MT</b></td>
+              <td align="center"><b>${this.state.EVsep}/MT</b></td>
               <td align="center"><b>{this.state.septnb}</b></td>
               <td align="center">{this.state.avg1[this.state.septpour]}%</td>
               <td align="center">{this.state.avg2[this.state.septpour]}%</td>
@@ -539,7 +591,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.octprix]}/MT</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.octpour]}/MT</b></td>
+              <td align="center"><b>${this.state.EVoct}/MT</b></td>
               <td align="center"><b>{this.state.octnb}</b></td>
               <td align="center">{this.state.avg1[this.state.octpour]}%</td>
               <td align="center">{this.state.avg2[this.state.octpour]}%</td>
@@ -573,7 +625,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.novprix]}/MT</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.novpour]}/MT</b></td>
+              <td align="center"><b>${this.state.EVnov}/MT</b></td>
               <td align="center"><b>{this.state.novnb}</b></td>
               <td align="center">{this.state.avg1[this.state.novpour]}%</td>
               <td align="center">{this.state.avg2[this.state.novpour]}%</td>
@@ -600,7 +652,7 @@ class CSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.decprix]}/MT</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.decpour]}/MT</b></td>
+              <td align="center"><b>${this.state.EVdec}/MT</b></td>
               <td align="center"><b>{this.state.decnb}</b></td>
               <td align="center">{this.state.avg1[this.state.decpour]}%</td>
               <td align="center">{this.state.avg2[this.state.decpour]}%</td>
