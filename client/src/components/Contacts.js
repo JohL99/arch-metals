@@ -1,5 +1,7 @@
 import React from "react";
-
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 export default function Contacts() {
   return (
     <div>

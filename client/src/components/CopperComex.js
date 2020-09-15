@@ -5,12 +5,10 @@ export default function Comex_Copper() {
     <div>
       <div>
         <td align="center">
-        <h3>COMEX COPPER FUTURES PRICES</h3>
-        <h4>Daily Closing Prices</h4>
+        <h3>COMEX COPPER FUTURES PRICES - Daily Closing Prices</h3>
         </td>
       </div>
-        <br />
-       <div> 
+        <div> 
         <img width={960} height={400} alt="Comex_Copper" src={ComexCu} />
         <br />
       </div>

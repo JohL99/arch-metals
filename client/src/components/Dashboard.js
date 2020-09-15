@@ -1,5 +1,7 @@
 import React, { PureComponent, Component } from "react";
-
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 class Dashboard extends PureComponent {
     constructor(props) {
         super(props);

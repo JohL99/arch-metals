@@ -502,7 +502,7 @@ class GSummary extends PureComponent {
             <td><b>${this.state.price7}/oz</b></td>
             <td><b>${this.state.price8}/oz</b></td>
             <td><b>${this.state.price9}/oz</b></td>
-            <td width="35%"><b>Justifications</b></td>
+            <td align="left" width="35%"><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}
             </tbody>

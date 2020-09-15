@@ -34,6 +34,9 @@ class Register extends Component {
       q10: "",
       errors: {},
     };
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -166,7 +169,7 @@ class Register extends Component {
                     value={this.state.commodity}
                     onChange={this.onChange}
                     error={errors.commodity}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Metal(s) to be forecasted</option>
                     <option value="Copper">Copper</option>
@@ -180,7 +183,7 @@ class Register extends Component {
                     value={this.state.sex}
                     onChange={this.onChange}
                     error={errors.sex}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Gender (Optional)</option>
                     <option value="Female">Female</option>
@@ -194,7 +197,7 @@ class Register extends Component {
                     value={this.state.age}
                     onChange={this.onChange}
                     error={errors.age}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Age (Years)</option>
                     <option value="<25">&lt; 25</option>
@@ -212,7 +215,7 @@ class Register extends Component {
                     value={this.state.geolocation}
                     onChange={this.onChange}
                     error={errors.geolocation}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Your geographic location </option>
                     <option value="Africa">Africa</option>
@@ -232,7 +235,7 @@ class Register extends Component {
                     value={this.state.professionBackground}
                     onChange={this.onChange}
                     error={errors.professionBackground}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Professional Background</option>
                     <option value="AccountingFinancial">Accounting / Financial</option>
@@ -258,7 +261,7 @@ class Register extends Component {
                     value={this.state.workplace}
                     onChange={this.onChange}
                     error={errors.workplace}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Nature Of Your Workplace</option>
                     <option value="Academic">Academic Institution</option>
@@ -279,7 +282,7 @@ class Register extends Component {
                     value={this.state.forecastingapproach}
                     onChange={this.onChange}
                     error={errors.forecastingapproach}
-                    className="form-control form-control-lg"
+                    className=""
                   >
                     <option value="">Forecasting Approach</option>
                     <option value="Econometric Modeling">Econometric Modeling</option>
@@ -300,7 +303,7 @@ class Register extends Component {
                     value={this.state.bio}
                     onChange={this.onChange}
                     error={errors.bio}
-                    className="form-control form-control-lg"
+                    className=""
                   />
                 </div>
                 <div className="form-group">
