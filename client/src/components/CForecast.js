@@ -570,49 +570,6 @@ class CForecast extends PureComponent {
                 <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
               </tr>
               <tr>
-                <td width="10%" align="center"><b>{this.state.mois}</b></td>
-                <td align="center"><b>Expected Value</b></td>
-                <td align="center"><b>No. Forecasts</b></td>
-                <td align="center"><b>${this.state.price1}/MT</b></td>
-                <td align="center"><b>${this.state.price2}/MT</b></td>
-                <td align="center"><b>${this.state.price3}/MT</b></td>
-                <td align="center"><b>${this.state.price4}/MT</b></td>
-                <td align="center"><b>${this.state.price5}/MT</b></td>
-                <td align="center"><b>${this.state.price6}/MT</b></td>
-                <td align="center"><b>${this.state.price7}/MT</b></td>
-                <td align="center"><b>${this.state.price8}/MT</b></td>
-                <td align="center"><b>${this.state.price9}/MT</b></td>
-              </tr>
-              <tr>
-                <td width="10%" align="center"><b>Older Forecasts</b></td>
-                <td align="center"><b>${Math.round(this.state.EVO)
-                /* Math.round(this.trouveEV(this.state.lesmoyennesO)) */}/MT</b></td> 
-		            <td align="center"><b>{this.state.olddata.length}</b></td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[0])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[1])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[2])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[3])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[4])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[5])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[6])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[7])}%</td>
-                <td align="center">{Math.round(this.state.lesmoyennesO[8])}%</td>
-              </tr>
-              <tr>
-                <td width="10%" align="center"><b>{this.state.mois}</b></td>
-                <td align="center"><b>Expected Value</b></td>
-                <td align="center"><b>No. Forecasts</b></td>
-                <td align="center"><b>${this.state.price1}/MT</b></td>
-                <td align="center"><b>${this.state.price2}/MT</b></td>
-                <td align="center"><b>${this.state.price3}/MT</b></td>
-                <td align="center"><b>${this.state.price4}/MT</b></td>
-                <td align="center"><b>${this.state.price5}/MT</b></td>
-                <td align="center"><b>${this.state.price6}/MT</b></td>
-                <td align="center"><b>${this.state.price7}/MT</b></td>
-                <td align="center"><b>${this.state.price8}/MT</b></td>
-                <td align="center"><b>${this.state.price9}/MT</b></td>
-              </tr>
-              <tr>
                 <td width="10%" align="center"><b>All Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.state.EVA)
                 /*Math.round(this.trouveEV(this.state.lesmoyennesA))*/}/MT</b></td>
