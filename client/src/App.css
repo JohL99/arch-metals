@@ -2479,37 +2479,37 @@ select.form-control:focus::-ms-value {
 }
 
 .form-control-sm {
-  height: 22px;
-  padding: 1px 1px;
-  font-size: 14px;
-  line-height: 18px;
-  border-radius: 1px;
+  height: 28px;
+  padding: 2px 1px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
 }
 
 .form-control-lg {
-  height: 22px;
-  padding: 1px 1px;
-  font-size: 14px;
-  line-height: 18px;
-  border-radius: 1px;
+  height: 28px;
+  padding: 2px 2px;
+  font-size: 16px;
+  line-height: 24px;
+  border-radius: 2px;
 }
 
 select.form-control[size],
 select.form-control[multiple] {
-  height: 22px;
+  height: 28px;
 }
 
 textarea.form-control {
-  height: 18px;
+  height: 28px;
 }
 
 .form-group {
-  margin-bottom: 1px;
+  margin-bottom: 2px;
 }
 
 .form-text {
   display: block;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .form-row {
