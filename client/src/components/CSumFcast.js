@@ -306,15 +306,15 @@ class CSumFcast extends PureComponent {
     //console.log(donnees1);
   
     var EVsep = 
-    this.state.avg1[this.state.seppour] * this.state.price1[this.state.septprix] +
-    this.state.avg2[this.state.seppour] * this.state.price2[this.state.septprix] +
-    this.state.avg3[this.state.seppour] * this.state.price3[this.state.septprix] +
-    this.state.avg4[this.state.seppour] * this.state.price4[this.state.septprix] +
-    this.state.avg5[this.state.seppour] * this.state.price5[this.state.septprix] +
-    this.state.avg6[this.state.seppour] * this.state.price6[this.state.septprix] +
-    this.state.avg7[this.state.seppour] * this.state.price7[this.state.septprix] +
-    this.state.avg8[this.state.seppour] * this.state.price7[this.state.septprix] +
-    this.state.avg9[this.state.seppour] * this.state.price8[this.state.septprix]
+    this.state.avg1[this.state.septpour] * this.state.price1[this.state.septprix] +
+    this.state.avg2[this.state.septpour] * this.state.price2[this.state.septprix] +
+    this.state.avg3[this.state.septpour] * this.state.price3[this.state.septprix] +
+    this.state.avg4[this.state.septpour] * this.state.price4[this.state.septprix] +
+    this.state.avg5[this.state.septpour] * this.state.price5[this.state.septprix] +
+    this.state.avg6[this.state.septpour] * this.state.price6[this.state.septprix] +
+    this.state.avg7[this.state.septpour] * this.state.price7[this.state.septprix] +
+    this.state.avg8[this.state.septpour] * this.state.price7[this.state.septprix] +
+    this.state.avg9[this.state.septpour] * this.state.price8[this.state.septprix]
     this.setState({EVsep: EVsep});
       
     this.trouveev();
@@ -394,7 +394,7 @@ class CSumFcast extends PureComponent {
       else if (this.state.avg9[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price9[this.state.octprix];
       this.setState({ ev });}
     
-      var EVnov= 
+      var EVnov = 
       this.state.avg1[this.state.novpour] * this.state.price1[this.state.septprix] +
       this.state.avg2[this.state.novpour] * this.state.price2[this.state.septprix] +
       this.state.avg3[this.state.novpour] * this.state.price3[this.state.septprix] +
