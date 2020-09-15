@@ -69,8 +69,8 @@ class CSumFcast extends PureComponent {
     this.faisQlq();
     this.graphi();
   }
-  fillgeneralcomments() {
-    fetch("/api/menji/olda1/September 2020" + "&Copper" + "&2")
+  fillgeneralcomments(sanza2) {
+    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&8")
       .then((response3) => {
         return response3.json();
       })
@@ -91,27 +91,6 @@ class CSumFcast extends PureComponent {
           ].concat(malobayaApi),
         });
       });
-      fetch("/api/menji/olda1/October 2020" + "&Copper" + "&2")
-      .then((response3) => {
-        return response3.json();
-      })
-      .then((data3) => {
-        let malobayaApi = data3.map((liloba) => {
-          return {
-            id: liloba._id,
-            mois: liloba.mois,
-            generalcomments: liloba.generalcomments,
-          };
-        });
-        this.setState({
-          maloba: [
-            {
-              id: "",
-              generalcomments: "",
-            },
-          ].concat(malobayaApi),
-        });
-      });    
   }
   faisQlq() {
     function arrayObjectIndexOf(myArray, searchTerm, property) {
@@ -256,9 +235,9 @@ class CSumFcast extends PureComponent {
     this.graphi();
     this.trouveev();
     this.fillgeneralcomments("September 2020");
-    this.fillgeneralcomments("October 2020");
-    this.fillgeneralcomments("November 2020");
-    this.fillgeneralcomments("December 2020");
+    //this.fillgeneralcomments("October 2020");
+    //this.fillgeneralcomments("November 2020");
+    //this.fillgeneralcomments("December 2020");
   }
   graphi() {
     //graphique
