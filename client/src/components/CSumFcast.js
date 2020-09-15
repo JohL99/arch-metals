@@ -309,7 +309,7 @@ class CSumFcast extends PureComponent {
     this.setState({ donnees1 });
     //console.log(donnees1);
   
-    var EVsep = 
+    var EVSEP = 
     this.state.avg1[this.state.septpour] * this.state.price1[this.state.septprix] +
     this.state.avg2[this.state.septpour] * this.state.price2[this.state.septprix] +
     this.state.avg3[this.state.septpour] * this.state.price3[this.state.septprix] +
@@ -319,7 +319,9 @@ class CSumFcast extends PureComponent {
     this.state.avg7[this.state.septpour] * this.state.price7[this.state.septprix] +
     this.state.avg8[this.state.septpour] * this.state.price7[this.state.septprix] +
     this.state.avg9[this.state.septpour] * this.state.price8[this.state.septprix]
-    this.setState({EVsep: EVsep});
+    this.setState({EVSEP})
+    var EVsep = EVSEP / 100;
+    this.setState({EVsep: EVsep})
       
     this.trouveev();
   }
