@@ -385,10 +385,10 @@ class GSummary extends PureComponent {
           <table border="1">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="70%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
+                <td colSpan="14" align="center" width="100%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
               </tr>
               <tr>
-                <td width="10%" align="center">
+                <td align="center">
                   <select
                     id="mois"
                     name="month"
@@ -487,10 +487,10 @@ class GSummary extends PureComponent {
           <table className="table table-bordered">
           <tbody>
           <tr>
-          <td colSpan="14" align="center" width="70%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
+          <td colSpan="14" align="center" width="100%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
-           <td width="10%"><b>Participant</b></td>
+           <td><b>Participant</b></td>
             <td><b>Expected Value</b></td>
             <td><b>Date</b></td>
             <td><b>${this.state.price1}/oz</b></td>
@@ -502,7 +502,7 @@ class GSummary extends PureComponent {
             <td><b>${this.state.price7}/oz</b></td>
             <td><b>${this.state.price8}/oz</b></td>
             <td><b>${this.state.price9}/oz</b></td>
-            <td align="left" width="35%"><b>Justifications</b></td>
+            <td align="center" width="40%"><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}
             </tbody>

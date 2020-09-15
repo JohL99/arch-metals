@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.ec06f79f.chunk.css",
-    "main.js": "/static/js/main.cce16d54.chunk.js",
-    "main.js.map": "/static/js/main.cce16d54.chunk.js.map",
+    "main.css": "/static/css/main.d49ff169.chunk.css",
+    "main.js": "/static/js/main.fb094fbe.chunk.js",
+    "main.js.map": "/static/js/main.fb094fbe.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
     "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
     "static/js/2.4c513e54.chunk.js": "/static/js/2.4c513e54.chunk.js",
     "static/js/2.4c513e54.chunk.js.map": "/static/js/2.4c513e54.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.58f7616f22f2520c35d9fc4db80868aa.js": "/precache-manifest.58f7616f22f2520c35d9fc4db80868aa.js",
+    "precache-manifest.85efbccf09617f9bdf6727291b6b2822.js": "/precache-manifest.85efbccf09617f9bdf6727291b6b2822.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.ec06f79f.chunk.css.map": "/static/css/main.ec06f79f.chunk.css.map",
+    "static/css/main.d49ff169.chunk.css.map": "/static/css/main.d49ff169.chunk.css.map",
     "static/js/2.4c513e54.chunk.js.LICENSE.txt": "/static/js/2.4c513e54.chunk.js.LICENSE.txt",
     "static/media/Comex_Copper.png": "/static/media/Comex_Copper.29dfbc45.png",
     "static/media/Comex_Gold.png": "/static/media/Comex_Gold.f60527e9.png",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.09b85ec0.js",
     "static/js/2.4c513e54.chunk.js",
-    "static/css/main.ec06f79f.chunk.css",
-    "static/js/main.cce16d54.chunk.js"
+    "static/css/main.d49ff169.chunk.css",
+    "static/js/main.fb094fbe.chunk.js"
   ]
 }

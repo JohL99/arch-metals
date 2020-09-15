@@ -113,7 +113,7 @@ class Register extends Component {
               <p className="lead text-center">Register to participate</p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
-                  placeholder="Username/Pseudonym (To ensure anonymity - Max. 12 characters)"
+                  placeholder="Username/Pseudonym (Please use to ensure anonymity - Max. 12 characters)"
                   name="name"
                   value={this.state.name}
                   onChange={this.onChange}
@@ -139,7 +139,7 @@ class Register extends Component {
                   error={errors.password2}
                 />
                 <TextFieldGroup
-                  placeholder="Email – For Logon &amp; Confidential official communication only"
+                  placeholder="Email – For Logon &amp; official communication only"
                   name="email"
                   type="email"
                   value={this.state.email}

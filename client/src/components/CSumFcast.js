@@ -560,7 +560,7 @@ class CSumFcast extends PureComponent {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="12" align="center" width="70%"><b>Aggregation of All Copper Forecasts</b></td>
+              <td colSpan="12" align="center" width="100%"><b>Aggregation of All Copper Forecasts</b></td>
             </tr>
             <tr>
               <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.septprix]*/}<b>September 2020</b></td>
@@ -712,7 +712,7 @@ class CSumFcast extends PureComponent {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="2" align="center" width="70%">
+              <td colSpan="2" align="center" width="100%">
                 <b>Most Recent General Comments</b>
               </td>
             </tr>
