@@ -309,7 +309,7 @@ class CopperInput extends Component {
                 <td align="center">
                   <select
                     id="mois"
-                    name="month"
+                    name="mois"
                     value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
