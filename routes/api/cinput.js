@@ -15,7 +15,7 @@ router.post("/enregistrer", (req, res) => {
   const newForecast = new Forecast({
     user: req.body.user,
     commodity: req.body.commodity,
-    month: req.body.month,
+    mois: req.body.mois,
     dateForecast: req.body.dateForecast,
     price1: req.body.price1,
     price2: req.body.price2,
@@ -39,15 +39,15 @@ router.post("/enregistrer", (req, res) => {
 // @route   GET api/cinput/dernierda
 // @desc    Renvoie tous les trucks devant arriver
 // @access  Public
-router.get("/dernierda/:month", (req, res) => {
+router.get("/dernierda/:mois", (req, res) => {
   const errors = {};
 
   Forecast.aggregate([
-    { $match: { month: req.params.month } },
+    { $match: { mois: req.params.mois } },
     { $sort: { dateForecast: 1 } },
     {
       $group: {
-        _id: "$month",
+        _id: "$mois",
         lastEntry: { $last: "$dateForecast" },
       },
     },

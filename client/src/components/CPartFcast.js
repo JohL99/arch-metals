@@ -1,5 +1,7 @@
 import React, { PureComponent } from "react";
-/* import {
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import {
   BarChart,
   Bar,
   Cell,
@@ -9,8 +11,7 @@ import React, { PureComponent } from "react";
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts"; */
-import GraphCG from "./GraphCG";
+} from "recharts";
 class CPartFcast extends PureComponent {
   constructor(props) {
     super(props);
@@ -22,12 +23,13 @@ class CPartFcast extends PureComponent {
       octobers: [],
       novembers: [],
       decembers: [],
-      priceaug: [],
-      pricesep: [],
-      priceoct: [],
-      pricenov: [],
-      pricedec: [],
-      data1: [],
+      recents: [],
+      prixaug: [],
+      prixsept: [],
+      prixoct: [],
+      prixnov: [],
+      prixdec: [],
+      donnees1: [],
       evaug: "",
       evsep: "",
       evoct: "",
@@ -44,7 +46,6 @@ class CPartFcast extends PureComponent {
     }
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
-    this.graphi = this.graphi.bind(this);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -77,8 +78,8 @@ class CPartFcast extends PureComponent {
         return response.json();
       })
       .then((data) => {
-        let utilisateurFromApi = data.map((participant) => {
-          return { value: participant.name, display: participant.name };
+        let utilisateurFromApi = data.map((utilisateur) => {
+          return { value: utilisateur.name, display: utilisateur.name };
         });
         this.setState({
           users: [{ value: "", display: "(Choose Participant)" }].concat(
@@ -90,115 +91,116 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
   }
-  fillprices(participant, produit) {
+  fillprices(utilisateur, produit) {
     let psepFromApi = {};
     let poctFromApi = {};
     let pnovFromApi = {};
     let pdecFromApi = {};
-    fetch("/api/beyi/commonth/" + "September 2020" + "&Copper")
+    var donnees1 = [];
+    fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        psepFromApi = data.map((price) => {
+        psepFromApi = data.map((mutengo) => {
           return {
-            pour1: price.floorprice + price.constant1 * 0,
-            pour2: price.floorprice + price.constant1 * 1,
-            pour3: price.floorprice + price.constant1 * 2,
-            pour4: price.floorprice + price.constant1 * 3,
-            pour5: price.floorprice + price.constant1 * 4,
-            pour6: price.floorprice + price.constant1 * 5,
-            pour7: price.floorprice + price.constant1 * 6,
-            pour8: price.floorprice + price.constant1 * 7,
-            pour9: price.floorprice + price.constant1 * 8,
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
-        this.setState({pricesep: [].concat(psepFromApi),});
+        this.setState({prixsept: [].concat(psepFromApi),});
       })
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commonth/" + "October 2020" + "&Copper")
+    fetch("/api/beyi/commois/" + "October 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        poctFromApi = data.map((price) => {
+        poctFromApi = data.map((mutengo) => {
           return {
-            pour1: price.floorprice + price.constant1 * 0,
-            pour2: price.floorprice + price.constant1 * 1,
-            pour3: price.floorprice + price.constant1 * 2,
-            pour4: price.floorprice + price.constant1 * 3,
-            pour5: price.floorprice + price.constant1 * 4,
-            pour6: price.floorprice + price.constant1 * 5,
-            pour7: price.floorprice + price.constant1 * 6,
-            pour8: price.floorprice + price.constant1 * 7,
-            pour9: price.floorprice + price.constant1 * 8,
-          };
-        });
-        this.setState({
-          priceoct: [].concat(poctFromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    fetch("/api/beyi/commonth/" + "November 2020" + "&Copper")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let yx = data;
-        pnovFromApi = data.map((price) => {
-          return {
-            pour1: price.floorprice + price.constant1 * 0,
-            pour2: price.floorprice + price.constant1 * 1,
-            pour3: price.floorprice + price.constant1 * 2,
-            pour4: price.floorprice + price.constant1 * 3,
-            pour5: price.floorprice + price.constant1 * 4,
-            pour6: price.floorprice + price.constant1 * 5,
-            pour7: price.floorprice + price.constant1 * 6,
-            pour8: price.floorprice + price.constant1 * 7,
-            pour9: price.floorprice + price.constant1 * 8,
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
         this.setState({
-          pricenov: [].concat(pnovFromApi),
+          prixoct: [].concat(poctFromApi),
         });
       })
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commonth/" + "December 2020" + "&Copper")
+    fetch("/api/beyi/commois/" + "November 2020" + "&Copper")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        pdecFromApi = data.map((price) => {
+        pnovFromApi = data.map((mutengo) => {
           return {
-            pour1: price.floorprice + price.constant1 * 0,
-            pour2: price.floorprice + price.constant1 * 1,
-            pour3: price.floorprice + price.constant1 * 2,
-            pour4: price.floorprice + price.constant1 * 3,
-            pour5: price.floorprice + price.constant1 * 4,
-            pour6: price.floorprice + price.constant1 * 5,
-            pour7: price.floorprice + price.constant1 * 6,
-            pour8: price.floorprice + price.constant1 * 7,
-            pour9: price.floorprice + price.constant1 * 8,
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
         this.setState({
-          pricedec: [].concat(pdecFromApi),
+          prixnov: [].concat(pnovFromApi),
         });
       })
       .catch((error) => {
         console.log(error);
       });
-      let averif = 0;
-    fetch("/api/menji/userd/September 2020&" + produit + "&" + participant)
+    fetch("/api/beyi/commois/" + "December 2020" + "&Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        pdecFromApi = data.map((mutengo) => {
+          return {
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
+          };
+        });
+        this.setState({
+          prixdec: [].concat(pdecFromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    let averif = 0;
+    fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -214,7 +216,6 @@ class CPartFcast extends PureComponent {
             psepFromApi[0].pour7 * september.price7 +
             psepFromApi[0].pour8 * september.price8 +
             psepFromApi[0].pour9 * september.price9;
-
           this.setState({ evsep: xEV });
           this.setState({ comsep: september.generalcomments });
 
@@ -230,7 +231,7 @@ class CPartFcast extends PureComponent {
             price7: september.price7,
             price8: september.price8,
             price9: september.price9,
-            median: september.median,
+            lemedian: september.lemedian,
             dateforecast: this.convert_to_utc(new Date(september.dateforecast)),
             specificcomments: september.specificcomments,
             generalcomments: september.generalcomments,
@@ -245,7 +246,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/October 2020&" + produit + "&" + participant)
+    fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -274,7 +275,7 @@ class CPartFcast extends PureComponent {
             price7: october.price7,
             price8: october.price8,
             price9: october.price9,
-            median: october.median,
+            lemedian: october.lemedian,
             dateforecast: this.convert_to_utc(new Date(october.dateforecast)),
             specificcomments: october.specificcomments,
             generalcomments: october.generalcomments,
@@ -288,7 +289,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/November 2020&" + produit + "&" + participant)
+    fetch("/api/menji/userd/November 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -317,7 +318,7 @@ class CPartFcast extends PureComponent {
             price7: november.price7,
             price8: november.price8,
             price9: november.price9,
-            median: november.median,
+            lemedian: november.lemedian,
             dateforecast: this.convert_to_utc(new Date(november.dateforecast)),
             specificcomments: november.specificcomments,
             generalcomments: november.generalcomments,
@@ -331,7 +332,7 @@ class CPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/December 2020&" + produit + "&" + participant)
+    fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -360,7 +361,7 @@ class CPartFcast extends PureComponent {
             price7: december.price7,
             price8: december.price8,
             price9: december.price9,
-            median: december.median,
+            lemedian: december.lemedian,
             dateforecast: this.convert_to_utc(new Date(december.dateforecast)),
             specificcomments: december.specificcomments,
             generalcomments: december.generalcomments,
@@ -373,79 +374,118 @@ class CPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-  }
-  graphi() {
-    //graphique
-    var data1 = [];
-    //data = { ...this.state.data1 };
-    data1.push({
-      price: this.state.pricesep.price1,
-      Sep20: this.state.septembers.price1,
-      Oct20: this.state.octobers.price1,
-      Nov20: this.state.novembers.price1,
-      Dec20: this.state.decembers.price1,
-    });
-    data1.push({
-      price: this.state.pricesep.price2,
-      Sep20: this.state.septembers.price2,
-      Oct20: this.state.octobers.price2,
-      Nov20: this.state.novembers.price2,
-      Dec20: this.state.decembers.price2,
-    });
-    data1.push({
-      price: this.state.pricesep.price3,
-      Sep20: this.state.septembers.price3,
-      Oct20: this.state.octobers.price3,
-      Nov20: this.state.novembers.price3,
-      Dec20: this.state.decembers.price3,
-    });
-    data1.push({
-      price: this.state.pricesep.price4,
-      Sep20: this.state.septembers.price4,
-      Oct20: this.state.octobers.price4,
-      Nov20: this.state.novembers.price4,
-      Dec20: this.state.decembers.price4,
-    });
-    data1.push({
-      price: this.state.pricesep.price5,
-      Sep20: this.state.septembers.price5,
-      Oct20: this.state.octobers.price5,
-      Nov20: this.state.novembers.price5,
-      Dec20: this.state.decembers.price5,
-    });
-    data1.push({
-      price: this.state.pricesep.price6,
-      Sep20: this.state.septembers.price6,
-      Oct20: this.state.octobers.price6,
-      Nov20: this.state.novembers.price6,
-      Dec20: this.state.decembers.price6,
-    });
-    data1.push({
-      price: this.state.pricesep.price7,
-      Sep20: this.state.septembers.price7,
-      Oct20: this.state.octobers.price7,
-      Nov20: this.state.novembers.price7,
-      Dec20: this.state.decembers.price7,
-    });
-    data1.push({
-      price: this.state.pricesep.price8,
-      Sep20: this.state.septembers.price8,
-      Oct20: this.state.octobers.price8,
-      Nov20: this.state.novembers.price8,
-      Dec20: this.state.decembers.price8,
-    });
-    data1.push({
-      price: this.state.pricesep.price9,
-      Sep20: this.state.septembers.price9,
-      Oct20: this.state.octobers.price9,
-      Nov20: this.state.novembers.price9,
-      Dec20: this.state.decembers.price9,
-    });
-    this.setState({ data1 });
-    //console.log(data1);
+    fetch("/api/menji/recentdauser/" + produit + "&" + utilisateur)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let recentFromApi = data.map((recent) => {
+          //this.setState({ evdec: xEV });
+          //this.setState({ comdec: recent.generalcomments });
+          return {
+            price1: recent.detail.price1 * 100,
+            price2: recent.detail.price2 * 100,
+            price3: recent.detail.price3 * 100,
+            price4: recent.detail.price4 * 100,
+            price5: recent.detail.price5 * 100,
+            price6: recent.detail.price6 * 100,
+            price7: recent.detail.price7 * 100,
+            price8: recent.detail.price8 * 100,
+            price9: recent.detail.price9 * 100,
+            month: recent.detail.month,
+          };
+        });
+        let sept1 = [];
+        let octo1 = [];
+        let novem1 = [];
+        let decem1 = [];
+
+        var y = 0;
+        for (y == 0; y < 4 /* recentFromApi.length */; y++) {
+          if (recentFromApi[y].month == "September 2020") {
+            sept1[1] = recentFromApi[y].price1;
+            sept1[2] = recentFromApi[y].price2;
+            sept1[3] = recentFromApi[y].price3;
+            sept1[4] = recentFromApi[y].price4;
+            sept1[5] = recentFromApi[y].price5;
+            sept1[6] = recentFromApi[y].price6;
+            sept1[7] = recentFromApi[y].price7;
+            sept1[8] = recentFromApi[y].price8;
+            sept1[9] = recentFromApi[y].price9;
+          }
+
+          if (recentFromApi[y].month == "October 2020") {
+            octo1[1] = recentFromApi[y].price1;
+            octo1[2] = recentFromApi[y].price2;
+            octo1[3] = recentFromApi[y].price3;
+            octo1[4] = recentFromApi[y].price4;
+            octo1[5] = recentFromApi[y].price5;
+            octo1[6] = recentFromApi[y].price6;
+            octo1[7] = recentFromApi[y].price7;
+            octo1[8] = recentFromApi[y].price8;
+            octo1[9] = recentFromApi[y].price9;
+          }
+
+          if (recentFromApi[y].month == "November 2020") {
+            novem1[1] = recentFromApi[y].price1;
+            novem1[2] = recentFromApi[y].price2;
+            novem1[3] = recentFromApi[y].price3;
+            novem1[4] = recentFromApi[y].price4;
+            novem1[5] = recentFromApi[y].price5;
+            novem1[6] = recentFromApi[y].price6;
+            novem1[7] = recentFromApi[y].price7;
+            novem1[8] = recentFromApi[y].price8;
+            novem1[9] = recentFromApi[y].price9;
+          }
+
+          if (recentFromApi[y].month == "December 2020") {
+            decem1[1] = recentFromApi[y].price1;
+            decem1[2] = recentFromApi[y].price2;
+            decem1[3] = recentFromApi[y].price3;
+            decem1[4] = recentFromApi[y].price4;
+            decem1[5] = recentFromApi[y].price5;
+            decem1[6] = recentFromApi[y].price6;
+            decem1[7] = recentFromApi[y].price7;
+            decem1[8] = recentFromApi[y].price8;
+            decem1[9] = recentFromApi[y].price9;
+          }
+        }
+
+        // console.log(donnees1);
+        // console.log(recentFromApi);
+        let leprix = [];
+
+        leprix[1] = this.state.prixsept[0].pour1;
+        leprix[2] = this.state.prixsept[0].pour2;
+        leprix[3] = this.state.prixsept[0].pour3;
+        leprix[4] = this.state.prixsept[0].pour4;
+        leprix[5] = this.state.prixsept[0].pour5;
+        leprix[6] = this.state.prixsept[0].pour6;
+        leprix[7] = this.state.prixsept[0].pour7;
+        leprix[8] = this.state.prixsept[0].pour8;
+        leprix[9] = this.state.prixsept[0].pour9;
+        var yy = 1;
+        for (yy == 1; yy < 10; yy++) {
+          donnees1.push({
+            price: leprix[yy],
+            Sep20: sept1[yy],
+            Oct20: octo1[yy],
+            Nov20: novem1[yy],
+            Dec20: decem1[yy],
+          });
+        }
+        this.setState({
+          recents: [].concat(recentFromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    this.setState({ donnees1 });
   }
   render() {
-    const renderseptember = (septemberFromApi) => {
+    const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
           <td align="center"><b>${septemberFromApi.EV}/MT</b></td>
@@ -463,7 +503,7 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-        const renderOctober = (octoberFromApi) => {
+    const renderOctober = (octoberFromApi) => {
       return (
         <tr key={octoberFromApi.id}>
           <td align="center"><b>${octoberFromApi.EV}/MT</b></td>
@@ -517,7 +557,7 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderpriceSep = (psepFromApi) => {
+    const renderPrixSep = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
@@ -535,7 +575,7 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-        const renderpriceOct = (poctFromApi) => {
+    const renderPrixOct = (poctFromApi) => {
       return (
         <tr key={poctFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
@@ -553,7 +593,7 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderpriceNov = (pnovFromApi) => {
+    const renderPrixNov = (pnovFromApi) => {
       return (
         <tr key={pnovFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
@@ -571,7 +611,7 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderpriceDec = (pdecFromApi) => {
+    const renderPrixDec = (pdecFromApi) => {
       return (
         <tr key={pdecFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
@@ -595,7 +635,7 @@ class CPartFcast extends PureComponent {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-                <b>Most Recent Copper Forecasts - Expected Value</b>
+              <b>Most Recent Copper Forecasts - Expected Value</b>
               </td>
             </tr>
             <tr>
@@ -606,7 +646,7 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>December 2020</b></td>
             </tr>
             <tr>
-              <td align="left">
+              <td align="center">
                 <span className="label label-primary"></span>
                 <select
                   className=""
@@ -615,15 +655,12 @@ class CPartFcast extends PureComponent {
                     this.setState({
                       user: e.target.value,
                       validationError:
-                        e.target.value === ""
-                          ? "Choose a participant"
-                          : "",
+                        e.target.value === "" ? "Choose a participant" : "",
                     });
                     this.fillprices(e.target.value, "Copper");
                   }}
                 >
                   {this.state.users.map((user) => (
-                    
                     <option key={user.value} value={user.value}>
                       {user.display}
                     </option>
@@ -635,60 +672,88 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evnov}/MT</b></td>
               <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
-            </tbody>
-        </table>
-        <table className="table table-bordered">
-          <tbody>
             <tr>
-              <td colSpan="5" align="center"><b>General Comments</b></td>
-            </tr>
-            <tr>
-              <td align="left"><b>September:</b> {this.state.comsep}</td>
-            </tr>
-            <tr>
-              <td align="left"><b>October:</b> {this.state.comoct}</td>
-            </tr>
-            <tr>
-              <td align="left"><b>November:</b> {this.state.comnov}</td>
-            </tr>
-            <tr>
-              <td align="left"><b>December:</b> {this.state.comdec}</td>
-            </tr>
-          </tbody>
-        </table>
+            <td rowSpan="12" colSpan="12" align="center">
+            <div style={{ width: "100%", height: 300 }}>
+              <ResponsiveContainer>
+              <BarChart
+              layout="horizontal"
+              width={500}
+              height={400}
+              data={this.props.donnees1}
+              margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="price" type="category" />
+            <YAxis type="number" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Sep20" fill="#00CC00" />
+            <Bar dataKey="Oct20" fill="#0000FF" />
+            <Bar dataKey="Nov20" fill="#FFC000" />
+            <Bar dataKey="Dec20" fill="#FF0000" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      </td>
+      </tr>
+    </tbody>
+    </table>
+    <table className="table table-bordered">
+    <tbody>
+        <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
+        <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
+        <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
+        <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
+        <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
+      </tbody>
+      </table>
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13"><b>Forecasts - September 2020</b></td>
+              <td align="center" colSpan="13">
+              <b>Forecasts - September 2020</b>
+              </td>
             </tr>
-            {this.state.pricesep.map(renderpriceSep)}
+            {this.state.prixsept.map(renderPrixSep)}
           </thead>
-          <tbody>{this.state.septembers.map(renderseptember)}</tbody>
+          <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13"><b>Forecasts - October 2020</b></td>
+              <td align="center" colSpan="13">
+              <b>Forecasts - October 2020</b>
+              </td>
             </tr>
-            {this.state.priceoct.map(renderpriceOct)}
+            {this.state.prixoct.map(renderPrixOct)}
           </thead>
           <tbody>{this.state.octobers.map(renderOctober)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13"><b>Forecasts - November 2020</b></td>
+              <td align="center" colSpan="13">
+              <b>Forecasts - November 2020</b>
+              </td>
             </tr>
-            {this.state.pricenov.map(renderpriceNov)}
+            {this.state.prixnov.map(renderPrixNov)}
           </thead>
           <tbody>{this.state.novembers.map(renderNovember)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
             <tr>
-              <td align="center" colSpan="13"><b>Forecasts - December 2020</b></td>
+              <td align="center" colSpan="13">
+              <b>Forecasts - December 2020</b>
+              </td>
             </tr>
-            {this.state.pricedec.map(renderpriceDec)}
+            {this.state.prixdec.map(renderPrixDec)}
           </thead>
           <tbody>{this.state.decembers.map(renderDecember)}</tbody>
         </table>
@@ -696,4 +761,12 @@ class CPartFcast extends PureComponent {
     );
   }
 }
-export default CPartFcast;
+
+CPartFcast.propTypes = {
+  //logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+export default connect(mapStateToProps, {})(CPartFcast);

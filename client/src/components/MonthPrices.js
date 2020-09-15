@@ -74,7 +74,7 @@ export class MonthPrices extends Component {
               <form noValidate onSubmit={this.onSubmit}>
                 <div className="form-group">
                   <select
-                    id="month"
+                    id="mois"
                     name="month"
                     value={this.state.month}
                     className="form-control form-control-lg"

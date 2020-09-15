@@ -25,7 +25,7 @@ class GPartFcast extends PureComponent {
       decembers: [],
       recents: [],
       prixaug: [],
-      prixsep: [],
+      prixsept: [],
       prixoct: [],
       prixnov: [],
       prixdec: [],
@@ -47,7 +47,6 @@ class GPartFcast extends PureComponent {
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
   }
-
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
@@ -73,19 +72,18 @@ class GPartFcast extends PureComponent {
 
     return newdate + " " + mid;
   }
-
   componentDidMount() {
     fetch("/api/users/tous/" + "Gold")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        let participantFromApi = data.map((participant) => {
-          return { value: participant.name, display: participant.name };
+        let utilisateurFromApi = data.map((utilisateur) => {
+          return { value: utilisateur.name, display: utilisateur.name };
         });
         this.setState({
           users: [{ value: "", display: "(Choose Participant)" }].concat(
-            participantFromApi
+            utilisateurFromApi
           ),
         });
       })
@@ -93,14 +91,13 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
   }
-  fillprices(participant, commodity) {
+  fillprices(utilisateur, produit) {
     let psepFromApi = {};
     let poctFromApi = {};
     let pnovFromApi = {};
     let pdecFromApi = {};
     var donnees1 = [];
-
-    fetch("/api/beyi/commonth/" + "September 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "September 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -119,14 +116,12 @@ class GPartFcast extends PureComponent {
             pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
-        this.setState({
-          prixsep: [].concat(psepFromApi),
-        });
+        this.setState({prixsept: [].concat(psepFromApi),});
       })
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commonth/" + "October 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "October 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -152,7 +147,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commonth/" + "November 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "November 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -178,7 +173,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commonth/" + "December 2020" + "&Gold")
+    fetch("/api/beyi/commois/" + "December 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -204,9 +199,8 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-    
     let averif = 0;
-    fetch("/api/menji/userd/September 2020&" + "Gold&" + participant)
+    fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -222,7 +216,6 @@ class GPartFcast extends PureComponent {
             psepFromApi[0].pour7 * september.price7 +
             psepFromApi[0].pour8 * september.price8 +
             psepFromApi[0].pour9 * september.price9;
-
           this.setState({ evsep: xEV });
           this.setState({ comsep: september.generalcomments });
 
@@ -238,7 +231,7 @@ class GPartFcast extends PureComponent {
             price7: september.price7,
             price8: september.price8,
             price9: september.price9,
-            median: september.median,
+            lemedian: september.lemedian,
             dateforecast: this.convert_to_utc(new Date(september.dateforecast)),
             specificcomments: september.specificcomments,
             generalcomments: september.generalcomments,
@@ -253,9 +246,7 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-
-    
-    fetch("/api/menji/userd/October 2020&" + "Gold&" + participant)
+    fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -284,7 +275,7 @@ class GPartFcast extends PureComponent {
             price7: october.price7,
             price8: october.price8,
             price9: october.price9,
-            median: october.median,
+            lemedian: october.lemedian,
             dateforecast: this.convert_to_utc(new Date(october.dateforecast)),
             specificcomments: october.specificcomments,
             generalcomments: october.generalcomments,
@@ -298,7 +289,7 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-    fetch("/api/menji/userd/November 2020&" + "Gold&" + participant)
+    fetch("/api/menji/userd/November 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -327,7 +318,7 @@ class GPartFcast extends PureComponent {
             price7: november.price7,
             price8: november.price8,
             price9: november.price9,
-            median: november.median,
+            lemedian: november.lemedian,
             dateforecast: this.convert_to_utc(new Date(november.dateforecast)),
             specificcomments: november.specificcomments,
             generalcomments: november.generalcomments,
@@ -341,8 +332,7 @@ class GPartFcast extends PureComponent {
         console.log(error);
       });
     averif = 0;
-
-    fetch("/api/menji/userd/December 2020&" + "Gold&" + participant)
+    fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -371,7 +361,7 @@ class GPartFcast extends PureComponent {
             price7: december.price7,
             price8: december.price8,
             price9: december.price9,
-            median: december.median,
+            lemedian: december.lemedian,
             dateforecast: this.convert_to_utc(new Date(december.dateforecast)),
             specificcomments: december.specificcomments,
             generalcomments: december.generalcomments,
@@ -384,8 +374,7 @@ class GPartFcast extends PureComponent {
       .catch((error) => {
         console.log(error);
       });
-
-    fetch("/api/menji/recentdauser/Gold&" + participant)
+    fetch("/api/menji/recentdauser/" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -466,15 +455,15 @@ class GPartFcast extends PureComponent {
         // console.log(recentFromApi);
         let leprix = [];
 
-        leprix[1] = this.state.prixsep[0].pour1;
-        leprix[2] = this.state.prixsep[0].pour2;
-        leprix[3] = this.state.prixsep[0].pour3;
-        leprix[4] = this.state.prixsep[0].pour4;
-        leprix[5] = this.state.prixsep[0].pour5;
-        leprix[6] = this.state.prixsep[0].pour6;
-        leprix[7] = this.state.prixsep[0].pour7;
-        leprix[8] = this.state.prixsep[0].pour8;
-        leprix[9] = this.state.prixsep[0].pour9;
+        leprix[1] = this.state.prixsept[0].pour1;
+        leprix[2] = this.state.prixsept[0].pour2;
+        leprix[3] = this.state.prixsept[0].pour3;
+        leprix[4] = this.state.prixsept[0].pour4;
+        leprix[5] = this.state.prixsept[0].pour5;
+        leprix[6] = this.state.prixsept[0].pour6;
+        leprix[7] = this.state.prixsept[0].pour7;
+        leprix[8] = this.state.prixsept[0].pour8;
+        leprix[9] = this.state.prixsept[0].pour9;
         var yy = 1;
         for (yy == 1; yy < 10; yy++) {
           donnees1.push({
@@ -485,7 +474,6 @@ class GPartFcast extends PureComponent {
             Dec20: decem1[yy],
           });
         }
-
         this.setState({
           recents: [].concat(recentFromApi),
         });
@@ -496,7 +484,6 @@ class GPartFcast extends PureComponent {
 
     this.setState({ donnees1 });
   }
-
   render() {
     const renderSeptember = (septemberFromApi) => {
       return (
@@ -582,9 +569,9 @@ class GPartFcast extends PureComponent {
           <td align="center"><b>${psepFromApi.pour5}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour6}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour7}/oz</b></td>
-          <td align="center"><b>{psepFromApi.pour8}/oz</b></td>
+          <td align="center"><b>${psepFromApi.pour8}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Jusifications"}</b></td>
+          <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -733,7 +720,7 @@ class GPartFcast extends PureComponent {
               <b>Forecasts - September 2020</b>
               </td>
             </tr>
-            {this.state.prixsep.map(renderPrixSep)}
+            {this.state.prixsept.map(renderPrixSep)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>

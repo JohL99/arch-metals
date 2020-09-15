@@ -17,7 +17,7 @@ router.get("/test", (req, res) => res.json({ msg: "mawazo iko" }));
   const newForecast = new Forecast({
     user: req.body.user,
     commodity: req.body.commodity,
-    month: req.body.month,
+    mois: req.body.mois,
     dateForecast: req.body.dateForecast,
     price1: req.body.price1,
     price2: req.body.price2,

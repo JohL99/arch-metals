@@ -16,7 +16,7 @@ class GraphCopper extends PureComponent {
     super(props);
     this.state = {
       commodity: "",
-      month: "",
+      mois: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -61,7 +61,7 @@ class GraphCopper extends PureComponent {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let sum = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commonth/" + sanza + "&Copper")
+    fetch("/api/beyi/commois/" + sanza + "&Copper")
       .then((response) => {
         return response.json();
       })

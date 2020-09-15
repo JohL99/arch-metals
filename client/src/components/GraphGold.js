@@ -16,7 +16,7 @@ class GraphGold extends PureComponent {
     super(props);
     this.state = {
       commodity: "",
-      month: "",
+      mois: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -61,7 +61,7 @@ class GraphGold extends PureComponent {
     this.setState({ price8: "" });
     this.setState({ price9: "" });
     let sum = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    fetch("/api/beyi/commonth/" + sanza + "&Gold")
+    fetch("/api/beyi/commois/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })

@@ -17,7 +17,7 @@ router.post("/sauvegarde", (req, res) => {
   const newBoule = new Boule({
     user: req.body.user,
     commodity: req.body.commodity,
-    month: req.body.month,
+    mois: req.body.mois,
   });
   newBoule
     .save()

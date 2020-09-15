@@ -14,8 +14,8 @@ class GSumFcast extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      monthprice: [],
-      monthpour: [],
+      moisprix: [],
+      moispour: [],
       price1: [],
       price2: [],
       price3: [],
@@ -36,24 +36,24 @@ class GSumFcast extends PureComponent {
       avg9: [],
       avmedian: [],
       ev: [],
-      augprice: 0,
-      sepprice: 0,
-      octprice: 0,
-      novprice: 0,
+      augprix: 0,
+      septprix: 0,
+      octprix: 0,
+      novprix: 0,
       augpour: 0,
-      seppour: 0,
+      septpour: 0,
       octpour: 0,
       novpour: 0,
       decpour: 0,
       augnb: 0,
-      sepnb: 0,
+      septnb: 0,
       octnb: 0,
       novnb: 0,
       decnb: 0,
-      data1: [],
-      Aprice: [],
+      donnees1: [],
+      lesprix: [],
       lesCast: [],
-      recent: [],
+      maloba: [],
     };
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
@@ -71,20 +71,20 @@ class GSumFcast extends PureComponent {
         return response3.json();
       })
       .then((data3) => {
-        let recentyaApi = data3.map((info) => {
+        let malobayaApi = data3.map((liloba) => {
           return {
-            id: info._id,
-            month: info.month,
-            generalcomments: info.generalcomments,
+            id: liloba._id,
+            mois: liloba.mois,
+            generalcomments: liloba.generalcomments,
           };
         });
         this.setState({
-          recent: [
+          maloba: [
             {
               id: "",
               generalcomments: "",
             },
-          ].concat(recentyaApi),
+          ].concat(malobayaApi),
         });
       });
   }
@@ -95,15 +95,15 @@ class GSumFcast extends PureComponent {
       }
       return -1;
     }
-    //Récupération des price
+    //Récupération des prix
     fetch("/api/beyi/comm/" + "Gold")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        let counter = 0;
-        let monthprice = [...this.state.monthprice];
+        let compteur = 0;
+        let moisprix = [...this.state.moisprix];
         let price1 = [...this.state.price1];
         let price2 = [...this.state.price2];
         let price3 = [...this.state.price3];
@@ -113,29 +113,29 @@ class GSumFcast extends PureComponent {
         let price7 = [...this.state.price7];
         let price8 = [...this.state.price8];
         let price9 = [...this.state.price9];
-        let bucket = data.map((price) => {
+        let talo = data.map((mutengo) => {
           //put it in an array
-          monthprice[counter + 1] = price.month;
+          moisprix[compteur + 1] = mutengo.month;
           //put it in an array
-          price1[counter + 1] = price.floorprice + price.constant1 * 0;
-          price2[counter + 1] = price.floorprice + price.constant1 * 1;
-          price3[counter + 1] = price.floorprice + price.constant1 * 2;
-          price4[counter + 1] = price.floorprice + price.constant1 * 3;
-          price5[counter + 1] = price.floorprice + price.constant1 * 4;
-          price6[counter + 1] = price.floorprice + price.constant1 * 5;
-          price7[counter + 1] = price.floorprice + price.constant1 * 6;
-          price8[counter + 1] = price.floorprice + price.constant1 * 7;
-          price9[counter + 1] = price.floorprice + price.constant1 * 8;
-          if (monthprice[counter + 1] === "September 2020") {this.setState({ sepprice: counter + 1 });} 
-            else if (monthprice[counter + 1] === "October 2020") {this.setState({ octprice: counter + 1 });} 
-            else if (monthprice[counter + 1] === "November 2020") {this.setState({ novprice: counter + 1 });} 
-            else if (monthprice[counter + 1] === "December 2020") {this.setState({ decprice: counter + 1 });}
-          counter++;
+          price1[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 0;
+          price2[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 1;
+          price3[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 2;
+          price4[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 3;
+          price5[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 4;
+          price6[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 5;
+          price7[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 6;
+          price8[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 7;
+          price9[compteur + 1] = mutengo.floorprice + mutengo.constant1 * 8;
+          if (moisprix[compteur + 1] === "September 2020") {this.setState({ septprix: compteur + 1 });} 
+            else if (moisprix[compteur + 1] === "October 2020") {this.setState({ octprix: compteur + 1 });} 
+            else if (moisprix[compteur + 1] === "November 2020") {this.setState({ novprix: compteur + 1 });} 
+            else if (moisprix[compteur + 1] === "December 2020") {this.setState({ decprix: compteur + 1 });}
+          compteur++;
           return {
-            id: price._id,
+            id: mutengo._id,
           };
         });
-        this.setState({ monthprice });
+        this.setState({ moisprix });
         this.setState({ price1 });
         this.setState({ price2 });
         this.setState({ price3 });
@@ -151,14 +151,14 @@ class GSumFcast extends PureComponent {
         console.log(error);
       });
     //prendre les valeurs
-    fetch("/api/menji/moymonth/" + "Gold")
+    fetch("/api/menji/moymois/" + "Gold")
       .then((response1) => {
         return response1.json();
       })
       .then((data1) => {
         let lesCast = [...this.state.lesCast];
-        let counter = 0;
-        let monthpour = [...this.state.monthpour];
+        let compteur = 0;
+        let moispour = [...this.state.moispour];
         let avg1 = [...this.state.avg1];
         let avg2 = [...this.state.avg2];
         let avg3 = [...this.state.avg3];
@@ -170,30 +170,30 @@ class GSumFcast extends PureComponent {
         let avg9 = [...this.state.avg9];
         let avmedian = [...this.state.avmedian];
         let ev = [...this.state.ev];
-        counter = 0;
-        let beyiFromApi = data1.map((price) => {
-          //this.setState({ averages: [].concat(meanRepeat) });
-          monthpour[counter + 1] = price._id;
-          avg1[counter + 1] = Math.round(price.avg1);
-          avg2[counter + 1] = Math.round(price.avg2);
-          avg3[counter + 1] = Math.round(price.avg3);
-          avg4[counter + 1] = Math.round(price.avg4);
-          avg5[counter + 1] = Math.round(price.avg5);
-          avg6[counter + 1] = Math.round(price.avg6);
-          avg7[counter + 1] = Math.round(price.avg7);
-          avg8[counter + 1] = Math.round(price.avg8);
-          avg9[counter + 1] = Math.round(price.avg9);
-          avmedian[counter + 1] = Math.round(price.median);
-          if (monthpour[counter + 1] === "September 2020") {this.setState({ seppour: counter + 1 });} 
-            else if (monthpour[counter + 1] === "October 2020") {this.setState({ octpour: counter + 1 });} 
-            else if (monthpour[counter + 1] === "November 2020") {this.setState({ novpour: counter + 1 });} 
-            else if (monthpour[counter + 1] === "December 2020") {this.setState({ decpour: counter + 1 });}
-          counter++;
+        compteur = 0;
+        let beyiFromApi = data1.map((prix) => {
+          //this.setState({ lesmoyennes: [].concat(moyenneEncore) });
+          moispour[compteur + 1] = prix._id;
+          avg1[compteur + 1] = Math.round(prix.avg1);
+          avg2[compteur + 1] = Math.round(prix.avg2);
+          avg3[compteur + 1] = Math.round(prix.avg3);
+          avg4[compteur + 1] = Math.round(prix.avg4);
+          avg5[compteur + 1] = Math.round(prix.avg5);
+          avg6[compteur + 1] = Math.round(prix.avg6);
+          avg7[compteur + 1] = Math.round(prix.avg7);
+          avg8[compteur + 1] = Math.round(prix.avg8);
+          avg9[compteur + 1] = Math.round(prix.avg9);
+          avmedian[compteur + 1] = Math.round(prix.median);
+          if (moispour[compteur + 1] === "September 2020") {this.setState({ septpour: compteur + 1 });} 
+            else if (moispour[compteur + 1] === "October 2020") {this.setState({ octpour: compteur + 1 });} 
+            else if (moispour[compteur + 1] === "November 2020") {this.setState({ novpour: compteur + 1 });} 
+            else if (moispour[compteur + 1] === "December 2020") {this.setState({ decpour: compteur + 1 });}
+          compteur++;
           return {
-            month: price._id,
+            mois: prix._id,
           };
         });
-        this.setState({ monthpour });
+        this.setState({ moispour });
         this.setState({ avg1 });
         this.setState({ avg2 });
         this.setState({ avg3 });
@@ -209,19 +209,19 @@ class GSumFcast extends PureComponent {
       .catch((error1) => {
         console.log(error1);
       });
-    //prendre les numbers des casts
-    fetch("/api/menji/comptemonth/" + "Gold")
+    //prendre les nombres des casts
+    fetch("/api/menji/comptemois/" + "Gold")
       .then((response5) => {
         return response5.json();
       })
       .then((data5) => {
-        let beyiFromApi = data5.map((price) => {
-          if (price._id === "September 2020") {this.setState({ sepnb: price.compte });} 
-            else if (price._id === "October 2020") {this.setState({ octnb: price.compte });} 
-            else if (price._id === "November 2020") {this.setState({ novnb: price.compte });} 
-            else if (price._id === "December 2020") {this.setState({ decnb: price.compte });}
+        let beyiFromApi = data5.map((prix) => {
+          if (prix._id === "September 2020") {this.setState({ septnb: prix.compte });} 
+            else if (prix._id === "October 2020") {this.setState({ octnb: prix.compte });} 
+            else if (prix._id === "November 2020") {this.setState({ novnb: prix.compte });} 
+            else if (prix._id === "December 2020") {this.setState({ decnb: prix.compte });}
           return {
-            month: price._id,
+            mois: prix._id,
           };
         });
       })
@@ -229,7 +229,7 @@ class GSumFcast extends PureComponent {
         console.log(error1);
       });
     this.graphi();
-    this.findev();
+    this.trouveev();
     this.fillgeneralcomments("September 2020");
     this.fillgeneralcomments("October 2020");
     this.fillgeneralcomments("November 2020");
@@ -237,106 +237,106 @@ class GSumFcast extends PureComponent {
   }
   graphi() {
     //graphique
-    var data1 = [];
-    //data = { ...this.state.data1 };
-    data1.push({
-      price: this.state.price1[this.state.seppour],
-      Sep20: this.state.avg1[this.state.seppour],
+    var donnees1 = [];
+    //donnees = { ...this.state.donnees1 };
+    donnees1.push({
+      price: this.state.price1[this.state.septpour],
+      Sep20: this.state.avg1[this.state.septpour],
       Oct20: this.state.avg1[this.state.octpour],
       Nov20: this.state.avg1[this.state.novpour],
       Dec20: this.state.avg1[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price2[this.state.seppour],
-      Sep20: this.state.avg2[this.state.seppour],
+    donnees1.push({
+      price: this.state.price2[this.state.septpour],
+      Sep20: this.state.avg2[this.state.septpour],
       Oct20: this.state.avg2[this.state.octpour],
       Nov20: this.state.avg2[this.state.novpour],
       Dec20: this.state.avg2[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price3[this.state.seppour],
-      Sep20: this.state.avg3[this.state.seppour],
+    donnees1.push({
+      price: this.state.price3[this.state.septpour],
+      Sep20: this.state.avg3[this.state.septpour],
       Oct20: this.state.avg3[this.state.octpour],
       Nov20: this.state.avg3[this.state.novpour],
       Dec20: this.state.avg3[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price4[this.state.seppour],
-      Sep20: this.state.avg4[this.state.seppour],
+    donnees1.push({
+      price: this.state.price4[this.state.septpour],
+      Sep20: this.state.avg4[this.state.septpour],
       Oct20: this.state.avg4[this.state.octpour],
       Nov20: this.state.avg4[this.state.novpour],
       Dec20: this.state.avg4[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price5[this.state.seppour],
-      Sep20: this.state.avg5[this.state.seppour],
+    donnees1.push({
+      price: this.state.price5[this.state.septpour],
+      Sep20: this.state.avg5[this.state.septpour],
       Oct20: this.state.avg5[this.state.octpour],
       Nov20: this.state.avg5[this.state.novpour],
       Dec20: this.state.avg5[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price6[this.state.seppour],
-      Sep20: this.state.avg6[this.state.seppour],
+    donnees1.push({
+      price: this.state.price6[this.state.septpour],
+      Sep20: this.state.avg6[this.state.septpour],
       Oct20: this.state.avg6[this.state.octpour],
       Nov20: this.state.avg6[this.state.novpour],
       Dec20: this.state.avg6[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price7[this.state.seppour],
-      Sep20: this.state.avg7[this.state.seppour],
+    donnees1.push({
+      price: this.state.price7[this.state.septpour],
+      Sep20: this.state.avg7[this.state.septpour],
       Oct20: this.state.avg7[this.state.octpour],
       Nov20: this.state.avg7[this.state.novpour],
       Dec20: this.state.avg7[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price8[this.state.seppour],
-      Sep20: this.state.avg8[this.state.seppour],
+    donnees1.push({
+      price: this.state.price8[this.state.septpour],
+      Sep20: this.state.avg8[this.state.septpour],
       Oct20: this.state.avg8[this.state.octpour],
       Nov20: this.state.avg8[this.state.novpour],
       Dec20: this.state.avg8[this.state.decpour],
     });
-    data1.push({
-      price: this.state.price9[this.state.seppour],
-      Sep20: this.state.avg9[this.state.seppour],
+    donnees1.push({
+      price: this.state.price9[this.state.septpour],
+      Sep20: this.state.avg9[this.state.septpour],
       Oct20: this.state.avg9[this.state.octpour],
       Nov20: this.state.avg9[this.state.novpour],
       Dec20: this.state.avg9[this.state.decpour],
     });
-    this.setState({ data1 });
-    //console.log(data1);
-    this.findev();
+    this.setState({ donnees1 });
+    //console.log(donnees1);
+    this.trouveev();
   }
-  findev() {
+  trouveev() {
     let ev = [...this.state.ev];
     var lemax = Math.max(
-      this.state.avg1[this.state.seppour],
-      this.state.avg2[this.state.seppour],
-      this.state.avg3[this.state.seppour],
-      this.state.avg4[this.state.seppour],
-      this.state.avg5[this.state.seppour],
-      this.state.avg6[this.state.seppour],
-      this.state.avg7[this.state.seppour],
-      this.state.avg8[this.state.seppour],
-      this.state.avg9[this.state.seppour]
+      this.state.avg1[this.state.septpour],
+      this.state.avg2[this.state.septpour],
+      this.state.avg3[this.state.septpour],
+      this.state.avg4[this.state.septpour],
+      this.state.avg5[this.state.septpour],
+      this.state.avg6[this.state.septpour],
+      this.state.avg7[this.state.septpour],
+      this.state.avg8[this.state.septpour],
+      this.state.avg9[this.state.septpour]
     );
-      console.log(this.state.seppour);
-    if (this.state.avg1[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price1[this.state.sepprice];
+      console.log(this.state.septpour);
+    if (this.state.avg1[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price1[this.state.septprix];
       this.setState({ ev });
-    } else if (this.state.avg2[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price2[this.state.sepprice];
+    } else if (this.state.avg2[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price2[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg3[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price3[this.state.sepprice];
+      else if (this.state.avg3[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price3[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg4[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price4[this.state.sepprice];
+      else if (this.state.avg4[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price4[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg5[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price5[this.state.sepprice];
+      else if (this.state.avg5[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price5[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg6[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price6[this.state.sepprice];
+      else if (this.state.avg6[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price6[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg7[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price7[this.state.sepprice];
+      else if (this.state.avg7[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price7[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg8[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price8[this.state.sepprice];
+      else if (this.state.avg8[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price8[this.state.septprix];
       this.setState({ ev });} 
-      else if (this.state.avg9[this.state.seppour] === lemax) {ev[this.state.seppour] = this.state.price9[this.state.sepprice];
+      else if (this.state.avg9[this.state.septpour] === lemax) {ev[this.state.septpour] = this.state.price9[this.state.septprix];
       this.setState({ ev });}
       var lemax1 = Math.max(this.state.avg1[this.state.octpour],
       this.state.avg2[this.state.octpour],
@@ -348,23 +348,23 @@ class GSumFcast extends PureComponent {
       this.state.avg8[this.state.octpour],
       this.state.avg9[this.state.octpour]
     );
-    if (this.state.avg1[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price1[this.state.octprice];
+    if (this.state.avg1[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price1[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg2[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price2[this.state.octprice];
+      else if (this.state.avg2[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price2[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg3[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price3[this.state.octprice];
+      else if (this.state.avg3[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price3[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg4[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price4[this.state.octprice];
+      else if (this.state.avg4[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price4[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg5[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price5[this.state.octprice];
+      else if (this.state.avg5[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price5[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg6[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price6[this.state.octprice];
+      else if (this.state.avg6[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price6[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg7[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price7[this.state.octprice];
+      else if (this.state.avg7[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price7[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg8[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price8[this.state.octprice];
+      else if (this.state.avg8[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price8[this.state.octprix];
       this.setState({ ev });} 
-      else if (this.state.avg9[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price9[this.state.octprice];
+      else if (this.state.avg9[this.state.octpour] === lemax1) {ev[this.state.octpour] = this.state.price9[this.state.octprix];
       this.setState({ ev });}
     var lemax2 = Math.max(
       this.state.avg1[this.state.novpour],
@@ -377,23 +377,23 @@ class GSumFcast extends PureComponent {
       this.state.avg8[this.state.novpour],
       this.state.avg9[this.state.novpour]
     );
-    if (this.state.avg1[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price1[this.state.novprice];
+    if (this.state.avg1[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price1[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg2[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price2[this.state.novprice];
+      else if (this.state.avg2[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price2[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg3[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price3[this.state.novprice];
+      else if (this.state.avg3[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price3[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg4[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price4[this.state.novprice];
+      else if (this.state.avg4[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price4[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg5[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price5[this.state.novprice];
+      else if (this.state.avg5[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price5[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg6[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price6[this.state.novprice];
+      else if (this.state.avg6[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price6[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg7[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price7[this.state.novprice];
+      else if (this.state.avg7[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price7[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg8[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price8[this.state.novprice];
+      else if (this.state.avg8[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price8[this.state.novprix];
       this.setState({ ev });} 
-      else if (this.state.avg9[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price9[this.state.novprice];
+      else if (this.state.avg9[this.state.novpour] === lemax2) {ev[this.state.novpour] = this.state.price9[this.state.novprix];
       this.setState({ ev });}
     var lemax3 = Math.max(
       this.state.avg1[this.state.decpour],
@@ -406,29 +406,29 @@ class GSumFcast extends PureComponent {
       this.state.avg8[this.state.decpour],
       this.state.avg9[this.state.decpour]
     );
-    if (this.state.avg1[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price1[this.state.decprice]; 
+    if (this.state.avg1[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price1[this.state.decprix]; 
       this.setState({ ev });} 
-      else if (this.state.avg2[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price2[this.state.decprice];
+      else if (this.state.avg2[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price2[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg3[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price3[this.state.decprice];
+      else if (this.state.avg3[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price3[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg4[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price4[this.state.decprice];
+      else if (this.state.avg4[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price4[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg5[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price5[this.state.decprice];
+      else if (this.state.avg5[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price5[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg6[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price6[this.state.decprice];
+      else if (this.state.avg6[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price6[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg7[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price7[this.state.decprice];
+      else if (this.state.avg7[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price7[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg8[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price8[this.state.decprice];
+      else if (this.state.avg8[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price8[this.state.decprix];
       this.setState({ ev });} 
-      else if (this.state.avg9[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price9[this.state.decprice];
+      else if (this.state.avg9[this.state.decpour] === lemax3) {ev[this.state.decpour] = this.state.price9[this.state.decprix];
       this.setState({ ev });}
   }
   renderTableData() {
-    return this.state.Aprice.map((price, index) => {
+    return this.state.lesprix.map((prix, index) => {
       const {
-        month,
+        mois,
         price1,
         price2,
         price3,
@@ -438,11 +438,11 @@ class GSumFcast extends PureComponent {
         price7,
         price8,
         price9,
-      } = price; //destructuring
+      } = prix; //destructuring
       return (
         <tr>
           <td rowSpan={"2"} align="center" width={"10%"}>
-            {month}
+            {mois}
           </td>
           <td>{"EV"}</td>
           <td>{"No."}</td>
@@ -460,32 +460,32 @@ class GSumFcast extends PureComponent {
     });
   }
   render() {
-    const renderprice = (bucket) => {
+    const renderPrix = (talo) => {
       return (
-        <tr key={bucket.id}>
+        <tr key={talo.id}>
           <td rowSpan="2" align="center" width="10%">
-            {bucket.month}
+            {talo.mois}
           </td>
           <td>{"EV"}</td>
           <td>{"No."}</td>
-          <td>{bucket.price1}</td>
-          <td>{bucket.price2}</td>
-          <td>{bucket.price3}</td>
-          <td>{bucket.price4}</td>
-          <td>{bucket.price5}</td>
-          <td>{bucket.price6}</td>
-          <td>{bucket.price7}</td>
-          <td>{bucket.price8}</td>
-          <td>{bucket.price9}</td>
+          <td>{talo.price1}</td>
+          <td>{talo.price2}</td>
+          <td>{talo.price3}</td>
+          <td>{talo.price4}</td>
+          <td>{talo.price5}</td>
+          <td>{talo.price6}</td>
+          <td>{talo.price7}</td>
+          <td>{talo.price8}</td>
+          <td>{talo.price9}</td>
         </tr>
       );
     };
-    const renderMaloba = (recentyaApi) => {
-      if(recentyaApi.id !== ""){
+    const renderMaloba = (malobayaApi) => {
+      if(malobayaApi.id !== ""){
         return (
-          <tr key={recentyaApi.id}>
-            <td align="center">{recentyaApi.month}</td>
-            <td align="left">{recentyaApi.generalcomments}</td>
+          <tr key={malobayaApi.id}>
+            <td align="center">{malobayaApi.mois}</td>
+            <td align="left">{malobayaApi.generalcomments}</td>
           </tr>
         );
       }
@@ -498,45 +498,45 @@ class GSumFcast extends PureComponent {
               <td colSpan="12" align="center" width="70%"><b>Aggregation of All Gold Forecasts</b></td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.sepprice]*/}<b>september 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.septprix]*/}<b>September 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price2[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price3[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price4[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price5[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price6[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price7[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price8[this.state.sepprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price9[this.state.sepprice]}/oz</b></td>
+              <td align="center"><b>${this.state.price1[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price2[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price3[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price4[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price5[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price6[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price7[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price8[this.state.septprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price9[this.state.septprix]}/oz</b></td>
               </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.seppour]}/oz</b></td>
-              <td align="center"><b>{this.state.sepnb}</b></td>
-              <td align="center">{this.state.avg1[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg2[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg3[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg4[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg5[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg6[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg7[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg8[this.state.seppour]}%</td>
-              <td align="center">{this.state.avg9[this.state.seppour]}%</td>
+              <td align="center"><b>${this.state.avmedian[this.state.septpour]}/oz</b></td>
+              <td align="center"><b>{this.state.septnb}</b></td>
+              <td align="center">{this.state.avg1[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg2[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg3[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg4[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg5[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg6[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg7[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg8[this.state.septpour]}%</td>
+              <td align="center">{this.state.avg9[this.state.septpour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.octprice]*/}<b>October 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.octprix]*/}<b>October 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price2[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price3[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price4[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price5[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price6[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price7[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price8[this.state.octprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price9[this.state.octprice]}/oz</b></td>
+              <td align="center"><b>${this.state.price1[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price2[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price3[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price4[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price5[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price6[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price7[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price8[this.state.octprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price9[this.state.octprix]}/oz</b></td>
             </tr>
             <tr>
               <td align="center"><b>${this.state.avmedian[this.state.octpour]}/oz</b></td>
@@ -553,7 +553,7 @@ class GSumFcast extends PureComponent {
             </tr>
             <tr>
               <td rowSpan="2" align="center">
-                {/*this.state.monthprice[this.state.novprice]*/}
+                {/*this.state.moisprix[this.state.novprix]*/}
                 <b>November 2020</b>
               </td>
               <td align="center">
@@ -562,33 +562,15 @@ class GSumFcast extends PureComponent {
               <td align="center">
 		          <b>No. Forecasts</b>
 	            </td>
-              <td align="center">
-		            <b>${this.state.price1[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price2[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price3[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price4[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price5[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price6[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price7[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price8[this.state.novprice]}/oz</b>
-	            </td>
-              <td align="center">
-		            <b>${this.state.price9[this.state.novprice]}/oz</b>
-	            </td>
+              <td align="center"><b>${this.state.price1[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price2[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price3[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price4[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price5[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price6[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price7[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price8[this.state.novprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price9[this.state.novprix]}/oz</b></td>
             </tr>
             <tr>
               <td align="center"><b>${this.state.avmedian[this.state.novpour]}/oz</b></td>
@@ -604,18 +586,18 @@ class GSumFcast extends PureComponent {
               <td align="center">{this.state.avg9[this.state.novpour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.decprice]*/}<b>December 2020</b></td>
+              <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.decprix]*/}<b>December 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price2[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price3[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price4[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price5[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price6[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price7[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price8[this.state.decprice]}/oz</b></td>
-              <td align="center"><b>${this.state.price9[this.state.decprice]}/oz</b></td>
+              <td align="center"><b>${this.state.price1[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price2[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price3[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price4[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price5[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price6[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price7[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price8[this.state.decprix]}/oz</b></td>
+              <td align="center"><b>${this.state.price9[this.state.decprix]}/oz</b></td>
             </tr>
             <tr>
               <td align="center"><b>${this.state.avmedian[this.state.decpour]}/oz</b></td>
@@ -638,7 +620,7 @@ class GSumFcast extends PureComponent {
                       layout="vertical"
                       width={500}
                       height={400}
-                      data={this.state.data1}
+                      data={this.state.donnees1}
                       margin={{
                         top: 5,
                         right: 5,
@@ -669,7 +651,7 @@ class GSumFcast extends PureComponent {
                 <b>Most Recent General Comments</b>
               </td>
             </tr>
-            {this.state.recent.map(renderMaloba)}
+            {this.state.maloba.map(renderMaloba)}
           </tbody>
         </table>
       </div>

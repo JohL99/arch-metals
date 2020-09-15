@@ -10,7 +10,7 @@ class GoldInput extends Component {
     super(props);
     this.state = {
       commodity: "",
-      month: "",
+      mois: "",
       user: "",
       priceAvr: "",
       price1: "",
@@ -22,8 +22,8 @@ class GoldInput extends Component {
       price7: "",
       price8: "",
       price9: "",
-      mean: "",
-      median: "",
+      lamoyenne: "",
+      lemedian: "",
       percent1: "",
       percent2: "",
       percent3: "",
@@ -59,20 +59,16 @@ class GoldInput extends Component {
       fichier: null,
       fraicheur: 0,
     };
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
- 
-  this.onChange = this.onChange.bind(this);
-  this.onSubmit = this.onSubmit.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
   componentDidUpdate() {
     if (this.state.fraicheur !== 0) {
-      let cemonth = this.state.month;
-      this.setState({ month: cemonth });
+      let cemois = this.state.mois;
+      this.setState({ mois: cemois });
       this.setState({ fraicheur: 0 });
     }
   }
@@ -108,22 +104,22 @@ class GoldInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    var Median =0;
-    if (Max === this.state.percent1) {Median = this.state.price1;} 
-      else if (Max === this.state.percent2) {Median = this.state.price2;} 
-      else if (Max === this.state.percent3) {Median = this.state.price3;} 
-      else if (Max === this.state.percent4) {Median = this.state.price4;} 
-      else if (Max === this.state.percent5) {Median = this.state.price5;} 
-      else if (Max === this.state.percent6) {Median = this.state.price6;} 
-      else if (Max === this.state.percent7) {Median = this.state.price7;} 
-      else if (Max === this.state.percent8) {Median = this.state.price8;} 
-      else if (Max === this.state.percent9) {Median = this.state.price9;}
-    this.setState({ median: Median });
+    var LeMedian =0;
+    if (Max === this.state.percent1) {LeMedian = this.state.price1;} 
+      else if (Max === this.state.percent2) {LeMedian = this.state.price2;} 
+      else if (Max === this.state.percent3) {LeMedian = this.state.price3;} 
+      else if (Max === this.state.percent4) {LeMedian = this.state.price4;} 
+      else if (Max === this.state.percent5) {LeMedian = this.state.price5;} 
+      else if (Max === this.state.percent6) {LeMedian = this.state.price6;} 
+      else if (Max === this.state.percent7) {LeMedian = this.state.price7;} 
+      else if (Max === this.state.percent8) {LeMedian = this.state.price8;} 
+      else if (Max === this.state.percent9) {LeMedian = this.state.price9;}
+    this.setState({ lemedian: LeMedian });
     //**** AJOUT MEDIAN */
     const newEntry = {
       user: user.name,
       commodity: "Gold", //this.state.commodity,
-      month: this.state.month,
+      mois: this.state.mois,
       dateforecast: new Date(),
       //priceAvr: this.state.priceAvr,
       price1: this.state.percent1,
@@ -135,8 +131,8 @@ class GoldInput extends Component {
       price7: this.state.percent7,
       price8: this.state.percent8,
       price9: this.state.percent9,
-      median: Median,
-      mean: this.state.mean,
+      lemedian: LeMedian,
+      lamoyenne: this.state.lamoyenne,
       specificcomments: this.state.specificcomments,
       generalcomments: this.state.generalcomments,
       documentShared: "",
@@ -162,8 +158,8 @@ class GoldInput extends Component {
     this.setState({ specificcomments: "" });
     this.setState({ generalcomments: "" });
     this.setState({ filecomments: "" });
-    let cemonth = this.state.month;
-    this.setState({ month: cemonth });
+    let cemois = this.state.mois;
+    this.setState({ mois: cemois });
     this.setState({ fraicheur: 1 });
     //upload du fichier
     formData.append("myfile", this.state.file);
@@ -189,32 +185,32 @@ class GoldInput extends Component {
     this.setState({ price7: "" });
     this.setState({ price8: "" });
     this.setState({ price9: "" });
-    fetch("/api/beyi/commonth/" + sanza + "&Gold")
+    fetch("/api/beyi/commois/" + sanza + "&Gold")
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         let yx = data;
-        let bucket = data.map((price) => {
+        let talo = data.map((mutengo) => {
           //put it in an array
-          this.setState({ price1: price.floorprice + price.constant1 * 0 });
-          this.setState({ price2: price.floorprice + price.constant1 * 1 });
-          this.setState({ price3: price.floorprice + price.constant1 * 2 });
-          this.setState({ price4: price.floorprice + price.constant1 * 3 });
-          this.setState({ price5: price.floorprice + price.constant1 * 4 });
-          this.setState({ price6: price.floorprice + price.constant1 * 5 });
-          this.setState({ price7: price.floorprice + price.constant1 * 6 });
-          this.setState({ price8: price.floorprice + price.constant1 * 7 });
-          this.setState({ price9: price.floorprice + price.constant1 * 8 });
+          this.setState({ price1: mutengo.floorprice + mutengo.constant1 * 0 });
+          this.setState({ price2: mutengo.floorprice + mutengo.constant1 * 1 });
+          this.setState({ price3: mutengo.floorprice + mutengo.constant1 * 2 });
+          this.setState({ price4: mutengo.floorprice + mutengo.constant1 * 3 });
+          this.setState({ price5: mutengo.floorprice + mutengo.constant1 * 4 });
+          this.setState({ price6: mutengo.floorprice + mutengo.constant1 * 5 });
+          this.setState({ price7: mutengo.floorprice + mutengo.constant1 * 6 });
+          this.setState({ price8: mutengo.floorprice + mutengo.constant1 * 7 });
+          this.setState({ price9: mutengo.floorprice + mutengo.constant1 * 8 });
           return {
-            id: price._id,
+            id: mutengo._id,
           };
         });
       })
       .catch((error) => {
         console.log(error);
       });
-    this.setState({ month: sanza });
+    this.setState({ mois: sanza });
   }
   CalculPondere(vraipourcent, indice) {
     this.setState({ priceAvr: "" });
@@ -229,7 +225,7 @@ class GoldInput extends Component {
       this.state.price8 * (indice === 8 ? vraipourcent : this.state.percent8) +
       this.state.price9 * (indice === 9 ? vraipourcent : this.state.percent9);
     this.setState({ priceAvr: Moyenne });
-    this.setState({ mean: Moyenne });
+    this.setState({ lamoyenne: Moyenne });
   }
   cancelCourse = () => {
     this.myFormRef.reset();
@@ -309,12 +305,12 @@ class GoldInput extends Component {
                 </td>
                 <td align="center">
                   <select
-                    id="month"
+                    id="mois"
                     name="month"
-                    value={this.state.month}
+                    value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
-                        month: e.target.value,
+                        mois: e.target.value,
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
@@ -324,12 +320,12 @@ class GoldInput extends Component {
                     <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
-                      .map((month, index) => (
+                      .map((lemois, index) => (
                         <option
-                          key={index /* month.value */}
-                          value={month.value}
+                          key={index /* lemois.value */}
+                          value={lemois.value}
                         >
-                          {month + " " + new Date().getFullYear()}
+                          {lemois + " " + new Date().getFullYear()}
                         </option>
                       ))}
                   </select>
@@ -755,8 +751,8 @@ class GoldInput extends Component {
           </table>
         </form>
         <div>
-          <GraphGold mweji={this.state.month} />
-          <MonthForecastGold mweji={this.state.month} />
+          <GraphGold mweji={this.state.mois} />
+          <MonthForecastGold mweji={this.state.mois} />
         </div>
       </div>
     );
