@@ -606,7 +606,6 @@ class CForecast extends PureComponent {
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="RecentData" fill="#00B050" />
-                        <Bar dataKey="OldData" fill="#FF0000" />
                         <Bar dataKey="AllData" fill="#FFC000" />
                       </BarChart>
                     </ResponsiveContainer>
