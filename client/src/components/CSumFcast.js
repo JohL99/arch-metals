@@ -310,15 +310,15 @@ class CSumFcast extends PureComponent {
     //console.log(donnees1);
   
     var EVSEP = 
-    this.state.avg1[this.state.septpour] * this.state.price1[this.state.septprix] +
-    this.state.avg2[this.state.septpour] * this.state.price2[this.state.septprix] +
-    this.state.avg3[this.state.septpour] * this.state.price3[this.state.septprix] +
-    this.state.avg4[this.state.septpour] * this.state.price4[this.state.septprix] +
-    this.state.avg5[this.state.septpour] * this.state.price5[this.state.septprix] +
-    this.state.avg6[this.state.septpour] * this.state.price6[this.state.septprix] +
-    this.state.avg7[this.state.septpour] * this.state.price7[this.state.septprix] +
-    this.state.avg8[this.state.septpour] * this.state.price7[this.state.septprix] +
-    this.state.avg9[this.state.septpour] * this.state.price8[this.state.septprix]
+    Math.round(this.state.avg1[this.state.septpour]) * this.state.price1[this.state.septprix] +
+    Math.round(this.state.avg2[this.state.septpour]) * this.state.price2[this.state.septprix] +
+    Math.round(this.state.avg3[this.state.septpour]) * this.state.price3[this.state.septprix] +
+    Math.round(this.state.avg4[this.state.septpour]) * this.state.price4[this.state.septprix] +
+    Math.round(this.state.avg5[this.state.septpour]) * this.state.price5[this.state.septprix] +
+    Math.round(this.state.avg6[this.state.septpour]) * this.state.price6[this.state.septprix] +
+    Math.round(this.state.avg7[this.state.septpour]) * this.state.price7[this.state.septprix] +
+    Math.round(this.state.avg8[this.state.septpour]) * this.state.price7[this.state.septprix] +
+    Math.round(this.state.avg9[this.state.septpour]) * this.state.price8[this.state.septprix]
     this.setState({EVSEP})
     var EVsep = Math.round(EVSEP / 100);
     this.setState({EVsep: EVsep})
@@ -359,15 +359,15 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });}
       
       var EVOCT = 
-      this.state.avg1[this.state.octpour] * this.state.price1[this.state.septprix] +
-      this.state.avg2[this.state.octpour] * this.state.price2[this.state.septprix] +
-      this.state.avg3[this.state.octpour] * this.state.price3[this.state.septprix] +
-      this.state.avg4[this.state.octpour] * this.state.price4[this.state.septprix] +
-      this.state.avg5[this.state.octpour] * this.state.price5[this.state.septprix] +
-      this.state.avg6[this.state.octpour] * this.state.price6[this.state.septprix] +
-      this.state.avg7[this.state.octpour] * this.state.price7[this.state.septprix] +
-      this.state.avg8[this.state.octpour] * this.state.price7[this.state.septprix] +
-      this.state.avg9[this.state.octpour] * this.state.price8[this.state.septprix]
+      Math.round(this.state.avg1[this.state.octpour]) * this.state.price1[this.state.septprix] +
+      Math.round(this.state.avg2[this.state.octpour]) * this.state.price2[this.state.septprix] +
+      Math.round(this.state.avg3[this.state.octpour]) * this.state.price3[this.state.septprix] +
+      Math.round(this.state.avg4[this.state.octpour]) * this.state.price4[this.state.septprix] +
+      Math.round(this.state.avg5[this.state.octpour]) * this.state.price5[this.state.septprix] +
+      Math.round(this.state.avg6[this.state.octpour]) * this.state.price6[this.state.septprix] +
+      Math.round(this.state.avg7[this.state.octpour]) * this.state.price7[this.state.septprix] +
+      Math.round(this.state.avg8[this.state.octpour]) * this.state.price7[this.state.septprix] +
+      Math.round(this.state.avg9[this.state.octpour]) * this.state.price8[this.state.septprix]
       this.setState({EVOCT})
       var EVoct = Math.round(EVOCT / 100);
       this.setState({EVoct: EVoct})
@@ -403,15 +403,15 @@ class CSumFcast extends PureComponent {
       this.setState({ ev });}
     
       var EVNOV = 
-      this.state.avg1[this.state.novpour] * this.state.price1[this.state.septprix] +
-      this.state.avg2[this.state.novpour] * this.state.price2[this.state.septprix] +
-      this.state.avg3[this.state.novpour] * this.state.price3[this.state.septprix] +
-      this.state.avg4[this.state.novpour] * this.state.price4[this.state.septprix] +
-      this.state.avg5[this.state.novpour] * this.state.price5[this.state.septprix] +
-      this.state.avg6[this.state.novpour] * this.state.price6[this.state.septprix] +
-      this.state.avg7[this.state.novpour] * this.state.price7[this.state.septprix] +
-      this.state.avg8[this.state.novpour] * this.state.price7[this.state.septprix] +
-      this.state.avg9[this.state.novpour] * this.state.price8[this.state.septprix]
+      Math.round(this.state.avg1[this.state.novpour]) * this.state.price1[this.state.septprix] +
+      Math.round(this.state.avg2[this.state.novpour]) * this.state.price2[this.state.septprix] +
+      Math.round(this.state.avg3[this.state.novpour]) * this.state.price3[this.state.septprix] +
+      Math.round(this.state.avg4[this.state.novpour]) * this.state.price4[this.state.septprix] +
+      Math.round(this.state.avg5[this.state.novpour]) * this.state.price5[this.state.septprix] +
+      Math.round(this.state.avg6[this.state.novpour]) * this.state.price6[this.state.septprix] +
+      Math.round(this.state.avg7[this.state.novpour]) * this.state.price7[this.state.septprix] +
+      Math.round(this.state.avg8[this.state.novpour]) * this.state.price7[this.state.septprix] +
+      Math.round(this.state.avg9[this.state.novpour]) * this.state.price8[this.state.septprix]
       this.setState({EVNOV})
       var EVnov = Math.round(EVNOV / 100);
       this.setState({EVnov: EVnov})
