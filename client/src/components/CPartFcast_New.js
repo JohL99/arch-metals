@@ -672,7 +672,37 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evnov}/MT</b></td>
               <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
-      </tbody>
+           <tr>
+            <td rowSpan="12" colSpan="12" align="center">
+            <div style={{ width: "100%", height: 300 }}>
+              <ResponsiveContainer>
+              <BarChart
+              layout="horizontal"
+              width={500}
+              height={400}
+              data={this.props.donnees1}
+              margin={{
+              top: 5,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="price" type="category" />
+            <YAxis type="number" />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="Sep20" fill="#00CC00" />
+            <Bar dataKey="Oct20" fill="#0000FF" />
+            <Bar dataKey="Nov20" fill="#FFC000" />
+            <Bar dataKey="Dec20" fill="#FF0000" />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
+      </td>
+      </tr>
+    </tbody>
     </table>
     <table className="table table-bordered">
     <tbody>
