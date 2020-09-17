@@ -563,7 +563,7 @@ class GSumFcast extends PureComponent {
               <td colSpan="12" align="center" width="100%"><b>Aggregation of All Gold Forecasts</b></td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.septprix]*/}<b>September 2020</b></td>
+              <td align="center"><b>Month</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
               <td align="center"><b>${this.state.price1[this.state.septprix]}/oz</b></td>
@@ -577,6 +577,7 @@ class GSumFcast extends PureComponent {
               <td align="center"><b>${this.state.price9[this.state.septprix]}/oz</b></td>
               </tr>
             <tr>
+              <td align="center">{/*this.state.moisprix[this.state.septprix]*/}<b>September 2020</b></td>
               <td align="center"><b>${[this.state.EVsep]}/oz</b></td>
               <td align="center"><b>{this.state.septnb}</b></td>
               <td align="center">{this.state.avg1[this.state.septpour]}%</td>
@@ -590,20 +591,7 @@ class GSumFcast extends PureComponent {
               <td align="center">{this.state.avg9[this.state.septpour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.octprix]*/}<b>October 2020</b></td>
-              <td align="center"><b>Expected Value</b></td>
-              <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price2[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price3[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price4[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price5[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price6[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price7[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price8[this.state.octprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price9[this.state.octprix]}/oz</b></td>
-            </tr>
-            <tr>
+              <td align="center">{/*this.state.moisprix[this.state.octprix]*/}<b>October 2020</b></td>
               <td align="center"><b>${[this.state.EVoct]}/oz</b></td>
               <td align="center"><b>{this.state.octnb}</b></td>
               <td align="center">{this.state.avg1[this.state.octpour]}%</td>
@@ -617,27 +605,7 @@ class GSumFcast extends PureComponent {
               <td align="center">{this.state.avg9[this.state.octpour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">
-                {/*this.state.moisprix[this.state.novprix]*/}
-                <b>November 2020</b>
-              </td>
-              <td align="center">
-		            <b>Expected Value</b>
-	            </td>
-              <td align="center">
-		          <b>No. Forecasts</b>
-	            </td>
-              <td align="center"><b>${this.state.price1[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price2[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price3[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price4[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price5[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price6[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price7[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price8[this.state.novprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price9[this.state.novprix]}/oz</b></td>
-            </tr>
-            <tr>
+              <td align="center">{/*this.state.moisprix[this.state.novprix]*/}<b>November 2020</b></td>
               <td align="center"><b>${[this.state.EVnov]}/oz</b></td>
               <td align="center"><b>{this.state.novnb}</b></td>
               <td align="center">{this.state.avg1[this.state.novpour]}%</td>
@@ -651,20 +619,7 @@ class GSumFcast extends PureComponent {
               <td align="center">{this.state.avg9[this.state.novpour]}%</td>
             </tr>
             <tr>
-              <td rowSpan="2" align="center">{/*this.state.moisprix[this.state.decprix]*/}<b>December 2020</b></td>
-              <td align="center"><b>Expected Value</b></td>
-              <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price2[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price3[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price4[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price5[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price6[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price7[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price8[this.state.decprix]}/oz</b></td>
-              <td align="center"><b>${this.state.price9[this.state.decprix]}/oz</b></td>
-            </tr>
-            <tr>
+              <td align="center">{/*this.state.moisprix[this.state.decprix]*/}<b>December 2020</b></td>
               <td align="center"><b>${[this.state.EVdec]}/oz</b></td>
               <td align="center"><b>{this.state.decnb}</b></td>
               <td align="center">{this.state.avg1[this.state.decpour]}%</td>
@@ -679,12 +634,12 @@ class GSumFcast extends PureComponent {
             </tr>
             <tr>
             <td rowSpan="12" colSpan="12" align="center">
-                <div style={{ width: "100%", height: 400 }}>
+                <div style={{ width: "100%", height: 300 }}>
                   <ResponsiveContainer>
                     <BarChart
                       layout="vertical"
                       width={500}
-                      height={400}
+                      height={300}
                       data={this.state.donnees1}
                       margin={{
                         top: 5,
