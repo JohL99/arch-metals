@@ -77,6 +77,7 @@ router.get("/commois/:lemois&:commodity", (req, res) => {
   Beyi.find({
     $and: [{ month: req.params.lemois }, { commodity: req.params.commodity }],
   })
+    .sort({ _id: -1 })
     .then((mabeyi) => {
       if (!mabeyi) {
         errors.nobeyi = "no price";

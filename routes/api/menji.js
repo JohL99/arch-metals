@@ -61,7 +61,7 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
     },
 
     {
-      $sort: { _id: -1, user: 1 },
+      $sort: { _id: 1, user: 1 },
     },
 
     {
@@ -212,7 +212,7 @@ router.get("/all/:lemois&:commodity", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ _id: -1 })
+    .sort({ _id: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
