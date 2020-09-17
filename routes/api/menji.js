@@ -471,11 +471,11 @@ router.get("/recentdauser/:commodity&:user", (req, res) => {
           mois: "$mois",
         },
         lastEntry: { $last: "$_dateforecast" },
-        detail: { $last: "$_dateforecast" },
+        detail: { $last: "$$ROOT" },
       },
     },
   ])
-    /* detail: { $last: "$$ROOT" },
+    
     /* .populate({ path: "user" }) */
     .then((forecasts) => {
       if (!forecasts) {
