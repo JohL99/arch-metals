@@ -393,12 +393,13 @@ router.get("/userd/:lemois&:commodity&:user", (req, res) => {
       { commodity: req.params.commodity },
       { user: req.params.user },
     ],
-  })
+  }
+  
     .sort({ _id: -1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
-    })
+    }))
     .catch((err) => res.status(404).json({ forecast: "no forecast" }));
 });
 
