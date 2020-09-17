@@ -428,62 +428,62 @@ class CSummary extends PureComponent {
               </tr>
               <tr>
                 <td align="center"><b>Forecasts</b></td>
-    <td align="center"><b>${/* this.trouveLeMedian() */ Math.round(this.calculeLaMoyenne())}/MT</b></td>
-    <td align="center"><b>{this.state.lesprix.length}</b></td>
-    <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
-    </tr>
-    <tr>
-    <td colSpan="12">
-    {" "}
-    <div style={{ width: "100%", height: 300 }}>
-        <ResponsiveContainer>
-        <BarChart
-          layout="vertical"
-          width={500}
-          height={300}
-          data={this.state.donnees1}
-          margin={{
-            top: 5,
-            right: 5,
-            left: 5,
-            bottom: 5,
-      }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis type="number" />
-        <YAxis dataKey="price" type="category" />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="RecentData" fill="#B87333" />
-         {/*  <Bar dataKey="OldData" fill="#FF0000" />
-          <Bar dataKey="AllData" fill="#00B050" /> */}
-        </BarChart>
-        </ResponsiveContainer>
-      </div>
-      </td>
-      </tr>
-    <tr>
-      <td colSpan="12" rowSpan="12">
-      <table className="table table-bordered">
-        <tbody>
-          <tr>
-          <td align="center"><b>Most Recent General Comments</b></td>
-          </tr>
-          {this.state.maloba.map(renderMaloba)}
-          </tbody>
-          </table>
-          </td>
-          </tr>
-          </tbody>
-          </table>
+                <td align="center"><b>${/* this.trouveLeMedian() */ Math.round(this.calculeLaMoyenne())}/MT</b></td>
+                <td align="center"><b>{this.state.lesprix.length}</b></td>
+                <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
+              </tr>
+              <tr>
+              <td colSpan="12">
+                {" "}
+                <div style={{ width: "100%", height: 300 }}>
+                <ResponsiveContainer>
+                <BarChart
+                layout="vertical"
+                width={500}
+                height={300}
+                data={this.state.donnees1}
+                margin={{
+                top: 5,
+                right: 5,
+                left: 5,
+                bottom: 5,
+              }}
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis type="number" />
+                <YAxis dataKey="price" type="category" />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="RecentData" fill="#B87333" />
+                  {/*  <Bar dataKey="OldData" fill="#FF0000" />
+                  <Bar dataKey="AllData" fill="#00B050" /> */}
+                </BarChart>
+                </ResponsiveContainer>
+              </div>
+              </td>
+            </tr>
+            <tr>
+            <td colSpan="12" rowSpan="12">
+            <table className="table table-bordered">
+            <tbody>
+            <tr>
+            <td align="center"><b>Most Recent General Comments</b></td>
+            </tr>
+              {this.state.maloba.map(renderMaloba)}
+              </tbody>
+            </table>
+            </td>
+            </tr>
+            </tbody>
+            </table>
           <table className="table table-bordered">
           <tbody>
           <tr>
