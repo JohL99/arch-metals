@@ -448,6 +448,15 @@ class CPartFcast extends PureComponent {
             decem1[7] = recentFromApi[y].price7;
             decem1[8] = recentFromApi[y].price8;
             decem1[9] = recentFromApi[y].price9;
+            
+            donnees1.push({
+              price: leprix[y],
+              Sep20: sept1[y],
+              Oct20: octo1[y],
+              Nov20: novem1[y],
+              Dec20: decem1[y],
+            });
+
           }
         }
 
@@ -464,14 +473,14 @@ class CPartFcast extends PureComponent {
         leprix[7] = this.state.prixsept[0].pour7;
         leprix[8] = this.state.prixsept[0].pour8;
         leprix[9] = this.state.prixsept[0].pour9;
-        var yy = 1;
-        for (yy == 1; yy < 10; yy++) {
+        var x = 1;
+        for (x == 1; x < 10; x++) {
           donnees1.push({
-            price: leprix[yy],
-            Sep20: sept1[yy],
-            Oct20: octo1[yy],
-            Nov20: novem1[yy],
-            Dec20: decem1[yy],
+            price: leprix[x],
+            Sep20: sept1[x],
+            Oct20: octo1[x],
+            Nov20: novem1[x],
+            Dec20: decem1[x],
           });
         }
         this.setState({
