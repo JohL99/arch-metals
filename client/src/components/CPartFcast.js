@@ -766,7 +766,16 @@ class CPartFcast extends PureComponent {
           </thead>
           <tbody>{this.state.decembers.map(renderDecember)}</tbody>
         </table>
+        <table className="table table-bordered">
+            <tr>
+              <td align="center" colSpan="13">
+              <b>Graph data</b>
+              </td>
+            </tr>
+            {this.state.donnees1}
+        </table>
       </div>
+
     );
   }
 }
