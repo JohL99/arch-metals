@@ -61,7 +61,7 @@ router.get("/dernierda/:month&:commodity", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1, user: 1 },
+      $sort: { _id: -1, user: 1 },
     },
 
     {
@@ -103,7 +103,7 @@ router.get("/dernierda1/:month&:commodity", (req, res) => {
         ],
       },
     },
-    { $sort: { dateforecast: -1 } },
+    { $sort: { _id: -1 } },
     {
       $group: {
         _id: "$user",
@@ -158,7 +158,7 @@ router.get("/olda/:month&:commodity", (req, res) => {
       },
     },
 
-    { $sort: { user: 1, dateforecast: 1 } },
+    { $sort: { _id: -1, user: 1 } },
 
     {
       $group: {
@@ -194,7 +194,7 @@ router.get("/olda1/:month&:commodity&:nombre", (req, res) => {
   Menji.find({
     $and: [{ month: req.params.month }, { commodity: req.params.commodity }],
   })
-    .sort({ $natural: -1 })
+    .sort({ _id: 1 })
 
     .limit(x)
     .then((menjis) => {
@@ -363,7 +363,7 @@ router.get("/moytousmois/:commodity", (req, res) => {
         avg7: { $avg: { $multiply: ["$price7", 100] } },
         avg8: { $avg: { $multiply: ["$price8", 100] } },
         avg9: { $avg: { $multiply: ["$price9", 100] } },
-        median: { $avg: "$lemedian" },
+        lamoyenne: { $avg: "$lamoyenne" },
       },
     },
   ])
@@ -392,7 +392,7 @@ router.get("/userd/:month&:commodity&:user", (req, res) => {
       { user: req.params.user }, */
     ],
   })
-    .sort({ dateforecast: 1 })
+    .sort({ _id: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
@@ -414,7 +414,7 @@ router.get("/recentdauser/:commodity&:user", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1 },
+      $sort: { _id: -1 },
     },
 
     {

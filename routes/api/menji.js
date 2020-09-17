@@ -394,7 +394,7 @@ router.get("/userd/:lemois&:commodity&:user", (req, res) => {
       { user: req.params.user },
     ],
   })
-    .sort({ _id: 1 })
+    .sort({ _id: -1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
