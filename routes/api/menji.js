@@ -396,14 +396,10 @@ router.get("/userd/:lemois&:commodity&:user", (req, res) => {
       { commodity: req.params.commodity },
       { user: req.params.user },
     ],
-
-      $group: { _id: { user: "$user", mois: "$mois", },
-        lastEntry: { $last: "$_dateforecast" },
-        detail: { $last: "$$ROOT" }, },
-    
+         
   })
 
-    .sort({ dateforecast: -1, commodity: 1, mois: 1, user: 1 })
+    .sort({ dateforecast: 1, commodity: 1, mois: 1, user: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
