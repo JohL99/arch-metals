@@ -73,7 +73,7 @@ class GPartFcast extends PureComponent {
     return newdate + " " + mid;
   }
   componentDidMount() {
-    fetch("/api/users/tous/" + "Gold")
+    fetch("/api/users/tous/" + "Gold"+ "&Gold")
       .then((response) => {
         return response.json();
       })

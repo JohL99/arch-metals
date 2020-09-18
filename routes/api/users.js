@@ -113,11 +113,11 @@ router.get(
 //@route GET api/users/tous
 //@desc return all users
 //@access Private
-router.get("/tous/:commodity&:commodity", (req, res) => {
+router.get("/tous/:commodity1&:commodity2", (req, res) => {
   const errors = {};
 
-  User.find( $or [{commodity: req.params.commodity}, {commodity: req.params.commodity}] )
-  .sort({ commodity: 1, user:1 })
+  User.find({ $or: [{commodity1: req.params.commodity1}, {commodity2: req.params.commodity2},] })
+  .sort({ commodity: 1, user:1, })
   .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";

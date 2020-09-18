@@ -14,8 +14,7 @@ class Register extends Component {
       email: "",
       altemail: "",
       realname: "",
-      commodity1: "",
-      commodity2: "",
+      commodity: "",
       sex: "",
       age: "",
       geolocation: "",
@@ -77,8 +76,7 @@ class Register extends Component {
         email: this.state.email,
         altemail: this.state.altemail,
         realname: this.state.realname,
-        commodity1: this.state.commodity1,
-        commodity2: this.state.commodity2,
+        commodity: this.state.commodity,
         sex: this.state.sex,
         age: this.state.age,
         geolocation: this.state.geolocation,
@@ -167,29 +165,16 @@ class Register extends Component {
                 />
                 <div className="form-group">
                   <select
-                    name="commodity1"
-                    value={this.state.commodity1}
+                    name="commodity"
+                    value={this.state.commodity}
                     onChange={this.onChange}
-                    error={errors.commodity1}
+                    error={errors.commodity}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Metal to be forecasted</option>
+                    <option value="">Metal(s) to be forecasted</option>
                     <option value="Copper">Copper</option>
                     <option value="Gold">Gold</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <select
-                    name="commodity2"
-                    value={this.state.commodity2}
-                    onChange={this.onChange}
-                    error={errors.commodity2}
-                    className="form-control form-control-lg"
-                  >
-                    <option value="">Additional Metal to be forecasted</option>
-                    <option value="Copper">Copper</option>
-                    <option value="Gold">Gold</option>
-                    <option value="Blank">N/A</option>
+                    <option value="CopperGold">Copper &amp; Gold</option>
                   </select>
                 </div>
                 <div className="form-group">
