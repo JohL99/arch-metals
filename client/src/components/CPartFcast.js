@@ -76,7 +76,7 @@ class CPartFcast extends Component {
     return newdate + " " + mid;
   }
   componentDidMount() {
-    fetch("/api/users/tous")
+    fetch("/api/users/tous/" + "Copper" + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -668,7 +668,7 @@ class CPartFcast extends Component {
               <td align="center">
                 <span className="label label-primary">Participant:</span>
                 <select
-                  className="form-control form-control-lg"
+                  className=""
                   value={this.state.user}
                   onChange={(e) => {
                     this.setState({
