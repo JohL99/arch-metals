@@ -1,6 +1,7 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+/* 
 import {
   BarChart,
   Bar,
@@ -11,8 +12,10 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-} from "recharts";
-class CPartFcast extends PureComponent {
+} from "recharts"; */
+//import GraphCG from "./GraphCG";
+import GraphPartCopper from "./GraphPartCopper";
+class CPartFcast extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -236,7 +239,6 @@ class CPartFcast extends PureComponent {
             generalcomments: september.generalcomments,
           };
         });
-
         this.setState({
           septembers: [].concat(septemberFromApi),
         });
@@ -450,8 +452,8 @@ class CPartFcast extends PureComponent {
           }
         }
 
-        // console.log(donnees1);
-        // console.log(recentFromApi);
+        //console.log(donnees1);
+        //console.log(recentFromApi);
         let leprix = [];
 
         leprix[1] = this.state.prixsept[0].pour1;
@@ -570,7 +572,7 @@ class CPartFcast extends PureComponent {
         </tr>
       );
     };
-    const renderPrixSep = (psepFromApi) => {
+    const renderPrixSept = (psepFromApi) => {
       return (
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
@@ -685,36 +687,36 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evnov}/MT</b></td>
               <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
-           <tr>
-            <td rowSpan="12" colSpan="12" align="center">
-            <div style={{ width: "80%", height: 300 }}>
-              <ResponsiveContainer>
-              <BarChart
-              layout="horizontal"
-              width={500}
-              height={300}
-              data={this.state.donnees1}
-              margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="price" type="category" />
-            <YAxis type="number" />
-            <Tooltip />
-            <Legend />
-            <Bar dataKey="Sep20" fill="#00CC00" />
-            <Bar dataKey="Oct20" fill="#0000FF" />
-            <Bar dataKey="Nov20" fill="#FFC000" />
-            <Bar dataKey="Dec20" fill="#FF0000" />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-      </td>
-      </tr>
+            <tr>
+              <td rowSpan="12" colSpan="12" align="center">
+                <GraphPartCopper mweji={this.state.donnees1} />
+
+                {/*              <ResponsiveContainer>
+                  <BarChart
+                    layout="horizontal"
+                    width={500}
+                    height={300}
+                    data={this.state.donnees1}
+                    margin={{
+                      top: 5,
+                      right: 5,
+                      left: 5,
+                      bottom: 5,
+                    }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="price" type="category" />
+                    <YAxis type="number" />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="Sep20" fill="#00CC00" />
+                    <Bar dataKey="Oct20" fill="#7F6000" />
+                    <Bar dataKey="Nov20" fill="#00B050" />
+                    <Bar dataKey="Dec20" fill="#FF0000" />
+                  </BarChart>
+                </ResponsiveContainer> */}
+              </td>
+            </tr>
     </tbody>
     </table>
     <table className="table table-bordered">
@@ -733,7 +735,7 @@ class CPartFcast extends PureComponent {
               <b>Forecasts - September 2020</b>
               </td>
             </tr>
-            {this.state.prixsept.map(renderPrixSep)}
+            {this.state.prixsept.map(renderPrixSept)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
