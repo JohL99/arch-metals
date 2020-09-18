@@ -194,7 +194,7 @@ router.get("/olda1/:lemois&:commodity&:nombre", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ dateforecast: -1 })
+    .sort({ dateforecast: -1, user: 1 })
 
     .limit(x)
     .then((menjis) => {
@@ -212,7 +212,7 @@ router.get("/all/:lemois&:commodity", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ dateforecast: 1 })
+    .sort({ dateforecast: 1, user: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
