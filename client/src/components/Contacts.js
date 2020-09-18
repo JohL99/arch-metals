@@ -25,11 +25,11 @@ export default function Contacts() {
       </p>
 	    <p className="text-justify">Researcher: John Lamprecht</p>
       <p className="text-justify">Email: John.Lamprecht@online.liverpool.ac.uk</p>
-      <p className="text-justify">Supervisor: Jim Hanly</p>
+      <p className="text-justify">Supervisor: Dr. Jim Hanly</p>
       <p className="text-justify">Email: Jim.Hanly@online.liverpool.ac.uk</p>
       <h3>Website Issues</h3>
 	    <p className="text-justify">Researcher: John Lamprecht</p>
-      <p className="text-justify">jcl@consensusmetals.info</p>
+      <p className="text-justify">Email: jcl@consensusmetals.info</p>
     </div>
   );
 }
