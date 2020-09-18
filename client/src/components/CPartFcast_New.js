@@ -728,46 +728,30 @@ class CPartFcast extends Component {
         <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
       </tbody>
       </table>
-        <table className="table table-bordered">
+      <table className="table table-bordered">
           <thead>
-            <tr>
-              <td align="center" colSpan="13">
-              <b>Forecasts - September 2020</b>
-              </td>
-            </tr>
+            <tr><td align="center" colSpan="13"><b>Forecasts - September 2020</b></td></tr>
             {this.state.prixsept.map(renderPrixSept)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr>
-              <td align="center" colSpan="13">
-              <b>Forecasts - October 2020</b>
-              </td>
-            </tr>
+            <tr><td align="center" colSpan="13"><b>Forecasts - October 2020</b></td></tr>
             {this.state.prixoct.map(renderPrixOct)}
           </thead>
           <tbody>{this.state.octobers.map(renderOctober)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr>
-              <td align="center" colSpan="13">
-              <b>Forecasts - November 2020</b>
-              </td>
-            </tr>
+            <tr><td align="center" colSpan="13"><b>Forecasts - November 2020</b></td></tr>
             {this.state.prixnov.map(renderPrixNov)}
           </thead>
           <tbody>{this.state.novembers.map(renderNovember)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr>
-              <td align="center" colSpan="13">
-              <b>Forecasts - December 2020</b>
-              </td>
-            </tr>
+            <tr><td align="center" colSpan="13"><b>Forecasts - December 2020</b></td></tr>
             {this.state.prixdec.map(renderPrixDec)}
           </thead>
           <tbody>{this.state.decembers.map(renderDecember)}</tbody>
