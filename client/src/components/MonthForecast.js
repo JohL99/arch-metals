@@ -216,58 +216,28 @@ class MonthForecast extends Component {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="24">
-                <b>Most Recent Copper Forecasts - {this.props.mweji}</b>
-              </td>
+              <td colSpan="14">
+                <b>Most Recent Copper Forecasts - {this.props.mweji}</b></td>
             </tr>
             <tr>
-              <td>
-                <b>{this.props.mweji}</b>
-              </td>
-              <td>
-                <b>EV</b>
-              </td>
-              <td>
-                <b>Median</b>
-              </td>
-              <td>
-                <b>{this.state.price1}</b>
-              </td>
-              <td>
-                <b>{this.state.price2}</b>
-              </td>
-              <td>
-                <b>{this.state.price3}</b>
-              </td>
-              <td>
-                <b>{this.state.price4}</b>
-              </td>
-              <td>
-                <b>{this.state.price5}</b>
-              </td>
-              <td>
-                <b>{this.state.price6}</b>
-              </td>
-              <td>
-                <b>{this.state.price7}</b>
-              </td>
-              <td>
-                <b>{this.state.price8}</b>
-              </td>
-              <td>
-                <b>{this.state.price9}</b>
-              </td>
-              <td>
-                <b>Justifications</b>
-              </td>
+              <td><b>{this.props.mweji}</b></td>
+              <td><b>EV</b></td>
+              <td><b>Median</b></td>
+              <td><b>{this.state.price1}</b></td>
+              <td><b>{this.state.price2}</b></td>
+              <td><b>{this.state.price3}</b></td>
+              <td><b>{this.state.price4}</b></td>
+              <td><b>{this.state.price5}</b></td>
+              <td><b>{this.state.price6}</b></td>
+              <td><b>{this.state.price7}</b></td>
+              <td><b>{this.state.price8}</b></td>
+              <td><b>{this.state.price9}</b></td>
+              <td><b>Justifications</b></td>
             </tr>
             {this.state.lesprix.map(renderPrix)}
             <tr>
-              <td>
-                <b>Average</b>
-              </td>
-              <td>
-                <b>
+              <td><b>Average</b></td>
+              <td>{" "}<b>
                   {Math.round(
                     this.state.price1 * this.state.lesmoyennes[0] +
                     this.state.price2 * this.state.lesmoyennes[1] +
