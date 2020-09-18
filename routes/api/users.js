@@ -117,7 +117,7 @@ router.get("/tous/:commodity", (req, res) => {
   const errors = {};
 
   User.find({commodity: req.params.commodity})
-  .sort({user:1})
+  .sort({ commodity: 1, user:1 })
   .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";

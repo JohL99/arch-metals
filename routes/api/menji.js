@@ -61,7 +61,7 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
     },
 
     {
-      $sort: { dateforecast: 1, user: 1 },
+      $sort: { dateforecast: 1, commodity: 1, mois: 1, user: 1 },
     },
 
     {
@@ -158,7 +158,7 @@ router.get("/olda/:lemois&:commodity", (req, res) => {
       },
     },
 
-    { $sort: { _id: -1, user: 1 } },
+    { $sort: { dateforecast: -1, commodity: 1, mois: 1, user: 1 } },
 
     {
       $group: {
@@ -194,7 +194,7 @@ router.get("/olda1/:lemois&:commodity&:nombre", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ dateforecast: -1, user: 1 })
+    .sort({ dateforecast: -1, commodity: 1, mois: 1, user: 1 })
 
     .limit(x)
     .then((menjis) => {
@@ -212,7 +212,7 @@ router.get("/all/:lemois&:commodity", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ dateforecast: 1, user: 1 })
+    .sort({ dateforecast: 1, commodity: 1, mois: 1, user: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
@@ -231,7 +231,7 @@ router.get("/moymois/:commodity", (req, res) => {
         commodity: req.params.commodity,
       },
     },
-
+    
     {
       $group: {
         _id: "$mois",
@@ -250,6 +250,7 @@ router.get("/moymois/:commodity", (req, res) => {
   ])
 
     /* .populate({ path: "user" }) */
+    .sort({ dateforecast: 1, commodity: 1, mois: 1 })
     .then((forecasts) => {
       if (!forecasts) {
         errors.noforecast = "no forecast";
@@ -284,7 +285,7 @@ router.get("/comptemois/:commodity", (req, res) => {
   ])
 
     /* .populate({ path: "user" }) */
-    .sort({ _id: -1 })
+    .sort({ dateforecast: -1, commodity: 1, mois: 1 })
     .then((forecasts) => {
       if (!forecasts) {
         errors.noforecast = "no forecast";
@@ -310,6 +311,8 @@ router.get("/moyunmois/:lemois&:commodity", (req, res) => {
         ],
       },
     },
+
+    { $sort: { dateforecast: -1, commodity: 1, mois: 1, user: 1 } },
 
     {
       $group: {
@@ -394,7 +397,7 @@ router.get("/userd/:lemois&:commodity&:user", (req, res) => {
       { user: req.params.user },
     ],
   })
-    .sort({ _id: -1 })
+    .sort({ dateforecast: -1, commodity: 1, mois: 1, user: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
@@ -461,7 +464,7 @@ router.get("/recentdauser/:commodity&:user", (req, res) => {
     },
 
     {
-      $sort: { _id: 1 },
+      $sort: { dateforecast: 1, commodity: 1, mois: 1, user: 1 },
     },
 
     {

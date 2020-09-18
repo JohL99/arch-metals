@@ -77,7 +77,7 @@ router.get("/commois/:lemois&:commodity", (req, res) => {
   Beyi.find({
     $and: [{ month: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ dateforecast: -1, user: 1 })
+    .sort({ dateforecast: -1, commodity: 1, mois: 1, user: 1 })
     .then((mabeyi) => {
       if (!mabeyi) {
         errors.nobeyi = "no price";
@@ -90,12 +90,13 @@ router.get("/commois/:lemois&:commodity", (req, res) => {
 });
 
 // @route   GET api/beyi/comm/:commodity
-// @desc    Renvoie tous les price item tous les month
+// @desc    Renvoie tous les price item tous les month / Return all price items every month
 // @access  Public
 router.get("/comm/:commodity", (req, res) => {
   Beyi.find({
     commodity: req.params.commodity,
   })
+    .sort({ dateforecast: 1, commodity: 1,mois: 1 })
     .then((mabeyi) => {
       if (!mabeyi) {
         errors.nobeyi = "no price";
