@@ -73,7 +73,7 @@ class CPartFcast extends PureComponent {
     return newdate + " " + mid;
   }
   componentDidMount() {
-    fetch("/api/users/tous/" + "Copper")
+    fetch("/api/users/tous/" + "Copper" + "&Copper")
       .then((response) => {
         return response.json();
       })
@@ -219,7 +219,6 @@ class CPartFcast extends PureComponent {
           this.setState({ evsep: xEV });
           this.setState({ comsep: september.generalcomments });
 
-          //console.log(september);
           return {
             EV: xEV,
             price1: september.price1,
@@ -392,7 +391,7 @@ class CPartFcast extends PureComponent {
             price7: recent.detail.price7 * 100,
             price8: recent.detail.price8 * 100,
             price9: recent.detail.price9 * 100,
-            month: recent.detail.month,
+            lemois: recent.detail.mois,
           };
         });
         let sept1 = [];
@@ -402,7 +401,7 @@ class CPartFcast extends PureComponent {
 
         var y = 0;
         for (y == 0; y < 4 /* recentFromApi.length */; y++) {
-          if (recentFromApi[y].month == "September 2020") {
+          if (recentFromApi[y].lemois == "September 2020") {
             sept1[1] = recentFromApi[y].price1;
             sept1[2] = recentFromApi[y].price2;
             sept1[3] = recentFromApi[y].price3;
@@ -414,7 +413,7 @@ class CPartFcast extends PureComponent {
             sept1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].month == "October 2020") {
+          if (recentFromApi[y].lemois == "October 2020") {
             octo1[1] = recentFromApi[y].price1;
             octo1[2] = recentFromApi[y].price2;
             octo1[3] = recentFromApi[y].price3;
@@ -426,7 +425,7 @@ class CPartFcast extends PureComponent {
             octo1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].month == "November 2020") {
+          if (recentFromApi[y].lemois == "November 2020") {
             novem1[1] = recentFromApi[y].price1;
             novem1[2] = recentFromApi[y].price2;
             novem1[3] = recentFromApi[y].price3;
@@ -438,7 +437,7 @@ class CPartFcast extends PureComponent {
             novem1[9] = recentFromApi[y].price9;
           }
 
-          if (recentFromApi[y].month == "December 2020") {
+          if (recentFromApi[y].lemois == "December 2020") {
             decem1[1] = recentFromApi[y].price1;
             decem1[2] = recentFromApi[y].price2;
             decem1[3] = recentFromApi[y].price3;
@@ -474,6 +473,17 @@ class CPartFcast extends PureComponent {
             Dec20: decem1[yy],
           });
         }
+        /*   for (yy == 1; yy < 10; yy++) {
+          this.setState(
+            donnees1.push({
+              price: leprix[yy],
+              Sep20: sept1[yy],
+              Oct20: octo1[yy],
+              Nov20: novem1[yy],
+              Dec20: decem1[yy],
+            })
+          );
+        } */
         this.setState({
           recents: [].concat(recentFromApi),
         });
@@ -483,6 +493,9 @@ class CPartFcast extends PureComponent {
       });
 
     this.setState({ donnees1 });
+    console.log(donnees1);
+    //console.log(this.state.donnees1);
+    //console.log(this.state.recents);
   }
   render() {
     const renderSeptember = (septemberFromApi) => {

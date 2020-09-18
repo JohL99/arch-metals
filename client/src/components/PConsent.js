@@ -18,8 +18,7 @@ export default function PConsent() {
               <b>Title of Research Project:</b> 
              </p>
              <p class="text-justify"> 
-              How will a consensus panel
-              approach for forecasting copper and gold prices, which
+              How will a consensus panel approach for forecasting copper and gold prices, which
               specifically includes mining industry experts’ participation,
               improve the reliability of forecast price estimates for planning
               purposes?
