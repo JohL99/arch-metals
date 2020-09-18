@@ -498,6 +498,7 @@ class GForecast extends PureComponent {
       );
     };
     const renderMaloba = (malobayaApi) => {
+      if(malobayaApi.id !== "")
       return (
         <tr key={malobayaApi.id}>
           <td align="left">{malobayaApi.generalcomments}</td>
@@ -510,7 +511,7 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="12" align="center" width="100%">
                   <b>Gold Forecasts - {this.state.mois}</b>
                 </td>
               </tr>
@@ -613,7 +614,7 @@ class GForecast extends PureComponent {
                 </td>
               </tr>
               <tr>
-              <td width="35%" align="center" rowSpan="11" colSpan="12">
+              <td width="100%" align="center" rowSpan="11" colSpan="12">
                   <table className="table table-bordered">
                     <tbody>
                       <tr>
