@@ -13,7 +13,7 @@ export default function Contacts() {
         and we will try to help. If you remain unhappy or have a complaint which
         you feel you cannot come to either the Researcher or Supervisor, then,
         you can contact the Research Governance Officer or the University of Liverpool 
-        at either of the following respective email addresses:
+        directly at either of the following email addresses:
       </p>
       <p className="text-justify">Email: ethics@liv.ac.uk</p>
       <p className="text-justify">Email: liverpoolethics@ohecampus.com</p>
@@ -25,14 +25,11 @@ export default function Contacts() {
       </p>
 	    <p className="text-justify">Researcher: John Lamprecht</p>
       <p className="text-justify">Email: John.Lamprecht@online.liverpool.ac.uk</p>
-      <br />
       <p className="text-justify">Supervisor: Jim Hanly</p>
       <p className="text-justify">Email: Jim.Hanly@online.liverpool.ac.uk</p>
-      <br />
-	    <h3>Website Issues</h3>
+      <h3>Website Issues</h3>
 	    <p className="text-justify">Researcher: John Lamprecht</p>
       <p className="text-justify">jcl@consensusmetals.info</p>
-      <br />
     </div>
   );
 }
