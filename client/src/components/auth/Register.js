@@ -331,7 +331,7 @@ class Register extends Component {
                       </tr>
                       <tr>
                         <td>
-                          <b>Consent Questions (All questions need to be answered "Yes" to register)</b>
+                          <b>Consent Questions (All questions need to be answered "Yes" in order to register for the research project)</b>
                         </td>
                         <td align="center">Yes/No</td>
                       </tr>
