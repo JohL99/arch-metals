@@ -587,7 +587,7 @@ class GForecast extends PureComponent {
               </tr>
               <tr>
                 <td colSpan="12" align="center">
-                  <div style={{ width: "100%", height: 300 }}>
+                  <div style={{ width: "80%", height: 300 }}>
                     <ResponsiveContainer>
                       <BarChart
                         layout="vertical"
