@@ -18,12 +18,12 @@ class GraphPartCopper extends PureComponent {
 
   render() {
     return (
-      <div style={{ width: "70%", height: 300 }}>
+      <div style={{ width: "80%", height: 300 }}>
         <ResponsiveContainer>
           <BarChart
             layout="horizontal"
-            width={700}
-            height={500}
+            width={500}
+            height={300}
             data={this.props.mweji}
             margin={{
               top: 5,
@@ -33,8 +33,8 @@ class GraphPartCopper extends PureComponent {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <YAxis type="number" />
             <XAxis dataKey="price" type="category" />
+            <YAxis type="number" />
             <Tooltip />
             <Legend />
             <Bar dataKey="Sep20" fill="#00CC00" />

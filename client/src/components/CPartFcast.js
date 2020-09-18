@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 /* 
@@ -15,7 +15,7 @@ import {
 } from "recharts"; */
 //import GraphCG from "./GraphCG";
 import GraphPartCopper from "./GraphPartCopper";
-class CPartFcast extends Component {
+class CPartFcast extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
