@@ -674,13 +674,13 @@ class CPartFcast extends PureComponent {
             </tr>
            <tr>
             <td rowSpan="12" colSpan="12" align="center">
-            <div style={{ width: "100%", height: 300 }}>
+            <div style={{ width: "80%", height: 300 }}>
               <ResponsiveContainer>
               <BarChart
               layout="horizontal"
               width={500}
-              height={400}
-              data={this.props.donnees1}
+              height={300}
+              data={this.state.donnees1}
               margin={{
               top: 5,
               right: 30,

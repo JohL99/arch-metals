@@ -676,7 +676,7 @@ class GPartFcast extends PureComponent {
     </table>
     <table className="table table-bordered">
     <tbody>
-        <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
+        <tr><td colSpan="5" align="center"><b>Most Recent General Comments</b></td></tr>
         <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
         <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
         <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
