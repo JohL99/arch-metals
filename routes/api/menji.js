@@ -70,8 +70,8 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
           user: "$user",
           mois: "$mois",
         },
-        lastEntry: { $last: "$_dateforecast" },
-        detail: { $last: "$$ROOT" },
+        lastEntry: { $last: "$_id" },
+        detail: { $last: "$_id" },
       },
     },
   ])

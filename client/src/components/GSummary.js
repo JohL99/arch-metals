@@ -241,8 +241,8 @@ class GSummary extends PureComponent {
 	dateStr.toUTCString().split(" ")[4].split(":")[1];
     return newdate + " " + mid;
   };
-  fillotherdata(sanza1) {
-    fetch("/api/menji/all/" + sanza1 + "&Gold")
+  fillotherdata(sanza) {
+    fetch("/api/menji/all/" + sanza + "&Gold")
       .then((response2) => {
         return response2.json();
       })
@@ -288,11 +288,11 @@ class GSummary extends PureComponent {
           ].concat(taloyaApi),
         });
         this.CreeOldata();
-        this.fillgeneralcomments(sanza1);
+        this.fillgeneralcomments(sanza);
       });
   }
-  fillgeneralcomments(sanza2) {
-    fetch("/api/menji/olda1/" + sanza2 + "&Gold" + "&8")
+  fillgeneralcomments(sanza) {
+    fetch("/api/menji/olda1/" + sanza + "&Gold" + "&8")
       .then((response3) => {
         return response3.json();
       })
