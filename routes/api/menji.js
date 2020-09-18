@@ -61,7 +61,7 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
     },
 
     {
-      $sort: { _id: 1, user: 1 },
+      $sort: { dateforecast: 1, user: 1 },
     },
 
     {
@@ -70,8 +70,8 @@ router.get("/dernierda/:lemois&:commodity", (req, res) => {
           user: "$user",
           mois: "$mois",
         },
-        lastEntry: { $last: "$_id" },
-        detail: { $last: "$_id" },
+        lastEntry: { $last: "$_dateforecast" },
+        detail: { $last: "$$ROOT" },
       },
     },
   ])
@@ -194,7 +194,7 @@ router.get("/olda1/:lemois&:commodity&:nombre", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ _id: -1 })
+    .sort({ dateforecast: -1 })
 
     .limit(x)
     .then((menjis) => {
@@ -212,7 +212,7 @@ router.get("/all/:lemois&:commodity", (req, res) => {
   Menji.find({
     $and: [{ mois: req.params.lemois }, { commodity: req.params.commodity }],
   })
-    .sort({ _id: 1 })
+    .sort({ dateforecast: 1 })
     .then((menjis) => {
       res.json(menjis);
       //console.log(menjis);
