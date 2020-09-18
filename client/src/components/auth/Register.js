@@ -330,15 +330,15 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          <b>Consent Questions (All questions need to be answered "Yes" in order to register for the research project)</b>
+                        <td align="justify">
+                          <b>Consent Questions</b> (All questions need to be answered "Yes" in order to register for the research project)
                         </td>
                         <td align="center">Yes/No</td>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                         I confirm part of my skill set is preparing, using, or 
 			                  tracking metal price forecasts. It is an expectation to 
 			                  participate in the research project that you have the 
@@ -377,7 +377,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I understand that my participation is voluntary and
                           that I am free to withdraw at any time without giving
                           any reason, and without my rights being affected. In
@@ -414,7 +414,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
 			                  I understand that, under the UK Data Protection Act, I
                         can at any time ask for access to the information I  
                         provided, and I can also request the destruction of
@@ -451,7 +451,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I understand that confidentiality and anonymity will
                           be maintained, and it will not be possible to identify
                           me in any publications.
@@ -486,7 +486,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I agree for the data collected from me to be used in
                           future research and understand that any such use of
                           identifiable data would be reviewed and approved by a
@@ -522,7 +522,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I understand and agree that my participation will be
                           recorded/captured. I am aware of and consent to your
                           use of this recorded information for the purpose of
@@ -558,7 +558,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I understand that my responses will be kept strictly
                           confidential. I give permission for members of the
                           research team to have access to my anonymized
@@ -597,7 +597,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I agree that the data collected from me may be used in
                           other relevant future research on the same confidential
 			                    basis as specified for this research project.
@@ -632,7 +632,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                           I understand the purpose of the research project is to
                           investigate metal price forecasting and
                           specifically acknowledge the intention of the research
@@ -673,7 +673,7 @@ class Register extends Component {
                         </td>
                       </tr>
                       <tr>
-                        <td align="left">
+                        <td align="justify">
                         I agree to take part in the the research project.                          
                         </td>
                         <td align="center">
