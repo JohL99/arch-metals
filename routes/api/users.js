@@ -117,7 +117,7 @@ router.get("/tous/:commodity1&:commodity2", (req, res) => {
   const errors = {};
 
   User.find({ $or: [{commodity1: req.params.commodity1}, {commodity2: req.params.commodity2},] })
-  .sort({ user: 1, })
+  .sort({ name: 1, })
   .then((utilisateurs) => {
       if (!utilisateurs) {
         errors.nocustomer = "no user";
