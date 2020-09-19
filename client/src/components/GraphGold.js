@@ -158,7 +158,7 @@ class GraphGold extends PureComponent {
   }
   render() {
     return (
-      <div style={{ width: "70%", height: 300 }}>
+      <div style={{ width: "60%", height: 250 }}>
         <ResponsiveContainer>
           <BarChart
             layout="horizontal"

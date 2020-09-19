@@ -195,8 +195,10 @@ class MonthForecastCopper extends Component {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
-          <td align="center"><b>{prixFromApi.user}</b></td>
-          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/mt</b></td>
+          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/mt</b>
+          {"  "}
+          <b>{prixFromApi.user}</b>
+          </td>
           <td align="center">{prixFromApi.price1 * 100}%</td>
           <td align="center">{prixFromApi.price2 * 100}%</td>
           <td align="center">{prixFromApi.price3 * 100}%</td>
@@ -206,7 +208,7 @@ class MonthForecastCopper extends Component {
           <td align="center">{prixFromApi.price7 * 100}%</td>
           <td align="center">{prixFromApi.price8 * 100}%</td>
           <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td align="center">{prixFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -215,10 +217,9 @@ class MonthForecastCopper extends Component {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="24" align="center"><b>Most Recent Copper Forecasts - {this.props.mweji}</b></td>
+              <td colSpan="14" align="center"><b>Most Recent Copper Forecasts - {this.props.mweji}</b></td>
             </tr>
             <tr>
-              <td align="center"><b>Participant</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>${this.state.price1}/mt</b></td>
               <td align="center"><b>${this.state.price2}/mt</b></td>
@@ -229,7 +230,7 @@ class MonthForecastCopper extends Component {
               <td align="center"><b>${this.state.price7}/mt</b></td>
               <td align="center"><b>${this.state.price8}/mt</b></td>
               <td align="center"><b>${this.state.price9}/mt</b></td>
-              <td align="center"><b>Justifications</b></td>
+              <td colSpan="4" align="center"><b>Justifications</b></td>
             </tr>
             {this.state.lesprix.map(renderPrix)}
             <tr>
