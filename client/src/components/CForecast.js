@@ -602,8 +602,8 @@ class CForecast extends PureComponent {
                         }}
                       >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="price" type="category" label="Price" />
-                        <YAxis type="number" label="Percent" />
+                        <XAxis dataKey="price" type="category" />
+                        <YAxis type="number" label=" % " />
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="RecentData" fill="#00B050" />
