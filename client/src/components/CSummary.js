@@ -361,7 +361,7 @@ class CSummary extends PureComponent {
           <td colSpan="1" align="center">
             <b>${Math.round(prixFromApi.lamoyenne)}/mt</b>
             {"  "}
-            {prixFromApi.user}
+            <b>{prixFromApi.user}</b>
             {"  "}
             {prixFromApi.dateforecast}
           </td>
