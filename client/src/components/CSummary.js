@@ -365,16 +365,16 @@ class CSummary extends PureComponent {
             {"  "}
             {prixFromApi.dateforecast}
           </td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price1 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price2 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price3 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price4 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price5 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price6 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price7 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price8 * 100}%</td>
-          <td colSpan="1" rowSpan="3" align="center">{prixFromApi.price9 * 100}%</td>
-          <td colSpan="4" rowspan="3" align="left">{prixFromApi.specificcomments}</td>
+          <td colSpan="1" align="center">{prixFromApi.price1 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price2 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price3 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price4 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price5 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price6 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price7 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price8 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price9 * 100}%</td>
+          <td colSpan="4" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
