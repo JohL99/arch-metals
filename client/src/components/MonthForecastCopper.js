@@ -234,8 +234,8 @@ class MonthForecastCopper extends Component {
             </tr>
             {this.state.lesprix.map(renderPrix)}
             <tr>
-              <td align="center"><b>Average</b></td>
-              <td align="center">
+              <td align="center"><b>Average</b>
+              {"  "}
                 <b>${Math.round(
                     this.state.price1 * this.state.lesmoyennes[0] +
                     this.state.price2 * this.state.lesmoyennes[1] +
