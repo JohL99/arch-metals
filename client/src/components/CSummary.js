@@ -448,9 +448,9 @@ class CSummary extends PureComponent {
                 <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
               </tr>
               <tr>
-              <td colSpan="14">
+              <td colSpan="14" align="center">
                 {" "}
-                <div style={{ width: "100%", height: 200 }}>
+                <div style={{ width: "50%", height: 250 }}>
                 <ResponsiveContainer>
                 <BarChart
                 layout="horizontal"
