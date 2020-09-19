@@ -119,7 +119,7 @@ class GraphPartCopper extends PureComponent {
     return (
       <BarChart
         layout="vertical"
-        width={500}
+        width={960}
         height={300}
         data={this.state.data /*this.state.data   this.props.mweji*/}
         margin={{
