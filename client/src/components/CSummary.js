@@ -374,7 +374,7 @@ class CSummary extends PureComponent {
           <td align="center">{prixFromApi.price7 * 100}%</td>
           <td align="center">{prixFromApi.price8 * 100}%</td>
           <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td align="center">{prixFromApi.specificcomments}</td>
+          <td colspan="4" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
