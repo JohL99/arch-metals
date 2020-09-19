@@ -48,7 +48,7 @@ class Navbar extends Component {
             </Link>
           </div>
         </li>
-        <button id="myBtn" onClick={this.scrollTo(0,0)}>&uarr;</button>
+        <button id="myBtn" onClick={this.scrollTo}>&uarr;</button>
         <li className="nav-item dropdown">
           <Link
             className="nav-link dropdown-toggle"

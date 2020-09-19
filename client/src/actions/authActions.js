@@ -3,8 +3,8 @@ import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { BrowserRouter } from "react-router-dom";
 
 // Register User
 export const registerUser = (userData, history) => (dispatch) => {
@@ -54,12 +54,13 @@ export const setCurrentUser = (decoded) => {
 };
 
 // Log user out
-export const logoutUser = () => (dispatch) => {
+export const logoutUser = (userData, history) => (dispatch) => {
   // Remove token from localStorage
   localStorage.removeItem("jwtToken");
   // Remove auth header for future requests
   setAuthToken(false);
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
+  BrowserRouter.prototype.push('/login')
   
 };
