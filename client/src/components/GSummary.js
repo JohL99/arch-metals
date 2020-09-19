@@ -358,19 +358,23 @@ class GSummary extends PureComponent {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
-          <td align="center">{prixFromApi.user}</td>
-          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/oz</b></td>
-          <td align="center">{prixFromApi.dateforecast} </td>
-          <td align="center">{prixFromApi.price1 * 100}%</td>
-          <td align="center">{prixFromApi.price2 * 100}%</td>
-          <td align="center">{prixFromApi.price3 * 100}%</td>
-          <td align="center">{prixFromApi.price4 * 100}%</td>
-          <td align="center">{prixFromApi.price5 * 100}%</td>
-          <td align="center">{prixFromApi.price6 * 100}%</td>
-          <td align="center">{prixFromApi.price7 * 100}%</td>
-          <td align="center">{prixFromApi.price8 * 100}%</td>
-          <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td align="center">{prixFromApi.specificcomments}</td>
+          <td colSpan="1" align="center">
+            <b>${Math.round(prixFromApi.lamoyenne)}/oz</b>
+            {"  "}
+            {prixFromApi.user}
+            {"  "}
+            {prixFromApi.dateforecast}
+          </td>
+          <td colSpan="1" align="center">{prixFromApi.price1 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price2 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price3 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price4 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price5 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price6 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price7 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price8 * 100}%</td>
+          <td colSpan="1" align="center">{prixFromApi.price9 * 100}%</td>
+          <td colSpan="4" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -431,71 +435,69 @@ class GSummary extends PureComponent {
               </tr>
               <tr>
                 <td align="center"><b>Forecasts</b></td>
-    <td align="center"><b>${/* this.trouveLeMedian() */ Math.round(this.calculeLaMoyenne())}/oz</b></td>
-    <td align="center"><b>{this.state.lesprix.length}</b></td>
-    <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
-    <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
-    </tr>
-    <tr>
-    <td colSpan="12">
-    {" "}
-    <div style={{ width: "80%", height: 300 }}>
-        <ResponsiveContainer>
-        <BarChart
-          layout="horizontal"
-          width={800}
-          height={200}
-          data={this.state.donnees1}
-          margin={{
-            top: 5,
-            right: 5,
-            left: 5,
-            bottom: 5,
-      }}
-      >
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="price" type="category" />
-        <YAxis type="number" label="  %  " />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="RecentData" fill="#CC9900" />
-         {/*  <Bar dataKey="OldData" fill="#FF0000" />
-          <Bar dataKey="AllData" fill="#00B050" /> */}
-        </BarChart>
-        </ResponsiveContainer>
-      </div>
-      </td>
-      </tr>
-    <tr>
-      <td colSpan="12" rowSpan="12">
-      <table className="table table-bordered">
-        <tbody>
-          <tr>
-          <td align="center"><b>Most Recent General Comments</b></td>
-          </tr>
-          {this.state.maloba.map(renderMaloba)}
-          </tbody>
-          </table>
-          </td>
-          </tr>
-          </tbody>
-          </table>
+                <td align="center"><b>${/* this.trouveLeMedian() */ Math.round(this.calculeLaMoyenne())}/oz</b></td>
+                <td align="center"><b>{this.state.lesprix.length}</b></td>
+                <td align="center">{Math.round(this.state.lesmoyennes[0] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[1] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[2] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[3] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[4] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[5] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[6] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[7] * 100)}%</td>
+                <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
+              </tr>
+              <tr>
+              <td colSpan="14" align="center">
+                {" "}
+                <div style={{ width: "50%", height: 250 }}>
+                <ResponsiveContainer>
+                <BarChart
+                layout="horizontal"
+                width={800}
+                height={200}
+                data={this.state.donnees1}
+                margin={{
+                top: 5,
+                right: 5,
+                left: 5,
+                bottom: 5,
+              }}
+                >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="price" type="category" />
+                <YAxis type="number" label="  %  " />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey="RecentData" fill="#CC9900" />
+                  {/*  <Bar dataKey="OldData" fill="#FF0000" />
+                  <Bar dataKey="AllData" fill="#00B050" /> */}
+                </BarChart>
+                </ResponsiveContainer>
+              </div>
+              </td>
+            </tr>
+            <tr>
+            <td colSpan="14" rowSpan="12">
+            <table className="table table-bordered">
+            <tbody>
+            <tr>
+            <td align="center"><b>Most Recent General Comments</b></td>
+            </tr>
+              {this.state.maloba.map(renderMaloba)}
+            </tbody>
+            </table>
+            </td>
+            </tr>
+            </tbody>
+            </table>
           <table className="table table-bordered">
           <tbody>
           <tr>
           <td colSpan="14" align="center" width="100%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
-           <td><b>Participant</b></td>
             <td><b>Expected Value</b></td>
-            <td><b>Date</b></td>
             <td><b>${this.state.price1}/oz</b></td>
             <td><b>${this.state.price2}/oz</b></td>
             <td><b>${this.state.price3}/oz</b></td>
@@ -505,7 +507,7 @@ class GSummary extends PureComponent {
             <td><b>${this.state.price7}/oz</b></td>
             <td><b>${this.state.price8}/oz</b></td>
             <td><b>${this.state.price9}/oz</b></td>
-            <td align="center" width="40%"><b>Justifications</b></td>
+            <td colspan="4"><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}
             </tbody>

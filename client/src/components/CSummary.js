@@ -485,7 +485,7 @@ class CSummary extends PureComponent {
             <td align="center"><b>Most Recent General Comments</b></td>
             </tr>
               {this.state.maloba.map(renderMaloba)}
-              </tbody>
+            </tbody>
             </table>
             </td>
             </tr>
@@ -497,16 +497,16 @@ class CSummary extends PureComponent {
           <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
-             <td><b>Expected Value</b></td>
-             <td><b>${this.state.price1}/mt</b></td>
-             <td><b>${this.state.price2}/mt</b></td>
-             <td><b>${this.state.price3}/mt</b></td>
-             <td><b>${this.state.price4}/mt</b></td>
-             <td><b>${this.state.price5}/mt</b></td>
-             <td><b>${this.state.price6}/mt</b></td>
-             <td><b>${this.state.price7}/mt</b></td>
-             <td><b>${this.state.price8}/mt</b></td>
-             <td><b>${this.state.price9}/mt</b></td>
+            <td><b>Expected Value</b></td>
+            <td><b>${this.state.price1}/mt</b></td>
+            <td><b>${this.state.price2}/mt</b></td>
+            <td><b>${this.state.price3}/mt</b></td>
+            <td><b>${this.state.price4}/mt</b></td>
+            <td><b>${this.state.price5}/mt</b></td>
+            <td><b>${this.state.price6}/mt</b></td>
+            <td><b>${this.state.price7}/mt</b></td>
+            <td><b>${this.state.price8}/mt</b></td>
+            <td><b>${this.state.price9}/mt</b></td>
             <td colspan="4"><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}

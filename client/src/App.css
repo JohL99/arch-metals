@@ -11506,10 +11506,11 @@ footer{
 
 #myBtn {
   position: fixed;
-  bottom: 8vh;
+  bottom: 6vh;
   left: 30px;
   z-index: 99;
   font-size: 14px;
+  font-weight: bold;
   border: 1px solid #2fa4e787;
   outline: none;
   background-color: #033c73;
