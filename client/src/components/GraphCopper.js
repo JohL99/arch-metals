@@ -158,7 +158,7 @@ class GraphCopper extends PureComponent {
   }
   render() {
     return (
-      <div style={{ width: "50%", height: 250 }} align="center">
+      <div style={{ width: "50%", height: 250, align: "center" }}>
         <ResponsiveContainer>
           <BarChart
             layout="horizontal"
