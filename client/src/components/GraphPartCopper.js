@@ -118,6 +118,7 @@ class GraphPartCopper extends PureComponent {
   render() {
     return (
       <BarChart
+        layout="vertical"
         width={500}
         height={300}
         data={this.state.data /*this.state.data   this.props.mweji*/}
@@ -129,8 +130,8 @@ class GraphPartCopper extends PureComponent {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="price" />
-        <YAxis />
+        <XAxis type="number" />
+        <XAxis dataKey="price" type="category" />
         <Tooltip />
         <Legend />
         <Bar dataKey="Sep20" fill="#00CC00" />

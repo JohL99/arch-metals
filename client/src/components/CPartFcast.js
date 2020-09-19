@@ -593,6 +593,10 @@ class CPartFcast extends Component {
                 />
               </td>
             </tr>
+            </tbody>
+        </table>
+      <table className="table table-bordered">
+        <tbody>    
         <tr><td align="center"><b>General Comments</b></td></tr>
         <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
         <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import GraphPartGold from "./GraphPartGold";
-class CPartFcast extends Component {
+class GPartFcast extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -593,6 +593,10 @@ class CPartFcast extends Component {
                 />
               </td>
             </tr>
+            </tbody>
+        </table>
+      <table className="table table-bordered">
+        <tbody>
         <tr><td align="center"><b>General Comments</b></td></tr>
         <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
         <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
@@ -600,44 +604,44 @@ class CPartFcast extends Component {
         <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
           </tbody>
         </table>
-        <table className="table table-bordered">
-          <thead>
-            <tr><td align="center" colSpan="13"><b>Forecasts - September 2020</b></td></tr>
-            {this.state.prixsept.map(renderPrixSept)}
-          </thead>
+      <table className="table table-bordered">
+        <thead>
+        <tr><td align="center" colSpan="13"><b>Forecasts - September 2020</b></td></tr>
+          {this.state.prixsept.map(renderPrixSept)}
+        </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
         <table className="table table-bordered">
-          <thead>
-            <tr><td align="center" colSpan="13"><b>Forecasts - October 2020</b></td></tr>
+        <thead>
+          <tr><td align="center" colSpan="13"><b>Forecasts - October 2020</b></td></tr>
             {this.state.prixoct.map(renderPrixOct)}
-          </thead>
-          <tbody>{this.state.octobers.map(renderOctober)}</tbody>
+        </thead>
+        <tbody>{this.state.octobers.map(renderOctober)}</tbody>
         </table>
         <table className="table table-bordered">
-          <thead>
-            <tr><td align="center" colSpan="13"><b>Forecasts - November 2020</b></td></tr>
+        <thead>
+          <tr><td align="center" colSpan="13"><b>Forecasts - November 2020</b></td></tr>
             {this.state.prixnov.map(renderPrixNov)}
-          </thead>
-          <tbody>{this.state.novembers.map(renderNovember)}</tbody>
+        </thead>
+        <tbody>{this.state.novembers.map(renderNovember)}</tbody>
         </table>
         <table className="table table-bordered">
-          <thead>
-            <tr><td align="center" colSpan="13"><b>Forecasts - December 2020</b></td></tr>
+        <thead>
+          <tr><td align="center" colSpan="13"><b>Forecasts - December 2020</b></td></tr>
             {this.state.prixdec.map(renderPrixDec)}
-          </thead>
-          <tbody>{this.state.decembers.map(renderDecember)}</tbody>
+        </thead>
+        <tbody>{this.state.decembers.map(renderDecember)}</tbody>
         </table>
       </div>
     );
   }
 }
 
-CPartFcast.propTypes = {
+GPartFcast.propTypes = {
   //logoutUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-export default connect(mapStateToProps, {})(CPartFcast);
+export default connect(mapStateToProps, {})(GPartFcast);
