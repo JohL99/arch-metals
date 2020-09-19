@@ -450,7 +450,7 @@ class CSummary extends PureComponent {
               <tr>
               <td colSpan="14">
                 {" "}
-                <div style={{ width: "80%", height: 300 }}>
+                <div style={{ width: "100%", height: 200 }}>
                 <ResponsiveContainer>
                 <BarChart
                 layout="horizontal"
