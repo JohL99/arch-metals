@@ -82,10 +82,11 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-      window.onbeforeunload = function () {
-        window.scrollTo(0, 0);
-      };
+      setInterval(function(){
+        window.scrollTo(0,0);
+      },1500);
   }
+
   fillprices(utilisateur, produit) {
     let psepFromApi = {};
     let poctFromApi = {};
