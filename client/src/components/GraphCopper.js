@@ -73,9 +73,9 @@ class GraphCopper extends PureComponent {
           this.setState({ element });
           for (i === 0; i < 9; i++) {kombo[i] = price.floorprice + price.constant1 * i;}
           let data1 = { ...this.state.data1 };
-          data1 = [{price: this.state.element[0], Percentage: this.state.averages[0],},];
+          data1 = [{price: this.state.element[0], RecentData: this.state.averages[0],},];
           var y = 1;
-          for (y === 1; y < 9; y++) {data1.push({price: this.state.element[y], Percentage: this.state.averages[y],});}
+          for (y === 1; y < 9; y++) {data1.push({price: this.state.element[y], RecentData: this.state.averages[y],});}
           this.setState({ data1 });
           return {
             id: price._id,
@@ -177,7 +177,7 @@ class GraphCopper extends PureComponent {
             <YAxis type="number" label="  %  " />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Percentage" fill="#B87333" />
+            <Bar dataKey="RecentData" fill="#B87333" />
             {/* <Bar dataKey="item" fill="#BF9000" /> */}
           </BarChart>
         </ResponsiveContainer>

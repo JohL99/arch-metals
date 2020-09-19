@@ -11507,18 +11507,18 @@ footer{
 #myBtn {
   position: fixed;
   bottom: 17vh;
-  right: 30px;
+  left: 30px;
   z-index: 99;
-  font-size: 18px;
+  font-size: 14px;
   border: 1px solid #2fa4e787;
   outline: none;
-  background-color: #005a6861;
+  background-color: #033c73;
   color: #fff;
   cursor: pointer;
-  padding: 5px 15px 5px 15px;
+  padding: 2px 2px 2px 2px;
   border-radius: 1px;
 }
 
 #myBtn:hover {
-  background-color: #555;
+  background-color: #033c73;
 }

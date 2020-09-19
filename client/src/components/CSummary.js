@@ -358,9 +358,13 @@ class CSummary extends PureComponent {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
-          <td align="center">{prixFromApi.user}</td>
-          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/mt</b></td>
-          <td align="center">{prixFromApi.dateforecast} </td>
+          <td rowspan="3" align="center">
+            <b>${Math.round(prixFromApi.lamoyenne)}/mt</b>
+            {"  "}
+            {prixFromApi.user}
+            {"  "}
+            {prixFromApi.dateforecast}
+          </td>
           <td align="center">{prixFromApi.price1 * 100}%</td>
           <td align="center">{prixFromApi.price2 * 100}%</td>
           <td align="center">{prixFromApi.price3 * 100}%</td>
@@ -405,7 +409,7 @@ class CSummary extends PureComponent {
                       this.fillPrices(e.target.value);
                     }}
                   >
-                    <option value="">Select a month</option>
+                    <option value="" align="center">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
                       .map((lemois, index) => (
@@ -493,19 +497,17 @@ class CSummary extends PureComponent {
           <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
-           <td><b>Participant</b></td>
-            <td><b>Expected Value</b></td>
-            <td><b>Date</b></td>
-            <td><b>${this.state.price1}/mt</b></td>
-            <td><b>${this.state.price2}/mt</b></td>
-            <td><b>${this.state.price3}/mt</b></td>
-            <td><b>${this.state.price4}/mt</b></td>
-            <td><b>${this.state.price5}/mt</b></td>
-            <td><b>${this.state.price6}/mt</b></td>
-            <td><b>${this.state.price7}/mt</b></td>
-            <td><b>${this.state.price8}/mt</b></td>
-            <td><b>${this.state.price9}/mt</b></td>
-            <td align="center" width="40%"><b>Justifications</b></td>
+             <td rowspan="3"><b>Expected Value</b></td>
+             <td><b>${this.state.price1}/mt</b></td>
+             <td><b>${this.state.price2}/mt</b></td>
+             <td><b>${this.state.price3}/mt</b></td>
+             <td><b>${this.state.price4}/mt</b></td>
+             <td><b>${this.state.price5}/mt</b></td>
+             <td><b>${this.state.price6}/mt</b></td>
+             <td><b>${this.state.price7}/mt</b></td>
+             <td><b>${this.state.price8}/mt</b></td>
+             <td><b>${this.state.price9}/mt</b></td>
+            <td align="center" colspan="4"><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}
             </tbody>
