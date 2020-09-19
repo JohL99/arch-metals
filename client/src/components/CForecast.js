@@ -556,7 +556,7 @@ class CForecast extends PureComponent {
                 <td align="center"><b>${this.state.price9}/MT</b></td>
               </tr>
               <tr>
-                <td align="center"><b>Most Recent Forecasts</b></td>
+                <td align="center"><b>Recent Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.trouveEV(this.state.lesmoyennes) * 100)
                 /*Math.round(this.state.EVR)*/}/MT</b></td>
                 <td align="center"><b>{this.state.lesprix.length}</b></td>
@@ -602,8 +602,8 @@ class CForecast extends PureComponent {
                         }}
                       >
                         <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="price" type="category" />
-                        <YAxis type="number" label=" % " />
+                        <b><XAxis dataKey="price" type="category" /></b>
+                        <b><YAxis type="number" label="  %  " /></b>
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="RecentData" fill="#00B050" />
