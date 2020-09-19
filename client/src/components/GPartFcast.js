@@ -84,7 +84,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-      window.scrollTo(0, 0);
+      window.scrollTo(0,0);
   }
   fillprices(utilisateur, produit) {
     let psepFromApi = {};
@@ -402,8 +402,10 @@ class GPartFcast extends Component {
     const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
-          <td align="center"><b>${septemberFromApi.EV}/oz</b></td>
-          <td align="center">{septemberFromApi.dateforecast}</td>
+          <td align="center"><b>${septemberFromApi.EV}/oz</b>
+          {"  "}
+          {septemberFromApi.dateforecast}
+          </td>
           <td align="center">{septemberFromApi.price1 * 100}%</td>
           <td align="center">{septemberFromApi.price2 * 100}%</td>
           <td align="center">{septemberFromApi.price3 * 100}%</td>
@@ -413,15 +415,17 @@ class GPartFcast extends Component {
           <td align="center">{septemberFromApi.price7 * 100}%</td>
           <td align="center">{septemberFromApi.price8 * 100}%</td>
           <td align="center">{septemberFromApi.price9 * 100}%</td>
-          <td align="center">{septemberFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{septemberFromApi.specificcomments}</td>
         </tr>
       );
     };
     const renderOctober = (octoberFromApi) => {
       return (
         <tr key={octoberFromApi.id}>
-          <td align="center"><b>${octoberFromApi.EV}/oz</b></td>
-          <td align="center">{octoberFromApi.dateforecast}</td>
+          <td align="center"><b>${octoberFromApi.EV}/oz</b>
+          {"  "}
+          {octoberFromApi.dateforecast}
+          </td>
           <td align="center">{octoberFromApi.price1 * 100}%</td>
           <td align="center">{octoberFromApi.price2 * 100}%</td>
           <td align="center">{octoberFromApi.price3 * 100}%</td>
@@ -431,15 +435,17 @@ class GPartFcast extends Component {
           <td align="center">{octoberFromApi.price7 * 100}%</td>
           <td align="center">{octoberFromApi.price8 * 100}%</td>
           <td align="center">{octoberFromApi.price9 * 100}%</td>
-          <td align="center">{octoberFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{octoberFromApi.specificcomments}</td>
         </tr>
       );
     };
     const renderNovember = (novemberFromApi) => {
       return (
         <tr key={novemberFromApi.id}>
-          <td align="center"><b>${novemberFromApi.EV}/oz</b></td>
-          <td align="center">{novemberFromApi.dateforecast}</td>
+          <td align="center"><b>${novemberFromApi.EV}/oz</b>
+          {"  "}
+          {novemberFromApi.dateforecast}
+          </td>
           <td align="center">{novemberFromApi.price1 * 100}%</td>
           <td align="center">{novemberFromApi.price2 * 100}%</td>
           <td align="center">{novemberFromApi.price3 * 100}%</td>
@@ -449,15 +455,17 @@ class GPartFcast extends Component {
           <td align="center">{novemberFromApi.price7 * 100}%</td>
           <td align="center">{novemberFromApi.price8 * 100}%</td>
           <td align="center">{novemberFromApi.price9 * 100}%</td>
-          <td align="center">{novemberFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{novemberFromApi.specificcomments}</td>
         </tr>
       );
     };
     const renderDecember = (decemberFromApi) => {
       return (
         <tr key={decemberFromApi.id}>
-          <td align="center"><b>${decemberFromApi.EV}/oz</b></td>
-          <td align="center">{decemberFromApi.dateforecast}</td>
+          <td align="center"><b>${decemberFromApi.EV}/oz</b>
+          {"  "}
+          {decemberFromApi.dateforecast}
+          </td>
           <td align="center">{decemberFromApi.price1 * 100}%</td>
           <td align="center">{decemberFromApi.price2 * 100}%</td>
           <td align="center">{decemberFromApi.price3 * 100}%</td>
@@ -467,7 +475,7 @@ class GPartFcast extends Component {
           <td align="center">{decemberFromApi.price7 * 100}%</td>
           <td align="center">{decemberFromApi.price8 * 100}%</td>
           <td align="center">{decemberFromApi.price9 * 100}%</td>
-          <td align="center">{decemberFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{decemberFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -475,7 +483,6 @@ class GPartFcast extends Component {
       return (
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${psepFromApi.pour1}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour2}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour3}/oz</b></td>
@@ -485,7 +492,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${psepFromApi.pour7}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour8}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -493,7 +500,6 @@ class GPartFcast extends Component {
       return (
         <tr key={poctFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${poctFromApi.pour1}/oz</b></td>
           <td align="center"><b>${poctFromApi.pour2}/oz</b></td>
           <td align="center"><b>${poctFromApi.pour3}/oz</b></td>
@@ -503,7 +509,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${poctFromApi.pour7}/oz</b></td>
           <td align="center"><b>${poctFromApi.pour8}/oz</b></td>
           <td align="center"><b>${poctFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -511,7 +517,6 @@ class GPartFcast extends Component {
       return (
         <tr key={pnovFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${pnovFromApi.pour1}/oz</b></td>
           <td align="center"><b>${pnovFromApi.pour2}/oz</b></td>
           <td align="center"><b>${pnovFromApi.pour3}/oz</b></td>
@@ -521,7 +526,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${pnovFromApi.pour7}/oz</b></td>
           <td align="center"><b>${pnovFromApi.pour8}/oz</b></td>
           <td align="center"><b>${pnovFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -529,7 +534,6 @@ class GPartFcast extends Component {
       return (
         <tr key={pdecFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${pdecFromApi.pour1}/oz</b></td>
           <td align="center"><b>${pdecFromApi.pour2}/oz</b></td>
           <td align="center"><b>${pdecFromApi.pour3}/oz</b></td>
@@ -539,7 +543,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${pdecFromApi.pour7}/oz</b></td>
           <td align="center"><b>${pdecFromApi.pour8}/oz</b></td>
           <td align="center"><b>${pdecFromApi.pour9}/oz</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -587,7 +591,7 @@ class GPartFcast extends Component {
               <td align="center"><b>${this.state.evdec}/oz</b></td>
             </tr>
             <tr>
-            <td rowSpan="12" colSpan="6" width="80%" align="center">
+            <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartGold
                   mweji={this.state.recents}
                   mweji1={this.state.prixsept}
@@ -607,28 +611,28 @@ class GPartFcast extends Component {
         </table>
       <table className="table table-bordered">
         <thead>
-        <tr><td align="center" colSpan="13"><b>Forecasts - September 2020</b></td></tr>
+        <tr><td align="center" colSpan="14"><b>Forecasts - September 2020</b></td></tr>
           {this.state.prixsept.map(renderPrixSept)}
         </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
         <table className="table table-bordered">
         <thead>
-          <tr><td align="center" colSpan="13"><b>Forecasts - October 2020</b></td></tr>
+          <tr><td align="center" colSpan="14"><b>Forecasts - October 2020</b></td></tr>
             {this.state.prixoct.map(renderPrixOct)}
         </thead>
         <tbody>{this.state.octobers.map(renderOctober)}</tbody>
         </table>
         <table className="table table-bordered">
         <thead>
-          <tr><td align="center" colSpan="13"><b>Forecasts - November 2020</b></td></tr>
+          <tr><td align="center" colSpan="14"><b>Forecasts - November 2020</b></td></tr>
             {this.state.prixnov.map(renderPrixNov)}
         </thead>
         <tbody>{this.state.novembers.map(renderNovember)}</tbody>
         </table>
         <table className="table table-bordered">
         <thead>
-          <tr><td align="center" colSpan="13"><b>Forecasts - December 2020</b></td></tr>
+          <tr><td align="center" colSpan="14"><b>Forecasts - December 2020</b></td></tr>
             {this.state.prixdec.map(renderPrixDec)}
         </thead>
         <tbody>{this.state.decembers.map(renderDecember)}</tbody>

@@ -136,8 +136,8 @@ class GraphPartCopper extends PureComponent {
         <Legend />
         <Bar dataKey="Sep20" fill="#00CC00" />
         <Bar dataKey="Oct20" fill="#0000FF" />
-        <Bar dataKey="Nov20" fill="#FFC000"/>
-        <Bar dataKey="Dec20" fill="#FF0000"/>
+        <Bar dataKey="Nov20" fill="#FFC000" />
+        <Bar dataKey="Dec20" fill="#FF0000" />
       </BarChart>
     );
   }

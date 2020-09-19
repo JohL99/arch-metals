@@ -31,7 +31,9 @@ class CPartFcast extends Component {
       comnov: "",
       comdec: "",
     };
-
+    window.onbeforeunload = function () {
+      window.scrollTo(0, 0);
+    };
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
   }
@@ -84,7 +86,6 @@ class CPartFcast extends Component {
       });
       window.scrollTo(0,0);
   }
-
   fillprices(utilisateur, produit) {
     let psepFromApi = {};
     let poctFromApi = {};
