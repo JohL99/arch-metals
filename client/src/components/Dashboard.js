@@ -12,6 +12,10 @@ class Dashboard extends PureComponent {
     }
     render() {
         return <div class="alert alert-info" role="alert">
+            <br />
+            <br />
+            <br />
+            <br />
             <h1>{this.state.message}</h1>
       </div>
     }

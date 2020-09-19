@@ -86,22 +86,22 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink2"
           >
             <Link className="dropdown-item" to="/CSumFcast">
-              Copper Summary
+              Copper All Forecasts
             </Link>
             <Link className="dropdown-item" to="/GSumFcast">
-              Gold Summary
+              Gold All Forecasts
             </Link>
           <Link className="dropdown-item" to="/CSummary">
-              Copper Monthly Summaries
+              Copper Recent Forecasts
             </Link>
             <Link className="dropdown-item" to="/GSummary">
-              Gold Monthly Summaries
+              Gold Recent Forecasts
             </Link>
             <Link className="dropdown-item" to="/CPartFcast">
-              Copper Participants
+              Copper Participant Forecasts
             </Link>
             <Link className="dropdown-item" to="/GPartFcast">
-              Gold Participants
+              Gold Participant Forecasts
             </Link>
           </div>
         </li>        
@@ -122,16 +122,16 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink2"
           >
             <Link className="dropdown-item" to="/Copperinput">
-              Copper Inputs
+              Copper Forecast Inputs
             </Link>
             <Link className="dropdown-item" to="/Goldinput">
-              Gold Inputs
+              Gold Forecast Inputs
             </Link>
             <Link className="dropdown-item" to="/coppercomex">
-              Copper Comex Prices
+              Copper Comex Graphs
             </Link>
             <Link className="dropdown-item" to="/goldcomex">
-              Gold Comex Prices
+              Gold Comex Graphs
             </Link>
           </div>
         </li>
@@ -152,10 +152,10 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink3"
           >
             <Link className="dropdown-item" to="/CForecast">
-              Copper Forecasts
+              Copper All Forecast Tables
             </Link>
             <Link className="dropdown-item" to="/GForecast">
-              Gold Forecasts
+              Gold All Forecast Tables
             </Link>
           </div>
         </li>
@@ -266,22 +266,22 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink2"
           >
             <Link className="dropdown-item" to="/CSumFcast">
-              Copper Summary
+              Copper All Forecasts
             </Link>
             <Link className="dropdown-item" to="/GSumFcast">
-              Gold Summary
+              Gold All Forecasts
             </Link>
            <Link className="dropdown-item" to="/CSummary">
-              Copper Monthly Summaries
+              Copper Recent Forecasts
             </Link>
             <Link className="dropdown-item" to="/GSummary">
-              Gold Monthly Summaries
+              Gold Recent Forecasts
             </Link>
            <Link className="dropdown-item" to="/CPartFcast">
-              Copper Participants
+              Copper Participant Forecasts
             </Link>
             <Link className="dropdown-item" to="/GPartFcast">
-              Gold Participants
+              Gold Participant Forecasts
             </Link>
           </div>
         </li>
@@ -302,16 +302,16 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink2"
           >
             <Link className="dropdown-item" to="/Copperinput">
-              Copper Inputs
+              Copper Forecast Inputs
             </Link>
             <Link className="dropdown-item" to="/Goldinput">
-              Gold Inputs
+              Gold Forecast Inputs
             </Link>
             <Link className="dropdown-item" to="/coppercomex">
-              Copper Comex Prices
+              Copper Comex Graphs
             </Link>
             <Link className="dropdown-item" to="/goldcomex">
-              Gold Comex Prices
+              Gold Comex Graphs
             </Link>
           </div>
         </li>
@@ -332,10 +332,10 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink3"
           >
             <Link className="dropdown-item" to="/CForecast">
-              Copper Forecasts
+              Copper All Forecast Tables
             </Link>
             <Link className="dropdown-item" to="/GForecast">
-              Gold Forecasts
+              Gold All Forecast Tables
             </Link>
           </div>
         </li>
