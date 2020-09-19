@@ -428,18 +428,18 @@ class CSumFcast extends PureComponent {
               <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.sepprice]*/}<b>september 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price2[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price3[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price4[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price5[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price6[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price7[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price8[this.state.sepprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price9[this.state.sepprice]}/MT</b></td>
+              <td align="center"><b>${this.state.price1[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price2[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price3[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price4[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price5[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price6[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price7[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price8[this.state.sepprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price9[this.state.sepprice]}/mt</b></td>
               </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.seppour]}/MT</b></td>
+              <td align="center"><b>${this.state.avmedian[this.state.seppour]}/mt</b></td>
               <td align="center"><b>{this.state.sepnb}</b></td>
               <td align="center">{this.state.avg1[this.state.seppour]}%</td>
               <td align="center">{this.state.avg2[this.state.seppour]}%</td>
@@ -455,18 +455,18 @@ class CSumFcast extends PureComponent {
               <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.octprice]*/}<b>October 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price2[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price3[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price4[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price5[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price6[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price7[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price8[this.state.octprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price9[this.state.octprice]}/MT</b></td>
+              <td align="center"><b>${this.state.price1[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price2[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price3[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price4[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price5[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price6[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price7[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price8[this.state.octprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price9[this.state.octprice]}/mt</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.octpour]}/MT</b></td>
+              <td align="center"><b>${this.state.avmedian[this.state.octpour]}/mt</b></td>
               <td align="center"><b>{this.state.octnb}</b></td>
               <td align="center">{this.state.avg1[this.state.octpour]}%</td>
               <td align="center">{this.state.avg2[this.state.octpour]}%</td>
@@ -490,35 +490,35 @@ class CSumFcast extends PureComponent {
 		          <b>No. Forecasts</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price1[this.state.novprice]}/MT</b>
+		            <b>${this.state.price1[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price2[this.state.novprice]}/MT</b>
+		            <b>${this.state.price2[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price3[this.state.novprice]}/MT</b>
+		            <b>${this.state.price3[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price4[this.state.novprice]}/MT</b>
+		            <b>${this.state.price4[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price5[this.state.novprice]}/MT</b>
+		            <b>${this.state.price5[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price6[this.state.novprice]}/MT</b>
+		            <b>${this.state.price6[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price7[this.state.novprice]}/MT</b>
+		            <b>${this.state.price7[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price8[this.state.novprice]}/MT</b>
+		            <b>${this.state.price8[this.state.novprice]}/mt</b>
 	            </td>
               <td align="center">
-		            <b>${this.state.price9[this.state.novprice]}/MT</b>
+		            <b>${this.state.price9[this.state.novprice]}/mt</b>
 	            </td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.novpour]}/MT</b></td>
+              <td align="center"><b>${this.state.avmedian[this.state.novpour]}/mt</b></td>
               <td align="center"><b>{this.state.novnb}</b></td>
               <td align="center">{this.state.avg1[this.state.novpour]}%</td>
               <td align="center">{this.state.avg2[this.state.novpour]}%</td>
@@ -534,18 +534,18 @@ class CSumFcast extends PureComponent {
               <td rowSpan="2" align="center">{/*this.state.monthprice[this.state.decprice]*/}<b>December 2020</b></td>
               <td align="center"><b>Expected Value</b></td>
               <td align="center"><b>No. Forecasts</b></td>
-              <td align="center"><b>${this.state.price1[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price2[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price3[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price4[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price5[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price6[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price7[this.state.decprice]}/MT</b></td>
-              <td align="center"><b>${this.state.price8[this.state.decprice]}/Mt</b></td>
-              <td align="center"><b>${this.state.price9[this.state.decprice]}/MT</b></td>
+              <td align="center"><b>${this.state.price1[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price2[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price3[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price4[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price5[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price6[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price7[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price8[this.state.decprice]}/mt</b></td>
+              <td align="center"><b>${this.state.price9[this.state.decprice]}/mt</b></td>
             </tr>
             <tr>
-              <td align="center"><b>${this.state.avmedian[this.state.decpour]}/MT</b></td>
+              <td align="center"><b>${this.state.avmedian[this.state.decpour]}/mt</b></td>
               <td align="center"><b>{this.state.decnb}</b></td>
               <td align="center">{this.state.avg1[this.state.decpour]}%</td>
               <td align="center">{this.state.avg2[this.state.decpour]}%</td>

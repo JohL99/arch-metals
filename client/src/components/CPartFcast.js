@@ -401,7 +401,7 @@ class CPartFcast extends Component {
     const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
-          <td align="center"><b>${septemberFromApi.EV}/MT</b></td>
+          <td align="center"><b>${septemberFromApi.EV}/mt</b></td>
           <td align="center">{septemberFromApi.dateforecast}</td>
           <td align="center">{septemberFromApi.price1 * 100}%</td>
           <td align="center">{septemberFromApi.price2 * 100}%</td>
@@ -419,7 +419,7 @@ class CPartFcast extends Component {
     const renderOctober = (octoberFromApi) => {
       return (
         <tr key={octoberFromApi.id}>
-          <td align="center"><b>${octoberFromApi.EV}/MT</b></td>
+          <td align="center"><b>${octoberFromApi.EV}/mt</b></td>
           <td align="center">{octoberFromApi.dateforecast}</td>
           <td align="center">{octoberFromApi.price1 * 100}%</td>
           <td align="center">{octoberFromApi.price2 * 100}%</td>
@@ -437,7 +437,7 @@ class CPartFcast extends Component {
     const renderNovember = (novemberFromApi) => {
       return (
         <tr key={novemberFromApi.id}>
-          <td align="center"><b>${novemberFromApi.EV}/MT</b></td>
+          <td align="center"><b>${novemberFromApi.EV}/mt</b></td>
           <td align="center">{novemberFromApi.dateforecast}</td>
           <td align="center">{novemberFromApi.price1 * 100}%</td>
           <td align="center">{novemberFromApi.price2 * 100}%</td>
@@ -455,7 +455,7 @@ class CPartFcast extends Component {
     const renderDecember = (decemberFromApi) => {
       return (
         <tr key={decemberFromApi.id}>
-          <td align="center"><b>${decemberFromApi.EV}/MT</b></td>
+          <td align="center"><b>${decemberFromApi.EV}/mt</b></td>
           <td align="center">{decemberFromApi.dateforecast}</td>
           <td align="center">{decemberFromApi.price1 * 100}%</td>
           <td align="center">{decemberFromApi.price2 * 100}%</td>
@@ -475,15 +475,15 @@ class CPartFcast extends Component {
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${psepFromApi.pour1}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour2}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour3}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour4}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour5}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour6}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour7}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour8}/MT</b></td>
-          <td align="center"><b>${psepFromApi.pour9}/MT</b></td>
+          <td align="center"><b>${psepFromApi.pour1}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour2}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour3}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour4}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour5}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour6}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour7}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour8}/mt</b></td>
+          <td align="center"><b>${psepFromApi.pour9}/mt</b></td>
           <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
@@ -493,15 +493,15 @@ class CPartFcast extends Component {
         <tr key={poctFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${poctFromApi.pour1}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour2}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour3}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour4}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour5}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour6}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour7}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour8}/MT</b></td>
-          <td align="center"><b>${poctFromApi.pour9}/MT</b></td>
+          <td align="center"><b>${poctFromApi.pour1}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour2}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour3}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour4}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour5}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour6}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour7}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour8}/mt</b></td>
+          <td align="center"><b>${poctFromApi.pour9}/mt</b></td>
           <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
@@ -511,15 +511,15 @@ class CPartFcast extends Component {
         <tr key={pnovFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${pnovFromApi.pour1}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour2}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour3}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour4}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour5}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour6}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour7}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour8}/MT</b></td>
-          <td align="center"><b>${pnovFromApi.pour9}/MT</b></td>
+          <td align="center"><b>${pnovFromApi.pour1}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour2}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour3}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour4}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour5}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour6}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour7}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour8}/mt</b></td>
+          <td align="center"><b>${pnovFromApi.pour9}/mt</b></td>
           <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
@@ -529,15 +529,15 @@ class CPartFcast extends Component {
         <tr key={pdecFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
           <td align="center"><b>{"Date"}</b></td>
-          <td align="center"><b>${pdecFromApi.pour1}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour2}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour3}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour4}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour5}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour6}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour7}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour8}/MT</b></td>
-          <td align="center"><b>${pdecFromApi.pour9}/MT</b></td>
+          <td align="center"><b>${pdecFromApi.pour1}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour2}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour3}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour4}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour5}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour6}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour7}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour8}/mt</b></td>
+          <td align="center"><b>${pdecFromApi.pour9}/mt</b></td>
           <td align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
@@ -580,10 +580,10 @@ class CPartFcast extends Component {
                   ))}
                 </select>
               </td>
-              <td align="center"><b>${this.state.evsep}/MT</b></td>
-              <td align="center"><b>${this.state.evoct}/MT</b></td>
-              <td align="center"><b>${this.state.evnov}/MT</b></td>
-              <td align="center"><b>${this.state.evdec}/MT</b></td>
+              <td align="center"><b>${this.state.evsep}/mt</b></td>
+              <td align="center"><b>${this.state.evoct}/mt</b></td>
+              <td align="center"><b>${this.state.evnov}/mt</b></td>
+              <td align="center"><b>${this.state.evdec}/mt</b></td>
             </tr>
             <tr>
               <td rowSpan="12" colSpan="6" width="80%" align="center">

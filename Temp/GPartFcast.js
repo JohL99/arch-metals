@@ -644,7 +644,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={paugFromApi.id}>
           <td align="center">{"August 2020"}</td>
-          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"EV ($/mt)"}</td>
           <td align="center">{"Date"}</td>
           <td align="center">{paugFromApi.pour1}</td>
           <td align="center">{paugFromApi.pour2}</td>
@@ -682,7 +682,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={poctFromApi.id}>
           <td align="center">{"October 2020"}</td>
-          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"EV ($/mt)"}</td>
           <td align="center">{"Date"}</td>
           <td align="center">{poctFromApi.pour1}</td>
           <td align="center">{poctFromApi.pour2}</td>
@@ -701,7 +701,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={pnovFromApi.id}>
           <td align="center">{"November 2020"}</td>
-          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"EV ($/mt)"}</td>
           <td align="center">{"Date"}</td>
           <td align="center">{pnovFromApi.pour1}</td>
           <td align="center">{pnovFromApi.pour2}</td>
@@ -720,7 +720,7 @@ class GPartFcast extends PureComponent {
       return (
         <tr key={pdecFromApi.id}>
           <td align="center">{"December 2020"}</td>
-          <td align="center">{"EV ($/MT)"}</td>
+          <td align="center">{"EV ($/mt)"}</td>
           <td align="center">{"Date"}</td>
           <td align="center">{pdecFromApi.pour1}</td>
           <td align="center">{pdecFromApi.pour2}</td>
@@ -745,7 +745,7 @@ class GPartFcast extends PureComponent {
               </td>
             </tr>
             <tr>
-              <td align="center">EV ($/MT)</td>
+              <td align="center">EV ($/mt)</td>
               <td align="center">August 2020</td>
               <td align="center">September 2020</td>
               <td align="center">October 2020</td>

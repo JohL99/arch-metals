@@ -346,17 +346,17 @@ class CopperInput extends Component {
               </tr>
               <tr>
                 <td className="first" align="center"><b>Expected Price</b></td>
-                <td id="avrg" align="center"><b>${this.state.priceAvr}/MT</b></td>
+                <td id="avrg" align="center"><b>${this.state.priceAvr}/mt</b></td>
                 <td align="center">{"  "}</td>
-                <td id="" align="center"><b>${this.state.price1}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price2}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price3}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price4}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price5}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price6}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price7}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price8}/MT</b></td>
-                <td id="" align="center"><b>${this.state.price9}/MT</b></td>
+                <td id="" align="center"><b>${this.state.price1}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price2}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price3}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price4}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price5}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price6}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price7}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price8}/mt</b></td>
+                <td id="" align="center"><b>${this.state.price9}/mt</b></td>
               </tr>
               <tr>
                 <td className="first" align="center"><b>Expected Probability</b></td>
