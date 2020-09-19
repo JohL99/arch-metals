@@ -85,7 +85,7 @@ class GForecast extends PureComponent {
     this.trouveEV = this.trouveEV.bind(this);
   }
   componentDidMount(){
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
   }
   CreeOldata() {
     let lesmoyennesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -465,9 +465,12 @@ class GForecast extends PureComponent {
     const renderPrix = (prixFromApi) => {
       return (
         <tr key={prixFromApi.id}>
-          <td align="center">{prixFromApi.user}</td>
-          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/oz</b></td>
-          <td align="center">{prixFromApi.dateforecast}</td>
+          <td align="center"><b>${Math.round(prixFromApi.lamoyenne)}/oz</b>
+          {"  "}
+          <b>{prixFromApi.user}</b>
+          {"  "}
+          {prixFromApi.dateforecast}
+          </td>
           <td align="center">{prixFromApi.price1 * 100}%</td>
           <td align="center">{prixFromApi.price2 * 100}%</td>
           <td align="center">{prixFromApi.price3 * 100}%</td>
@@ -477,16 +480,19 @@ class GForecast extends PureComponent {
           <td align="center">{prixFromApi.price7 * 100}%</td>
           <td align="center">{prixFromApi.price8 * 100}%</td>
           <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td align="center">{prixFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
     const renderOld = (Olddata) => {
       return (
         <tr key={Olddata.id}>
-          <td align="center">{Olddata.user}</td>
-          <td align="center"><b>${Math.round(Olddata.lamoyenne)}/oz</b></td>
-          <td align="center">{Olddata.dateforecast}</td>
+          <td align="center"><b>${Math.round(Olddata.lamoyenne)}/oz</b>
+          {"  "}
+          <b>{Olddata.user}</b>
+          {"  "}
+          {Olddata.dateforecast}
+          </td>
           <td align="center">{Math.round(Olddata.price1 * 100)}%</td>
           <td align="center">{Math.round(Olddata.price2 * 100)}%</td>
           <td align="center">{Math.round(Olddata.price3 * 100)}%</td>
@@ -496,7 +502,7 @@ class GForecast extends PureComponent {
           <td align="center">{Math.round(Olddata.price7 * 100)}%</td>
           <td align="center">{Math.round(Olddata.price8 * 100)}%</td>
           <td align="center">{Math.round(Olddata.price9 * 100)}%</td>
-          <td align="center">{Olddata.specificcomments}</td>
+          <td colSpan="4" align="left">{Olddata.specificcomments}</td>
         </tr>
       );
     };
@@ -589,8 +595,8 @@ class GForecast extends PureComponent {
                 <td align="center">{Math.round(this.state.lesmoyennesA[8])}%</td>
               </tr>
               <tr>
-                <td colSpan="12" align="center">
-                  <div style={{ width: "80%", height: 300 }}>
+                <td colSpan="14" align="center">
+                  <div style={{ width: "60%", height: 250 }}>
                     <ResponsiveContainer>
                       <BarChart
                         layout="horizontal"
@@ -633,14 +639,12 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="13" align="center" width="100%">
+                <td colSpan="14" align="center" width="100%">
                   <b>Most Recent Gold Forecasts - {this.state.mois}</b>
                 </td>
               </tr>
               <tr>
-                <td align="center"><b>Participant</b></td>
                 <td align="center"><b>Expected Value</b></td>
-                <td align="center"><b>Date</b></td>
                 <td align="center"><b>${this.state.price1}/oz</b></td>
                 <td align="center"><b>${this.state.price2}/oz</b></td>
                 <td align="center"><b>${this.state.price3}/oz</b></td>
@@ -650,7 +654,7 @@ class GForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/oz</b></td>
                 <td align="center"><b>${this.state.price8}/oz</b></td>
                 <td align="center"><b>${this.state.price9}/oz</b></td>
-                <td align="left" width="35%"><b>Justifications</b></td>
+                <td colSpan="4" align="center"><b>Justifications</b></td>
               </tr>
               {this.state.lesprix.map(renderPrix)}
             </tbody>
@@ -658,13 +662,11 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="13" align="center" width="100%">
+                <td colSpan="14" align="center" width="100%">
                   <b>Older Gold Forecasts - {this.state.mois}</b></td>
               </tr>
               <tr>
-                <td align="center"><b>Participant</b></td>
                 <td align="center"><b>Expected Value</b></td>
-                <td align="center"><b>Date</b></td>
                 <td align="center"><b>${this.state.price1}/oz</b></td>
                 <td align="center"><b>${this.state.price2}/oz</b></td>
                 <td align="center"><b>${this.state.price3}/oz</b></td>
@@ -674,7 +676,7 @@ class GForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/oz</b></td>
                 <td align="center"><b>${this.state.price8}/oz</b></td>
                 <td align="center"><b>${this.state.price9}/oz</b></td>
-                <td align="left" width="35%"><b>Justifications</b></td>
+                <td colSpan="4" align="center"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>
