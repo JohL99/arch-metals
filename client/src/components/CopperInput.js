@@ -753,7 +753,7 @@ class CopperInput extends Component {
             </tbody>
           </table>
         </form>
-        <div>
+        <div align="center">
           <GraphCopper mweji={this.state.mois} />
           <MonthForecastCopper mweji={this.state.mois} />
         </div>
