@@ -401,8 +401,10 @@ class CPartFcast extends Component {
     const renderSeptember = (septemberFromApi) => {
       return (
         <tr key={septemberFromApi.id}>
-          <td align="center"><b>${septemberFromApi.EV}/mt</b></td>
-          <td align="center">{septemberFromApi.dateforecast}</td>
+          <td align="center"><b>${septemberFromApi.EV}/mt</b>
+          {"  "}
+          {septemberFromApi.dateforecast}
+          </td>
           <td align="center">{septemberFromApi.price1 * 100}%</td>
           <td align="center">{septemberFromApi.price2 * 100}%</td>
           <td align="center">{septemberFromApi.price3 * 100}%</td>
@@ -412,7 +414,7 @@ class CPartFcast extends Component {
           <td align="center">{septemberFromApi.price7 * 100}%</td>
           <td align="center">{septemberFromApi.price8 * 100}%</td>
           <td align="center">{septemberFromApi.price9 * 100}%</td>
-          <td align="center">{septemberFromApi.specificcomments}</td>
+          <td colSpan="4" align="left">{septemberFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -474,7 +476,6 @@ class CPartFcast extends Component {
       return (
         <tr key={psepFromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>{"Date"}</b></td>
           <td align="center"><b>${psepFromApi.pour1}/mt</b></td>
           <td align="center"><b>${psepFromApi.pour2}/mt</b></td>
           <td align="center"><b>${psepFromApi.pour3}/mt</b></td>
@@ -484,7 +485,7 @@ class CPartFcast extends Component {
           <td align="center"><b>${psepFromApi.pour7}/mt</b></td>
           <td align="center"><b>${psepFromApi.pour8}/mt</b></td>
           <td align="center"><b>${psepFromApi.pour9}/mt</b></td>
-          <td align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -586,7 +587,7 @@ class CPartFcast extends Component {
               <td align="center"><b>${this.state.evdec}/mt</b></td>
             </tr>
             <tr>
-              <td rowSpan="12" colSpan="6" width="80%" align="center">
+              <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartCopper
                   mweji={this.state.recents}
                   mweji1={this.state.prixsept}
@@ -606,7 +607,7 @@ class CPartFcast extends Component {
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr><td align="center" colSpan="13"><b>Forecasts - September 2020</b></td></tr>
+            <tr><td align="center" colSpan="14"><b>Forecasts - September 2020</b></td></tr>
             {this.state.prixsept.map(renderPrixSept)}
           </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>

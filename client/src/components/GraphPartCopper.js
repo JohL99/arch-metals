@@ -120,7 +120,7 @@ class GraphPartCopper extends PureComponent {
       <BarChart
         layout="horizontal"
         width={800}
-        height={300}
+        height={200}
         data={this.state.data /*this.state.data   this.props.mweji*/}
         margin={{
           top: 5,
