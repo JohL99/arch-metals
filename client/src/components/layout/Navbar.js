@@ -375,9 +375,8 @@ class Navbar extends Component {
     <button
             className="btn btn-outline-secondary my-2 my-sm-0"
             onClick={this.onLogoutClick.bind(this)}
-            to="/"
           >
-         <a href="/Landing">Logout</a>
+         <Link to="/">Logout</Link>
     </button>
   </li>
 </ul>
