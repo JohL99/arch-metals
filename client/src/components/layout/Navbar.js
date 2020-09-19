@@ -196,7 +196,7 @@ class Navbar extends Component {
             onClick={this.onLogoutClick.bind(this)}
             to="/"
           >
-              Logout
+              <Link to="/">Logout</Link>
           </button>
           </li>
         </ul>
@@ -384,7 +384,7 @@ class Navbar extends Component {
     const nonauthlinks = <div></div>;
     return (
       <div className="nav-holder"><nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-        <Link className="navnav-link" to="/">
+        <Link className="navnav-link" to="/dashboard">
           <b>CONSENSUS METALS</b>
         </Link>
         <button
