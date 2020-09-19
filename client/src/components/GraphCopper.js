@@ -158,23 +158,23 @@ class GraphCopper extends PureComponent {
   }
   render() {
     return (
-      <div style={{ width: "70%", height: 300 }}>
+      <div style={{ width: "80%", height: 300 }}>
         <ResponsiveContainer>
           <BarChart
-            layout="vertical"
-            width={500}
-            height={300}
+            layout="horizontal"
+            width={800}
+            height={200}
             data={this.state.data1}
             margin={{
               top: 5,
-              right: 30,
-              left: 20,
+              right: 5,
+              left: 5,
               bottom: 5,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis type="number" />
-            <YAxis dataKey="price" type="category" />
+            <XAxis dataKey="price" type="category" />
+            <YAxis type="number" label="  %  " />
             <Tooltip />
             <Legend />
             <Bar dataKey="Percentage" fill="#CC9900" />

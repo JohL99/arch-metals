@@ -120,7 +120,7 @@ class GraphPartCopper extends PureComponent {
       <BarChart
         layout="horizontal"
         width={800}
-        height={300}
+        height={200}
         data={this.state.data /*this.state.data   this.props.mweji*/}
         margin={{
           top: 5,
@@ -131,7 +131,7 @@ class GraphPartCopper extends PureComponent {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="price" type="category" />
-        <YAxis type="number" />
+        <YAxis type="number" label="  %  " />
         <Tooltip />
         <Legend />
         <Bar dataKey="Sep20" fill="#00CC00" />

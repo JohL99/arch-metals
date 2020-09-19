@@ -592,7 +592,7 @@ class GForecast extends PureComponent {
                       <BarChart
                         layout="horizontal"
                         width={800}
-                        height={300}
+                        height={200}
                         data={this.state.donnees1}
                         margin={{
                           top: 5,
@@ -603,7 +603,7 @@ class GForecast extends PureComponent {
                       >
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="price" type="category" />
-                        <YAxis type="number" />
+                        <YAxis type="number" label="  %  " />
                         <Tooltip />
                         <Legend />
                         <Bar dataKey="RecentData" fill="#00B050" />
