@@ -488,11 +488,11 @@ class CSummary extends PureComponent {
             </tbody>
             </table>
           <table className="table table-bordered">
-            <thead>
-              <tr>
-                <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
-              </tr>
-              <tr align="center">
+          <tbody>
+          <tr>
+          <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+          </tr>
+           <tr align="center">
            <td><b>Participant</b></td>
             <td><b>Expected Value</b></td>
             <td><b>Date</b></td>
@@ -507,8 +507,6 @@ class CSummary extends PureComponent {
             <td><b>${this.state.price9}/MT</b></td>
             <td align="center" width="40%"><b>Justifications</b></td>
             </tr>
-            </thead>
-          <tbody>
              {this.state.lesprix.map(renderPrix)}
             </tbody>
           </table>
