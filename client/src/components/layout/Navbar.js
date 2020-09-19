@@ -8,6 +8,9 @@ class Navbar extends Component {
     super();
     window.scroll(0,0);
   }
+  scrollToTop(){
+    window.scrollTo(0,0);
+  }
   onLogoutClick(e) {
     e.preventDefault();
     //this.props.clearCurrentProfile();
@@ -45,7 +48,7 @@ class Navbar extends Component {
             </Link>
           </div>
         </li>
-        <button id="myBtn" onClick="window.scrollTo(0,0);">&uarr;</button>
+        <button id="myBtn" onClick={this.scrollToTop.bind(this)}>&uarr;</button>
         <li className="nav-item dropdown">
           <Link
             className="nav-link dropdown-toggle"
