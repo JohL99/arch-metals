@@ -507,7 +507,7 @@ class CSummary extends PureComponent {
              <td><b>${this.state.price7}/mt</b></td>
              <td><b>${this.state.price8}/mt</b></td>
              <td><b>${this.state.price9}/mt</b></td>
-            <td><b>Justifications</b></td>
+            <td colspan="4"><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}
             </tbody>
