@@ -586,7 +586,7 @@ class CPartFcast extends Component {
               <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
             <tr>
-              <td rowSpan="12" align="center" colSpan="12">
+              <td rowSpan="12" colSpan="12" width="80%" align="center">
                 <GraphPartCopper
                   mweji={this.state.recents}
                   mweji1={this.state.prixsept}
