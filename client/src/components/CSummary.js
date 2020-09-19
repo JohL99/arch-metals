@@ -392,7 +392,7 @@ class CSummary extends PureComponent {
           <table border="1">
             <tbody>
               <tr>
-                <td colSpan="12" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+                <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
               </tr>
               <tr>
                 <td align="center">
@@ -409,7 +409,7 @@ class CSummary extends PureComponent {
                       this.fillPrices(e.target.value);
                     }}
                   >
-                    <option value="" align="center">Select a month</option>
+                    <option value="">Select a month</option>
                     {this.state.months
                       .slice(new Date().getMonth(), 12)
                       .map((lemois, index) => (
@@ -448,7 +448,7 @@ class CSummary extends PureComponent {
                 <td align="center">{Math.round(this.state.lesmoyennes[8] * 100)}%</td>
               </tr>
               <tr>
-              <td colSpan="12">
+              <td colSpan="14">
                 {" "}
                 <div style={{ width: "80%", height: 300 }}>
                 <ResponsiveContainer>
@@ -478,7 +478,7 @@ class CSummary extends PureComponent {
               </td>
             </tr>
             <tr>
-            <td colSpan="12" rowSpan="12">
+            <td colSpan="14" rowSpan="12">
             <table className="table table-bordered">
             <tbody>
             <tr>
@@ -494,7 +494,7 @@ class CSummary extends PureComponent {
           <table className="table table-bordered">
           <tbody>
           <tr>
-          <td colSpan="11" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+          <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
              <td><b>Expected Value</b></td>
