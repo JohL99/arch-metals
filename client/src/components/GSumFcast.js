@@ -637,8 +637,8 @@ class GSumFcast extends PureComponent {
                 <div style={{ width: "80%", height: 300 }}>
                   <ResponsiveContainer>
                     <BarChart
-                      layout="vertical"
-                      width={500}
+                      layout="horizontal"
+                      width={800}
                       height={300}
                       data={this.state.donnees1}
                       margin={{
@@ -649,8 +649,8 @@ class GSumFcast extends PureComponent {
                       }}
                     >
                       <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis type="number" />
-                      <YAxis dataKey="price" type="category" />
+                      <XAxis dataKey="price" type="category" />
+                      <YAxis type="number" />
                       <Tooltip />
                       <Legend />
                       <Bar dataKey="Sep20" fill="#00CC00" />

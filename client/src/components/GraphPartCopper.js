@@ -119,7 +119,7 @@ class GraphPartCopper extends PureComponent {
     return (
       <BarChart
         layout="horizontal"
-        width={960}
+        width={800}
         height={300}
         data={this.state.data /*this.state.data   this.props.mweji*/}
         margin={{
@@ -134,10 +134,10 @@ class GraphPartCopper extends PureComponent {
         <YAxis type="number" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Sep20" fill="#00CC00" width="1%" />
-        <Bar dataKey="Oct20" fill="#0000FF" width="2%" />
-        <Bar dataKey="Nov20" fill="#FFC000" width="3%"/>
-        <Bar dataKey="Dec20" fill="#FF0000" width="4%"/>
+        <Bar dataKey="Sep20" fill="#00CC00" />
+        <Bar dataKey="Oct20" fill="#0000FF" />
+        <Bar dataKey="Nov20" fill="#FFC000"/>
+        <Bar dataKey="Dec20" fill="#FF0000"/>
       </BarChart>
     );
   }
