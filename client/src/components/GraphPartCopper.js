@@ -132,7 +132,6 @@ class GraphPartCopper extends PureComponent {
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis type="number" />
         <YAxis dataKey="price" type="category" />
-        <YAxis />
         <Tooltip />
         <Legend />
         <Bar dataKey="Sep20" fill="#00CC00" />

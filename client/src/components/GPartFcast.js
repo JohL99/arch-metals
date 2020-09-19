@@ -586,7 +586,7 @@ class GPartFcast extends Component {
               <td align="center"><b>${this.state.evdec}/oz</b></td>
             </tr>
             <tr>
-              <td rowSpan="12" align="center" colSpan="6">
+              <td rowSpan="12" align="center" colSpan="12">
                 <GraphPartGold
                   mweji={this.state.recents}
                   mweji1={this.state.prixsept}

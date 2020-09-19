@@ -118,19 +118,20 @@ class GraphPartGold extends PureComponent {
   render() {
     return (
       <BarChart
+        layout="vertical"
         width={500}
         height={300}
         data={this.state.data /*this.state.data   this.props.mweji*/}
         margin={{
           top: 5,
-          right: 30,
-          left: 20,
+          right: 5,
+          left: 5,
           bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="price" />
-        <YAxis />
+        <XAxis type="number" />
+        <YAxis dataKey="price" type="category" />
         <Tooltip />
         <Legend />
         <Bar dataKey="Sep20" fill="#00CC00" />
