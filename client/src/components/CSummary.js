@@ -392,7 +392,7 @@ class CSummary extends PureComponent {
           <table border="1">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+                <td colSpan="12" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
               </tr>
               <tr>
                 <td align="center">
@@ -494,7 +494,7 @@ class CSummary extends PureComponent {
           <table className="table table-bordered">
           <tbody>
           <tr>
-          <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+          <td colSpan="11" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
              <td><b>Expected Value</b></td>
