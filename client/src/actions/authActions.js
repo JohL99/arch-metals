@@ -61,6 +61,6 @@ export const logoutUser = (userData, history) => (dispatch) => {
   setAuthToken(false);
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
-  BrowserRouter.prototype.push('/login')
+  history.push('/login');
   
 };
