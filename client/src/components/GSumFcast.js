@@ -552,7 +552,7 @@ class GSumFcast extends PureComponent {
       if(malobayaApi.id !== ""){
         return (
           <tr key={malobayaApi.id}>
-            <td align="center">{malobayaApi.mois}</td>
+            <td align="center"><b>{malobayaApi.mois}</b></td>
             <td align="left">{malobayaApi.generalcomments}</td>
           </tr>
         );
@@ -637,7 +637,7 @@ class GSumFcast extends PureComponent {
             </tr>
             <tr>
             <td rowSpan="12" colSpan="12" align="center">
-                <div style={{ width: "80%", height: 300 }}>
+                <div style={{ width: "60%", height: 250 }}>
                   <ResponsiveContainer>
                     <BarChart
                       layout="horizontal"
