@@ -556,7 +556,7 @@ class GForecast extends PureComponent {
                 <td align="center"><b>${this.state.price9}/oz</b></td>
               </tr>
               <tr>
-                <td align="center"><b>Most Recent Forecasts</b></td>
+                <td align="center"><b>Recent Forecasts</b></td>
                 <td align="center"><b>${Math.round(this.trouveEV(this.state.lesmoyennes) * 100)
                 /*Math.round(this.state.EVR)*/}/oz</b></td>
                 <td align="center"><b>{this.state.lesprix.length}</b></td>

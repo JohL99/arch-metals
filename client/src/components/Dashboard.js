@@ -6,18 +6,14 @@ class Dashboard extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            message:"Any general notifications about website fixes and changes will be posted here. If you need to send a message concerning website issues, please use the Grey communication button in the bottom righthand corner of the webpage."
+            message:"Any general notifications about website fixes and changes will be posted here. If you need to send a message concerning website issues, please use the Grey communication icon in the bottom righthand corner of the webpage."
         }
         this.chat();
     }
     render() {
         return <div class="alert alert-info" role="alert">
-            <br />
-            <br />
-            <br />
-            <br />
-            <h1>{this.state.message}</h1>
-      </div>
+               <h1>{this.state.message}</h1>
+                </div>
     }
     chat(){
       (function(d,t) {
