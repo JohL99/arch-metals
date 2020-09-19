@@ -82,9 +82,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-      setInterval(function(){
-        window.scrollTo(0,0);
-      },1500);
+      window.scrollTo(0,0);
   }
 
   fillprices(utilisateur, produit) {
