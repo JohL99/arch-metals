@@ -124,14 +124,14 @@ class GraphPartCopper extends PureComponent {
         data={this.state.data /*this.state.data   this.props.mweji*/}
         margin={{
           top: 5,
-          right: 30,
-          left: 20,
+          right: 5,
+          left: 5,
           bottom: 5,
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis />
-        <YAxis dataKey="price" />
+        <XAxis type="number" />
+        <YAxis dataKey="price" type="category" />
         <YAxis />
         <Tooltip />
         <Legend />
