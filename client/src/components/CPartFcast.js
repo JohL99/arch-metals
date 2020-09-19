@@ -1,21 +1,8 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-/* 
-import {
-  BarChart,
-  Bar,
-  Cell,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-} from "recharts"; */
-//import GraphCG from "./GraphCG";
 import GraphPartCopper from "./GraphPartCopper";
-class CPartFcast extends PureComponent {
+class CPartFcast extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +33,7 @@ class CPartFcast extends PureComponent {
     };
     window.onbeforeunload = function () {
       window.scrollTo(0, 0);
-    }
+    };
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
   }
@@ -56,25 +43,29 @@ class CPartFcast extends PureComponent {
   convert_to_utc = (dateStr) => {
     //check whether time is in PM or AM
     var hours = dateStr.getHours();
-    var hours = (hours+24-2)%24;
-    var mid='am';
-    if(hours==0){ //At 00 hours we need to show 12 am
-    hours=12;
+    var hours = (hours + 24 - 2) % 24;
+    var mid = "am";
+    if (hours == 0) {
+      //At 00 hours we need to show 12 am
+      hours = 12;
+    } else if (hours > 12) {
+      hours = hours % 12;
+      mid = "pm";
     }
-    else if(hours>12)
-    {
-    hours=hours%12;
-    mid='pm';
-    }
-
-    var newdate = dateStr.toUTCString().split(' ')[0] + dateStr.toUTCString().split(' ')[1] + ' ' 
-    + dateStr.toUTCString().split(' ')[2] + ' '
-    + dateStr.toUTCString().split(' ')[3] + ' ' 
-    + dateStr.toUTCString().split(' ')[4].split(':')[0]
-    + ":" + dateStr.toUTCString().split(' ')[4].split(':')[1];
+    var newdate =
+      dateStr.toUTCString().split(" ")[0] +
+      dateStr.toUTCString().split(" ")[1] +
+      " " +
+      dateStr.toUTCString().split(" ")[2] +
+      " " +
+      dateStr.toUTCString().split(" ")[3] +
+      " " +
+      dateStr.toUTCString().split(" ")[4].split(":")[0] +
+      ":" +
+      dateStr.toUTCString().split(" ")[4].split(":")[1];
 
     return newdate + " " + mid;
-  }
+  };
   componentDidMount() {
     fetch("/api/users/tous/" + "Copper" + "&Copper")
       .then((response) => {
@@ -119,7 +110,7 @@ class CPartFcast extends PureComponent {
             pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
-        this.setState({prixsept: [].concat(psepFromApi),});
+        this.setState({ prixsept: [].concat(psepFromApi) });
       })
       .catch((error) => {
         console.log(error);
@@ -396,96 +387,6 @@ class CPartFcast extends PureComponent {
             lemois: recent.detail.mois,
           };
         });
-        let sept1 = [];
-        let octo1 = [];
-        let novem1 = [];
-        let decem1 = [];
-
-        var y = 0;
-        for (y == 0; y < 4 /* recentFromApi.length */; y++) {
-          if (recentFromApi[y].lemois == "September 2020") {
-            sept1[1] = recentFromApi[y].price1;
-            sept1[2] = recentFromApi[y].price2;
-            sept1[3] = recentFromApi[y].price3;
-            sept1[4] = recentFromApi[y].price4;
-            sept1[5] = recentFromApi[y].price5;
-            sept1[6] = recentFromApi[y].price6;
-            sept1[7] = recentFromApi[y].price7;
-            sept1[8] = recentFromApi[y].price8;
-            sept1[9] = recentFromApi[y].price9;
-          }
-
-          if (recentFromApi[y].lemois == "October 2020") {
-            octo1[1] = recentFromApi[y].price1;
-            octo1[2] = recentFromApi[y].price2;
-            octo1[3] = recentFromApi[y].price3;
-            octo1[4] = recentFromApi[y].price4;
-            octo1[5] = recentFromApi[y].price5;
-            octo1[6] = recentFromApi[y].price6;
-            octo1[7] = recentFromApi[y].price7;
-            octo1[8] = recentFromApi[y].price8;
-            octo1[9] = recentFromApi[y].price9;
-          }
-
-          if (recentFromApi[y].lemois == "November 2020") {
-            novem1[1] = recentFromApi[y].price1;
-            novem1[2] = recentFromApi[y].price2;
-            novem1[3] = recentFromApi[y].price3;
-            novem1[4] = recentFromApi[y].price4;
-            novem1[5] = recentFromApi[y].price5;
-            novem1[6] = recentFromApi[y].price6;
-            novem1[7] = recentFromApi[y].price7;
-            novem1[8] = recentFromApi[y].price8;
-            novem1[9] = recentFromApi[y].price9;
-          }
-
-          if (recentFromApi[y].lemois == "December 2020") {
-            decem1[1] = recentFromApi[y].price1;
-            decem1[2] = recentFromApi[y].price2;
-            decem1[3] = recentFromApi[y].price3;
-            decem1[4] = recentFromApi[y].price4;
-            decem1[5] = recentFromApi[y].price5;
-            decem1[6] = recentFromApi[y].price6;
-            decem1[7] = recentFromApi[y].price7;
-            decem1[8] = recentFromApi[y].price8;
-            decem1[9] = recentFromApi[y].price9;
-          }
-        }
-
-        //console.log(donnees1);
-        //console.log(recentFromApi);
-        let leprix = [];
-
-        leprix[1] = this.state.prixsept[0].pour1;
-        leprix[2] = this.state.prixsept[0].pour2;
-        leprix[3] = this.state.prixsept[0].pour3;
-        leprix[4] = this.state.prixsept[0].pour4;
-        leprix[5] = this.state.prixsept[0].pour5;
-        leprix[6] = this.state.prixsept[0].pour6;
-        leprix[7] = this.state.prixsept[0].pour7;
-        leprix[8] = this.state.prixsept[0].pour8;
-        leprix[9] = this.state.prixsept[0].pour9;
-        var yy = 1;
-        for (yy == 1; yy < 10; yy++) {
-          donnees1.push({
-            price: leprix[yy],
-            Sep20: sept1[yy],
-            Oct20: octo1[yy],
-            Nov20: novem1[yy],
-            Dec20: decem1[yy],
-          });
-        }
-        /*   for (yy == 1; yy < 10; yy++) {
-          this.setState(
-            donnees1.push({
-              price: leprix[yy],
-              Sep20: sept1[yy],
-              Oct20: octo1[yy],
-              Nov20: novem1[yy],
-              Dec20: decem1[yy],
-            })
-          );
-        } */
         this.setState({
           recents: [].concat(recentFromApi),
         });
@@ -495,9 +396,6 @@ class CPartFcast extends PureComponent {
       });
 
     this.setState({ donnees1 });
-    console.log(donnees1);
-    //console.log(this.state.donnees1);
-    //console.log(this.state.recents);
   }
   render() {
     const renderSeptember = (septemberFromApi) => {
@@ -688,47 +586,21 @@ class CPartFcast extends PureComponent {
               <td align="center"><b>${this.state.evdec}/MT</b></td>
             </tr>
             <tr>
-              <td rowSpan="12" colSpan="12" align="center">
-                <GraphPartCopper mweji={this.state.donnees1} />
-
-                {/*              <ResponsiveContainer>
-                  <BarChart
-                    layout="horizontal"
-                    width={500}
-                    height={300}
-                    data={this.state.donnees1}
-                    margin={{
-                      top: 5,
-                      right: 5,
-                      left: 5,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="price" type="category" />
-                    <YAxis type="number" />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Sep20" fill="#00CC00" />
-                    <Bar dataKey="Oct20" fill="#7F6000" />
-                    <Bar dataKey="Nov20" fill="#00B050" />
-                    <Bar dataKey="Dec20" fill="#FF0000" />
-                  </BarChart>
-                </ResponsiveContainer> */}
+              <td rowSpan="12" align="center" colSpan="6">
+                <GraphPartCopper
+                  mweji={this.state.recents}
+                  mweji1={this.state.prixsept}
+                />
               </td>
             </tr>
-    </tbody>
-    </table>
-    <table className="table table-bordered">
-    <tbody>
-        <tr><td colSpan="5" align="center"><b>General Comments</b></td></tr>
+        <tr><td align="center"><b>General Comments</b></td></tr>
         <tr><td align="left"><b>September:</b> {this.state.comsep}</td></tr>
         <tr><td align="left"><b>October:</b> {this.state.comoct}</td></tr>
         <tr><td align="left"><b>November:</b> {this.state.comnov}</td></tr>
         <tr><td align="left"><b>December:</b> {this.state.comdec}</td></tr>
-      </tbody>
-      </table>
-      <table className="table table-bordered">
+          </tbody>
+        </table>
+        <table className="table table-bordered">
           <thead>
             <tr><td align="center" colSpan="13"><b>Forecasts - September 2020</b></td></tr>
             {this.state.prixsept.map(renderPrixSept)}

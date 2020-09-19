@@ -67,30 +67,15 @@ class GraphCopper extends PureComponent {
       })
       .then((data) => {
         let yx = data;
-        let bucket = data.map((price) => {
-          var element = { ...this.state.element };
+        let bucket = data.map((price) => {var element = { ...this.state.element };
           var i = 0;
-          for (i === 0; i < 9; i++) {
-            element[i] = price.floorprice + price.constant1 * i;
-          }
+          for (i === 0; i < 9; i++) {element[i] = price.floorprice + price.constant1 * i;}
           this.setState({ element });
-          for (i === 0; i < 9; i++) {
-            kombo[i] = price.floorprice + price.constant1 * i;
-          }
+          for (i === 0; i < 9; i++) {kombo[i] = price.floorprice + price.constant1 * i;}
           let data1 = { ...this.state.data1 };
-          data1 = [
-            {
-              price: this.state.element[0],
-              Percentage: this.state.averages[0],
-            },
-          ];
+          data1 = [{price: this.state.element[0], Percentage: this.state.averages[0],},];
           var y = 1;
-          for (y === 1; y < 9; y++) {
-            data1.push({
-              price: this.state.element[y],
-              Percentage: this.state.averages[y],
-            });
-          }
+          for (y === 1; y < 9; y++) {data1.push({price: this.state.element[y], Percentage: this.state.averages[y],});}
           this.setState({ data1 });
           return {
             id: price._id,
@@ -169,9 +154,7 @@ class GraphCopper extends PureComponent {
       });
   }
   componentDidUpdate(prevProps) {
-    if (prevProps.mweji !== this.props.mweji) {
-      this.fillPrices(this.props.mweji);
-    }
+    if (prevProps.mweji !== this.props.mweji) {this.fillPrices(this.props.mweji);}
   }
   render() {
     return (
@@ -194,8 +177,8 @@ class GraphCopper extends PureComponent {
             <YAxis dataKey="price" type="category" />
             <Tooltip />
             <Legend />
-            <Bar dataKey="Percentage" fill="#FF9933" />
-            {/* <Bar dataKey="item" fill="#C55A11" /> */}
+            <Bar dataKey="Percentage" fill="#CC9900" />
+            {/* <Bar dataKey="item" fill="#BF9000" /> */}
           </BarChart>
         </ResponsiveContainer>
       </div>
