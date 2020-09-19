@@ -68,6 +68,9 @@ class GoldInput extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
   componentDidUpdate() {
     if (this.state.fraicheur !== 0) {
       let cemois = this.state.mois;

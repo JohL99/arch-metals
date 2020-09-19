@@ -84,6 +84,9 @@ class CForecast extends PureComponent {
     this.recuperemoyenneT = this.recuperemoyenneT.bind(this);
     this.trouveEV = this.trouveEV.bind(this);
   }
+  componentDidMount(){
+    window.scrollTo(0,0);
+  }
   CreeOldata() {
     let lesmoyennesO = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     let lesmoyennesA = [0, 0, 0, 0, 0, 0, 0, 0, 0];

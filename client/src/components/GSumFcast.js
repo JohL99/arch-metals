@@ -69,6 +69,9 @@ class GSumFcast extends PureComponent {
     this.faisQlq();
     this.graphi();
   }
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  }
   fillgeneralcomments(sanza2) {
     fetch("/api/menji/olda1/" + sanza2 + "&Gold" + "&8")
       .then((response3) => {
