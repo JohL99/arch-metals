@@ -285,7 +285,8 @@ class CopperInput extends Component {
                       want to make a copper price forecast. Once the month has
                       been choosen, please select the expected probability you
                       want to assign to the indicated price baskets, such that
-                      the total probabilities sums to 100%. It would be
+                      the total probabilities sums to 100%. A total of less or more 
+                      than 100% will result in a Null forecast. It would be
                       appreciated if you could also provide an indication of the
                       basis for your copper price forecast in the text box
                       beneath the forecast probability table. Based on the
