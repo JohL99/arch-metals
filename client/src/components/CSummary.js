@@ -497,7 +497,7 @@ class CSummary extends PureComponent {
           <td colSpan="14" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
-             <td rowspan="3"><b>Expected Value</b></td>
+             <td><b>Expected Value</b></td>
              <td><b>${this.state.price1}/mt</b></td>
              <td><b>${this.state.price2}/mt</b></td>
              <td><b>${this.state.price3}/mt</b></td>
@@ -507,7 +507,7 @@ class CSummary extends PureComponent {
              <td><b>${this.state.price7}/mt</b></td>
              <td><b>${this.state.price8}/mt</b></td>
              <td><b>${this.state.price9}/mt</b></td>
-            <td align="center" colspan="4"><b>Justifications</b></td>
+            <td><b>Justifications</b></td>
             </tr>
              {this.state.lesprix.map(renderPrix)}
             </tbody>
