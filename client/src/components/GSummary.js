@@ -450,7 +450,7 @@ class GSummary extends PureComponent {
               <tr>
               <td colSpan="14" align="center">
                 {" "}
-                <div style={{ width: "50%", height: 250 }}>
+                <div style={{ width: "80%", height: 250 }}>
                 <ResponsiveContainer>
                 <BarChart
                 layout="horizontal"
