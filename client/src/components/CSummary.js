@@ -65,7 +65,7 @@ class CSummary extends PureComponent {
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
   }
   componentDidMount(){
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
   }
   CreeOldata() {
     let lesmoyennesR = [0, 0, 0, 0, 0, 0, 0, 0, 0];
