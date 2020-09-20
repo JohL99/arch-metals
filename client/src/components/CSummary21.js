@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-class CSummary extends PureComponent {
+class CSummary21 extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,18 +30,10 @@ class CSummary extends PureComponent {
       price9: "",
       lamoyenne: "",
       lemedian: "",
-      months: [
-        "January",
-        "February",
+      quarters: [
         "March",
-        "April",
-        "May",
         "June",
-        "July",
-        "August",
         "September",
-        "October",
-        "November",
         "December",
       ],
       justif: "",
@@ -295,7 +287,7 @@ class CSummary extends PureComponent {
       });
   }
   fillgeneralcomments(sanza2) {
-    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&8")
+    fetch("/api/menji/olda1/" + sanza2 + "&Copper" + "&4")
       .then((response3) => {
         return response3.json();
       })
@@ -392,34 +384,30 @@ class CSummary extends PureComponent {
           <table border="1">
             <tbody>
               <tr>
-                <td colSpan="18" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+                <td colSpan="18" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.quarter}</b></td>
               </tr>
               <tr>
-                <td align="center">
+              <div className="form-group">
                   <select
-                    id="mois"
-                    name="month"
-                    value={this.state.mois}
+                    id="quarter"
+                    name="quarter"
+                    value={this.state.quarter}
                     onChange={(e) => {
-                      this.setState({
-                        mois: e.target.value,
-                        validationError:
-                          e.target.value === "" ? "Select a month" : "",
-                      });
-                      this.fillPrices(e.target.value);
-                    }}
+                        this.setState({
+                          quarter: e.target.value,
+                          validationError:
+                            e.target.value === "" ? "Select a quarter" : "",
+                        });
+                        this.fillPrices(e.target.value);
+                      }}
                   >
-                    <option value="">Select a month</option>
-                    <option value="Septemer 2020">September 2020</option>
-                    <option value="October 2020">October 2020</option>
-                    <option value="November 2020">November 2020</option>
-                    <option value="December 2020">December 2020</option>
+                    <option value="">Select a Quarter</option>
                     <option value="March 2021">March 2021</option>
                     <option value="June 2021">June 2021</option>
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                   </select>
-                </td>
+                </div>
                 <td align="center"><b>Expected Value</b></td>
                 <td align="center"><b>No. Forecasts</b></td>
                 <td align="center"><b>${this.state.price1}/mt</b></td>
@@ -493,7 +481,7 @@ class CSummary extends PureComponent {
           <table className="table table-bordered">
           <tbody>
           <tr>
-          <td colSpan="18" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
+          <td colSpan="18" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.quarter}</b></td>
           </tr>
            <tr align="center">
             <td><b>Expected Value</b></td>
@@ -516,4 +504,4 @@ class CSummary extends PureComponent {
     );
   }
 }
-export default CSummary;
+export default CSummary21;
