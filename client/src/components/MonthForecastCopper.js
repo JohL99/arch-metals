@@ -208,7 +208,7 @@ class MonthForecastCopper extends Component {
           <td align="center">{prixFromApi.price7 * 100}%</td>
           <td align="center">{prixFromApi.price8 * 100}%</td>
           <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td colSpan="4" align="left">{prixFromApi.specificcomments}</td>
+          <td colSpan="10" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -230,7 +230,7 @@ class MonthForecastCopper extends Component {
               <td align="center"><b>${this.state.price7}/mt</b></td>
               <td align="center"><b>${this.state.price8}/mt</b></td>
               <td align="center"><b>${this.state.price9}/mt</b></td>
-              <td colSpan="4" align="center"><b>Justifications</b></td>
+              <td colSpan="10" align="center"><b>Justifications</b></td>
             </tr>
             {this.state.lesprix.map(renderPrix)}
             <tr>
