@@ -208,7 +208,7 @@ class MonthForecastCopper extends Component {
           <td align="center">{prixFromApi.price7 * 100}%</td>
           <td align="center">{prixFromApi.price8 * 100}%</td>
           <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td colSpan="8" align="left">{prixFromApi.specificcomments}</td>
+          <td colSpan="8" align="justify">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };

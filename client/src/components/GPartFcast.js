@@ -415,7 +415,7 @@ class GPartFcast extends Component {
           <td align="center">{septemberFromApi.price7 * 100}%</td>
           <td align="center">{septemberFromApi.price8 * 100}%</td>
           <td align="center">{septemberFromApi.price9 * 100}%</td>
-          <td colSpan="4" align="left">{septemberFromApi.specificcomments}</td>
+          <td colSpan="8" align="left">{septemberFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -435,7 +435,7 @@ class GPartFcast extends Component {
           <td align="center">{octoberFromApi.price7 * 100}%</td>
           <td align="center">{octoberFromApi.price8 * 100}%</td>
           <td align="center">{octoberFromApi.price9 * 100}%</td>
-          <td colSpan="4" align="left">{octoberFromApi.specificcomments}</td>
+          <td colSpan="8" align="left">{octoberFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -455,7 +455,7 @@ class GPartFcast extends Component {
           <td align="center">{novemberFromApi.price7 * 100}%</td>
           <td align="center">{novemberFromApi.price8 * 100}%</td>
           <td align="center">{novemberFromApi.price9 * 100}%</td>
-          <td colSpan="4" align="left">{novemberFromApi.specificcomments}</td>
+          <td colSpan="8" align="left">{novemberFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -475,7 +475,7 @@ class GPartFcast extends Component {
           <td align="center">{decemberFromApi.price7 * 100}%</td>
           <td align="center">{decemberFromApi.price8 * 100}%</td>
           <td align="center">{decemberFromApi.price9 * 100}%</td>
-          <td colSpan="4" align="left">{decemberFromApi.specificcomments}</td>
+          <td colSpan="8" align="left">{decemberFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -492,7 +492,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${psepFromApi.pour7}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour8}/oz</b></td>
           <td align="center"><b>${psepFromApi.pour9}/oz</b></td>
-          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -509,7 +509,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${poctFromApi.pour7}/oz</b></td>
           <td align="center"><b>${poctFromApi.pour8}/oz</b></td>
           <td align="center"><b>${poctFromApi.pour9}/oz</b></td>
-          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -526,7 +526,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${pnovFromApi.pour7}/oz</b></td>
           <td align="center"><b>${pnovFromApi.pour8}/oz</b></td>
           <td align="center"><b>${pnovFromApi.pour9}/oz</b></td>
-          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -543,7 +543,7 @@ class GPartFcast extends Component {
           <td align="center"><b>${pdecFromApi.pour7}/oz</b></td>
           <td align="center"><b>${pdecFromApi.pour8}/oz</b></td>
           <td align="center"><b>${pdecFromApi.pour9}/oz</b></td>
-          <td colSpan="4" align="center"><b>{"Justifications"}</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
         </tr>
       );
     };
@@ -611,28 +611,28 @@ class GPartFcast extends Component {
         </table>
       <table className="table table-bordered">
         <thead>
-        <tr><td align="center" colSpan="14"><b>Forecasts - September 2020</b></td></tr>
+        <tr><td align="center" colSpan="18"><b>Forecasts - September 2020</b></td></tr>
           {this.state.prixsept.map(renderPrixSept)}
         </thead>
           <tbody>{this.state.septembers.map(renderSeptember)}</tbody>
         </table>
         <table className="table table-bordered">
         <thead>
-          <tr><td align="center" colSpan="14"><b>Forecasts - October 2020</b></td></tr>
+          <tr><td align="center" colSpan="18"><b>Forecasts - October 2020</b></td></tr>
             {this.state.prixoct.map(renderPrixOct)}
         </thead>
         <tbody>{this.state.octobers.map(renderOctober)}</tbody>
         </table>
         <table className="table table-bordered">
         <thead>
-          <tr><td align="center" colSpan="14"><b>Forecasts - November 2020</b></td></tr>
+          <tr><td align="center" colSpan="18"><b>Forecasts - November 2020</b></td></tr>
             {this.state.prixnov.map(renderPrixNov)}
         </thead>
         <tbody>{this.state.novembers.map(renderNovember)}</tbody>
         </table>
         <table className="table table-bordered">
         <thead>
-          <tr><td align="center" colSpan="14"><b>Forecasts - December 2020</b></td></tr>
+          <tr><td align="center" colSpan="18"><b>Forecasts - December 2020</b></td></tr>
             {this.state.prixdec.map(renderPrixDec)}
         </thead>
         <tbody>{this.state.decembers.map(renderDecember)}</tbody>

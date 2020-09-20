@@ -158,7 +158,7 @@ class GraphGold extends PureComponent {
   }
   render() {
     return (
-      <div style={{ width: "50%", height: 250 }}>
+      <div style={{ width: "50%", height: 250, align: "center" }}>
         <ResponsiveContainer>
           <BarChart
             layout="horizontal"
@@ -177,7 +177,7 @@ class GraphGold extends PureComponent {
             <YAxis type="number" label="  %  " />
             <Tooltip />
             <Legend />
-            <Bar dataKey="RecentData" fill="#CC9900" label=""/>
+            <Bar dataKey="RecentData" fill="#CC9900" />
             {/* <Bar dataKey="item" fill="#BF9000" /> */}
           </BarChart>
         </ResponsiveContainer>

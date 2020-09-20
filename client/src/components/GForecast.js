@@ -480,7 +480,7 @@ class GForecast extends PureComponent {
           <td align="center">{prixFromApi.price7 * 100}%</td>
           <td align="center">{prixFromApi.price8 * 100}%</td>
           <td align="center">{prixFromApi.price9 * 100}%</td>
-          <td colSpan="4" align="left">{prixFromApi.specificcomments}</td>
+          <td colSpan="8" align="left">{prixFromApi.specificcomments}</td>
         </tr>
       );
     };
@@ -502,7 +502,7 @@ class GForecast extends PureComponent {
           <td align="center">{Math.round(Olddata.price7 * 100)}%</td>
           <td align="center">{Math.round(Olddata.price8 * 100)}%</td>
           <td align="center">{Math.round(Olddata.price9 * 100)}%</td>
-          <td colSpan="4" align="left">{Olddata.specificcomments}</td>
+          <td colSpan="8" align="left">{Olddata.specificcomments}</td>
         </tr>
       );
     };
@@ -639,7 +639,7 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="18" align="center" width="100%">
                   <b>Most Recent Gold Forecasts - {this.state.mois}</b>
                 </td>
               </tr>
@@ -654,7 +654,7 @@ class GForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/oz</b></td>
                 <td align="center"><b>${this.state.price8}/oz</b></td>
                 <td align="center"><b>${this.state.price9}/oz</b></td>
-                <td colSpan="4" align="center"><b>Justifications</b></td>
+                <td colSpan="8" align="center"><b>Justifications</b></td>
               </tr>
               {this.state.lesprix.map(renderPrix)}
             </tbody>
@@ -662,7 +662,7 @@ class GForecast extends PureComponent {
           <table className="table table-bordered">
             <tbody>
               <tr>
-                <td colSpan="14" align="center" width="100%">
+                <td colSpan="18" align="center" width="100%">
                   <b>Older Gold Forecasts - {this.state.mois}</b></td>
               </tr>
               <tr>
@@ -676,7 +676,7 @@ class GForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/oz</b></td>
                 <td align="center"><b>${this.state.price8}/oz</b></td>
                 <td align="center"><b>${this.state.price9}/oz</b></td>
-                <td colSpan="4" align="center"><b>Justifications</b></td>
+                <td colSpan="8" align="center"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>

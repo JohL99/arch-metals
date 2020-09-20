@@ -281,7 +281,7 @@ class CopperInput extends Component {
                   <b>Instructions</b>:{" "}
                   <i>
                     <td align="justify">
-                      Please select a month on the <b>Left</b> for which you want to make a copper price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sums to 100%. A total of less or more than 100% will result in a Null forecast. It would be appreciated if you could also provide a brief indication of the basis for your copper price forecast in the text box below the forecast probability input table. Based on the combined forecasts of all consensus panel participants, a consensus copper price forecast will been computed. In the general comments section please feel free to comment on the consensus copper price forecast relative to your views and that of other participants. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review them before submitting your forecast.</b>
+                      Please first select a month on the <b>Left</b> for which you want to make a copper price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. It would be appreciated if you could also provide a brief indication of the basis for your copper price forecast in the text box below the forecast probability input table. Based on the combined forecasts of all consensus panel participants, a consensus copper price forecast will been calculated. In the general comments section please comment on the evolving consensus copper price forecast relative to your views and that of other participants. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review these before submitting your forecast.</b>
                     </td>
                   </i>
                 </td>
@@ -294,7 +294,7 @@ class CopperInput extends Component {
                 </td>
                 <td align="center">
                   <select
-                    id="mnth"
+                    id="mois"
                     name="month"
                     value={this.state.mois}
                     onChange={(e) => {
@@ -647,7 +647,7 @@ class CopperInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.specificcomments}
-                    placeholder="Please briefly explain the basis for your copper price forecast (Max 300 characters)."
+                    placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -665,7 +665,7 @@ class CopperInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-                    placeholder="If you wish to make any general comments about the consensus copper price forecast or other participant's forecasts. If you wish to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link."
+                    placeholder="If you wish to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -696,8 +696,8 @@ class CopperInput extends Component {
                     <td align="justify">
                       {"  "}You can submit forecasts as often as you choose.
                       Please try keep forecasts realistic. Any abnormal or
-                      extreme forecasts will be impact on the aggregated
-                      consensus copper price.
+                      extreme forecasts will impact on the aggregated
+                      consensus forecasted copper price.
                     </td>
                   </i>
                 </td>
@@ -740,7 +740,7 @@ class CopperInput extends Component {
           </table>
         </form>
         <tr>
-        <td colSpan="20" align="center">
+        <td colSpan="18" align="center">
         <div>
           <GraphCopper mweji={this.state.mois} />
           <MonthForecastCopper mweji={this.state.mois} />

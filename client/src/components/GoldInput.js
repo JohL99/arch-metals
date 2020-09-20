@@ -59,17 +59,11 @@ class GoldInput extends Component {
       fichier: null,
       fraicheur: 0,
     };
-    window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
-    }
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  }
-  componentDidMount(){
-    window.scrollTo(0, 0);
   }
   componentDidUpdate() {
     if (this.state.fraicheur !== 0) {
@@ -77,6 +71,9 @@ class GoldInput extends Component {
       this.setState({ mois: cemois });
       this.setState({ fraicheur: 0 });
     }
+  }
+  componentDidMount(){
+    window.scrollTo(0, 0);
   }
   onSubmit(e) {
     if (
@@ -284,21 +281,7 @@ class GoldInput extends Component {
                   <b>Instructions</b>:{" "}
                   <i>
                     <td align="justify">
-                      Please select a month on the <b>Left</b> for which you
-                      want to make a gold price forecast. Once the month has
-                      been choosen, please select the expected probability you
-                      want to assign to the indicated price baskets, such that
-                      the total probabilities sums to 100%. It would be
-                      appreciated if you could also provide an indication of the
-                      basis for your gold price forecast in the text box
-                      beneath the forecast probability table. Based on the
-                      combined inputs of all panel participants, a consensus
-                      gold price forecast will been computed. In the general
-                      comments section please feel free to comment on the
-                      consensus gold price forecast relative to your views and
-                      that of other participants. You can also make comments
-                      about other participant’s views in the general comments
-                      section.
+                      Please first select a month on the <b>Left</b> for which you want to make a gold price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. It would be appreciated if you could also provide a brief indication of the basis for your gold price forecast in the text box below the forecast probability input table. Based on the combined forecasts of all consensus panel participants, a consensus gold price forecast will been calculated. In the general comments section please comment on the evolving consensus gold price forecast relative to your views and that of other participants. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent gold forecasts is provided below, if you wish to review these before submitting your forecast.</b>
                     </td>
                   </i>
                 </td>
@@ -664,7 +647,7 @@ class GoldInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.specificcomments}
-                    placeholder="Please briefly explain the basis for your gold price forecast."
+                    placeholder="Please briefly explain the basis for your gold price forecast (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -682,7 +665,7 @@ class GoldInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-                    placeholder="If you wish to make any general comments about the consensus gold price forecast or other participant's forecasts. If you wish to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link."
+                    placeholder="If you wish to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -713,8 +696,8 @@ class GoldInput extends Component {
                     <td align="justify">
                       {"  "}You can submit forecasts as often as you choose.
                       Please try keep forecasts realistic. Any abnormal or
-                      extreme forecasts will be impact on the aggregated
-                      consensus gold price.
+                      extreme forecasts will impact on the aggregated
+                      consensus forecasted gold price.
                     </td>
                   </i>
                 </td>
@@ -756,10 +739,14 @@ class GoldInput extends Component {
             </tbody>
           </table>
         </form>
+        <tr>
+        <td colSpan="18" align="center">
         <div>
           <GraphGold mweji={this.state.mois} />
           <MonthForecastGold mweji={this.state.mois} />
         </div>
+        </td>
+        </tr>
       </div>
     );
   }
