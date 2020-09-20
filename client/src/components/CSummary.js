@@ -410,7 +410,7 @@ class CSummary extends PureComponent {
                     }}
                   >
                     <option value="">Select a month</option>
-                    <option value="Septemer 2020">September 2020</option>
+                    <option value="September 2020">September 2020</option>
                     <option value="October 2020">October 2020</option>
                     <option value="November 2020">November 2020</option>
                     <option value="December 2020">December 2020</option>
