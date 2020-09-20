@@ -384,7 +384,7 @@ class Navbar extends Component {
     const nonauthlinks = <div></div>;
     return (
       <div className="nav-holder"><nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
-        <Link className="navnav-link" to="/dashboard">
+        <Link className="navnav-link" to="./dashboard">
           <b>CONSENSUS METALS</b>
         </Link>
         <button
