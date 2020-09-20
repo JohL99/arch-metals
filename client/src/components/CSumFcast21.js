@@ -10,7 +10,7 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-class CSumFcast extends PureComponent {
+class CSumFcast21 extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -263,7 +263,7 @@ class CSumFcast extends PureComponent {
         console.log(error1);
       });
     this.graphi();
-    //this.fillgeneralcomments("September 2020");
+    this.fillgeneralcomments("September 2020");
     //this.fillgeneralcomments("October 2020");
     //this.fillgeneralcomments("November 2020");
     //this.fillgeneralcomments("December 2020");
@@ -406,10 +406,6 @@ class CSumFcast extends PureComponent {
     });
     this.setState({ donnees21 });
 
-    this.trouveev();
-  }
-  
-  trouveev() {
     var EVSEP20 = 
       Math.round(this.state.avg1[this.state.sept20pour]) * this.state.price1[this.state.sept20prix] +
       Math.round(this.state.avg2[this.state.sept20pour]) * this.state.price2[this.state.sept20prix] +
@@ -421,7 +417,7 @@ class CSumFcast extends PureComponent {
       Math.round(this.state.avg8[this.state.sept20pour]) * this.state.price7[this.state.sept20prix] +
       Math.round(this.state.avg9[this.state.sept20pour]) * this.state.price8[this.state.sept20prix]
       this.setState({EVSEP20})
-      var EVsep20 = Math.round(EVSEP20 / 100);
+      var EVsep = Math.round(EVSEP20 / 100);
       this.setState({EVsep20: EVsep20})
         
     var EVOCT20 = 
@@ -522,7 +518,7 @@ class CSumFcast extends PureComponent {
       var EVdec21 = Math.round(EVDEC21 / 100);
       this.setState({EVdec21: EVdec21})
 
-    };
+    }
     renderTableData() {
     return this.state.lesprix.map((prix, index) => {
       const {
@@ -793,10 +789,10 @@ class CSumFcast extends PureComponent {
                       <YAxis type="number" label="  %  " />
                       <Tooltip />
                       <Legend />
-                      <Bar dataKey="Mar21" fill="#00CC00" />
-                      <Bar dataKey="Jun21" fill="#0000FF" />
-                      <Bar dataKey="Sep21" fill="#FFC000" />
-                      <Bar dataKey="Dec21" fill="#FF0000" />
+                      <Bar dataKey="Sep20" fill="#00CC00" />
+                      <Bar dataKey="Oct20" fill="#0000FF" />
+                      <Bar dataKey="Nov20" fill="#FFC000" />
+                      <Bar dataKey="Dec20" fill="#FF0000" />
                     </BarChart>
                   </ResponsiveContainer>
                 </div>
@@ -808,4 +804,4 @@ class CSumFcast extends PureComponent {
     );
   }
 }
-export default CSumFcast;
+export default CSumFcast21;
