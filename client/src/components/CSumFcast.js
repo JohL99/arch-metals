@@ -747,7 +747,7 @@ class CSumFcast extends PureComponent {
             <tr>
               <td align="center">{/*this.state.moisprix[this.state.sept21prix]*/}<b>September 2021</b></td>
               <td align="center"><b>${[this.state.EVsep21]}/mt</b></td>
-              <td align="center"><b>{this.state.sep21nb}</b></td>
+              <td align="center"><b>{this.state.sept21nb}</b></td>
               <td align="center">{this.state.avg1[this.state.sept21pour]}%</td>
               <td align="center">{this.state.avg2[this.state.sept21pour]}%</td>
               <td align="center">{this.state.avg3[this.state.sept21pour]}%</td>
