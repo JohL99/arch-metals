@@ -19,7 +19,7 @@ class GraphPartCopper21 extends PureComponent {
       data: [],
       prixmar21: [],
       prixjun21: [],
-      prixsept21: [],
+      prixsep21: [],
       prixdec21: [],
     };
   }

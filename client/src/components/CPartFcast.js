@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import GraphPartCopper from "./GraphPartCopper";
+import GraphPartCopper21 from "./GraphPartCopper21";
 class CPartFcast extends Component {
   constructor(props) {
     super(props);
@@ -1068,23 +1069,24 @@ class CPartFcast extends Component {
               </td>
             </tr>
             <tr>
-              <td align="center"><b>Participant</b></td>
+              <td align="center"><b>December 2020</b></td>
               <td align="center"><b>March 2021</b></td>
               <td align="center"><b>June 2021</b></td>
               <td align="center"><b>September 2021</b></td>
               <td align="center"><b>December 2021</b></td>
             </tr>
             <tr>
-            <td align="center"><b>${this.state.evmar21}/mt</b></td>
+              <td align="center"><b>${this.state.evdec20}/mt</b></td>
+              <td align="center"><b>${this.state.evmar21}/mt</b></td>
               <td align="center"><b>${this.state.evjun21}/mt</b></td>
               <td align="center"><b>${this.state.evsep21}/mt</b></td>
               <td align="center"><b>${this.state.evdec21}/mt</b></td>
             </tr>
             <tr>
             <td rowSpan="12" colSpan="6" width="60%" align="center">
-                <GraphPartCopper
-                  mweji20={this.state.recents}
-                  mweji20prix={this.state.prixsep20}
+                <GraphPartCopper21
+                  mweji21={this.state.recents}
+                  mweji21prix={this.state.prixmar21}
                 />
               </td>
             </tr>
@@ -1100,7 +1102,7 @@ class CPartFcast extends Component {
         <tr><td align="left"><b>March 2021: </b>{this.state.commar21}</td></tr>
         <tr><td align="left"><b>June 2021: </b>{this.state.comjun21}</td></tr>
         <tr><td align="left"><b>September 2021: </b>{this.state.comsep21}</td></tr>
-        <tr><td align="left"><b>December 202: </b>{this.state.comdec21}</td></tr>
+        <tr><td align="left"><b>December 2021: </b>{this.state.comdec21}</td></tr>
           </tbody>
         </table>
         <table className="table table-bordered">
