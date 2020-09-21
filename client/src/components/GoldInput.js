@@ -305,19 +305,17 @@ class GoldInput extends Component {
                       });
                       this.fillPrices(e.target.value);
                     }}
-                  >
+                    >
                     <option value="">Select a month</option>
-                    {this.state.months
-                      .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
-                        <option
-                          key={index /* lemois.value */}
-                          value={lemois.value}
-                        >
-                          {lemois + " " + new Date().getFullYear()}
-                        </option>
-                      ))}
-                  </select>
+                    <option value="September 2020">September 2020</option>
+                    <option value="October 2020">October 2020</option>
+                    <option value="November 2020">November 2020</option>
+                    <option value="December 2020">December 2020</option>
+                    <option value="March 2021">March 2021</option>
+                    <option value="June 2021">June 2021</option>
+                    <option value="September 2021">September 2021</option>
+                    <option value="December 2021">December 2021</option>
+                </select>
                 </td>
               </tr>
               <tr>

@@ -65,7 +65,7 @@ class GSummary extends PureComponent {
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
   }
   componentDidMount(){
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
   }
   CreeOldata() {
     let lesmoyennesR = [0, 0, 0, 0, 0, 0, 0, 0, 0];
@@ -410,15 +410,14 @@ class GSummary extends PureComponent {
                     }}
                   >
                     <option value="">Select a month</option>
-                    {this.state.months
-                      .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
-                        <option key={index /* lemois.value */}
-                          value={lemois.value}
-                        >
-                          {lemois + " " + new Date().getFullYear()}
-                        </option>
-                      ))}
+                    <option value="September 2020">September 2020</option>
+                    <option value="October 2020">October 2020</option>
+                    <option value="November 2020">November 2020</option>
+                    <option value="December 2020">December 2020</option>
+                    <option value="March 2021">March 2021</option>
+                    <option value="June 2021">June 2021</option>
+                    <option value="September 2021">September 2021</option>
+                    <option value="December 2021">December 2021</option>
                   </select>
                 </td>
                 <td align="center"><b>Expected Value</b></td>
@@ -469,7 +468,7 @@ class GSummary extends PureComponent {
                 <YAxis type="number" label="  %  " />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="RecentData" fill="#CC9900" />
+                <Bar dataKey="RecentData" fill="#B87333" />
                   {/*  <Bar dataKey="OldData" fill="#FF0000" />
                   <Bar dataKey="AllData" fill="#00B050" /> */}
                 </BarChart>
@@ -478,7 +477,7 @@ class GSummary extends PureComponent {
               </td>
             </tr>
             <tr>
-            <td colSpan="18" rowSpan="12">
+            <td colSpan="14" rowSpan="12">
             <table className="table table-bordered">
             <tbody>
             <tr>
@@ -494,7 +493,7 @@ class GSummary extends PureComponent {
           <table className="table table-bordered">
           <tbody>
           <tr>
-          <td colSpan="14" align="center" width="100%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
+          <td colSpan="18" align="center" width="100%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>
           </tr>
            <tr align="center">
             <td><b>Expected Value</b></td>

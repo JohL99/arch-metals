@@ -293,20 +293,20 @@ class GForecast extends PureComponent {
     //check whether time is in PM or AM
     var hours = dateStr.getHours();
     var hours = (hours+24-2)%24;
-    var mid='am';
+    var mid="am";
     if(hours==0){ //At 00 hours we need to show 12 am
     hours=12;
     }
     else if(hours>12)
     {
     hours=hours%12;
-    mid='pm';
+    mid="pm";
     }
-    var newdate = dateStr.toUTCString().split(' ')[0] + dateStr.toUTCString().split(' ')[1] + ' ' 
-    + dateStr.toUTCString().split(' ')[2] + ' '
-    + dateStr.toUTCString().split(' ')[3] + ' ' 
-    + dateStr.toUTCString().split(' ')[4].split(':')[0]
-    + ":" + dateStr.toUTCString().split(' ')[4].split(':')[1];
+    var newdate = dateStr.toUTCString().split(" ")[0] + dateStr.toUTCString().split(" ")[1] + " " 
+    + dateStr.toUTCString().split(" ")[2] + " "
+    + dateStr.toUTCString().split(" ")[3] + " " 
+    + dateStr.toUTCString().split(" ")[4].split(":")[0]
+    + ":" + dateStr.toUTCString().split(" ")[4].split(":")[1];
     return newdate + " " + mid;
   }
   fillotherdata(sanza1) {
@@ -539,17 +539,15 @@ class GForecast extends PureComponent {
                       this.fillPrices(e.target.value);
                     }}
                   >
-                    <option value="">Select a month</option>
-                    {this.state.months
-                      .slice(new Date().getMonth(), 12)
-                      .map((lemois, index) => (
-                        <option
-                          key={index /* lemois.value */}
-                          value={lemois.value}
-                        >
-                          {lemois + " " + new Date().getFullYear()}
-                        </option>
-                      ))}
+                   <option value="">Select a month</option>
+                    <option value="September 2020">September 2020</option>
+                    <option value="October 2020">October 2020</option>
+                    <option value="November 2020">November 2020</option>
+                    <option value="December 2020">December 2020</option>
+                    <option value="March 2021">March 2021</option>
+                    <option value="June 2021">June 2021</option>
+                    <option value="September 2021">September 2021</option>
+                    <option value="December 2021">December 2021</option>
                   </select>
                 </td>
                 <td align="center"><b>Expected Value</b></td>
@@ -676,7 +674,7 @@ class GForecast extends PureComponent {
                 <td align="center"><b>${this.state.price7}/oz</b></td>
                 <td align="center"><b>${this.state.price8}/oz</b></td>
                 <td align="center"><b>${this.state.price9}/oz</b></td>
-                <td colSpan="8" align="center"><b>Justifications</b></td>
+                <td colSpan="4" align="center"><b>Justifications</b></td>
               </tr>
               {this.state.olddata.map(renderOld)}
             </tbody>

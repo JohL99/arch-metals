@@ -31,6 +31,10 @@ import GForecast from "./components/GForecast";
 import GSummary from "./components/GSummary";
 import GSumFcast from "./components/GSumFcast";
 import GPartFcast from "./components/GPartFcast";
+import GraphPartCopper from "./components/GraphPartCopper";
+import GraphPartCopper21 from "./components/GraphPartCopper21";
+import GraphPartGold from "./components/GraphPartGold";
+import GraphPartGold21 from "./components/GraphPartGold21";
 import Dashboard from "./components/Dashboard";
 //import Graph1 from "./components/Graph1";
 // Check for token
@@ -76,6 +80,10 @@ function App() {
             <Route exact path="/GSummary" component={GSummary} />
             <Route exact path="/GSumFcast" component={GSumFcast} />
             <Route exact path="/GPartFcast" component={GPartFcast} />
+            <Route exact path="/GraphPartCopper" component={GraphPartCopper} />
+            <Route exact path="/GraphPartCopper21" component={GraphPartCopper21} />
+            <Route exact path="/GraphPartGold" component={GraphPartGold} />
+            <Route exact path="/GraphPartGold21" component={GraphPartGold21} />
             <Route exact path="/Register" component={Register} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Logout" component={Landing} />
