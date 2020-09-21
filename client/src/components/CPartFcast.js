@@ -17,8 +17,7 @@ class CPartFcast extends Component {
       junes21: [],
       septembers21: [],
       decembers21: [],
-      recents20: [],
-      recents21: [],
+      recents: [],
       prixsept20: [],
       prixoct20: [],
       prixnov20: [],
@@ -105,12 +104,10 @@ class CPartFcast extends Component {
     let poct20FromApi = {};
     let pnov20FromApi = {};
     let pdec20FromApi = {};
-    
     let pmar21FromApi = {};
     let pjun21FromApi = {};
     let psep21FromApi = {};
     let pdec21FromApi = {};
-    
     var donnees = [];
     
     fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
@@ -291,7 +288,7 @@ class CPartFcast extends Component {
           };
         });
         this.setState({
-          prixsep21: [].concat(psep21FromApi),
+          prixsept21: [].concat(psep21FromApi),
         });
       })
       .catch((error) => {
@@ -325,8 +322,6 @@ class CPartFcast extends Component {
         console.log(error);
       });
         
-    let averif = 0;
-    
     fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -370,7 +365,6 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-      averif = 0;
     
     fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
@@ -414,7 +408,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+
     fetch("/api/menji/userd/November 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -457,7 +451,6 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
   
     fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
       .then((response) => {
@@ -502,7 +495,7 @@ class CPartFcast extends Component {
         console.log(error);
       });
     
-      fetch("/api/menji/userd/March 2021&" + produit + "&" + utilisateur)
+    fetch("/api/menji/userd/March 2021&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -520,7 +513,6 @@ class CPartFcast extends Component {
             pmar21FromApi[0].pour9 * march21.price9;
           this.setState({ evmar21: xEV });
           this.setState({ commar21: march21.generalcomments });
-
           return {
             EV: xEV,
             price1: march21.price1,
@@ -545,7 +537,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+    
     fetch("/api/menji/userd/June 2021&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -588,7 +580,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+    
     fetch("/api/menji/userd/September 2021&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -631,7 +623,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+
     fetch("/api/menji/userd/December 2021&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -855,6 +847,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+      
       const renderDecember21 = (december21FromApi) => {
         return (
           <tr key={december21FromApi.id}>
@@ -1073,7 +1066,6 @@ class CPartFcast extends Component {
             </tr>
             </tbody>
         </table>
-      
         <table className="table table-bordered">
           <tbody>
             <tr>

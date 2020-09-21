@@ -194,7 +194,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    let averif = 0;
+    
     fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -238,7 +238,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+    
     fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -281,7 +281,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+    
     fetch("/api/menji/userd/November 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -324,7 +324,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+    
     fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
