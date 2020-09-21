@@ -387,7 +387,7 @@ class CPartFcast extends Component {
       .then((data) => {
         let recent20FromApi = data.map((recent20) => {
           //this.setState({ evdec20: xEV });
-          //this.setState({ comdec20: recent.generalcomments });
+          //this.setState({ comdec20: recent20.generalcomments });
           return {
             price1: recent20.detail.price1 * 100,
             price2: recent20.detail.price2 * 100,

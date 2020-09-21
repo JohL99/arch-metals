@@ -16,7 +16,7 @@ class CPartFcast21 extends Component {
       junes21: [],
       septembers21: [],
       decembers21: [],
-      recents: [],
+      recents21: [],
       prixsept20: [],
       prixoct20: [],
       prixnov20: [],
@@ -384,24 +384,24 @@ class CPartFcast21 extends Component {
         return response.json();
       })
       .then((data) => {
-        let recentFromApi = data.map((recent) => {
+        let recent21FromApi = data.map((recent21) => {
           //this.setState({ evdec21: xEV });
-          //this.setState({ comdec21: recent.generalcomments });
+          //this.setState({ comdec21: recent21.generalcomments });
           return {
-            price1: recent.detail.price1 * 100,
-            price2: recent.detail.price2 * 100,
-            price3: recent.detail.price3 * 100,
-            price4: recent.detail.price4 * 100,
-            price5: recent.detail.price5 * 100,
-            price6: recent.detail.price6 * 100,
-            price7: recent.detail.price7 * 100,
-            price8: recent.detail.price8 * 100,
-            price9: recent.detail.price9 * 100,
-            lemois: recent.detail.mois,
+            price1: recent21.detail.price1 * 100,
+            price2: recent21.detail.price2 * 100,
+            price3: recent21.detail.price3 * 100,
+            price4: recent21.detail.price4 * 100,
+            price5: recent21.detail.price5 * 100,
+            price6: recent21.detail.price6 * 100,
+            price7: recent21.detail.price7 * 100,
+            price8: recent21.detail.price8 * 100,
+            price9: recent21.detail.price9 * 100,
+            lemois: recent21.detail.mois,
           };
         });
         this.setState({
-          recents: [].concat(recentFromApi),
+          recents21: [].concat(recent21FromApi),
         });
       })
       .catch((error) => {
@@ -605,7 +605,7 @@ class CPartFcast21 extends Component {
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartCopper
-                  mweji={this.state.recents}
+                  mweji={this.state.recents21}
                   mweji1={this.state.prixmar21}
                 />
               </td>
