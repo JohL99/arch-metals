@@ -8,31 +8,27 @@ class GPartFcast extends Component {
     this.state = {
       user: "",
       users: [],
-      augusts: [],
       septembers: [],
       octobers: [],
       novembers: [],
       decembers: [],
       recents: [],
-      prixaug: [],
       prixsept: [],
       prixoct: [],
       prixnov: [],
       prixdec: [],
       donnees1: [],
-      evaug: "",
       evsep: "",
       evoct: "",
       evnov: "",
       evdec: "",
-      comaug: "",
       comsep: "",
       comoct: "",
       comnov: "",
       comdec: "",
     };
     window.onbeforeunload = function () {
-      window.scrollTo(0, 0);
+      window.scrollTo(0,0);
     };
     this.onChange = this.onChange.bind(this);
     this.fillprices = this.fillprices.bind(this);
@@ -116,6 +112,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
+    
     fetch("/api/beyi/commois/" + "October 2020" + "&Gold")
       .then((response) => {
         return response.json();
@@ -142,7 +139,8 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "November 2020" + "&Gold")
+    
+      fetch("/api/beyi/commois/" + "November 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -168,7 +166,8 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/beyi/commois/" + "December 2020" + "&Gold")
+    
+      fetch("/api/beyi/commois/" + "December 2020" + "&Gold")
       .then((response) => {
         return response.json();
       })
@@ -213,7 +212,6 @@ class GPartFcast extends Component {
             psepFromApi[0].pour9 * september.price9;
           this.setState({ evsep: xEV });
           this.setState({ comsep: september.generalcomments });
-
           return {
             EV: xEV,
             price1: september.price1,
@@ -281,7 +279,7 @@ class GPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    
+
     fetch("/api/menji/userd/November 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();

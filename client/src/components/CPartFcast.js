@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-//import GraphPartCopper from "./GraphPartCopper";
+import GraphPartCopper from "./GraphPartCopper";
 //import GraphPartCopper21 from "./GraphPartCopper21";
 class CPartFcast extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class CPartFcast extends Component {
       prixoct21: [],
       prixnov21: [],
       prixdec21: [],
-      donnees: [],
+      donnees1: [],
       evsep20: "",
       evoct20: "",
       evnov20: "",
@@ -108,7 +108,7 @@ class CPartFcast extends Component {
     let pjun21FromApi = {};
     let psep21FromApi = {};
     let pdec21FromApi = {};
-    var donnees = [];
+    var donnees1 = [];
     
     fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
       .then((response) => {
@@ -235,7 +235,9 @@ class CPartFcast extends Component {
             pour9: mutengo.floorprice + mutengo.constant1 * 8,
           };
         });
-        this.setState({ prixmar21: [].concat(pmar21FromApi) });
+        this.setState({ 
+          prixmar21: [].concat(pmar21FromApi) 
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -340,7 +342,6 @@ class CPartFcast extends Component {
             psep20FromApi[0].pour9 * september20.price9;
           this.setState({ evsep20: xEV });
           this.setState({ comsep20: september20.generalcomments });
-
           return {
             EV: xEV,
             price1: september20.price1,
@@ -696,11 +697,9 @@ class CPartFcast extends Component {
         console.log(error);
       });
 
-    this.setState({ donnees });
+    this.setState({ donnees1 });
   }
-     
   render() {
-    
     const renderSeptember20 = (september20FromApi) => {
       return (
         <tr key={september20FromApi.id}>
@@ -721,7 +720,6 @@ class CPartFcast extends Component {
         </tr>
       );
     };
-    
     const renderOctober20 = (october20FromApi) => {
       return (
         <tr key={october20FromApi.id}>
@@ -742,7 +740,6 @@ class CPartFcast extends Component {
         </tr>
       );
     };
-    
     const renderNovember20 = (november20FromApi) => {
       return (
         <tr key={november20FromApi.id}>
@@ -763,7 +760,6 @@ class CPartFcast extends Component {
         </tr>
       );
     };
-    
     const renderDecember20 = (december20FromApi) => {
       return (
         <tr key={december20FromApi.id}>
@@ -784,7 +780,6 @@ class CPartFcast extends Component {
         </tr>
       );
     };
-    
     const renderMarch21 = (march21FromApi) => {
       return (
         <tr key={march21FromApi.id}>
@@ -805,7 +800,6 @@ class CPartFcast extends Component {
           </tr>
         );
       };
-      
       const renderJune21 = (june21FromApi) => {
         return (
           <tr key={june21FromApi.id}>
@@ -826,7 +820,6 @@ class CPartFcast extends Component {
           </tr>
         );
       };
-      
       const renderSeptember21 = (september21FromApi) => {
         return (
           <tr key={september21FromApi.id}>
@@ -847,7 +840,6 @@ class CPartFcast extends Component {
           </tr>
         );
       };
-      
       const renderDecember21 = (december21FromApi) => {
         return (
           <tr key={december21FromApi.id}>
@@ -868,8 +860,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
-    
-    const renderPrixSept20 = (psep20FromApi) => {
+     const renderPrixSept20 = (psep20FromApi) => {
       return (
         <tr key={psep20FromApi.id}>
           <td align="center"><b>{"Expected Value"}</b></td>
@@ -1012,7 +1003,6 @@ class CPartFcast extends Component {
           </tr>
         );
       };
-
     return (
       <div>
         <table className="table table-bordered">
@@ -1058,7 +1048,10 @@ class CPartFcast extends Component {
             </tr>
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
-                
+                <GraphPartCopper
+                  mweji20={this.state.recents}
+                  mweji20prix={this.state.prixsept20}
+                />
               </td>
             </tr>
             </tbody>
@@ -1090,7 +1083,6 @@ class CPartFcast extends Component {
             </tr>
             </tbody>
         </table>
-            
       <table className="table table-bordered">
         <tbody>
         <tr><td align="center"><b>General Comments</b></td></tr>
@@ -1099,7 +1091,7 @@ class CPartFcast extends Component {
         <tr><td align="left"><b>November 2020: </b>{this.state.comnov20}</td></tr>
         <tr><td align="left"><b>December 2020: </b>{this.state.comdec20}</td></tr>
         <tr><td align="left"><b>March 2021: </b>{this.state.commar21}</td></tr>
-        <tr><td align="left"><b>June 2021: </b>{this.state.comjunt21}</td></tr>
+        <tr><td align="left"><b>June 2021: </b>{this.state.comjun21}</td></tr>
         <tr><td align="left"><b>September 2021: </b>{this.state.comsep21}</td></tr>
         <tr><td align="left"><b>December 2021: </b>{this.state.comdec21}</td></tr>
           </tbody>
@@ -1161,7 +1153,6 @@ class CPartFcast extends Component {
           <tbody>{this.state.decembers21.map(renderDecember21)}</tbody>
         </table>
       </div>
-
     );
   }
 }
