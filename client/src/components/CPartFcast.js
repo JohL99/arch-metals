@@ -27,8 +27,7 @@ class CPartFcast extends Component {
       prixoct21: [],
       prixnov21: [],
       prixdec21: [],
-      donnees20: [],
-      donnees21: [],
+      donnees: [],
       evsep20: "",
       evoct20: "",
       evnov20: "",
@@ -106,7 +105,14 @@ class CPartFcast extends Component {
     let poct20FromApi = {};
     let pnov20FromApi = {};
     let pdec20FromApi = {};
-    var donnees20 = [];
+    
+    let pmar21FromApi = {};
+    let pjun21FromApi = {};
+    let psep21FromApi = {};
+    let pdec21FromApi = {};
+    
+    var donnees = [];
+    
     fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
       .then((response) => {
         return response.json();
@@ -131,6 +137,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
+    
     fetch("/api/beyi/commois/" + "October 2020" + "&Copper")
       .then((response) => {
         return response.json();
@@ -157,6 +164,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
+    
     fetch("/api/beyi/commois/" + "November 2020" + "&Copper")
       .then((response) => {
         return response.json();
@@ -183,6 +191,7 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
+    
     fetch("/api/beyi/commois/" + "December 2020" + "&Copper")
       .then((response) => {
         return response.json();
@@ -209,7 +218,115 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
+    
+    fetch("/api/beyi/commois/" + "March 2021" + "&Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        pmar21FromApi = data.map((mutengo) => {
+          return {
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
+          };
+        });
+        this.setState({ prixmar21: [].concat(pmar21FromApi) });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
+    fetch("/api/beyi/commois/" + "June 2021" + "&Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        pjun21FromApi = data.map((mutengo) => {
+          return {
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
+          };
+        });
+        this.setState({
+          prixjun21: [].concat(pjun21FromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
+    fetch("/api/beyi/commois/" + "September 2021" + "&Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        psep21FromApi = data.map((mutengo) => {
+          return {
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
+          };
+        });
+        this.setState({
+          prixsep21: [].concat(psep21FromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    
+    fetch("/api/beyi/commois/" + "December 2021" + "&Copper")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        let yx = data;
+        pdec21FromApi = data.map((mutengo) => {
+          return {
+            pour1: mutengo.floorprice + mutengo.constant1 * 0,
+            pour2: mutengo.floorprice + mutengo.constant1 * 1,
+            pour3: mutengo.floorprice + mutengo.constant1 * 2,
+            pour4: mutengo.floorprice + mutengo.constant1 * 3,
+            pour5: mutengo.floorprice + mutengo.constant1 * 4,
+            pour6: mutengo.floorprice + mutengo.constant1 * 5,
+            pour7: mutengo.floorprice + mutengo.constant1 * 6,
+            pour8: mutengo.floorprice + mutengo.constant1 * 7,
+            pour9: mutengo.floorprice + mutengo.constant1 * 8,
+          };
+        });
+        this.setState({
+          prixdec21: [].concat(pdec21FromApi),
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+        
     let averif = 0;
+    
     fetch("/api/menji/userd/September 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -253,7 +370,8 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    averif = 0;
+      averif = 0;
+    
     fetch("/api/menji/userd/October 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -340,6 +458,7 @@ class CPartFcast extends Component {
         console.log(error);
       });
     averif = 0;
+  
     fetch("/api/menji/userd/December 2020&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
@@ -382,148 +501,8 @@ class CPartFcast extends Component {
       .catch((error) => {
         console.log(error);
       });
-    fetch("/api/menji/recentdauser/" + produit + "&" + utilisateur)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let recent20FromApi = data.map((recent20) => {
-          //this.setState({ evdec20: xEV });
-          //this.setState({ comdec20: recent20.generalcomments });
-          return {
-            price1: recent20.detail.price1 * 100,
-            price2: recent20.detail.price2 * 100,
-            price3: recent20.detail.price3 * 100,
-            price4: recent20.detail.price4 * 100,
-            price5: recent20.detail.price5 * 100,
-            price6: recent20.detail.price6 * 100,
-            price7: recent20.detail.price7 * 100,
-            price8: recent20.detail.price8 * 100,
-            price9: recent20.detail.price9 * 100,
-            lemois: recent20.detail.mois,
-          };
-        });
-        this.setState({
-          recents20: [].concat(recent20FromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    this.setState({ donnees20 });
-  }
-  
-  fillprices(utilisateur, produit) {
-    let pmar21FromApi = {};
-    let pjun21FromApi = {};
-    let psep21FromApi = {};
-    let pdec21FromApi = {};
-    var donnees21 = [];
-    fetch("/api/beyi/commois/" + "March 2021" + "&Copper")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let yx = data;
-        pmar21FromApi = data.map((mutengo) => {
-          return {
-            pour1: mutengo.floorprice + mutengo.constant1 * 0,
-            pour2: mutengo.floorprice + mutengo.constant1 * 1,
-            pour3: mutengo.floorprice + mutengo.constant1 * 2,
-            pour4: mutengo.floorprice + mutengo.constant1 * 3,
-            pour5: mutengo.floorprice + mutengo.constant1 * 4,
-            pour6: mutengo.floorprice + mutengo.constant1 * 5,
-            pour7: mutengo.floorprice + mutengo.constant1 * 6,
-            pour8: mutengo.floorprice + mutengo.constant1 * 7,
-            pour9: mutengo.floorprice + mutengo.constant1 * 8,
-          };
-        });
-        this.setState({ prixmar21: [].concat(pmar21FromApi) });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    fetch("/api/beyi/commois/" + "June 2021" + "&Copper")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let yx = data;
-        pjun21FromApi = data.map((mutengo) => {
-          return {
-            pour1: mutengo.floorprice + mutengo.constant1 * 0,
-            pour2: mutengo.floorprice + mutengo.constant1 * 1,
-            pour3: mutengo.floorprice + mutengo.constant1 * 2,
-            pour4: mutengo.floorprice + mutengo.constant1 * 3,
-            pour5: mutengo.floorprice + mutengo.constant1 * 4,
-            pour6: mutengo.floorprice + mutengo.constant1 * 5,
-            pour7: mutengo.floorprice + mutengo.constant1 * 6,
-            pour8: mutengo.floorprice + mutengo.constant1 * 7,
-            pour9: mutengo.floorprice + mutengo.constant1 * 8,
-          };
-        });
-        this.setState({
-          prixjun21: [].concat(pjun21FromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    fetch("/api/beyi/commois/" + "September 2021" + "&Copper")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let yx = data;
-        psep21FromApi = data.map((mutengo) => {
-          return {
-            pour1: mutengo.floorprice + mutengo.constant1 * 0,
-            pour2: mutengo.floorprice + mutengo.constant1 * 1,
-            pour3: mutengo.floorprice + mutengo.constant1 * 2,
-            pour4: mutengo.floorprice + mutengo.constant1 * 3,
-            pour5: mutengo.floorprice + mutengo.constant1 * 4,
-            pour6: mutengo.floorprice + mutengo.constant1 * 5,
-            pour7: mutengo.floorprice + mutengo.constant1 * 6,
-            pour8: mutengo.floorprice + mutengo.constant1 * 7,
-            pour9: mutengo.floorprice + mutengo.constant1 * 8,
-          };
-        });
-        this.setState({
-          prixsep21: [].concat(psep21FromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    fetch("/api/beyi/commois/" + "December 2021" + "&Copper")
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let yx = data;
-        pdec21FromApi = data.map((mutengo) => {
-          return {
-            pour1: mutengo.floorprice + mutengo.constant1 * 0,
-            pour2: mutengo.floorprice + mutengo.constant1 * 1,
-            pour3: mutengo.floorprice + mutengo.constant1 * 2,
-            pour4: mutengo.floorprice + mutengo.constant1 * 3,
-            pour5: mutengo.floorprice + mutengo.constant1 * 4,
-            pour6: mutengo.floorprice + mutengo.constant1 * 5,
-            pour7: mutengo.floorprice + mutengo.constant1 * 6,
-            pour8: mutengo.floorprice + mutengo.constant1 * 7,
-            pour9: mutengo.floorprice + mutengo.constant1 * 8,
-          };
-        });
-        this.setState({
-          prixdec21: [].concat(pdec21FromApi),
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    let averif = 0;
-    fetch("/api/menji/userd/March 2021&" + produit + "&" + utilisateur)
+    
+      fetch("/api/menji/userd/March 2021&" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
@@ -694,39 +673,40 @@ class CPartFcast extends Component {
       })
       .catch((error) => {
         console.log(error);
-      });
+      });  
+    
     fetch("/api/menji/recentdauser/" + produit + "&" + utilisateur)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        let recent21FromApi = data.map((recent21) => {
-          //this.setState({ evdec21: xEV });
-          //this.setState({ comdec21: recent21.generalcomments });
+        let recentFromApi = data.map((recent) => {
+          //this.setState({ evdec20: xEV });
+          //this.setState({ comdec20: recent20.generalcomments });
           return {
-            price1: recent21.detail.price1 * 100,
-            price2: recent21.detail.price2 * 100,
-            price3: recent21.detail.price3 * 100,
-            price4: recent21.detail.price4 * 100,
-            price5: recent21.detail.price5 * 100,
-            price6: recent21.detail.price6 * 100,
-            price7: recent21.detail.price7 * 100,
-            price8: recent21.detail.price8 * 100,
-            price9: recent21.detail.price9 * 100,
-            lemois: recent21.detail.mois,
+            price1: recent.detail.price1 * 100,
+            price2: recent.detail.price2 * 100,
+            price3: recent.detail.price3 * 100,
+            price4: recent.detail.price4 * 100,
+            price5: recent.detail.price5 * 100,
+            price6: recent.detail.price6 * 100,
+            price7: recent.detail.price7 * 100,
+            price8: recent.detail.price8 * 100,
+            price9: recent.detail.price9 * 100,
+            lemois: recent.detail.mois,
           };
         });
         this.setState({
-          recents21: [].concat(recent21FromApi),
+          recents: [].concat(recentFromApi),
         });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    this.setState({ donnees21 });
+    this.setState({ donnees });
   }
-  
+     
   render() {
     const renderSeptember20 = (september20FromApi) => {
       return (
@@ -1072,7 +1052,7 @@ class CPartFcast extends Component {
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartCopper
-                  mweji20={this.state.recents20}
+                  mweji20={this.state.recents}
                   mweji20prix={this.state.prixsept20}
                 />
               </td>
@@ -1103,7 +1083,7 @@ class CPartFcast extends Component {
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartCopper21
-                  mweji21={this.state.recents21}
+                  mweji21={this.state.recents}
                   mweji21prix={this.state.prixsept21}
                 />
               </td>
