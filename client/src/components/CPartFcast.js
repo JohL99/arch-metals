@@ -1058,10 +1058,7 @@ class CPartFcast extends Component {
             </tr>
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
-                <GraphPartCopper
-                  mweji20={this.state.recents}
-                  mweji20prix={this.state.prixsept20}
-                />
+                
               </td>
             </tr>
             </tbody>
@@ -1088,10 +1085,7 @@ class CPartFcast extends Component {
             </tr>
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
-                <GraphPartCopper21
-                  mweji21={this.state.recents}
-                  mweji21prix={this.state.prixsept21}
-                />
+                  
               </td>
             </tr>
             </tbody>
