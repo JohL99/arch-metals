@@ -16,7 +16,7 @@ class CPartFcast extends Component {
       junes21: [],
       septembers21: [],
       decembers21: [],
-      recents: [],
+      recents20: [],
       prixsept20: [],
       prixoct20: [],
       prixnov20: [],
@@ -25,7 +25,8 @@ class CPartFcast extends Component {
       prixoct21: [],
       prixnov21: [],
       prixdec21: [],
-      donnees1: [],
+      donnees20: [],
+      
       evsep20: "",
       evoct20: "",
       evnov20: "",
@@ -103,7 +104,7 @@ class CPartFcast extends Component {
     let poct20FromApi = {};
     let pnov20FromApi = {};
     let pdec20FromApi = {};
-    var donnees1 = [];
+    var donnees20 = [];
     fetch("/api/beyi/commois/" + "September 2020" + "&Copper")
       .then((response) => {
         return response.json();
@@ -384,32 +385,35 @@ class CPartFcast extends Component {
         return response.json();
       })
       .then((data) => {
-        let recentFromApi = data.map((recent) => {
+        let recent20FromApi = data.map((recent20) => {
           //this.setState({ evdec20: xEV });
           //this.setState({ comdec20: recent.generalcomments });
           return {
-            price1: recent.detail.price1 * 100,
-            price2: recent.detail.price2 * 100,
-            price3: recent.detail.price3 * 100,
-            price4: recent.detail.price4 * 100,
-            price5: recent.detail.price5 * 100,
-            price6: recent.detail.price6 * 100,
-            price7: recent.detail.price7 * 100,
-            price8: recent.detail.price8 * 100,
-            price9: recent.detail.price9 * 100,
-            lemois: recent.detail.mois,
+            price1: recent20.detail.price1 * 100,
+            price2: recent20.detail.price2 * 100,
+            price3: recent20.detail.price3 * 100,
+            price4: recent20.detail.price4 * 100,
+            price5: recent20.detail.price5 * 100,
+            price6: recent20.detail.price6 * 100,
+            price7: recent20.detail.price7 * 100,
+            price8: recent20.detail.price8 * 100,
+            price9: recent20.detail.price9 * 100,
+            lemois: recent20.detail.mois,
           };
         });
         this.setState({
-          recents: [].concat(recentFromApi),
+          recents20: [].concat(recent20FromApi),
         });
       })
       .catch((error) => {
         console.log(error);
       });
 
-    this.setState({ donnees1 });
+    this.setState({ donnees20 });
   }
+  
+  
+  
   render() {
     const renderSeptember20 = (september20FromApi) => {
       return (
@@ -605,7 +609,7 @@ class CPartFcast extends Component {
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartCopper
-                  mweji20={this.state.recents}
+                  mweji20={this.state.recents20}
                   mweji20prix={this.state.prixsept20}
                 />
               </td>
