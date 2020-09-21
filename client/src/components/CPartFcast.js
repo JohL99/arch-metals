@@ -682,7 +682,7 @@ class CPartFcast extends Component {
       .then((data) => {
         let recentFromApi = data.map((recent) => {
           //this.setState({ evdec20: xEV });
-          //this.setState({ comdec20: recent20.generalcomments });
+          //this.setState({ comdec20: recent.generalcomments });
           return {
             price1: recent.detail.price1 * 100,
             price2: recent.detail.price2 * 100,
@@ -708,6 +708,7 @@ class CPartFcast extends Component {
   }
      
   render() {
+    
     const renderSeptember20 = (september20FromApi) => {
       return (
         <tr key={september20FromApi.id}>
@@ -728,6 +729,7 @@ class CPartFcast extends Component {
         </tr>
       );
     };
+    
     const renderOctober20 = (october20FromApi) => {
       return (
         <tr key={october20FromApi.id}>
@@ -748,6 +750,7 @@ class CPartFcast extends Component {
         </tr>
       );
     };
+    
     const renderNovember20 = (november20FromApi) => {
       return (
         <tr key={november20FromApi.id}>
@@ -768,6 +771,7 @@ class CPartFcast extends Component {
         </tr>
       );
     };
+    
     const renderDecember20 = (december20FromApi) => {
       return (
         <tr key={december20FromApi.id}>
@@ -788,75 +792,7 @@ class CPartFcast extends Component {
         </tr>
       );
     };
-    const renderPrixSept20 = (psep20FromApi) => {
-      return (
-        <tr key={psep20FromApi.id}>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>${psep20FromApi.pour1}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour2}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour3}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour4}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour5}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour6}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour7}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour8}/mt</b></td>
-          <td align="center"><b>${psep20FromApi.pour9}/mt</b></td>
-          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
-        </tr>
-      );
-    };
-    const renderPrixOct20 = (poct20FromApi) => {
-      return (
-        <tr key={poct20FromApi.id}>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>${poct20FromApi.pour1}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour2}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour3}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour4}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour5}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour6}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour7}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour8}/mt</b></td>
-          <td align="center"><b>${poct20FromApi.pour9}/mt</b></td>
-          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
-        </tr>
-      );
-    };
-    const renderPrixNov20 = (pnov20FromApi) => {
-      return (
-        <tr key={pnov20FromApi.id}>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>${pnov20FromApi.pour1}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour2}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour3}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour4}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour5}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour6}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour7}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour8}/mt</b></td>
-          <td align="center"><b>${pnov20FromApi.pour9}/mt</b></td>
-          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
-        </tr>
-      );
-    };
-    const renderPrixDec20 = (pdec20FromApi) => {
-      return (
-        <tr key={pdec20FromApi.id}>
-          <td align="center"><b>{"Expected Value"}</b></td>
-          <td align="center"><b>${pdec20FromApi.pour1}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour2}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour3}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour4}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour5}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour6}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour7}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour8}/mt</b></td>
-          <td align="center"><b>${pdec20FromApi.pour9}/mt</b></td>
-          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
-        </tr>
-      );
-    };
-
+    
     const renderMarch21 = (march21FromApi) => {
       return (
         <tr key={march21FromApi.id}>
@@ -877,6 +813,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+      
       const renderJune21 = (june21FromApi) => {
         return (
           <tr key={june21FromApi.id}>
@@ -897,6 +834,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+      
       const renderSeptember21 = (september21FromApi) => {
         return (
           <tr key={september21FromApi.id}>
@@ -937,6 +875,79 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+    
+    const renderPrixSept20 = (psep20FromApi) => {
+      return (
+        <tr key={psep20FromApi.id}>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>${psep20FromApi.pour1}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour2}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour3}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour4}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour5}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour6}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour7}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour8}/mt</b></td>
+          <td align="center"><b>${psep20FromApi.pour9}/mt</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
+        </tr>
+      );
+    };
+    
+    const renderPrixOct20 = (poct20FromApi) => {
+      return (
+        <tr key={poct20FromApi.id}>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>${poct20FromApi.pour1}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour2}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour3}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour4}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour5}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour6}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour7}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour8}/mt</b></td>
+          <td align="center"><b>${poct20FromApi.pour9}/mt</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
+        </tr>
+      );
+    };
+    
+    const renderPrixNov20 = (pnov20FromApi) => {
+      return (
+        <tr key={pnov20FromApi.id}>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>${pnov20FromApi.pour1}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour2}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour3}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour4}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour5}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour6}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour7}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour8}/mt</b></td>
+          <td align="center"><b>${pnov20FromApi.pour9}/mt</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
+        </tr>
+      );
+    };
+    
+    const renderPrixDec20 = (pdec20FromApi) => {
+      return (
+        <tr key={pdec20FromApi.id}>
+          <td align="center"><b>{"Expected Value"}</b></td>
+          <td align="center"><b>${pdec20FromApi.pour1}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour2}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour3}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour4}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour5}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour6}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour7}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour8}/mt</b></td>
+          <td align="center"><b>${pdec20FromApi.pour9}/mt</b></td>
+          <td colSpan="8" align="center"><b>{"Justifications"}</b></td>
+        </tr>
+      );
+    };
+
       const renderPrixMar21 = (pmar21FromApi) => {
         return (
           <tr key={pmar21FromApi.id}>
@@ -954,6 +965,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+      
       const renderPrixJun21 = (pjun21FromApi) => {
         return (
           <tr key={pjun21FromApi.id}>
@@ -971,6 +983,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+      
       const renderPrixSept21 = (psep21FromApi) => {
         return (
           <tr key={psep21FromApi.id}>
@@ -988,6 +1001,7 @@ class CPartFcast extends Component {
           </tr>
         );
       };
+      
       const renderPrixDec21 = (pdec21FromApi) => {
         return (
           <tr key={pdec21FromApi.id}>
@@ -1132,34 +1146,33 @@ class CPartFcast extends Component {
           </thead>
           <tbody>{this.state.decembers20.map(renderDecember20)}</tbody>
         </table>
-      
         <table className="table table-bordered">
           <thead>
-            <tr><td align="center" colSpan="18"><b>Forecasts - September 2020</b></td></tr>
-            {this.state.prixsept20.map(renderPrixSept20)}
+            <tr><td align="center" colSpan="18"><b>Forecasts - March 2021</b></td></tr>
+            {this.state.prixmar21.map(renderPrixMar21)}
           </thead>
-          <tbody>{this.state.septembers20.map(renderSeptember20)}</tbody>
+          <tbody>{this.state.marchs21.map(renderMarch21)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr><td align="center" colSpan="18"><b>Forecasts - October 2020</b></td></tr>
-            {this.state.prixoct20.map(renderPrixOct20)}
+            <tr><td align="center" colSpan="18"><b>Forecasts - June 2021</b></td></tr>
+            {this.state.prixjun21.map(renderPrixJun21)}
           </thead>
-          <tbody>{this.state.octobers20.map(renderOctober20)}</tbody>
+          <tbody>{this.state.junes21.map(renderJune21)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr><td align="center" colSpan="18"><b>Forecasts - November 2020</b></td></tr>
-            {this.state.prixnov20.map(renderPrixNov20)}
+            <tr><td align="center" colSpan="18"><b>Forecasts - September 2021</b></td></tr>
+            {this.state.prixsept21.map(renderPrixSept21)}
           </thead>
-          <tbody>{this.state.novembers20.map(renderNovember20)}</tbody>
+          <tbody>{this.state.septembers21.map(renderSeptember21)}</tbody>
         </table>
         <table className="table table-bordered">
           <thead>
-            <tr><td align="center" colSpan="18"><b>Forecasts - December 2020</b></td></tr>
-            {this.state.prixdec20.map(renderPrixDec20)}
+            <tr><td align="center" colSpan="18"><b>Forecasts - December 2021</b></td></tr>
+            {this.state.prixdec21.map(renderPrixDec21)}
           </thead>
-          <tbody>{this.state.decembers20.map(renderDecember20)}</tbody>
+          <tbody>{this.state.decembers21.map(renderDecember21)}</tbody>
         </table>
       </div>
 
