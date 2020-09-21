@@ -17,11 +17,14 @@ class GraphPartCopper extends PureComponent {
     this.state = {
       donnees: [],
       data: [],
-      prixaug: [],
-      prixsept: [],
-      prixoct: [],
-      prixnov: [],
-      prixdec: [],
+      prixsept20: [],
+      prixoct20: [],
+      prixnov20: [],
+      prixdec20: [],
+      prixsept21: [],
+      prixoct21: [],
+      prixnov21: [],
+      prixdec21: [],
     };
   }
   componentDidUpdate(prevProps) {
@@ -29,61 +32,61 @@ class GraphPartCopper extends PureComponent {
       // console.log(this.props.mweji);
 
       mma = this.props.mweji;
-      let sept1 = [];
-      let octo1 = [];
-      let novem1 = [];
-      let decem1 = [];
-      let psepFromApi = {};
+      let sept20 = [];
+      let octo20 = [];
+      let novem20 = [];
+      let decem20 = [];
+      let psep20FromApi = {};
       var leprix = [];
 
       var y = 0;
       for (y == 0; y < 4 /* this.props.mweji.length */; y++) {
         if (this.props.mweji[y].lemois == "September 2020") {
-          sept1[1] = this.props.mweji[y].price1;
-          sept1[2] = this.props.mweji[y].price2;
-          sept1[3] = this.props.mweji[y].price3;
-          sept1[4] = this.props.mweji[y].price4;
-          sept1[5] = this.props.mweji[y].price5;
-          sept1[6] = this.props.mweji[y].price6;
-          sept1[7] = this.props.mweji[y].price7;
-          sept1[8] = this.props.mweji[y].price8;
-          sept1[9] = this.props.mweji[y].price9;
+          sept20[1] = this.props.mweji[y].price1;
+          sept20[2] = this.props.mweji[y].price2;
+          sept20[3] = this.props.mweji[y].price3;
+          sept20[4] = this.props.mweji[y].price4;
+          sept20[5] = this.props.mweji[y].price5;
+          sept20[6] = this.props.mweji[y].price6;
+          sept20[7] = this.props.mweji[y].price7;
+          sept20[8] = this.props.mweji[y].price8;
+          sept20[9] = this.props.mweji[y].price9;
         }
 
         if (this.props.mweji[y].lemois == "October 2020") {
-          octo1[1] = this.props.mweji[y].price1;
-          octo1[2] = this.props.mweji[y].price2;
-          octo1[3] = this.props.mweji[y].price3;
-          octo1[4] = this.props.mweji[y].price4;
-          octo1[5] = this.props.mweji[y].price5;
-          octo1[6] = this.props.mweji[y].price6;
-          octo1[7] = this.props.mweji[y].price7;
-          octo1[8] = this.props.mweji[y].price8;
-          octo1[9] = this.props.mweji[y].price9;
+          octo20[1] = this.props.mweji[y].price1;
+          octo20[2] = this.props.mweji[y].price2;
+          octo20[3] = this.props.mweji[y].price3;
+          octo20[4] = this.props.mweji[y].price4;
+          octo20[5] = this.props.mweji[y].price5;
+          octo20[6] = this.props.mweji[y].price6;
+          octo20[7] = this.props.mweji[y].price7;
+          octo20[8] = this.props.mweji[y].price8;
+          octo20[9] = this.props.mweji[y].price9;
         }
 
         if (this.props.mweji[y].lemois == "November 2020") {
-          novem1[1] = this.props.mweji[y].price1;
-          novem1[2] = this.props.mweji[y].price2;
-          novem1[3] = this.props.mweji[y].price3;
-          novem1[4] = this.props.mweji[y].price4;
-          novem1[5] = this.props.mweji[y].price5;
-          novem1[6] = this.props.mweji[y].price6;
-          novem1[7] = this.props.mweji[y].price7;
-          novem1[8] = this.props.mweji[y].price8;
-          novem1[9] = this.props.mweji[y].price9;
+          novem20[1] = this.props.mweji[y].price1;
+          novem20[2] = this.props.mweji[y].price2;
+          novem20[3] = this.props.mweji[y].price3;
+          novem20[4] = this.props.mweji[y].price4;
+          novem20[5] = this.props.mweji[y].price5;
+          novem20[6] = this.props.mweji[y].price6;
+          novem20[7] = this.props.mweji[y].price7;
+          novem20[8] = this.props.mweji[y].price8;
+          novem20[9] = this.props.mweji[y].price9;
         }
 
         if (this.props.mweji[y].lemois == "December 2020") {
-          decem1[1] = this.props.mweji[y].price1;
-          decem1[2] = this.props.mweji[y].price2;
-          decem1[3] = this.props.mweji[y].price3;
-          decem1[4] = this.props.mweji[y].price4;
-          decem1[5] = this.props.mweji[y].price5;
-          decem1[6] = this.props.mweji[y].price6;
-          decem1[7] = this.props.mweji[y].price7;
-          decem1[8] = this.props.mweji[y].price8;
-          decem1[9] = this.props.mweji[y].price9;
+          decem20[1] = this.props.mweji[y].price1;
+          decem20[2] = this.props.mweji[y].price2;
+          decem20[3] = this.props.mweji[y].price3;
+          decem20[4] = this.props.mweji[y].price4;
+          decem20[5] = this.props.mweji[y].price5;
+          decem20[6] = this.props.mweji[y].price6;
+          decem20[7] = this.props.mweji[y].price7;
+          decem20[8] = this.props.mweji[y].price8;
+          decem20[9] = this.props.mweji[y].price9;
         }
       }
 
@@ -102,10 +105,10 @@ class GraphPartCopper extends PureComponent {
       for (yy == 1; yy < 10; yy++) {
         data.push({
           price: leprix[yy],
-          Sep20: sept1[yy],
-          Oct20: octo1[yy],
-          Nov20: novem1[yy],
-          Dec20: decem1[yy],
+          Sep20: sept20[yy],
+          Oct20: octo20[yy],
+          Nov20: novem20[yy],
+          Dec20: decem20[yy],
         });
       }
 
