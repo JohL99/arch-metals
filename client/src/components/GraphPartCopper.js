@@ -17,7 +17,7 @@ class GraphPartCopper extends PureComponent {
     this.state = {
       donnees: [],
       data: [],
-      prixsept20: [],
+      prixsep20: [],
       prixoct20: [],
       prixnov20: [],
       prixdec20: [],
