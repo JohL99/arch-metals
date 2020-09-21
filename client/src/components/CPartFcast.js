@@ -605,8 +605,8 @@ class CPartFcast extends Component {
             <tr>
               <td rowSpan="12" colSpan="6" width="60%" align="center">
                 <GraphPartCopper
-                  mweji20={this.state.recents}
-                  mwejiprix20={this.state.prixsept20}
+                  mweji={this.state.recents}
+                  mwejiprix={this.state.prixsept20}
                 />
               </td>
             </tr>
