@@ -40,7 +40,7 @@ class GraphPartCopper extends PureComponent {
       var leprix = [];
 
       var y = 0;
-      for (y == 0; y < 4 /* this.props.mweji.length */; y++) {
+      for (y == 0; y < 8 /* this.props.mweji.length */; y++) {
         if (this.props.mweji[y].lemois == "September 2020") {
           sept20[1] = this.props.mweji[y].price1;
           sept20[2] = this.props.mweji[y].price2;
