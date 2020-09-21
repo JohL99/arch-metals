@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import GraphPartCopper from "./GraphPartCopper";
-import GraphPartCopper21 from "./GraphPartCopper21";
+//import GraphPartCopper from "./GraphPartCopper";
+//import GraphPartCopper21 from "./GraphPartCopper21";
 class CPartFcast extends Component {
   constructor(props) {
     super(props);
