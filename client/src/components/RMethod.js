@@ -24,11 +24,13 @@ export default function RMethod() {
         </p>
 
         <p class="text-justify">
-          The purpose of the research project is twofold: &bull; Encouraging
-          participants to participate in establishing a shared consensus
-          forecast. &bull; Encouraging participants to deliberate and make
-          revised forecasts because of the insights gained from other
-          participants' forecasts.
+          The purpose of the research project is twofold:
+          </p>
+          <p class="text-justify">
+          &bull; Encouraging participants to participate in establishing a shared consensus forecast. 
+          </p>
+          <p class="text-justify">
+          &bull; Encouraging participants to deliberate and make revised forecasts because of the insights gained from other participants' forecasts.
         </p>
 
         <p class="text-justify">

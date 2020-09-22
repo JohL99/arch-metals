@@ -23,15 +23,15 @@ class Dashboard extends PureComponent {
         </p>
         <p className="text-justify">
         The Consensus Metals Forecasting Panel aims to assess if more reliable decision making is possible if industry participants share their insights about expected future metal prices equitably and transparently. Two elements are entrenched in the approach taken to achieve equity and transparency:</p>
-        <p className="text-justify"><b>-</b> Participation on the Consensus Metals Forecasting Panel is anonymous, creating the freedom to exchange views to the mutual benefit of all participants.</p>
-        <p className="text-justify"><b>-</b> All participants on the Consensus Metals Forecasting Panel have equal access to all information simultaneously.
+        <p className="text-justify">&bull; Participation on the Consensus Metals Forecasting Panel is anonymous, creating the freedom to exchange views to the mutual benefit of all participants.</p>
+        <p className="text-justify">&bull; All participants on the Consensus Metals Forecasting Panel have equal access to all information simultaneously.
         </p>
         <br/>
         <h3>General Information</h3>
         <p className="text-justify">
         The structure for inputting forecasts is standardized to ensure the comparability of the forecasts submitted in the reporting layouts. A crucial element of the Consensus Metals Forecasting Panel participation is encouraging a brief (Max. 300 characters) justification of the forecasts submitted. The aim is to promote an exchange of insights, which will hopefully lead to more reliable consensus forecasts, to the benefit of all participants. In the reporting layouts, the data is subdivided into two groups:</p>
-        <p className="text-justify"><b>-</b> RecentData: These are the latest forecasts submitted by each participant.</p>
-        <p className="text-justify"><b>-</b> AllData: These are all the forecasts submitted by all participants.
+        <p className="text-justify">&bull; <b>RecentData:</b> These are the latest forecasts submitted by each participant.</p>
+        <p className="text-justify">&bull; <b>AllData:</b> These are all the forecasts submitted by all participants.
         </p>
         <br/>
         <p class="alert alert-info" role="alert">

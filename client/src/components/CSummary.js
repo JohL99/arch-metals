@@ -389,7 +389,7 @@ class CSummary extends PureComponent {
     return (
       <div>
         <center>
-          <table border="1">
+          <table className="table table-bordered">
             <tbody>
               <tr>
                 <td colSpan="18" align="center" width="100%"><b>Most Recent Copper Forecasts - {this.state.mois}</b></td>
@@ -401,7 +401,11 @@ class CSummary extends PureComponent {
                     name="month"
                     value={this.state.mois}
                     onChange={(e) => {
-                      this.setState({mois: e.target.value});
+                      this.setState({
+                        mois: e.target.value,
+                        validationError:
+                          e.target.value === "" ? "Select a month" : "",
+                      });
                       this.fillPrices(e.target.value);
                     }}
                   >

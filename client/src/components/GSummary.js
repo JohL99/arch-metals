@@ -389,7 +389,7 @@ class GSummary extends PureComponent {
     return (
       <div>
         <center>
-          <table border="1">
+          <table className="table table-bordered">
             <tbody>
               <tr>
                 <td colSpan="18" align="center" width="100%"><b>Most Recent Gold Forecasts - {this.state.mois}</b></td>

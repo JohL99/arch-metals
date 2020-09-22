@@ -156,10 +156,10 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink3"
           >
             <Link className="dropdown-item" to="/CForecast">
-              Copper All Forecast Tables
+              Copper All Forecast
             </Link>
             <Link className="dropdown-item" to="/GForecast">
-              Gold All Forecast Tables
+              Gold All Forecast
             </Link>
           </div>
         </li>
@@ -337,10 +337,10 @@ class Navbar extends Component {
             aria-labelledby="navbarDropdownMenuLink3"
           >
             <Link className="dropdown-item" to="/CForecast">
-              Copper All Forecast Tables
+              Copper All Forecast
             </Link>
             <Link className="dropdown-item" to="/GForecast">
-              Gold All Forecast Tables
+              Gold All Forecast
             </Link>
           </div>
         </li>
