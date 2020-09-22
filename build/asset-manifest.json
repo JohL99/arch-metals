@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.c1a25249.chunk.css",
-    "main.js": "/static/js/main.edc89f39.chunk.js",
-    "main.js.map": "/static/js/main.edc89f39.chunk.js.map",
+    "main.css": "/static/css/main.06ab3f35.chunk.css",
+    "main.js": "/static/js/main.e476c8d7.chunk.js",
+    "main.js.map": "/static/js/main.e476c8d7.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.09b85ec0.js",
     "runtime-main.js.map": "/static/js/runtime-main.09b85ec0.js.map",
     "static/js/2.db6a780f.chunk.js": "/static/js/2.db6a780f.chunk.js",
     "static/js/2.db6a780f.chunk.js.map": "/static/js/2.db6a780f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.b4dc336ac40fa7eacb18d5a3d70cd07f.js": "/precache-manifest.b4dc336ac40fa7eacb18d5a3d70cd07f.js",
+    "precache-manifest.ab5205812130b5873056f9151379d78e.js": "/precache-manifest.ab5205812130b5873056f9151379d78e.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.c1a25249.chunk.css.map": "/static/css/main.c1a25249.chunk.css.map",
+    "static/css/main.06ab3f35.chunk.css.map": "/static/css/main.06ab3f35.chunk.css.map",
     "static/js/2.db6a780f.chunk.js.LICENSE.txt": "/static/js/2.db6a780f.chunk.js.LICENSE.txt",
-    "static/media/Comex_Copper.png": "/static/media/Comex_Copper.2086290f.png",
-    "static/media/Comex_Gold.png": "/static/media/Comex_Gold.b7850b7a.png",
+    "static/media/Comex_Copper.png": "/static/media/Comex_Copper.1a89a170.png",
+    "static/media/Comex_Gold.png": "/static/media/Comex_Gold.546dfb51.png",
     "static/media/RankingCalculation.png": "/static/media/RankingCalculation.c3cbcf8d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.09b85ec0.js",
     "static/js/2.db6a780f.chunk.js",
-    "static/css/main.c1a25249.chunk.css",
-    "static/js/main.edc89f39.chunk.js"
+    "static/css/main.06ab3f35.chunk.css",
+    "static/js/main.e476c8d7.chunk.js"
   ]
 }

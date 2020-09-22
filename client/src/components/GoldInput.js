@@ -260,7 +260,7 @@ class GoldInput extends Component {
             <tbody>
               <tr>
                 <td colSpan="12" align="center">
-                  <b>Consensus Metals Panel - Gold Forecast Inputs</b>
+                  <b>Consensus Metals Forecasting Panel - Gold Inputs</b>
                 </td>
               </tr>
               <tr>

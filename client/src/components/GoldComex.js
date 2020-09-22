@@ -5,7 +5,7 @@ export default function Comex_Gold() {
     <div>
       <div>
         <td align="center">
-        <h3>COMEX GOLD FUTURES PRICES - Daily Closing Prices</h3>
+        <h3>COMEX GOLD FUTURES - Daily Closing Prices</h3>
         </td>
       </div>
         <div> 

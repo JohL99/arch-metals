@@ -5,7 +5,7 @@ export default function Comex_Copper() {
     <div>
       <div>
         <td align="center">
-        <h3>COMEX COPPER FUTURES PRICES - Daily Closing Prices</h3>
+        <h3>COMEX COPPER FUTURES - Daily Closing Prices</h3>
         </td>
       </div>
         <div> 
