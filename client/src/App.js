@@ -12,7 +12,6 @@ import Landing from "./components/layout/Landing";
 import "./App.css";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
-import Consent from "./components/auth/Consent";
 import CopperInput from "./components/CopperInput";
 import { MonthPrices } from "./components/MonthPrices";
 import GoldInput from "./components/GoldInput";
@@ -91,7 +90,6 @@ function App() {
             <Route exact path="/Register" component={Register} />
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Logout" component={Landing} />
-            <Route exact path="/consent" component={Consent} />
             <Route exact path="/CopperInput" component={CopperInput} />
             <Route exact path="/GoldInput" component={GoldInput} />
             <Route exact path="/MonthPrices" component={MonthPrices} />
