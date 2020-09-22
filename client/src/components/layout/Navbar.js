@@ -182,10 +182,10 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/RMethod">
               Ranking Methodology
             </Link>
-            <Link className="dropdown-item" to="/CRanking">
+            <Link className="dropdown-item" to="/CopperRanking">
               Copper Rankings
             </Link>
-            <Link className="dropdown-item" to="/GRanking">
+            <Link className="dropdown-item" to="/GoldRanking">
               Gold Rankings
             </Link>
           </div>
@@ -363,10 +363,10 @@ class Navbar extends Component {
             <Link className="dropdown-item" to="/RMethod">
               Ranking Methodology
             </Link>   
-	    <Link className="dropdown-item" to="/CRanking">
+	    <Link className="dropdown-item" to="/CopperRanking">
               Copper Rankings
             </Link>
-            <Link className="dropdown-item" to="/GRanking">
+            <Link className="dropdown-item" to="/GoldRanking">
               Gold Rankings
             </Link>
             </div>

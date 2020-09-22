@@ -21,6 +21,8 @@ import TetCs from "./components/TetCs";
 import Contacts from "./components/Contacts";
 import PConsent from "./components/PConsent";
 import RMethod from "./components/RMethod";
+import CopperRanking from "./components/CopperRanking";
+import GoldRanking from "./components/GoldRanking";
 import CopperComex from "./components/CopperComex";
 import GoldComex from "./components/GoldComex";
 import CForecast from "./components/CForecast";
@@ -70,6 +72,8 @@ function App() {
             <Route exact path="/Contacts" component={Contacts} />
             <Route exact path="/PConsent" component={PConsent} />
             <Route exact path="/RMethod" component={RMethod} />
+            <Route exact path="/CopperRanking" component={CopperRanking} />
+            <Route exact path="/GoldRanking" component={GoldRanking} />
             <Route exact path="/CopperComex" component={CopperComex} />
             <Route exact path="/GoldComex" component={GoldComex} />
             <Route exact path="/CForecast" component={CForecast} />

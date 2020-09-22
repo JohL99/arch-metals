@@ -1,7 +1,8 @@
 import React from "react";
-
 import Rank from "./RankingCalculation.png";
-
+window.onbeforeunload = function () {
+  window.scrollTo(0,0);
+}
 export default function RMethod() {
   return (
     <div>
@@ -10,7 +11,7 @@ export default function RMethod() {
 
         <p class="text-justify">
           Scoring percentage accuracy is based on the average of all forecasts
-          submitted compared to the comparable LME monthly average reported
+          submitted compared to the comparable <b>LME monthly average</b> reported
           price for the relevant month. The differences between the forecasts
           and the actual average monthly market price are ranked, and the
           percentile rank distribution calculated. The percentile rank
