@@ -593,7 +593,7 @@ class GSumFcast extends PureComponent {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="12" align="center" width="100%"><b>Aggregation of All 2020 Gold Forecasts</b></td>
+              <td colSpan="12" align="center" width="100%"><b>Aggregation of All Gold Forecasts - 2020</b></td>
             </tr>
             <tr>
               <td align="center"><b>Month</b></td>
@@ -700,7 +700,7 @@ class GSumFcast extends PureComponent {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="12" align="center" width="100%"><b>Aggregation of All 2021 Gold Forecasts</b></td>
+              <td colSpan="12" align="center" width="100%"><b>Aggregation of All Gold Forecasts - 2021</b></td>
             </tr>
             <tr>
               <td align="center"><b>Month</b></td>

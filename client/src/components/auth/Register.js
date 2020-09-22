@@ -141,13 +141,13 @@ class Register extends Component {
                   error={errors.password2}
                 />
                 <TextFieldGroup
-                  placeholder="Email – For Logon &amp; official communication only"
+                  placeholder="Email – For Login &amp; official communication only"
                   name="email"
                   type="email"
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
+                  
                 />
                 <TextFieldGroup
                   placeholder="Alternative email (Optional)"
@@ -158,7 +158,7 @@ class Register extends Component {
                   error={errors.altemail}
                 />
                 <TextFieldGroup
-                  placeholder="Real Name (For official communication only)"
+                  placeholder="Name (Will not be visible to participants on the website / For official communication only)"
                   name="realname"
                   type="text"
                   value={this.state.realname}
@@ -254,19 +254,15 @@ class Register extends Component {
                   >
                     <option value="">Professional Background</option>
                     <option value="AccountingFinancial">Accounting / Financial</option>
-                    <option value="Arts">Arts</option>
-                    <option value="Computer">Computer Science</option>
-                    <option value="Education">Education</option>
+                    <option value="Economics">Economics</option>
                     <option value="Engineering">Engineering</option>
                     <option value="Environmental">Environmental</option>
                     <option value="Geology">Geology</option>
                     <option value="HR">Human Resources</option>
                     <option value="Journalism">Journalism</option>
                     <option value="Legal">Legal</option>
-                    <option value="Mathematical">Mathematics</option>
-                    <option value="Medical">Medical</option>
+                    <option value="MathematicalScience">Mathematics / Science</option>
                     <option value="ProductionTechnical">Production / Technical</option>
-                    <option value="Science">Sciences</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>

@@ -593,7 +593,7 @@ class CSumFcast extends PureComponent {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="12" align="center" width="100%"><b>Aggregation of All 2020 Copper Forecasts</b></td>
+              <td colSpan="12" align="center" width="100%"><b>Aggregation of All Copper Forecasts - 2020</b></td>
             </tr>
             <tr>
               <td align="center"><b>Month</b></td>
@@ -700,7 +700,7 @@ class CSumFcast extends PureComponent {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="12" align="center" width="100%"><b>Aggregation of All 2021 Copper Forecasts</b></td>
+              <td colSpan="12" align="center" width="100%"><b>Aggregation of All Copper Forecasts - 2021</b></td>
             </tr>
             <tr>
               <td align="center"><b>Month</b></td>

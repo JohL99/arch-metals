@@ -401,11 +401,7 @@ class CSummary extends PureComponent {
                     name="month"
                     value={this.state.mois}
                     onChange={(e) => {
-                      this.setState({
-                        mois: e.target.value,
-                        validationError:
-                          e.target.value === "" ? "Select a month" : "",
-                      });
+                      this.setState({mois: e.target.value});
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -419,7 +415,7 @@ class CSummary extends PureComponent {
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                   </select>
-                </td>
+                  </td>
                 <td align="center"><b>Expected Value</b></td>
                 <td align="center"><b>No. Forecasts</b></td>
                 <td align="center"><b>${this.state.price1}/mt</b></td>
