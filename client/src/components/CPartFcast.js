@@ -1029,6 +1029,7 @@ class CPartFcast extends Component {
                 <span className="label label-primary"></span>
                 <select
                   className=""
+                  autoFocus="true"
                   value={this.state.user}
                   onChange={(e) => {
                     this.setState({
@@ -1036,6 +1037,7 @@ class CPartFcast extends Component {
                       validationError:
                         e.target.value === "" ? "Choose a participant" : "",
                     });
+                    this.onChange = this.setState.bind(this);
                     this.fillprices(e.target.value, "Copper");
                   }}
                 >
@@ -1045,6 +1047,8 @@ class CPartFcast extends Component {
                     </option>
                   ))}
                 </select>
+                <br/>
+                <input type="submit" value="Select before scrolling"></input>
               </td>
               <td align="center"><b>${this.state.evsep20}/mt</b></td>
               <td align="center"><b>${this.state.evoct20}/mt</b></td>

@@ -63,6 +63,7 @@ class GSummary extends PureComponent {
     }
     this.CreeOldata = this.CreeOldata.bind(this);
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.onChange = this.setState.bind(this);
   }
   componentDidMount(){
     window.scrollTo(0,0);
@@ -399,6 +400,7 @@ class GSummary extends PureComponent {
                   <select
                     id="mois"
                     name="month"
+                    autoFocus="true"
                     value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
@@ -406,6 +408,7 @@ class GSummary extends PureComponent {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
+                      this.onChange = this.setState.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -419,6 +422,8 @@ class GSummary extends PureComponent {
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                   </select>
+                  <br/>
+                  <input type="submit" value="Select before scrolling"></input>
                 </td>
                 <td align="center"><b>Expected Value</b></td>
                 <td align="center"><b>No. Forecasts</b></td>
@@ -468,7 +473,7 @@ class GSummary extends PureComponent {
                 <YAxis type="number" label="  %  " />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="RecentData" fill="#B87333" />
+                <Bar dataKey="RecentData" fill="#FFCC00" />
                   {/*  <Bar dataKey="OldData" fill="#FF0000" />
                   <Bar dataKey="AllData" fill="#00B050" /> */}
                 </BarChart>

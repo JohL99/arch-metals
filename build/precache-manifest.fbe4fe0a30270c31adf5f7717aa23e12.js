@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0d9d4c85f791ff1023838006a5e26c94",
+    "revision": "faab9f886034bd9019d043ec650bc393",
     "url": "/index.html"
   },
   {
-    "revision": "516faa7645f00f3eb902",
-    "url": "/static/css/main.0d42ccf0.chunk.css"
+    "revision": "972e83b5806c96bf2822",
+    "url": "/static/css/main.930d50b8.chunk.css"
   },
   {
     "revision": "b186b121de9b19818b23",
@@ -16,20 +16,20 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/static/js/2.db6a780f.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "516faa7645f00f3eb902",
-    "url": "/static/js/main.65d0ed5b.chunk.js"
+    "revision": "972e83b5806c96bf2822",
+    "url": "/static/js/main.c7b4125c.chunk.js"
   },
   {
     "revision": "9b4e396c183e42c1fa5c",
     "url": "/static/js/runtime-main.09b85ec0.js"
   },
   {
-    "revision": "f9c57b8c52c3b8fdf65a2c3275d961f5",
-    "url": "/static/media/Comex_Copper.f9c57b8c.png"
+    "revision": "41470760385cde6b4dbc14d268ba1732",
+    "url": "/static/media/Comex_Copper.41470760.png"
   },
   {
-    "revision": "5bd47cc2beab3cc5f33ad944c63a5fad",
-    "url": "/static/media/Comex_Gold.5bd47cc2.png"
+    "revision": "deb2dd5373de14d17ffecef5ab3bc7ab",
+    "url": "/static/media/Comex_Gold.deb2dd53.png"
   },
   {
     "revision": "c3cbcf8def077e3c1cd1000dcde4968c",

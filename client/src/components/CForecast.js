@@ -83,6 +83,7 @@ class CForecast extends PureComponent {
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
     this.recuperemoyenneT = this.recuperemoyenneT.bind(this);
     this.trouveEV = this.trouveEV.bind(this);
+    this.onChange = this.setState.bind(this);
   }
   componentDidMount(){
     window.scrollTo(0,0);
@@ -529,13 +530,15 @@ class CForecast extends PureComponent {
                   <select
                     id="mois"
                     name="month"
+                    autoFocus="true"
                     value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
                         mois: e.target.value,
                         validationError:
-                          e.target.value === "" ? "Select a month" : "",
+                          e.target.value === "" ? "Choose a month" : "",
                       });
+                      this.onChange = this.setState.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -549,6 +552,8 @@ class CForecast extends PureComponent {
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                   </select>
+                  <br/>
+                  <input type="submit" value="Select before scrolling"></input>
                 </td>
                 <td align="center"><b>Expected Value</b></td>
                 <td align="center"><b>No. Forecasts</b></td>

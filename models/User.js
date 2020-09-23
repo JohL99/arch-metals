@@ -68,52 +68,52 @@ const UserSchema = new Schema({
     type: String,
     required: false,
   },
-  cq1: {
+  q1: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq2: {
+  q2: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq3: {
+  q3: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq4: {
+  q4: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq5: {
+  q5: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq6: {
+  q6: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq7: {
+  q7: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq8: {
+  q8: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq9: {
+  q9: {
     type: String,
     default: "Yes",
     required: true,
   },
-  cq10: {
+  q10: {
     type: String,
     default: "Yes",
     required: true,
