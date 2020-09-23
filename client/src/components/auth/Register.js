@@ -350,7 +350,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q1"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q1 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -358,8 +358,20 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
-                          </td>
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q1"
+                                value="No"
+                                checked={this.state.q1 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
+                        </td>
                       </tr>
                       <tr>
                         <td align="justify">
@@ -375,7 +387,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q2"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q2 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -383,7 +395,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q2"
+                                value="No"
+                                checked={this.state.q2 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -400,7 +424,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q3"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q3 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -408,7 +432,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q3"
+                                value="No"
+                                checked={this.state.q3 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -423,7 +459,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q4"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q4 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -431,7 +467,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q4"
+                                value="No"
+                                checked={this.state.q4 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -447,7 +495,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q5"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q5 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -455,7 +503,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q5"
+                                value="No"
+                                checked={this.state.q5 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -471,7 +531,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q6"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q6 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -479,7 +539,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q6"
+                                value="No"
+                                checked={this.state.q6 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -498,7 +570,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q7"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q7 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -506,7 +578,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q7"
+                                value="No"
+                                checked={this.state.q7 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -521,7 +605,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q8"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q8 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -529,7 +613,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q8"
+                                value="No"
+                                checked={this.state.q8 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -550,7 +646,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q9"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q9 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -558,7 +654,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q9"
+                                value="No"
+                                checked={this.state.q9 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       <tr>
@@ -571,7 +679,7 @@ class Register extends Component {
                               <input
                                 type="radio"
                                 name="q10"
-                                value=""
+                                value="Yes"
                                 checked={this.state.q10 === "Yes"}
                                 onChange={this.onChange}
                                 className="form-check-input"
@@ -579,7 +687,19 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
-                          
+                          <div className="form-check">
+                            <label>
+                              <input
+                                type="radio"
+                                name="q10"
+                                value="No"
+                                checked={this.state.q10 === "No"}
+                                onChange={this.onChange}
+                                className="form-check-input"
+                              />
+                              No
+                            </label>
+                          </div>
                         </td>
                       </tr>
                       </tbody>
