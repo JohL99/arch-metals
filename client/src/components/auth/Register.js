@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
+
 import TextFieldGroup from "../common/TextFieldGroup";
+
 class Register extends Component {
   constructor() {
     super();
@@ -19,7 +21,7 @@ class Register extends Component {
       sex: "",
       age: "",
       geolocation: "",
-      background: "",
+      professionBackground: "",
       workplace: "",
       forecastingapproach: "",
       bio: "",
@@ -41,11 +43,13 @@ class Register extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
       //  this.props.history.push("/dashboard");
     }
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({ errors: nextProps.errors });
@@ -71,7 +75,7 @@ class Register extends Component {
       this.state.q9 !== "Yes" ||
       this.state.q10 !== "Yes"
     ) {
-      alert("Thank you, you will not be registered for this research project");
+      alert("Thank you, you will not be registered for the research project");
     } else {
       const newUser = {
         name: this.state.name,
@@ -98,7 +102,7 @@ class Register extends Component {
         q7: this.state.q7,
         q8: this.state.q8,
         q9: this.state.q9,
-        q10: this.state.q10,
+        q10: this.state.q10
       };
 
       this.props.registerUser(newUser, this.props.history);
@@ -767,6 +771,7 @@ class Register extends Component {
     );
   }
 }
+
 Register.prototypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,

@@ -1,8 +1,6 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 
@@ -10,7 +8,7 @@ import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 export const registerUser = (userData, history) => (dispatch) => {
   axios
     .post("/api/users/register", userData)
-    .then((res) => history.push("./login"))
+    .then((res) => history.push("/login"))
     .catch((err) =>
       dispatch({
         type: GET_ERRORS,
@@ -61,5 +59,4 @@ export const logoutUser = () => (dispatch) => {
   setAuthToken(false);
   // Set current user to {} which will set isAuthenticated to false
   dispatch(setCurrentUser({}));
-  
 };

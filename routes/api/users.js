@@ -39,9 +39,9 @@ router.post("/register", (req, res) => {
         sex: req.body.sex,
         age: req.body.age,
         geolocation: req.body.geolocation,
-        professionBackground: req.body.professionBackground,
+        background: req.body.background,
         workplace: req.body.workplace,
-        forecastingapproach: req.body.forecastingapproach,
+        approach: req.body.approach,
         bio: req.body.bio,
       });
 
@@ -84,7 +84,7 @@ router.post("/login", (req, res) => {
         jwt.sign(
           payload,
           keys.secretOrKey,
-          { expiresIn: 10800 },
+          { expiresIn: 3600 },
           (err, token) => {
             res.json({ success: true, token: "Bearer " + token });
           }
