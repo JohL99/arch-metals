@@ -54,9 +54,11 @@ class Register extends Component {
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   onSubmit(e) {
     e.preventDefault();
-    alert(this.state.q10);
+
+    alert("Thank you for agreeing to participate in the research project");
     if (
       this.state.q1 !== "Yes" ||
       this.state.q2 !== "Yes" ||
@@ -97,18 +99,22 @@ class Register extends Component {
         q8: this.state.q8,
         q9: this.state.q9,
         q10: this.state.q10,
-       };
+      };
+
       this.props.registerUser(newUser, this.props.history);
     }
   }
+
   render() {
     const { errors } = this.state;
     const { user } = this.props.auth;
     //equivalent à
     //const user = this.props.auth.user;
+
     return (
       <div class="register">
         {/*user ? user.name : null*/}
+
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -122,6 +128,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.name}
                 />
+
                 <TextFieldGroup
                   placeholder="Password"
                   name="password"
@@ -138,6 +145,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.password2}
                 />
+
                 <TextFieldGroup
                   placeholder="Email – For Login &amp; official communication only"
                   name="email"
@@ -145,8 +153,9 @@ class Register extends Component {
                   value={this.state.email}
                   onChange={this.onChange}
                   error={errors.email}
-                  
+                  info="This site uses Gravatar so if you want a profile image, use a Gravatar email"
                 />
+
                 <TextFieldGroup
                   placeholder="Alternative email (Optional)"
                   name="altemail"
@@ -155,6 +164,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.altemail}
                 />
+
                 <TextFieldGroup
                   placeholder="Name (Will not be visible to participants on the website / For official communication only)"
                   name="realname"
@@ -163,6 +173,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.realname}
                 />
+
                 <div className="form-group">
                   <select
                     name="commodity1"
@@ -176,6 +187,7 @@ class Register extends Component {
                     <option value="Gold">Gold</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="commodity2"
@@ -190,6 +202,7 @@ class Register extends Component {
                     <option value="Blank">N/A</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="Gender"
@@ -204,6 +217,7 @@ class Register extends Component {
                     <option value="Blank">Prefer not to answer</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="age"
@@ -222,6 +236,7 @@ class Register extends Component {
                     <option value="Blank">Prefer not to answer</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="geolocation"
@@ -242,6 +257,7 @@ class Register extends Component {
                     <option value="Blank">Prefer not to answer</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="professionBackground"
@@ -254,7 +270,6 @@ class Register extends Component {
                     <option value="AccountingFinancial">Accounting / Financial</option>
                     <option value="Economics">Economics</option>
                     <option value="Engineering">Engineering</option>
-                    <option value="Environmental">Environmental</option>
                     <option value="Geology">Geology</option>
                     <option value="HR">Human Resources</option>
                     <option value="Journalism">Journalism</option>
@@ -264,6 +279,7 @@ class Register extends Component {
                     <option value="Other">Other</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="workplace"
@@ -277,14 +293,15 @@ class Register extends Component {
                     <option value="Consultancy">Consultancy / Independent</option>
                     <option value="Financial Institution">Financial Institution</option>
                     <option value="Government Agency">Government Agency</option>
-                    <option value="Media Organisation">Media Organisation</option>
-                    <option value="Mining Organisation">Mining Organisation</option>
+                    <option value="Media Organization">Media Organization</option>
+                    <option value="Mining Organization">Mining Organization</option>
                     <option value="Technical Services">Technical Services</option>
                     <option value="Trading Organization">Trading Organization</option>
                     <option value="Research Organization">Research Organization</option>
 		                <option value="Other">Other</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <select
                     name="forecastingapproach"
@@ -304,6 +321,7 @@ class Register extends Component {
                     <option value="Other">Other</option>
                   </select>
                 </div>
+
                 <div className="form-group">
                   <textarea
                     placeholder="Short Bio (Optional)"
@@ -315,6 +333,7 @@ class Register extends Component {
                     className="form-control form-control-lg"
                   />
                 </div>
+
                 <div className="form-group">
                   <table className="table table-bordered">
                     <thead>
@@ -355,6 +374,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -370,6 +390,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I understand that my participation is voluntary and
@@ -392,6 +413,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -407,6 +429,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
 			                  I understand that, under the UK Data Protection Act, I
@@ -429,6 +452,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -444,6 +468,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I understand that confidentiality and anonymity will
@@ -464,6 +489,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -479,6 +505,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I agree for the data collected from me to be used in
@@ -500,6 +527,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -515,6 +543,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I understand and agree that my participation will be
@@ -536,6 +565,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -551,6 +581,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I understand that my responses will be kept strictly
@@ -575,6 +606,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -590,6 +622,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I agree that the data collected from me may be used in
@@ -610,6 +643,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -625,6 +659,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                           I understand the purpose of the research project is to
@@ -651,6 +686,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -666,6 +702,7 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
+
                       <tr>
                         <td align="justify">
                         I agree to take part in the the research project.                          
@@ -684,6 +721,7 @@ class Register extends Component {
                               Yes
                             </label>
                           </div>
+
                           <div className="form-check">
                             <label>
                               <input
@@ -699,9 +737,11 @@ class Register extends Component {
                           </div>
                         </td>
                       </tr>
-                      </tbody>
+
+                    </tbody>
                   </table>
                 </div>
+
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
               <div>
@@ -720,7 +760,7 @@ class Register extends Component {
 	              should any participants wish to have access to a copy.
 	              </p>
               </div>
-              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -731,7 +771,9 @@ Register.prototypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
 };
+
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
+
 export default connect(mapStateToProps, { registerUser })(Register);
