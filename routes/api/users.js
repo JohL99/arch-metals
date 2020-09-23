@@ -39,10 +39,20 @@ router.post("/register", (req, res) => {
         sex: req.body.sex,
         age: req.body.age,
         geolocation: req.body.geolocation,
-        background: req.body.background,
+        professionBackground: req.body.professionBackground,
         workplace: req.body.workplace,
-        approach: req.body.approach,
+        approach: req.body.forecastingapproach,
         bio: req.body.bio,
+        q1: req.body.q1,
+        q2: req.body.q2,
+        q3: req.body.q3,
+        q4: req.body.q4,
+        q5: req.body.q5,
+        q6: req.body.q6,
+        q7: req.body.q7,
+        q8: req.body.q8,
+        q9: req.body.q9,
+        q10: req.body.q10,
       });
 
       bcrypt.genSalt(10, (err, salt) => {
