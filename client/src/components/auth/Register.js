@@ -21,9 +21,9 @@ class Register extends Component {
       sex: "",
       age: "",
       geolocation: "",
-      professionBackground: "",
+      background: "",
       workplace: "",
-      forecastingapproach: "",
+      approach: "",
       bio: "",
       q1: "",
       q2: "",
@@ -89,9 +89,9 @@ class Register extends Component {
         sex: this.state.sex,
         age: this.state.age,
         geolocation: this.state.geolocation,
-        professionBackground: this.state.professionBackground,
+        background: this.state.background,
         workplace: this.state.workplace,
-        forecastingapproach: this.state.forecastingapproach,
+        approach: this.state.approach,
         bio: this.state.bio,
         q1: this.state.q1,
         q2: this.state.q2,
@@ -186,7 +186,7 @@ class Register extends Component {
                     error={errors.commodity1}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Metal to be forecasted</option>
+                    <option value=""><b>Metal to be forecasted</b></option>
                     <option value="Copper">Copper</option>
                     <option value="Gold">Gold</option>
                   </select>
@@ -200,7 +200,7 @@ class Register extends Component {
                     error={errors.commodity2}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Additional Metal to be forecasted</option>
+                    <option value=""><b>Additional Metal to be forecasted</b></option>
                     <option value="Copper">Copper</option>
                     <option value="Gold">Gold</option>
                     <option value="Blank">N/A</option>
@@ -215,7 +215,7 @@ class Register extends Component {
                     error={errors.sex}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Gender (Optional)</option>
+                    <option value=""><b>Gender (Optional)</b></option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                     <option value="Blank">Prefer not to answer</option>
@@ -230,7 +230,7 @@ class Register extends Component {
                     error={errors.age}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Age (Years)</option>
+                    <option value=""><b>Age (Years)</b></option>
                     <option value="<25">&lt; 25</option>
                     <option value="25-35">25-35</option>
                     <option value="35-45">35-45</option>
@@ -249,7 +249,7 @@ class Register extends Component {
                     error={errors.geolocation}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Your geographic location </option>
+                    <option value=""><b>Your geographic location</b></option>
                     <option value="Africa">Africa</option>
                     <option value="AsiaChina">Asia / China</option>
                     <option value="Australia">Australia / New Zealand</option>
@@ -264,13 +264,13 @@ class Register extends Component {
 
                 <div className="form-group">
                   <select
-                    name="professionBackground"
-                    value={this.state.professionBackground}
+                    name="background"
+                    value={this.state.background}
                     onChange={this.onChange}
-                    error={errors.professionBackground}
+                    error={errors.background}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Professional Background</option>
+                    <option value=""><b>Professional Background</b></option>
                     <option value="AccountingFinancial">Accounting / Financial</option>
                     <option value="Economics">Economics</option>
                     <option value="Engineering">Engineering</option>
@@ -292,7 +292,7 @@ class Register extends Component {
                     error={errors.workplace}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Nature Of Your Workplace</option>
+                    <option value=""><b>Nature Of Your Workplace</b></option>
                     <option value="Academic">Academic Institution</option>
                     <option value="Consultancy">Consultancy / Independent</option>
                     <option value="Financial Institution">Financial Institution</option>
@@ -308,13 +308,13 @@ class Register extends Component {
 
                 <div className="form-group">
                   <select
-                    name="forecastingapproach"
-                    value={this.state.forecastingapproach}
+                    name="approach"
+                    value={this.state.approach}
                     onChange={this.onChange}
-                    error={errors.forecastingapproach}
+                    error={errors.approach}
                     className="form-control form-control-lg"
                   >
-                    <option value="">Forecasting Approach</option>
+                    <option value=""><b>Forecasting Approach</b></option>
                     <option value="Econometric Modeling">Econometric Modeling</option>
                     <option value="Fundamental Analysis">Fundamental Analysis</option>
                     <option value="Gut Feel">&quot;Gut Feel&quot;</option>

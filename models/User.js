@@ -52,7 +52,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
   },
-  professionBackground: {
+  background: {
     type: String,
     required: false,
   },
@@ -60,7 +60,7 @@ const UserSchema = new Schema({
     type: String,
     required: false,
   },
-  forecastingapproach: {
+  approach: {
     type: String,
     required: false,
   },
