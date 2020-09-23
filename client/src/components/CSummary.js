@@ -400,7 +400,7 @@ class CSummary extends PureComponent {
                   <select
                     id="mois"
                     name="month"
-                    value={this.state.mois}
+                    value={this.setState}
                     onChange={(e) => {
                       this.setState({
                         mois: e.target.value,
