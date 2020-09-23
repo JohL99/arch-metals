@@ -186,7 +186,7 @@ class Register extends Component {
                     error={errors.commodity1}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Metal to be forecasted</b></option>
+                    <option value="">Metal to be forecasted</option>
                     <option value="Copper">Copper</option>
                     <option value="Gold">Gold</option>
                   </select>
@@ -200,7 +200,7 @@ class Register extends Component {
                     error={errors.commodity2}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Additional Metal to be forecasted</b></option>
+                    <option value="">Additional Metal to be forecasted</option>
                     <option value="Copper">Copper</option>
                     <option value="Gold">Gold</option>
                     <option value="Blank">N/A</option>
@@ -215,7 +215,7 @@ class Register extends Component {
                     error={errors.sex}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Gender (Optional)</b></option>
+                    <option value="">Gender (Optional)</option>
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
                     <option value="Blank">Prefer not to answer</option>
@@ -230,7 +230,7 @@ class Register extends Component {
                     error={errors.age}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Age (Years)</b></option>
+                    <option value="">Age (Years)</option>
                     <option value="<25">&lt; 25</option>
                     <option value="25-35">25-35</option>
                     <option value="35-45">35-45</option>
@@ -249,7 +249,7 @@ class Register extends Component {
                     error={errors.geolocation}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Your geographic location</b></option>
+                    <option value="">Your geographic location</option>
                     <option value="Africa">Africa</option>
                     <option value="AsiaChina">Asia / China</option>
                     <option value="Australia">Australia / New Zealand</option>
@@ -270,7 +270,7 @@ class Register extends Component {
                     error={errors.background}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Professional Background</b></option>
+                    <option value="">Professional Background</option>
                     <option value="AccountingFinancial">Accounting / Financial</option>
                     <option value="Economics">Economics</option>
                     <option value="Engineering">Engineering</option>
@@ -292,7 +292,7 @@ class Register extends Component {
                     error={errors.workplace}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Nature Of Your Workplace</b></option>
+                    <option value="">Nature Of Your Workplace</option>
                     <option value="Academic">Academic Institution</option>
                     <option value="Consultancy">Consultancy / Independent</option>
                     <option value="Financial Institution">Financial Institution</option>
@@ -314,7 +314,7 @@ class Register extends Component {
                     error={errors.approach}
                     className="form-control form-control-lg"
                   >
-                    <option value=""><b>Forecasting Approach</b></option>
+                    <option value="">Forecasting Approach</option>
                     <option value="Econometric Modeling">Econometric Modeling</option>
                     <option value="Fundamental Analysis">Fundamental Analysis</option>
                     <option value="Gut Feel">&quot;Gut Feel&quot;</option>
@@ -343,7 +343,7 @@ class Register extends Component {
                     <thead>
                       <tr>
                         <td colspan="2" align="center">
-                          <b>PARTICIPANT CONSENT</b>
+                          <b>PARTICIPANT CONSENT QUESTIONS</b>
                         </td>
                       </tr>
                       <tr>

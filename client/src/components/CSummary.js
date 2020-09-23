@@ -63,6 +63,7 @@ class CSummary extends PureComponent {
     }
     this.CreeOldata = this.CreeOldata.bind(this);
     this.trouveLeMedian = this.trouveLeMedian.bind(this);
+    this.onChange = this.setState.bind(this);
   }
   componentDidMount(){
     window.scrollTo(0,0);
@@ -406,8 +407,8 @@ class CSummary extends PureComponent {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
-                      this.fillPrices(e.target.value);
-                    }}
+                       this.fillPrices(e.target.value);
+                      }}
                   >
                     <option value="">Select a month</option>
                     <option value="September 2020">September 2020</option>
