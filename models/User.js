@@ -31,9 +31,14 @@ const UserSchema = new Schema({
     required: true,
   },
 
-  commodity: {
+  commodity1: {
     type: String,
     required: true,
+  },
+
+  commodity2: {
+    type: String,
+    required: false,
   },
   age: {
     type: String,
