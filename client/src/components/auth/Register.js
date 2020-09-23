@@ -121,9 +121,6 @@ class Register extends Component {
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
-                  onInput = {(e) =>{
-                    e.target.value = Math.max(0, parseInt(e.target.value) ).toString().slice(0,12)
-                }}
                 />
                 <TextFieldGroup
                   placeholder="Password"
