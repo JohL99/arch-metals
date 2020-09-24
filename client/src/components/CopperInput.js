@@ -272,7 +272,7 @@ class CopperInput extends Component {
                   <b>Instructions</b>:{" "}
                   <i>
                     <td align="justify">
-                      Select a month on the <b>Left</b> for which you want to make a copper price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. Please provide a brief indication of the basis for your copper price forecast in the space provided. In the general comments section please comment on the evolving consensus copper price forecast relative to your views. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review these before submitting your forecast.</b>
+                      Select a month on the <b>Left</b> for which you want to make a copper price forecast. Once the month has been choosen, please select the expected probability you want to assign to each of the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. Please provide a brief indication of the basis for your copper price forecast in the space provided. In the general comments section please comment on the evolving consensus copper price forecast relative to your own view. You can also comment about other participant’s views in the general comments section. <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review these before submitting your forecast.</b>
                     </td>
                   </i>
                 </td>
@@ -649,7 +649,7 @@ class CopperInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.specificcomments}
-                    placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
+                    placeholder="  Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -667,7 +667,7 @@ class CopperInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-                    placeholder="If you wish to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    placeholder="  If you wish to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -688,7 +688,7 @@ class CopperInput extends Component {
                   Yes
                 </button> */}
                   <input
-                    type="submit" formtarget="Your forecast has been submitted"
+                    type="submit" formtarget_self="Your forecast has been submitted"
                     placeholder="YES"
                     className="btn btn-info btn-block mt-4"
                   />
