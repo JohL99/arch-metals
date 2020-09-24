@@ -96,8 +96,9 @@ class CopperInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    this.setState({LeMedian: ""});
     var LeMedian = 0;
+    this.setState({LeMedian: ""})
+     
     if (Max === this.state.percent1) {LeMedian = this.state.mutengo._id[0]} 
       else if (Max === this.state.percent2) {LeMedian = this.state.mutengo._id[1]} 
       else if (Max === this.state.percent3) {LeMedian = this.state.mutengo._id[2]} 
