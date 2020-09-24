@@ -79,7 +79,6 @@ class CopperInput extends Component {
   onSubmit(e) {
 
     var date1 = new Date();
-    var date2 = date1.toLocaleString();
     const { user } = this.props.auth;
     const formData = new FormData();
     e.preventDefault();
@@ -741,9 +740,9 @@ class CopperInput extends Component {
         <tr>
         <td colSpan="18" align="center" width="100%">
         <div>
+          <MonthAverageCopper mweji={this.state.mois} />
           <GraphCopper mweji={this.state.mois} />
           <MonthForecastCopper mweji={this.state.mois} />
-          <MonthAverageCopper mweji={this.state.mois} />
         </div>
         </td>
         </tr>

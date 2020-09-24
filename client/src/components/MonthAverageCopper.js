@@ -217,7 +217,7 @@ class MonthAverageCopper extends Component {
         <table className="table table-bordered">
           <tbody>
             <tr>
-              <td colSpan="18" align="center"><b>Most Recent Copper Average - {this.props.mweji}</b></td>
+              <td colSpan="10" align="center"><b>Most Recent Copper Consensus Average</b></td>
             </tr>
             <tr>
               <td align="center"><b>Average</b></td>
