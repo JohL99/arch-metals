@@ -7,7 +7,7 @@ const BeyiSchema = new Schema({
     type: String,
     required: true,
   },
-  month: {
+  mois: {
     type: String,
     required: true,
   },

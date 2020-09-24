@@ -9,7 +9,7 @@ const ForecastSchema = new Schema({
   commodity: {
     type: String,
   },
-  month: {
+  mois: {
     type: String,
   },
   dateForecast: {
@@ -42,6 +42,14 @@ const ForecastSchema = new Schema({
   price9: {
     type: String,
     required: false,
+  },
+  lemedian: {
+    type: Number,
+    default: 0,
+  },
+  lamoyenne: {
+    type: Number,
+    default: 0,
   },
   specificComments: {
     type: String,
