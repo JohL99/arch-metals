@@ -272,7 +272,7 @@ class CopperInput extends Component {
                   <b>Instructions</b>:{" "}
                   <i>
                     <td align="justify">
-                      Please first select a month on the <b>Left</b> for which you want to make a copper price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. It would be appreciated if you could also provide a brief indication of the basis for your copper price forecast in the text box below the forecast probability input table. Based on the combined forecasts of all consensus panel participants, a consensus copper price forecast will been calculated. In the general comments section please comment on the evolving consensus copper price forecast relative to your views and that of other participants. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review these before submitting your forecast.</b>
+                      Select a month on the <b>Left</b> for which you want to make a copper price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. Please provide a brief indication of the basis for your copper price forecast in the space provided. In the general comments section please comment on the evolving consensus copper price forecast relative to your views. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review these before submitting your forecast.</b>
                     </td>
                   </i>
                 </td>
@@ -287,6 +287,7 @@ class CopperInput extends Component {
                   <select
                     id="mois"
                     name="month"
+                    autoFocus="true"
                     value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
@@ -294,6 +295,7 @@ class CopperInput extends Component {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
+                      this.onChange = this.onChange.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -336,7 +338,7 @@ class CopperInput extends Component {
               <tr>
                 <td className="first" align="center"><b>Expected Probability</b></td>
                 <td align="center"><i>NB: the total must sum to 100%</i></td>
-                <td id="sum_percent" align="center">{this.state.totpercent}%</td>
+                <td id="sum_percent" align="center"><b>{this.state.totpercent}%</b></td>
                 <td align="center">
                   <select
                     className="percent"
