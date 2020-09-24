@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MonthForecastCopper from "./MonthForecastCopper";
+import MonthAverageCopper from "./MonthAverageCopper";
 import GraphCopper from "./GraphCopper";
 
 class CopperInput extends Component {
@@ -738,10 +739,11 @@ class CopperInput extends Component {
           </table>
         </form>
         <tr>
-        <td colSpan="18" align="center">
+        <td colSpan="18" align="center" width="100%">
         <div>
           <GraphCopper mweji={this.state.mois} />
           <MonthForecastCopper mweji={this.state.mois} />
+          <MonthAverageCopper mweji={this.state.mois} />
         </div>
         </td>
         </tr>

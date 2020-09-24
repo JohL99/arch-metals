@@ -122,7 +122,7 @@ class GoldInput extends Component {
       price7: this.state.percent7,
       price8: this.state.percent8,
       price9: this.state.percent9,
-      lemedian: this.state.lemedian,
+      lemedian: this.state.lamoyenne,
       lamoyenne: this.state.lamoyenne,
       specificcomments: this.state.specificcomments,
       generalcomments: this.state.generalcomments,
@@ -333,10 +333,11 @@ class GoldInput extends Component {
               <tr>
                 <td className="first" align="center"><b>Expected Probability</b></td>
                 <td align="center"><i>NB: the total must sum to 100%</i></td>
-                <td id="sum_percent" align="center">{this.state.totpercent}%</td>
-                <td id="" align="center">
+                <td id="sum_percent" align="center"><b>{this.state.totpercent}%</b></td>
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent1"
                     name="percent1"
                     type="number"
                     value={this.state.percent1}
@@ -366,9 +367,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent2"
                     name="percent2"
                     type="number"
                     value={this.state.percent2}
@@ -398,9 +400,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent3"
                     name="percent3"
                     type="number"
                     value={this.state.percent3}
@@ -430,9 +433,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent4"
                     name="percent4"
                     type="number"
                     value={this.state.percent4}
@@ -462,9 +466,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent5"
                     name="percent5"
                     type="number"
                     value={this.state.percent5}
@@ -494,9 +499,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent6"
                     name="percent6"
                     type="number"
                     value={this.state.percent6}
@@ -526,9 +532,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent7"
                     name="percent7"
                     type="number"
                     value={this.state.percent7}
@@ -558,9 +565,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent8"
                     name="percent8"
                     type="number"
                     value={this.state.percent8}
@@ -590,9 +598,10 @@ class GoldInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent9"
                     name="percent9"
                     type="number"
                     value={this.state.percent9}
@@ -726,7 +735,7 @@ class GoldInput extends Component {
           </table>
         </form>
         <tr>
-        <td colSpan="18" align="center">
+        <td colSpan="18" align="center" width="100%">
         <div>
           <GraphGold mweji={this.state.mois} />
           <MonthForecastGold mweji={this.state.mois} />
