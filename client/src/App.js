@@ -13,8 +13,12 @@ import "./App.css";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import CopperInput from "./components/CopperInput";
+import MonthForecastCopper from "./components/MonthForecastCopper";
+import MonthAverageCopper from "./components/MonthAverageCopper";
 import { MonthPrices } from "./components/MonthPrices";
 import GoldInput from "./components/GoldInput";
+import MonthForecastGold from "./components/MonthForecastGold";
+import MonthAverageGold from "./components/MonthAverageGold";
 import About from "./components/About";
 import TetCs from "./components/TetCs";
 import Contacts from "./components/Contacts";
@@ -91,7 +95,11 @@ function App() {
             <Route exact path="/Login" component={Login} />
             <Route exact path="/Logout" component={Landing} />
             <Route exact path="/CopperInput" component={CopperInput} />
+            <Route exact path="/MonthForecastCopper" component={MonthForecastCopper} />
+            <Route exact path="/MonthAverageCopper" component={MonthAverageCopper} />
             <Route exact path="/GoldInput" component={GoldInput} />
+            <Route exact path="/MonthForecastGold" component={MonthForecastGold} />
+            <Route exact path="/MonthAverageGold" component={MonthAverageGold} />
             <Route exact path="/MonthPrices" component={MonthPrices} />
             <Route exact path="/dashboard" component={Dashboard} />
           </div>

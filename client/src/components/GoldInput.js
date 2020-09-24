@@ -3,6 +3,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MonthForecastGold from "./MonthForecastGold";
+import MonthAverageGold from "./MonthAverageGold";
 import GraphGold from "./GraphGold";
 
 class GoldInput extends Component {
@@ -22,8 +23,8 @@ class GoldInput extends Component {
       price7: "",
       price8: "",
       price9: "",
-      lamoyenne: "",
       lemedian: "",
+      lamoyenne: "",
       percent1: "",
       percent2: "",
       percent3: "",
@@ -78,12 +79,12 @@ class GoldInput extends Component {
   onSubmit(e) {
 
     var date1 = new Date();
-    var date2 = date1.toLocaleString();
     const { user } = this.props.auth;
     const formData = new FormData();
     e.preventDefault();
     this.setState({ fraicheur: 0 });
     //****AJOUT MEDIAN */
+    this.setState({Max: ""});
     let Max = Math.max(
       this.state.percent1,
       this.state.percent2,
@@ -95,16 +96,18 @@ class GoldInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    var LeMedian =0;
-    if (Max === this.state.percent1) {LeMedian = this.state.price1;} 
-      else if (Max === this.state.percent2) {LeMedian = this.state.price2;} 
-      else if (Max === this.state.percent3) {LeMedian = this.state.price3;} 
-      else if (Max === this.state.percent4) {LeMedian = this.state.price4;} 
-      else if (Max === this.state.percent5) {LeMedian = this.state.price5;} 
-      else if (Max === this.state.percent6) {LeMedian = this.state.price6;} 
-      else if (Max === this.state.percent7) {LeMedian = this.state.price7;} 
-      else if (Max === this.state.percent8) {LeMedian = this.state.price8;} 
-      else if (Max === this.state.percent9) {LeMedian = this.state.price9;}
+    var LeMedian = 0;
+    this.setState({LeMedian: ""})
+     
+    if (Max === this.state.percent1) {LeMedian = this.state.mutengo._id[0]} 
+      else if (Max === this.state.percent2) {LeMedian = this.state.mutengo._id[1]} 
+      else if (Max === this.state.percent3) {LeMedian = this.state.mutengo._id[2]} 
+      else if (Max === this.state.percent4) {LeMedian = this.state.mutengo._id[3]} 
+      else if (Max === this.state.percent5) {LeMedian = this.state.mutengo._id[4]} 
+      else if (Max === this.state.percent6) {LeMedian = this.state.mutengo._id[5]} 
+      else if (Max === this.state.percent7) {LeMedian = this.state.mutengo._id[6]} 
+      else if (Max === this.state.percent8) {LeMedian = this.state.mutengo._id[7]} 
+      else if (Max === this.state.percent9) {LeMedian = this.state.mutengo._id[8]}
     this.setState({ lemedian: LeMedian });
     //**** AJOUT MEDIAN */
     const newEntry = {
@@ -269,7 +272,7 @@ class GoldInput extends Component {
                   <b>Instructions</b>:{" "}
                   <i>
                     <td align="justify">
-                      Please first select a month on the <b>Left</b> for which you want to make a gold price forecast. Once the month has been choosen, please select the expected probability you want to assign to the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. It would be appreciated if you could also provide a brief indication of the basis for your gold price forecast in the text box below the forecast probability input table. Based on the combined forecasts of all consensus panel participants, a consensus gold price forecast will been calculated. In the general comments section please comment on the evolving consensus gold price forecast relative to your views and that of other participants. You can also make comments about other participant’s views in the general comments section. <b>A graph and table with the most recent gold forecasts is provided below, if you wish to review these before submitting your forecast.</b>
+                      Select a month on the <b>Left</b> for which you want to make a gold price forecast. Once the month has been choosen, please select the expected probability you want to assign to each of the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. Please provide a brief indication of the basis for your gold price forecast in the space provided. In the general comments section please comment on the evolving consensus gold price forecast relative to your own view. You can also comment about other participant’s views in the general comments section. <b>A graph and table with the most recent gold forecasts is provided below, if you wish to review these before submitting your forecast.</b>
                     </td>
                   </i>
                 </td>
@@ -284,6 +287,7 @@ class GoldInput extends Component {
                   <select
                     id="mois"
                     name="month"
+                    autoFocus="true"
                     value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
@@ -291,6 +295,7 @@ class GoldInput extends Component {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
+                      this.onChange = this.onChange.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -304,6 +309,8 @@ class GoldInput extends Component {
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                 </select>
+                <br/>
+                  <input type="submit" value="Select before scrolling"></input>
                 </td>
               </tr>
               <tr>
@@ -642,7 +649,7 @@ class GoldInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.specificcomments}
-                    placeholder="Please briefly explain the basis for your gold price forecast (Max. 300 characters)."
+                    placeholder="  Please briefly explain the basis for your gold price forecast (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -660,7 +667,7 @@ class GoldInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-                    placeholder="If you wish to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    placeholder="  If you wish to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -681,7 +688,7 @@ class GoldInput extends Component {
                   Yes
                 </button> */}
                   <input
-                    type="submit" formtarget="Your forecast has been submitted"
+                    type="submit" formtarget_self="Your forecast has been submitted"
                     placeholder="YES"
                     className="btn btn-info btn-block mt-4"
                   />
@@ -737,6 +744,7 @@ class GoldInput extends Component {
         <tr>
         <td colSpan="18" align="center" width="100%">
         <div>
+          <MonthAverageGold mweji={this.state.mois} />
           <GraphGold mweji={this.state.mois} />
           <MonthForecastGold mweji={this.state.mois} />
         </div>
