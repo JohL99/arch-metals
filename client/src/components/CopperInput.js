@@ -125,7 +125,7 @@ class CopperInput extends Component {
       price7: this.state.percent7,
       price8: this.state.percent8,
       price9: this.state.percent9,
-      lemedian: this.state.lemedian,
+      lemedian: this.state.lamoyenne,
       lamoyenne: this.state.lamoyenne,
       specificcomments: this.state.specificcomments,
       generalcomments: this.state.generalcomments,
