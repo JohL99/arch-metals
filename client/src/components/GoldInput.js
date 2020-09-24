@@ -673,7 +673,7 @@ class GoldInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-                    placeholder="If you wish to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    placeholder="If you want to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
