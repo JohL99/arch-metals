@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MonthForecastCopper from "./MonthForecastCopper";
 import GraphCopper from "./GraphCopper";
-import isEmpty from "../validation/is-empty";
+
 class CopperInput extends Component {
   constructor(props) {
     super(props);
@@ -76,19 +76,7 @@ class CopperInput extends Component {
     window.scrollTo(0, 0);
   }
   onSubmit(e) {
-    if (
-      isEmpty(this.state.percent1) &&
-      isEmpty(this.state.percent2) &&
-      isEmpty(this.state.percent3) &&
-      isEmpty(this.state.percent4) &&
-      isEmpty(this.state.percent5) &&
-      isEmpty(this.state.percent6) &&
-      isEmpty(this.state.percent7) &&
-      isEmpty(this.state.percent8) &&
-      isEmpty(this.state.percent9)
-    ) {
-      return;
-    }
+
     var date1 = new Date();
     var date2 = date1.toLocaleString();
     const { user } = this.props.auth;
