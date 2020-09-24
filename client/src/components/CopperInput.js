@@ -320,6 +320,9 @@ class CopperInput extends Component {
                 </td>
               </tr>
               <tr>
+                <MonthAverageCopper mweji={this.state.mois} />
+              </tr>
+              <tr>
                 <td className="first" align="center"><b>Expected Price</b></td>
                 <td id="avrg" align="center"><b>${this.state.priceAvr}/mt</b></td>
                 <td align="center">{"  "}</td>
@@ -740,7 +743,6 @@ class CopperInput extends Component {
         <tr>
         <td colSpan="18" align="center" width="100%">
         <div>
-          <MonthAverageCopper mweji={this.state.mois} />
           <GraphCopper mweji={this.state.mois} />
           <MonthForecastCopper mweji={this.state.mois} />
         </div>
