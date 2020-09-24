@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import MonthForecastCopper from "./MonthForecastCopper";
 import MonthAverageCopper from "./MonthAverageCopper";
 import GraphCopper from "./GraphCopper";
-
+import isEmpty from "../validation/is-empty";
 class CopperInput extends Component {
   constructor(props) {
     super(props);
@@ -74,11 +74,22 @@ class CopperInput extends Component {
     }
   }
   componentDidMount(){
-    window.scrollTo(0, 0);
+    window.scrollTo(0,0);
   }
   onSubmit(e) {
-
-    var date1 = new Date();
+    if (
+      isEmpty(this.state.percent1) &&
+      isEmpty(this.state.percent2) &&
+      isEmpty(this.state.percent3) &&
+      isEmpty(this.state.percent4) &&
+      isEmpty(this.state.percent5) &&
+      isEmpty(this.state.percent6) &&
+      isEmpty(this.state.percent7) &&
+      isEmpty(this.state.percent8) &&
+      isEmpty(this.state.percent9)
+    ) {
+      return;
+    }
     const { user } = this.props.auth;
     const formData = new FormData();
     e.preventDefault();
