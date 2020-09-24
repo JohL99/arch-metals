@@ -84,6 +84,7 @@ class CopperInput extends Component {
     e.preventDefault();
     this.setState({ fraicheur: 0 });
     //****AJOUT MEDIAN */
+    this.setState({Max: ""});
     let Max = Math.max(
       this.state.percent1,
       this.state.percent2,
@@ -95,16 +96,17 @@ class CopperInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    var LeMedian =0;
-    if (Max === this.state.percent1) {LeMedian = this.state.price1;} 
-      else if (Max === this.state.percent2) {LeMedian = this.state.price2;} 
-      else if (Max === this.state.percent3) {LeMedian = this.state.price3;} 
-      else if (Max === this.state.percent4) {LeMedian = this.state.price4;} 
-      else if (Max === this.state.percent5) {LeMedian = this.state.price5;} 
-      else if (Max === this.state.percent6) {LeMedian = this.state.price6;} 
-      else if (Max === this.state.percent7) {LeMedian = this.state.price7;} 
-      else if (Max === this.state.percent8) {LeMedian = this.state.price8;} 
-      else if (Max === this.state.percent9) {LeMedian = this.state.price9;}
+    this.setState({LeMedian: ""});
+    var LeMedian = 0;
+    if (Max === this.state.percent1) {LeMedian = this.state.mutengo._id[0]} 
+      else if (Max === this.state.percent2) {LeMedian = this.state.mutengo._id[1]} 
+      else if (Max === this.state.percent3) {LeMedian = this.state.mutengo._id[2]} 
+      else if (Max === this.state.percent4) {LeMedian = this.state.mutengo._id[3]} 
+      else if (Max === this.state.percent5) {LeMedian = this.state.mutengo._id[4]} 
+      else if (Max === this.state.percent6) {LeMedian = this.state.mutengo._id[5]} 
+      else if (Max === this.state.percent7) {LeMedian = this.state.mutengo._id[6]} 
+      else if (Max === this.state.percent8) {LeMedian = this.state.mutengo._id[7]} 
+      else if (Max === this.state.percent9) {LeMedian = this.state.mutengo._id[8]}
     this.setState({ lemedian: LeMedian });
     //**** AJOUT MEDIAN */
     const newEntry = {
