@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import MonthForecastGold from "./MonthForecastGold";
 import GraphGold from "./GraphGold";
-import isEmpty from "../validation/is-empty";
+
 class GoldInput extends Component {
   constructor(props) {
     super(props);
@@ -76,19 +76,7 @@ class GoldInput extends Component {
     window.scrollTo(0, 0);
   }
   onSubmit(e) {
-    if (
-      isEmpty(this.state.percent1) &&
-      isEmpty(this.state.percent2) &&
-      isEmpty(this.state.percent3) &&
-      isEmpty(this.state.percent4) &&
-      isEmpty(this.state.percent5) &&
-      isEmpty(this.state.percent6) &&
-      isEmpty(this.state.percent7) &&
-      isEmpty(this.state.percent8) &&
-      isEmpty(this.state.percent9)
-    ) {
-      return;
-    }
+
     var date1 = new Date();
     var date2 = date1.toLocaleString();
     const { user } = this.props.auth;
@@ -134,7 +122,7 @@ class GoldInput extends Component {
       price7: this.state.percent7,
       price8: this.state.percent8,
       price9: this.state.percent9,
-      lemedian: LeMedian,
+      lemedian: this.state.lemedian,
       lamoyenne: this.state.lamoyenne,
       specificcomments: this.state.specificcomments,
       generalcomments: this.state.generalcomments,
@@ -305,7 +293,7 @@ class GoldInput extends Component {
                       });
                       this.fillPrices(e.target.value);
                     }}
-                    >
+                  >
                     <option value="">Select a month</option>
                     <option value="September 2020">September 2020</option>
                     <option value="October 2020">October 2020</option>
