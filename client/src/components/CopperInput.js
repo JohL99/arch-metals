@@ -95,7 +95,6 @@ class CopperInput extends Component {
     e.preventDefault();
     this.setState({ fraicheur: 0 });
     //****AJOUT MEDIAN */
-    this.setState({Max: ""});
     let Max = Math.max(
       this.state.percent1,
       this.state.percent2,
@@ -107,9 +106,7 @@ class CopperInput extends Component {
       this.state.percent8,
       this.state.percent9
     );
-    var LeMedian = 0;
-    this.setState({LeMedian: ""})
-     
+    var LeMedian =0;
     if (Max === this.state.percent1) {LeMedian = this.state.mutengo._id[0]} 
       else if (Max === this.state.percent2) {LeMedian = this.state.mutengo._id[1]} 
       else if (Max === this.state.percent3) {LeMedian = this.state.mutengo._id[2]} 
@@ -298,7 +295,6 @@ class CopperInput extends Component {
                   <select
                     id="mois"
                     name="month"
-                    autoFocus="true"
                     value={this.state.mois}
                     onChange={(e) => {
                       this.setState({
@@ -306,7 +302,7 @@ class CopperInput extends Component {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
-                      this.onChange = this.onChange.bind(this);
+                      this.onChange = this.setState.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -320,9 +316,7 @@ class CopperInput extends Component {
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                 </select>
-                <br/>
-                  <input type="submit" value="Select before scrolling"></input>
-                </td>
+              </td>
               </tr>
               <tr>
                 <td className="first" align="center">
@@ -660,7 +654,7 @@ class CopperInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.specificcomments}
-                    placeholder="  Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
+                    placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -678,7 +672,7 @@ class CopperInput extends Component {
                     isRequired="true"
                     onChange={this.onChange}
                     value={this.state.generalcomments}
-                    placeholder="  If you wish to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    placeholder="If you wish to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -699,7 +693,7 @@ class CopperInput extends Component {
                   Yes
                 </button> */}
                   <input
-                    type="submit" formtarget_self="Your forecast has been submitted"
+                    type="submit" formtarget="Your forecast has been submitted"
                     placeholder="YES"
                     className="btn btn-info btn-block mt-4"
                   />
