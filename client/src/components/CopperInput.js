@@ -309,6 +309,8 @@ class CopperInput extends Component {
                     <option value="September 2021">September 2021</option>
                     <option value="December 2021">December 2021</option>
                 </select>
+                <br/>
+                  <input type="submit" value="Select before scrolling"></input>
                 </td>
               </tr>
               <tr>
