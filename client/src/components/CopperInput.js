@@ -642,8 +642,6 @@ class CopperInput extends Component {
                   <textarea
                     id="specificcomments"
                     name="specificcomments"
-                    disabled="false"
-                    readOnly="false"
                     maxLength="300"
                     minLength="4"
                     rows="4"
