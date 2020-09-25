@@ -641,15 +641,16 @@ class CopperInput extends Component {
                 </td>
                 <td colSpan="11">
                   <textarea
+                    id="specificcomments"
                     name="specificcomments"
                     isRequired="true"
-                    onChange={this.onChange}
-                    value={this.state.specificcomments}
-                    placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
+                    placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
+                    onChange={this.setState.specificcomments}
+                    value={this.state.specificcomments}
                   ></textarea>
                 </td>
               </tr>
@@ -659,15 +660,16 @@ class CopperInput extends Component {
                 </td>
                 <td colSpan="11">
                   <textarea
+                    id="generalcomments"
                     name="generalcomments"
                     isRequired="true"
-                    onChange={this.onChange}
-                    value={this.state.generalcomments}
-                    placeholder="If you want to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     rows="4"
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
+                    placeholder="If you want to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    onChange={this.setState.generalcomments}
+                    value={this.state.generalcomments}
                   ></textarea>
                 </td>
               </tr>
