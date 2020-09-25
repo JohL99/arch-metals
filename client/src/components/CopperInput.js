@@ -639,18 +639,21 @@ class CopperInput extends Component {
                 <td className="first" align="center">
                   <b>Forecast Justication</b>
                 </td>
-                <td colSpan="11">
+                <td colSpan="11" width="100%">
                   <textarea
                     id="specificcomments"
                     name="specificcomments"
+                    disabled="false"
+                    readOnly="false"
+                    maxLength="300"
+                    minLength="4"
                     rows="4"
                     align="justify"
                     wrap="soft"
-                    style={{ width: "100%" }}
                     placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
-                    onChange={this.onChange}
-                    value={this.state.specificcomments}
-                  ></textarea>
+                    onChange={this.setState.specificcomments}
+                  >
+                  </textarea>
                 </td>
               </tr>
               <tr>
