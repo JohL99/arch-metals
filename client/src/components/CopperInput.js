@@ -302,7 +302,6 @@ class CopperInput extends Component {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
-                      this.onChange = this.setState.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -652,7 +651,8 @@ class CopperInput extends Component {
                     wrap="soft"
                     style={{ width: "100%" }}
                     placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
-                    onChange={this.setState.specificcomments}
+                    onChange={this.onChange}
+                    value={this.state.specificcomments}
                   >
                   </textarea>
                 </td>
