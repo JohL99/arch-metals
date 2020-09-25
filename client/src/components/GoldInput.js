@@ -303,7 +303,6 @@ class GoldInput extends Component {
                         validationError:
                           e.target.value === "" ? "Select a month" : "",
                       });
-                      this.onChange = this.setState.bind(this);
                       this.fillPrices(e.target.value);
                     }}
                   >
@@ -651,16 +650,20 @@ class GoldInput extends Component {
                 </td>
                 <td colSpan="11">
                   <textarea
+                    id="specificcomments"
                     name="specificcomments"
                     isRequired="true"
-                    onChange={this.onChange}
-                    value={this.state.specificcomments}
-                    placeholder="Please briefly explain the basis for your gold price forecast (Max. 300 characters)."
+                    maxLength="300"
+                    minLength="4"
                     rows="4"
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
-                  ></textarea>
+                    placeholder="Please briefly explain the basis for your gold price forecast (Max. 300 characters)."
+                    onChange={this.onChange}
+                    value={this.state.specificcomments}
+                  >
+                  </textarea>
                 </td>
               </tr>
               <tr>
@@ -669,15 +672,18 @@ class GoldInput extends Component {
                 </td>
                 <td colSpan="11">
                   <textarea
+                    id="generalcomments"
                     name="generalcomments"
                     isRequired="true"
-                    onChange={this.onChange}
-                    value={this.state.generalcomments}
-                    placeholder="If you want to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    maxLength="300"
+                    minLength=""
                     rows="4"
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
+                    placeholder="If you want to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    onChange={this.onChange}
+                    value={this.state.generalcomments}
                   ></textarea>
                 </td>
               </tr>
@@ -694,8 +700,10 @@ class GoldInput extends Component {
                   Yes
                 </button> */}
                   <input
-                    type="submit" formtarget="Your forecast has been submitted"
-                    placeholder="YES"
+                    type="submit" 
+                    name="Submit"
+                    value="Submit"
+                    formtarget_self="Submitted"
                     className="btn btn-info btn-block mt-4"
                   />
                 </td>

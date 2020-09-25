@@ -345,9 +345,10 @@ class CopperInput extends Component {
                 <td className="first" align="center"><b>Expected Probability</b></td>
                 <td align="center"><i>NB: the total must sum to 100%</i></td>
                 <td id="sum_percent" align="center"><b>{this.state.totpercent}%</b></td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent1"
                     name="percent1"
                     type="number"
                     value={this.state.percent1}
@@ -377,9 +378,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent2"
                     name="percent2"
                     type="number"
                     value={this.state.percent2}
@@ -409,9 +411,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent3"
                     name="percent3"
                     type="number"
                     value={this.state.percent3}
@@ -441,9 +444,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent4"
                     name="percent4"
                     type="number"
                     value={this.state.percent4}
@@ -473,9 +477,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent5"
                     name="percent5"
                     type="number"
                     value={this.state.percent5}
@@ -505,9 +510,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent6"
                     name="percent6"
                     type="number"
                     value={this.state.percent6}
@@ -537,9 +543,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent7"
                     name="percent7"
                     type="number"
                     value={this.state.percent7}
@@ -569,9 +576,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent8"
                     name="percent8"
                     type="number"
                     value={this.state.percent8}
@@ -601,9 +609,10 @@ class CopperInput extends Component {
                     <option value="1.0">100%</option>
                   </select>
                 </td>
-                <td id="" align="center">
+                <td align="center">
                   <select
                     className="percent"
+                    id="percent9"
                     name="percent9"
                     type="number"
                     value={this.state.percent9}
@@ -642,6 +651,7 @@ class CopperInput extends Component {
                   <textarea
                     id="specificcomments"
                     name="specificcomments"
+                    isRequired="true"
                     maxLength="300"
                     minLength="4"
                     rows="4"
@@ -663,6 +673,9 @@ class CopperInput extends Component {
                   <textarea
                     id="generalcomments"
                     name="generalcomments"
+                    isRequired="true"
+                    maxLength="300"
+                    minLength=""
                     rows="4"
                     align="justify"
                     wrap="soft"
@@ -686,8 +699,10 @@ class CopperInput extends Component {
                   Yes
                 </button> */}
                   <input
-                    type="submit" formtarget_self="Submitted"
-                    placeholder="YES"
+                    type="submit" 
+                    name="Submit"
+                    value="Submit"
+                    formtarget_self="Submitted"
                     className="btn btn-info btn-block mt-4"
                   />
                 </td>
