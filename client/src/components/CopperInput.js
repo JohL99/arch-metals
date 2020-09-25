@@ -643,13 +643,12 @@ class CopperInput extends Component {
                   <textarea
                     id="specificcomments"
                     name="specificcomments"
-                    isRequired="true"
                     rows="4"
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
                     placeholder="Please briefly explain the basis for your copper price forecast (Max. 300 characters)."
-                    onChange={this.setState.specificcomments}
+                    onChange={this.onChange}
                     value={this.state.specificcomments}
                   ></textarea>
                 </td>
@@ -662,13 +661,12 @@ class CopperInput extends Component {
                   <textarea
                     id="generalcomments"
                     name="generalcomments"
-                    isRequired="true"
                     rows="4"
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
                     placeholder="If you want to make any general comments about the consensus copper price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
-                    onChange={this.setState.generalcomments}
+                    onChange={this.onChange}
                     value={this.state.generalcomments}
                   ></textarea>
                 </td>
