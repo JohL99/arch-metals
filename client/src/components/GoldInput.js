@@ -281,7 +281,9 @@ class GoldInput extends Component {
                   <b>Instructions</b>:{" "}
                   <i>
                     <td align="justify">
-                      Select a month on the <b>Left</b> for which you want to make a gold price forecast. Once the month has been choosen, please select the expected probability you want to assign to each of the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast. Please provide a brief indication of the basis for your gold price forecast in the space provided. In the general comments section please comment on the evolving consensus gold price forecast relative to your own view. You can also comment about other participant’s views in the general comments section. <b>A graph and table with the most recent gold forecasts is provided below, if you wish to review these before submitting your forecast.</b>
+                    Select a month on the <b>Left</b> for which you want to make a gold price forecast. Once the month has been choosen, please select the expected probability you want to assign to each of the indicated price baskets, such that the total probabilities sum to 100%. A total of less or more than 100% will result in a Null forecast.
+                      <br/>
+                      <b>A graph and table with the most recent copper forecasts is provided below, if you wish to review these before submitting your forecast.</b>
                     </td>
                   </i>
                 </td>
@@ -659,7 +661,7 @@ class GoldInput extends Component {
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
-                    placeholder="Please briefly explain the basis for your gold price forecast (Max. 300 characters)."
+                    placeholder="Please provide a brief indication of the basis for your gold price forecast in the space provided (Max. 300 characters)."
                     onChange={this.onChange}
                     value={this.state.specificcomments}
                   >
@@ -681,7 +683,7 @@ class GoldInput extends Component {
                     align="justify"
                     wrap="soft"
                     style={{ width: "100%" }}
-                    placeholder="If you want to make any general comments about the consensus gold price forecast or other participant's forecasts please do so here. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
+                    placeholder="Please use the general comments section to share your views on the evolving consensus gold price forecast. You can also comment here about other participant's views. If you want to share any documents, please paste the relevant website URL here. Please ensure you are permitted to share the document before posting the link (Max. 300 characters)."
                     onChange={this.onChange}
                     value={this.state.generalcomments}
                   ></textarea>

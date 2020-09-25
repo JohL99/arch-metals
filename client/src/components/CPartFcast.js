@@ -1014,7 +1014,7 @@ class CPartFcast extends Component {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-              <b>Most Recent Copper Forecasts 2020 - Expected Value</b>
+              <b>Most Recent Copper Forecasts Expected Value - 2020</b>
               </td>
             </tr>
             <tr>
@@ -1069,7 +1069,7 @@ class CPartFcast extends Component {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-              <b>Most Recent Copper Forecasts 2021 - Expected Value</b>
+              <b>Most Recent Copper Forecasts Expected Value - 2021</b>
               </td>
             </tr>
             <tr>

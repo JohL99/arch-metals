@@ -177,7 +177,7 @@ class GraphGold extends PureComponent {
             <YAxis type="number" label="  %  " />
             <Tooltip />
             <Legend />
-            <Bar dataKey="RecentData" fill="#CC9900" />
+            <Bar dataKey="RecentData" fill="#DAA520" />
             {/* <Bar dataKey="item" fill="#BF9000" /> */}
           </BarChart>
         </ResponsiveContainer>

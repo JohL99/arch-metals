@@ -177,7 +177,7 @@ class GraphCopper extends PureComponent {
             <YAxis type="number" label="  %  " />
             <Tooltip />
             <Legend />
-            <Bar dataKey="RecentData" fill="#B87333" />
+            <Bar dataKey="RecentData" fill="#E46F01" />
             {/* <Bar dataKey="item" fill="#BF9000" /> */}
           </BarChart>
         </ResponsiveContainer>

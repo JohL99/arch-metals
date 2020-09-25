@@ -1014,7 +1014,7 @@ class GPartFcast extends Component {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-              <b>Most Recent Gold Forecasts 2020 - Expected Value</b>
+              <b>Most Recent Gold Forecasts Expected Value - 2020</b>
               </td>
             </tr>
             <tr>
@@ -1069,7 +1069,7 @@ class GPartFcast extends Component {
           <tbody>
             <tr>
               <td colSpan="6" align="center">
-              <b>Most Recent Gold Forecasts 2021 - Expected Value</b>
+              <b>Most Recent Gold Forecasts Expected Value - 2021</b>
               </td>
             </tr>
             <tr>
